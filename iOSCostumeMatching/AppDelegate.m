@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "LeftMenuViewController.h"
+#import "WardrobeViewController.h"
+#import "MatchingViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +20,38 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc]init];
+    
+    WardrobeViewController *wardrobeViewController = [[WardrobeViewController alloc]init];
+    _navWardrobeController = [[RC_NavigationController alloc]initWithRootViewController:wardrobeViewController];
+    
+    MatchingViewController *matchingViewController = [[MatchingViewController alloc]init];
+    _navMatchingController = [[RC_NavigationController alloc]initWithRootViewController:matchingViewController];
+    
+    _sideViewController=[[YRSideViewController alloc]initWithNibName:nil bundle:nil];
+//    _sideViewController.rootViewController=_navWardrobeController;
+    _sideViewController.rootViewController=_navMatchingController;
+    _sideViewController.leftViewController=leftMenuViewController;
+    
+    
+    _sideViewController.leftViewShowWidth=200;
+//    _sideViewController.needSwipeShowMenu=true;//默认开启的可滑动展示
+    //动画效果可以被自己自定义，具体请看api
+    
+    [_sideViewController setRootViewMoveBlock:^(UIView *rootView, CGRect orginFrame, CGFloat xoffset) {
+        //使用简单的平移动画
+        rootView.frame=CGRectMake(xoffset, orginFrame.origin.y, orginFrame.size.width, orginFrame.size.height);
+    }];
+    
+    self.window.rootViewController=_sideViewController;
+    
+    
+    [self.window makeKeyAndVisible];
+
+    
     return YES;
 }
 

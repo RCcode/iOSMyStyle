@@ -1,0 +1,39 @@
+//
+//  PrefixHeader.pch
+//  iOSGetFollow
+//
+//  Created by TCH on 15/6/2.
+//  Copyright (c) 2015年 com.rcplatform. All rights reserved.
+//
+
+#ifndef iOSGetFollow_PrefixHeader_pch
+#define iOSGetFollow_PrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import "RC_BaseViewController.h"
+#import "RC_NavigationController.h"
+#import "RC_View.h"
+#import "CMethods.h"
+#import "Public.h"
+#import "YRSideViewController.h"
+#import "AppDelegate.h"
+//#import "AppDelegate.h"
+//#import "RC_TabBarController.h"
+//
+//#import "IS_MobAndAnalyticsManager.h"
+//#import "RC_RequestManager.h"
+//#import "RC_LocalDataManager.h"
+//#import "UIImageView+WebCache.h"
+//#import "UserInfo.h"
+//#import "InstagramManager.h"
+
+#endif
+
+#ifdef DEBUG
+#define CLog(format, ...) NSLog(format, ## __VA_ARGS__)
+#else
+#define CLog(format, ...)
+#endif
+#endif
