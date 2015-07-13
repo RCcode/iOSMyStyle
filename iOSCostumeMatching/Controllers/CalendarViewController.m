@@ -7,8 +7,9 @@
 //
 
 #import "CalendarViewController.h"
+#import "PWSCalendarView.h"
 
-@interface CalendarViewController ()
+@interface CalendarViewController ()<PWSCalendarDelegate>
 
 @end
 
@@ -26,7 +27,23 @@
     self.showReturn = YES;
     [self setNavTitle:@"我的日历"];
     [self setReturnBtnTitle:@"菜单"];
+    
+    PWSCalendarView* view = [[PWSCalendarView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 400) CalendarType:en_calendar_type_month];
+    [view setBackgroundColor:[UIColor cyanColor]];
+    [self.view addSubview:view];
+    [view setDelegate:self];
     // Do any additional setup after loading the view from its nib.
+}
+
+#pragma mark - PWSCalendarDelegate
+
+- (void) PWSCalendar:(PWSCalendarView*)_calendar didSelecteDate:(NSDate*)_date
+{
+    NSLog(@"select = %@", _date);
+}
+
+- (void) PWSCalendar:(PWSCalendarView*)_calendar didChangeViewHeight:(CGFloat)_height
+{
 }
 
 - (void)didReceiveMemoryWarning {
