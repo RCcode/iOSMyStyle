@@ -22,14 +22,14 @@
 - (IBAction)pressWardrobe:(id)sender {
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     YRSideViewController *sideViewController=[delegate sideViewController];
-    sideViewController.rootViewController=delegate.navMatchingController;
+    sideViewController.rootViewController=delegate.navWardrobeController;
     [sideViewController hideSideViewController:YES];
 }
 
 - (IBAction)pressMatching:(id)sender {
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     YRSideViewController *sideViewController=[delegate sideViewController];
-    sideViewController.rootViewController=delegate.navWardrobeController;
+    sideViewController.rootViewController=delegate.navMatchingController;
     [sideViewController hideSideViewController:YES];
 }
 

@@ -50,7 +50,7 @@
 
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
-#define NavBarHeight 44
+#define NavBarHeight 44.0
 #define Height5 568
 #define ScreenHeightHaveNavBar [[UIScreen mainScreen] bounds].size.height - NavBarHeight
 

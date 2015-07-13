@@ -18,6 +18,17 @@
 		4F417DDD1B4E8A78000BD540 /* MatchingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DDB1B4E8A78000BD540 /* MatchingViewController.m */; };
 		4F417DDE1B4E8A78000BD540 /* MatchingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F417DDC1B4E8A78000BD540 /* MatchingViewController.xib */; };
 		4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DE31B4E9139000BD540 /* YRSideViewController.m */; };
+		4F63418D1B4F9FD200DFC281 /* CutAndWipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F63418B1B4F9FD200DFC281 /* CutAndWipeViewController.m */; };
+		4F63418E1B4F9FD200DFC281 /* CutAndWipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F63418C1B4F9FD200DFC281 /* CutAndWipeViewController.xib */; };
+		4F6341931B4FA44400DFC281 /* UIBezierPath-Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341921B4FA44400DFC281 /* UIBezierPath-Points.m */; };
+		4F63419A1B4FA48300DFC281 /* CutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341981B4FA48300DFC281 /* CutViewController.m */; };
+		4F63419B1B4FA48300DFC281 /* CutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6341991B4FA48300DFC281 /* CutViewController.xib */; };
+		4F63419F1B4FB97B00DFC281 /* STScratchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F63419E1B4FB97B00DFC281 /* STScratchView.m */; };
+		4F6341A31B4FB9A500DFC281 /* MZCroppableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341A21B4FB9A500DFC281 /* MZCroppableView.m */; };
+		4F6341A71B4FBA8200DFC281 /* WipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341A51B4FBA8200DFC281 /* WipeViewController.m */; };
+		4F6341A81B4FBA8200DFC281 /* WipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6341A61B4FBA8200DFC281 /* WipeViewController.xib */; };
+		4F6341AA1B4FCAA100DFC281 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F6341A91B4FCAA100DFC281 /* ball.png */; };
+		4F6341AE1B4FDF1100DFC281 /* PIDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341AD1B4FDF1100DFC281 /* PIDrawerView.m */; };
 		4F85A6351B46480A0077E12E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6341B46480A0077E12E /* main.m */; };
 		4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6371B46480A0077E12E /* AppDelegate.m */; };
 		4F85A6401B46480A0077E12E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85A63F1B46480A0077E12E /* Images.xcassets */; };
@@ -56,6 +67,24 @@
 		4F417DDC1B4E8A78000BD540 /* MatchingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchingViewController.xib; sourceTree = "<group>"; };
 		4F417DE21B4E9139000BD540 /* YRSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRSideViewController.h; sourceTree = "<group>"; };
 		4F417DE31B4E9139000BD540 /* YRSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRSideViewController.m; sourceTree = "<group>"; };
+		4F63418A1B4F9FD200DFC281 /* CutAndWipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutAndWipeViewController.h; sourceTree = "<group>"; };
+		4F63418B1B4F9FD200DFC281 /* CutAndWipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutAndWipeViewController.m; sourceTree = "<group>"; };
+		4F63418C1B4F9FD200DFC281 /* CutAndWipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CutAndWipeViewController.xib; sourceTree = "<group>"; };
+		4F6341911B4FA44400DFC281 /* UIBezierPath-Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath-Points.h"; sourceTree = "<group>"; };
+		4F6341921B4FA44400DFC281 /* UIBezierPath-Points.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath-Points.m"; sourceTree = "<group>"; };
+		4F6341971B4FA48300DFC281 /* CutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutViewController.h; sourceTree = "<group>"; };
+		4F6341981B4FA48300DFC281 /* CutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutViewController.m; sourceTree = "<group>"; };
+		4F6341991B4FA48300DFC281 /* CutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CutViewController.xib; sourceTree = "<group>"; };
+		4F63419D1B4FB97A00DFC281 /* STScratchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STScratchView.h; sourceTree = "<group>"; };
+		4F63419E1B4FB97B00DFC281 /* STScratchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STScratchView.m; sourceTree = "<group>"; };
+		4F6341A11B4FB9A500DFC281 /* MZCroppableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCroppableView.h; sourceTree = "<group>"; };
+		4F6341A21B4FB9A500DFC281 /* MZCroppableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCroppableView.m; sourceTree = "<group>"; };
+		4F6341A41B4FBA8200DFC281 /* WipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WipeViewController.h; sourceTree = "<group>"; };
+		4F6341A51B4FBA8200DFC281 /* WipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WipeViewController.m; sourceTree = "<group>"; };
+		4F6341A61B4FBA8200DFC281 /* WipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WipeViewController.xib; sourceTree = "<group>"; };
+		4F6341A91B4FCAA100DFC281 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		4F6341AC1B4FDF1100DFC281 /* PIDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDrawerView.h; sourceTree = "<group>"; };
+		4F6341AD1B4FDF1100DFC281 /* PIDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDrawerView.m; sourceTree = "<group>"; };
 		4F85A62F1B46480A0077E12E /* iOSCostumeMatching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCostumeMatching.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85A6331B46480A0077E12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85A6341B46480A0077E12E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -120,6 +149,7 @@
 		4F417DCA1B4E7285000BD540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F6341891B4F9F6200DFC281 /* Cut&Wipe */,
 				4F417DCB1B4E72B8000BD540 /* LeftMenuViewController.h */,
 				4F417DCC1B4E72B8000BD540 /* LeftMenuViewController.m */,
 				4F417DCD1B4E72B8000BD540 /* LeftMenuViewController.xib */,
@@ -133,9 +163,72 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		4F6341891B4F9F6200DFC281 /* Cut&Wipe */ = {
+			isa = PBXGroup;
+			children = (
+				4F63418A1B4F9FD200DFC281 /* CutAndWipeViewController.h */,
+				4F63418B1B4F9FD200DFC281 /* CutAndWipeViewController.m */,
+				4F63418C1B4F9FD200DFC281 /* CutAndWipeViewController.xib */,
+				4F6341971B4FA48300DFC281 /* CutViewController.h */,
+				4F6341981B4FA48300DFC281 /* CutViewController.m */,
+				4F6341991B4FA48300DFC281 /* CutViewController.xib */,
+				4F6341A41B4FBA8200DFC281 /* WipeViewController.h */,
+				4F6341A51B4FBA8200DFC281 /* WipeViewController.m */,
+				4F6341A61B4FBA8200DFC281 /* WipeViewController.xib */,
+			);
+			path = "Cut&Wipe";
+			sourceTree = "<group>";
+		};
+		4F63418F1B4FA3E000DFC281 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4F6341AB1B4FDEF400DFC281 /* PIDrawerView */,
+				4F6341A01B4FB98100DFC281 /* MZCroppableView */,
+				4F63419C1B4FB97A00DFC281 /* STScratchView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4F6341901B4FA42400DFC281 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				4F6341911B4FA44400DFC281 /* UIBezierPath-Points.h */,
+				4F6341921B4FA44400DFC281 /* UIBezierPath-Points.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		4F63419C1B4FB97A00DFC281 /* STScratchView */ = {
+			isa = PBXGroup;
+			children = (
+				4F63419D1B4FB97A00DFC281 /* STScratchView.h */,
+				4F63419E1B4FB97B00DFC281 /* STScratchView.m */,
+			);
+			path = STScratchView;
+			sourceTree = "<group>";
+		};
+		4F6341A01B4FB98100DFC281 /* MZCroppableView */ = {
+			isa = PBXGroup;
+			children = (
+				4F6341A11B4FB9A500DFC281 /* MZCroppableView.h */,
+				4F6341A21B4FB9A500DFC281 /* MZCroppableView.m */,
+			);
+			path = MZCroppableView;
+			sourceTree = "<group>";
+		};
+		4F6341AB1B4FDEF400DFC281 /* PIDrawerView */ = {
+			isa = PBXGroup;
+			children = (
+				4F6341AC1B4FDF1100DFC281 /* PIDrawerView.h */,
+				4F6341AD1B4FDF1100DFC281 /* PIDrawerView.m */,
+			);
+			path = PIDrawerView;
+			sourceTree = "<group>";
+		};
 		4F85A6261B46480A0077E12E = {
 			isa = PBXGroup;
 			children = (
+				4F6341A91B4FCAA100DFC281 /* ball.png */,
 				4F85A6311B46480A0077E12E /* iOSCostumeMatching */,
 				4F85A64B1B46480B0077E12E /* iOSCostumeMatchingTests */,
 				4F85A6301B46480A0077E12E /* Products */,
@@ -154,6 +247,8 @@
 		4F85A6311B46480A0077E12E /* iOSCostumeMatching */ = {
 			isa = PBXGroup;
 			children = (
+				4F6341901B4FA42400DFC281 /* Category */,
+				4F63418F1B4FA3E000DFC281 /* View */,
 				4F417DCA1B4E7285000BD540 /* Controllers */,
 				4F417DC81B4E708F000BD540 /* Public.h */,
 				4F417DC21B4E6DE5000BD540 /* RCShare */,
@@ -274,8 +369,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F417DD91B4E8960000BD540 /* WardrobeViewController.xib in Resources */,
+				4F6341A81B4FBA8200DFC281 /* WipeViewController.xib in Resources */,
 				4F417DD21B4E72B8000BD540 /* LeftMenuViewController.xib in Resources */,
 				4F417DDE1B4E8A78000BD540 /* MatchingViewController.xib in Resources */,
+				4F63419B1B4FA48300DFC281 /* CutViewController.xib in Resources */,
+				4F63418E1B4F9FD200DFC281 /* CutAndWipeViewController.xib in Resources */,
+				4F6341AA1B4FCAA100DFC281 /* ball.png in Resources */,
 				4F85A6401B46480A0077E12E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,13 +394,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F417DDD1B4E8A78000BD540 /* MatchingViewController.m in Sources */,
+				4F63419F1B4FB97B00DFC281 /* STScratchView.m in Sources */,
 				4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */,
+				4F6341A71B4FBA8200DFC281 /* WipeViewController.m in Sources */,
+				4F6341931B4FA44400DFC281 /* UIBezierPath-Points.m in Sources */,
 				4F417DC61B4E6DFD000BD540 /* CMethods.m in Sources */,
 				4F417DD11B4E72B8000BD540 /* LeftMenuViewController.m in Sources */,
+				4F63419A1B4FA48300DFC281 /* CutViewController.m in Sources */,
 				4F417DBC1B4E6875000BD540 /* RC_View.m in Sources */,
 				4F85A6351B46480A0077E12E /* main.m in Sources */,
 				4F417DD81B4E8960000BD540 /* WardrobeViewController.m in Sources */,
+				4F63418D1B4F9FD200DFC281 /* CutAndWipeViewController.m in Sources */,
+				4F6341AE1B4FDF1100DFC281 /* PIDrawerView.m in Sources */,
 				4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */,
+				4F6341A31B4FB9A500DFC281 /* MZCroppableView.m in Sources */,
 				4F417DBB1B4E6875000BD540 /* RC_NavigationController.m in Sources */,
 				4F417DBA1B4E6875000BD540 /* RC_BaseViewController.m in Sources */,
 			);

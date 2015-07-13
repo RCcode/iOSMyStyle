@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.showReturn = YES;
+    [self setNavTitle:@"我的搭配"];
     [self setReturnBtnTitle:@"菜单"];
     // Do any additional setup after loading the view from its nib.
 }
