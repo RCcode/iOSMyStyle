@@ -16,6 +16,7 @@
 @property (strong, nonatomic) YRSideViewController *sideViewController;
 @property (strong, nonatomic) RC_NavigationController *navWardrobeController;
 @property (strong, nonatomic) RC_NavigationController *navMatchingController;
+@property (strong, nonatomic) RC_NavigationController *navCalendarController;
 
 @end
 

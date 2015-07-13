@@ -38,6 +38,9 @@
                     <state key="normal" title="搭配日历">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="pressCalendar:" destination="-1" eventType="touchUpInside" id="yVZ-xU-62p"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3e-hG-vnG">
                     <rect key="frame" x="30" y="243" width="60" height="30"/>

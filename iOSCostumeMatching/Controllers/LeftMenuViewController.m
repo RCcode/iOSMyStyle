@@ -33,6 +33,13 @@
     [sideViewController hideSideViewController:YES];
 }
 
+- (IBAction)pressCalendar:(id)sender {
+    AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+    YRSideViewController *sideViewController=[delegate sideViewController];
+    sideViewController.rootViewController=delegate.navCalendarController;
+    [sideViewController hideSideViewController:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

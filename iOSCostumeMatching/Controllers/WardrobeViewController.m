@@ -19,7 +19,6 @@
 
 -(void)returnBtnPressed:(id)sender
 {
-//    [[SliderViewController sharedSliderController]showLeftViewController];
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     YRSideViewController *sideViewController=[delegate sideViewController];
     [sideViewController showLeftViewController:true];

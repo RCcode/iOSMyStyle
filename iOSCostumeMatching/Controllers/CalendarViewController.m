@@ -1,18 +1,18 @@
 //
-//  MatchingViewController.m
+//  CalendarViewController.m
 //  iOSCostumeMatching
 //
-//  Created by TCH on 15/7/9.
+//  Created by TCH on 15/7/13.
 //  Copyright (c) 2015年 TCH. All rights reserved.
 //
 
-#import "MatchingViewController.h"
+#import "CalendarViewController.h"
 
-@interface MatchingViewController ()
+@interface CalendarViewController ()
 
 @end
 
-@implementation MatchingViewController
+@implementation CalendarViewController
 
 -(void)returnBtnPressed:(id)sender
 {
@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.showReturn = YES;
-    [self setNavTitle:@"我的搭配"];
+    [self setNavTitle:@"我的日历"];
     [self setReturnBtnTitle:@"菜单"];
     // Do any additional setup after loading the view from its nib.
 }

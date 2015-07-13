@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0771681B538E38005D61AB /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0771661B538E38005D61AB /* CalendarViewController.m */; };
+		4F0771691B538E38005D61AB /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F0771671B538E38005D61AB /* CalendarViewController.xib */; };
 		4F417DBA1B4E6875000BD540 /* RC_BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DB51B4E6875000BD540 /* RC_BaseViewController.m */; };
 		4F417DBB1B4E6875000BD540 /* RC_NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DB71B4E6875000BD540 /* RC_NavigationController.m */; };
 		4F417DBC1B4E6875000BD540 /* RC_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DB91B4E6875000BD540 /* RC_View.m */; };
@@ -46,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F0771651B538E38005D61AB /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		4F0771661B538E38005D61AB /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		4F0771671B538E38005D61AB /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
 		4F417DB41B4E6875000BD540 /* RC_BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_BaseViewController.h; sourceTree = "<group>"; };
 		4F417DB51B4E6875000BD540 /* RC_BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_BaseViewController.m; sourceTree = "<group>"; };
 		4F417DB61B4E6875000BD540 /* RC_NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_NavigationController.h; sourceTree = "<group>"; };
@@ -159,6 +164,9 @@
 				4F417DDA1B4E8A78000BD540 /* MatchingViewController.h */,
 				4F417DDB1B4E8A78000BD540 /* MatchingViewController.m */,
 				4F417DDC1B4E8A78000BD540 /* MatchingViewController.xib */,
+				4F0771651B538E38005D61AB /* CalendarViewController.h */,
+				4F0771661B538E38005D61AB /* CalendarViewController.m */,
+				4F0771671B538E38005D61AB /* CalendarViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -370,6 +378,7 @@
 			files = (
 				4F417DD91B4E8960000BD540 /* WardrobeViewController.xib in Resources */,
 				4F6341A81B4FBA8200DFC281 /* WipeViewController.xib in Resources */,
+				4F0771691B538E38005D61AB /* CalendarViewController.xib in Resources */,
 				4F417DD21B4E72B8000BD540 /* LeftMenuViewController.xib in Resources */,
 				4F417DDE1B4E8A78000BD540 /* MatchingViewController.xib in Resources */,
 				4F63419B1B4FA48300DFC281 /* CutViewController.xib in Resources */,
@@ -403,6 +412,7 @@
 				4F63419A1B4FA48300DFC281 /* CutViewController.m in Sources */,
 				4F417DBC1B4E6875000BD540 /* RC_View.m in Sources */,
 				4F85A6351B46480A0077E12E /* main.m in Sources */,
+				4F0771681B538E38005D61AB /* CalendarViewController.m in Sources */,
 				4F417DD81B4E8960000BD540 /* WardrobeViewController.m in Sources */,
 				4F63418D1B4F9FD200DFC281 /* CutAndWipeViewController.m in Sources */,
 				4F6341AE1B4FDF1100DFC281 /* PIDrawerView.m in Sources */,

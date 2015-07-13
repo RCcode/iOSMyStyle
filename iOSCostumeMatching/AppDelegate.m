@@ -10,6 +10,7 @@
 #import "LeftMenuViewController.h"
 #import "WardrobeViewController.h"
 #import "MatchingViewController.h"
+#import "CalendarViewController.h"
 
 @interface AppDelegate ()
 
@@ -30,6 +31,9 @@
     
     MatchingViewController *matchingViewController = [[MatchingViewController alloc]init];
     _navMatchingController = [[RC_NavigationController alloc]initWithRootViewController:matchingViewController];
+    
+    CalendarViewController *calendarViewController = [[CalendarViewController alloc]init];
+    _navCalendarController = [[RC_NavigationController alloc]initWithRootViewController:calendarViewController];
     
     _sideViewController=[[YRSideViewController alloc]initWithNibName:nil bundle:nil];
     _sideViewController.rootViewController=_navWardrobeController;
