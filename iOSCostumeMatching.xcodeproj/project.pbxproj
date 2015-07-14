@@ -55,10 +55,27 @@
 		4F6341A81B4FBA8200DFC281 /* WipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6341A61B4FBA8200DFC281 /* WipeViewController.xib */; };
 		4F6341AA1B4FCAA100DFC281 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F6341A91B4FCAA100DFC281 /* ball.png */; };
 		4F6341AE1B4FDF1100DFC281 /* PIDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341AD1B4FDF1100DFC281 /* PIDrawerView.m */; };
+		4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */; };
+		4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */; };
+		4F808CAF1B54BE6F001A89AA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F808CAE1B54BE6F001A89AA /* libz.dylib */; };
+		4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */; };
 		4F85A6351B46480A0077E12E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6341B46480A0077E12E /* main.m */; };
 		4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6371B46480A0077E12E /* AppDelegate.m */; };
 		4F85A6401B46480A0077E12E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85A63F1B46480A0077E12E /* Images.xcassets */; };
 		4F85A64F1B46480B0077E12E /* iOSCostumeMatchingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A64E1B46480B0077E12E /* iOSCostumeMatchingTests.m */; };
+		4FCD2FE61B5503CD00BD6DDB /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FDC1B5503CD00BD6DDB /* 1.jpeg */; };
+		4FCD2FE71B5503CD00BD6DDB /* 10.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FDD1B5503CD00BD6DDB /* 10.jpeg */; };
+		4FCD2FE81B5503CD00BD6DDB /* 2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FDE1B5503CD00BD6DDB /* 2.jpeg */; };
+		4FCD2FE91B5503CD00BD6DDB /* 3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FDF1B5503CD00BD6DDB /* 3.jpeg */; };
+		4FCD2FEA1B5503CD00BD6DDB /* 4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FE01B5503CD00BD6DDB /* 4.jpeg */; };
+		4FCD2FEB1B5503CD00BD6DDB /* 5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FE11B5503CD00BD6DDB /* 5.jpeg */; };
+		4FCD2FEC1B5503CD00BD6DDB /* 6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FE21B5503CD00BD6DDB /* 6.jpeg */; };
+		4FCD2FED1B5503CD00BD6DDB /* 7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FE31B5503CD00BD6DDB /* 7.jpeg */; };
+		4FCD2FEE1B5503CD00BD6DDB /* 8.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FE41B5503CD00BD6DDB /* 8.jpeg */; };
+		4FCD2FEF1B5503CD00BD6DDB /* 9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FE51B5503CD00BD6DDB /* 9.jpeg */; };
+		4FCD30011B551A8200BD6DDB /* UIScrollView+LoadingMore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD2FFC1B551A8200BD6DDB /* UIScrollView+LoadingMore.m */; };
+		4FCD30021B551A8200BD6DDB /* ZBFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD2FFE1B551A8200BD6DDB /* ZBFlowView.m */; };
+		4FCD30031B551A8200BD6DDB /* ZBWaterView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD30001B551A8200BD6DDB /* ZBWaterView.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +180,13 @@
 		4F6341A91B4FCAA100DFC281 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		4F6341AC1B4FDF1100DFC281 /* PIDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDrawerView.h; sourceTree = "<group>"; };
 		4F6341AD1B4FDF1100DFC281 /* PIDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDrawerView.m; sourceTree = "<group>"; };
+		4F808CA71B54BD6E001A89AA /* RC_RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_RequestManager.h; sourceTree = "<group>"; };
+		4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_RequestManager.m; sourceTree = "<group>"; };
+		4F808CAB1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IS_MobAndAnalyticsManager.h; sourceTree = "<group>"; };
+		4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IS_MobAndAnalyticsManager.m; sourceTree = "<group>"; };
+		4F808CAE1B54BE6F001A89AA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		4F808CB11B54C997001A89AA /* RC_SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_SQLiteManager.h; sourceTree = "<group>"; };
+		4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_SQLiteManager.m; sourceTree = "<group>"; };
 		4F85A62F1B46480A0077E12E /* iOSCostumeMatching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCostumeMatching.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85A6331B46480A0077E12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85A6341B46480A0077E12E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -172,6 +196,22 @@
 		4F85A6481B46480B0077E12E /* iOSCostumeMatchingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSCostumeMatchingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85A64D1B46480B0077E12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85A64E1B46480B0077E12E /* iOSCostumeMatchingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSCostumeMatchingTests.m; sourceTree = "<group>"; };
+		4FCD2FDC1B5503CD00BD6DDB /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
+		4FCD2FDD1B5503CD00BD6DDB /* 10.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpeg; sourceTree = "<group>"; };
+		4FCD2FDE1B5503CD00BD6DDB /* 2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpeg; sourceTree = "<group>"; };
+		4FCD2FDF1B5503CD00BD6DDB /* 3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpeg; sourceTree = "<group>"; };
+		4FCD2FE01B5503CD00BD6DDB /* 4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpeg; sourceTree = "<group>"; };
+		4FCD2FE11B5503CD00BD6DDB /* 5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpeg; sourceTree = "<group>"; };
+		4FCD2FE21B5503CD00BD6DDB /* 6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpeg; sourceTree = "<group>"; };
+		4FCD2FE31B5503CD00BD6DDB /* 7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpeg; sourceTree = "<group>"; };
+		4FCD2FE41B5503CD00BD6DDB /* 8.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpeg; sourceTree = "<group>"; };
+		4FCD2FE51B5503CD00BD6DDB /* 9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpeg; sourceTree = "<group>"; };
+		4FCD2FFB1B551A8200BD6DDB /* UIScrollView+LoadingMore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LoadingMore.h"; sourceTree = "<group>"; };
+		4FCD2FFC1B551A8200BD6DDB /* UIScrollView+LoadingMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LoadingMore.m"; sourceTree = "<group>"; };
+		4FCD2FFD1B551A8200BD6DDB /* ZBFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBFlowView.h; sourceTree = "<group>"; };
+		4FCD2FFE1B551A8200BD6DDB /* ZBFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBFlowView.m; sourceTree = "<group>"; };
+		4FCD2FFF1B551A8200BD6DDB /* ZBWaterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBWaterView.h; sourceTree = "<group>"; };
+		4FCD30001B551A8200BD6DDB /* ZBWaterView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZBWaterView.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F808CAF1B54BE6F001A89AA /* libz.dylib in Frameworks */,
 				4F0771A61B53AB90005D61AB /* libsqlite3.dylib in Frameworks */,
 				4F0771A41B53AB16005D61AB /* libMobClickLibrary.a in Frameworks */,
 			);
@@ -322,6 +363,9 @@
 		4F417DC21B4E6DE5000BD540 /* RCShare */ = {
 			isa = PBXGroup;
 			children = (
+				4F808CB01B54C962001A89AA /* SQLiteManager */,
+				4F808CAA1B54BD8B001A89AA /* MobAndAnalyticsManager */,
+				4F808CA61B54BD6E001A89AA /* RequestManager */,
 				4F417DC31B4E6DFD000BD540 /* C Methods */,
 			);
 			path = RCShare;
@@ -375,6 +419,7 @@
 		4F63418F1B4FA3E000DFC281 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4FCD2FFA1B551A8200BD6DDB /* WaterView */,
 				4F158D741B53BE6D000CA2FA /* PWSCalendar */,
 				4F6341AB1B4FDEF400DFC281 /* PIDrawerView */,
 				4F6341A01B4FB98100DFC281 /* MZCroppableView */,
@@ -419,11 +464,40 @@
 			path = PIDrawerView;
 			sourceTree = "<group>";
 		};
+		4F808CA61B54BD6E001A89AA /* RequestManager */ = {
+			isa = PBXGroup;
+			children = (
+				4F808CA71B54BD6E001A89AA /* RC_RequestManager.h */,
+				4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */,
+			);
+			path = RequestManager;
+			sourceTree = "<group>";
+		};
+		4F808CAA1B54BD8B001A89AA /* MobAndAnalyticsManager */ = {
+			isa = PBXGroup;
+			children = (
+				4F808CAB1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.h */,
+				4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */,
+			);
+			path = MobAndAnalyticsManager;
+			sourceTree = "<group>";
+		};
+		4F808CB01B54C962001A89AA /* SQLiteManager */ = {
+			isa = PBXGroup;
+			children = (
+				4F808CB11B54C997001A89AA /* RC_SQLiteManager.h */,
+				4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */,
+			);
+			path = SQLiteManager;
+			sourceTree = "<group>";
+		};
 		4F85A6261B46480A0077E12E = {
 			isa = PBXGroup;
 			children = (
+				4F808CAE1B54BE6F001A89AA /* libz.dylib */,
 				4F0771A51B53AB90005D61AB /* libsqlite3.dylib */,
 				4F6341A91B4FCAA100DFC281 /* ball.png */,
+				4FCD2FDB1B5503CD00BD6DDB /* images */,
 				4F85A6311B46480A0077E12E /* iOSCostumeMatching */,
 				4F85A64B1B46480B0077E12E /* iOSCostumeMatchingTests */,
 				4F85A6301B46480A0077E12E /* Products */,
@@ -482,6 +556,36 @@
 				4F85A64D1B46480B0077E12E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4FCD2FDB1B5503CD00BD6DDB /* images */ = {
+			isa = PBXGroup;
+			children = (
+				4FCD2FDC1B5503CD00BD6DDB /* 1.jpeg */,
+				4FCD2FDD1B5503CD00BD6DDB /* 10.jpeg */,
+				4FCD2FDE1B5503CD00BD6DDB /* 2.jpeg */,
+				4FCD2FDF1B5503CD00BD6DDB /* 3.jpeg */,
+				4FCD2FE01B5503CD00BD6DDB /* 4.jpeg */,
+				4FCD2FE11B5503CD00BD6DDB /* 5.jpeg */,
+				4FCD2FE21B5503CD00BD6DDB /* 6.jpeg */,
+				4FCD2FE31B5503CD00BD6DDB /* 7.jpeg */,
+				4FCD2FE41B5503CD00BD6DDB /* 8.jpeg */,
+				4FCD2FE51B5503CD00BD6DDB /* 9.jpeg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		4FCD2FFA1B551A8200BD6DDB /* WaterView */ = {
+			isa = PBXGroup;
+			children = (
+				4FCD2FFB1B551A8200BD6DDB /* UIScrollView+LoadingMore.h */,
+				4FCD2FFC1B551A8200BD6DDB /* UIScrollView+LoadingMore.m */,
+				4FCD2FFD1B551A8200BD6DDB /* ZBFlowView.h */,
+				4FCD2FFE1B551A8200BD6DDB /* ZBFlowView.m */,
+				4FCD2FFF1B551A8200BD6DDB /* ZBWaterView.h */,
+				4FCD30001B551A8200BD6DDB /* ZBWaterView.mm */,
+			);
+			path = WaterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,14 +668,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FCD2FEE1B5503CD00BD6DDB /* 8.jpeg in Resources */,
+				4FCD2FEC1B5503CD00BD6DDB /* 6.jpeg in Resources */,
+				4FCD2FEB1B5503CD00BD6DDB /* 5.jpeg in Resources */,
+				4FCD2FE81B5503CD00BD6DDB /* 2.jpeg in Resources */,
 				4F417DD91B4E8960000BD540 /* WardrobeViewController.xib in Resources */,
+				4FCD2FED1B5503CD00BD6DDB /* 7.jpeg in Resources */,
+				4FCD2FE71B5503CD00BD6DDB /* 10.jpeg in Resources */,
 				4F6341A81B4FBA8200DFC281 /* WipeViewController.xib in Resources */,
+				4FCD2FEF1B5503CD00BD6DDB /* 9.jpeg in Resources */,
 				4F0771691B538E38005D61AB /* CalendarViewController.xib in Resources */,
+				4FCD2FEA1B5503CD00BD6DDB /* 4.jpeg in Resources */,
 				4F417DD21B4E72B8000BD540 /* LeftMenuViewController.xib in Resources */,
 				4F417DDE1B4E8A78000BD540 /* MatchingViewController.xib in Resources */,
 				4F63419B1B4FA48300DFC281 /* CutViewController.xib in Resources */,
+				4FCD2FE91B5503CD00BD6DDB /* 3.jpeg in Resources */,
 				4F63418E1B4F9FD200DFC281 /* CutAndWipeViewController.xib in Resources */,
 				4F6341AA1B4FCAA100DFC281 /* ball.png in Resources */,
+				4FCD2FE61B5503CD00BD6DDB /* 1.jpeg in Resources */,
 				4F85A6401B46480A0077E12E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +709,7 @@
 				4F0771831B53AAA7005D61AB /* AFSecurityPolicy.m in Sources */,
 				4F158D831B53BE6D000CA2FA /* PWSCalendarViewFlowLayout.m in Sources */,
 				4F0771941B53AAFA005D61AB /* FMDatabase.m in Sources */,
+				4FCD30021B551A8200BD6DDB /* ZBFlowView.m in Sources */,
 				4F07719C1B53AB02005D61AB /* MBProgressHUD.m in Sources */,
 				4F0771801B53AAA7005D61AB /* AFHTTPRequestOperationManager.m in Sources */,
 				4F158D871B53BE6D000CA2FA /* PWSCalendarViewCell.m in Sources */,
@@ -611,8 +726,10 @@
 				4F417DBC1B4E6875000BD540 /* RC_View.m in Sources */,
 				4F0771A01B53AB07005D61AB /* Reachability.m in Sources */,
 				4F158D821B53BE6D000CA2FA /* PWSCalendarSegmentView.m in Sources */,
+				4FCD30011B551A8200BD6DDB /* UIScrollView+LoadingMore.m in Sources */,
 				4F85A6351B46480A0077E12E /* main.m in Sources */,
 				4F0771811B53AAA7005D61AB /* AFHTTPSessionManager.m in Sources */,
+				4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */,
 				4F0771681B538E38005D61AB /* CalendarViewController.m in Sources */,
 				4F417DD81B4E8960000BD540 /* WardrobeViewController.m in Sources */,
 				4F0771841B53AAA7005D61AB /* AFURLConnectionOperation.m in Sources */,
@@ -624,9 +741,12 @@
 				4F63418D1B4F9FD200DFC281 /* CutAndWipeViewController.m in Sources */,
 				4F6341AE1B4FDF1100DFC281 /* PIDrawerView.m in Sources */,
 				4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */,
+				4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */,
+				4FCD30031B551A8200BD6DDB /* ZBWaterView.mm in Sources */,
 				4F6341A31B4FB9A500DFC281 /* MZCroppableView.m in Sources */,
 				4F0771971B53AAFA005D61AB /* FMDatabaseQueue.m in Sources */,
 				4F158D861B53BE6D000CA2FA /* PWSCalendarView.m in Sources */,
+				4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */,
 				4F417DBB1B4E6875000BD540 /* RC_NavigationController.m in Sources */,
 				4F0771821B53AAA7005D61AB /* AFNetworkReachabilityManager.m in Sources */,
 				4F417DBA1B4E6875000BD540 /* RC_BaseViewController.m in Sources */,

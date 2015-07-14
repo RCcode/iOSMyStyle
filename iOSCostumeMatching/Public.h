@@ -92,24 +92,24 @@
 
 #define APPDELEGATE (AppDelegate *)([UIApplication sharedApplication].delegate)
 
-typedef enum ControllerIndex ControllerIndex;
-
-enum ControllerIndex
-{
-    CIEarnCoinsViewController,
-    CIGetFollowersViewController,
-    CIGiftViewController
-};
-
-typedef enum InstagramRequestType InstagramRequestType;
-
-enum InstagramRequestType
-{
-    IRTGetUserProfile,
-    IRTGetOtherUserProfile,
-    IRTGetUserRecentMedia,
-    IRTGetOtherUserRecentMedia,
-    IRTChangeRelationship
-};
+//typedef enum ControllerIndex ControllerIndex;
+//
+//enum ControllerIndex
+//{
+//    CIEarnCoinsViewController,
+//    CIGetFollowersViewController,
+//    CIGiftViewController
+//};
+//
+//typedef enum InstagramRequestType InstagramRequestType;
+//
+//enum InstagramRequestType
+//{
+//    IRTGetUserProfile,
+//    IRTGetOtherUserProfile,
+//    IRTGetUserRecentMedia,
+//    IRTGetOtherUserRecentMedia,
+//    IRTChangeRelationship
+//};
 
 #endif
