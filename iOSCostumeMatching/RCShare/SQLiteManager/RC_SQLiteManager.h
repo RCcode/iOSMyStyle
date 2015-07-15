@@ -10,4 +10,6 @@
 
 @interface RC_SQLiteManager : NSObject
 
++ (RC_SQLiteManager *)shareManager;
+
 @end

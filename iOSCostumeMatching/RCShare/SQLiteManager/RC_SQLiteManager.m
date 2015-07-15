@@ -10,4 +10,15 @@
 
 @implementation RC_SQLiteManager
 
+static RC_SQLiteManager *sqliteManager = nil;
+
++ (RC_SQLiteManager *)shareManager
+{
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        sqliteManager = [[RC_SQLiteManager alloc]init];
+    });
+    return sqliteManager;
+}
+
 @end

@@ -36,7 +36,7 @@
 
 static RC_RequestManager *requestManager = nil;
 
-+ (RC_RequestManager *)shareInstance
++ (RC_RequestManager *)shareManager
 {
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{

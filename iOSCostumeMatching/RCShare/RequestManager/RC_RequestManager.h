@@ -10,7 +10,7 @@
 
 @interface RC_RequestManager : NSObject
 
-+ (RC_RequestManager *)shareInstance;
++ (RC_RequestManager *)shareManager;
 
 - (void)registerToken:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
 
