@@ -14,17 +14,6 @@
 #import "ZBWaterView.h"
 #import "RC_SQLiteManager.h"
 
-@interface TestData : NSObject
-
-@property (nonatomic,strong) UIColor *color;
-@property (nonatomic,assign) CGFloat height;
-
-@end
-
-@implementation TestData
-
-@end
-
 @interface WardrobeViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ZBWaterViewDatasource,ZBWaterViewDelegate>
 {
     ZBWaterView *_waterView;
@@ -247,7 +236,15 @@
 
 -(void)addClothesToWardrobe:(UIImage *)image
 {
-    [[RC_SQLiteManager shareManager]addClothesToWardrobe:image];
+    ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];
+    clothesInfo.numClId = [NSNumber numberWithInt:(int)(_arrClothes.count+1)];
+    clothesInfo.numCateId = [NSNumber numberWithInt:0];
+    clothesInfo.numScateId = [NSNumber numberWithInt:0];
+    clothesInfo.numSeaId = [NSNumber numberWithInt:0];
+    clothesInfo.strBrand = @"hhhh";
+    clothesInfo.file = image;
+    clothesInfo.date = stringFromDate([NSDate date]);
+    [[RC_SQLiteManager shareManager]addClothesToWardrobe:clothesInfo];
 }
 
 - (void)didReceiveMemoryWarning {

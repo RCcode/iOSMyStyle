@@ -131,8 +131,13 @@ static RC_SQLiteManager *sqliteManager = nil;
 -(BOOL)addClothesToWardrobe:(ClothesInfo *)clothesInfo
 {
     [self createTable:TNTWardrobe];
-    BOOL success = [_db executeUpdate:@"insert into Wardrobe (clId,cateId,scateId,seaId,brand,file,date) values(?,?,?,?,?,?,?)",clothesInfo.numClId, clothesInfo.numCateId, clothesInfo.numScateId, clothesInfo.numSeaId, clothesInfo.strBrand,UIImagePNGRepresentation(clothesInfo.file),clothesInfo.date,nil];
-    return success;
+    if([_db open])
+    {
+        BOOL success = [_db executeUpdate:@"insert into Wardrobe (clId,cateId,scateId,seaId,brand,file,date) values(?,?,?,?,?,?,?)",clothesInfo.numClId, clothesInfo.numCateId, clothesInfo.numScateId, clothesInfo.numSeaId, clothesInfo.strBrand,UIImagePNGRepresentation(clothesInfo.file),clothesInfo.date,nil];
+        [_db close];
+        return success;
+    }
+    return NO;
 }
 
 -(NSMutableArray *)getAllClothesFromWardrobe
