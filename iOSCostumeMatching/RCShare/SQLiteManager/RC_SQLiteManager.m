@@ -32,10 +32,10 @@ static RC_SQLiteManager *sqliteManager = nil;
     return sqliteManager;
 }
 
--(void)createTable:(TableNameType *)tableNameType
+-(void)createTable:(TableNameType)tableNameType
 {
     if ([_db open]) {
-        switch ((int)tableNameType) {
+        switch (tableNameType) {
             case TNTUser:
             {
                 /**
@@ -129,6 +129,7 @@ static RC_SQLiteManager *sqliteManager = nil;
 
 -(void)addClothesToWardrobe:(UIImage *)image
 {
+    [self createTable:TNTWardrobe];
     BOOL success = [_db executeUpdate:@"insert into Wardrobe (clId,cateId,scateId,seaId,brand,file,date) values(?,?,?,?,?,?,?)",[NSNumber numberWithInt:1],[NSNumber numberWithInt:1] ,[NSNumber numberWithInt:1],[NSNumber numberWithInt:1],@"only",UIImagePNGRepresentation(image),[NSDate date],nil];
     if (success) {
         
