@@ -10,6 +10,15 @@
 
 @implementation ClothesInfo
 
+//-(id)init
+//{
+//    self = [super init];
+//    if (self) {
+//        <#statements#>
+//    }
+//    return self;
+//}
+
 - (void)dealloc
 {
     self.numClId = nil;

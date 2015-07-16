@@ -128,27 +128,38 @@ static RC_SQLiteManager *sqliteManager = nil;
     }
 }
 
--(BOOL)addClothesToWardrobe:(UIImage *)image
+-(BOOL)addClothesToWardrobe:(ClothesInfo *)clothesInfo
 {
     [self createTable:TNTWardrobe];
-    BOOL success = [_db executeUpdate:@"insert into Wardrobe (clId,cateId,scateId,seaId,brand,file,date) values(?,?,?,?,?,?,?)",[NSNumber numberWithInt:1],[NSNumber numberWithInt:1] ,[NSNumber numberWithInt:1],[NSNumber numberWithInt:1],@"only",UIImagePNGRepresentation(image),[NSDate date],nil];
+    BOOL success = [_db executeUpdate:@"insert into Wardrobe (clId,cateId,scateId,seaId,brand,file,date) values(?,?,?,?,?,?,?)",clothesInfo.numClId, clothesInfo.numCateId, clothesInfo.numScateId, clothesInfo.numSeaId, clothesInfo.strBrand,UIImagePNGRepresentation(clothesInfo.file),clothesInfo.date,nil];
     return success;
 }
 
--(void)getAllClothesFromWardrobe
+-(NSArray *)getAllClothesFromWardrobe
 {
     if ([_db open]) {
+        NSMutableArray *arr = [[NSMutableArray alloc]init];
+        
         NSString *tableName = @"Wardrobe";
         NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@",tableName];
         FMResultSet * rs = [_db executeQuery:sql];
         while ([rs next]) {
-            int Id = [rs intForColumn:@"clId"];
-            NSData *data = [rs dataForColumn:@"file"];
-            UIImage *image = [UIImage imageWithData:data];
+            ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];
+            
+            clothesInfo.numClId = [NSNumber numberWithInt:[rs intForColumn:@"clId"]];
+            clothesInfo.numCateId = [NSNumber numberWithInt:[rs intForColumn:@"cateId"]];
+            clothesInfo.numScateId = [NSNumber numberWithInt:[rs intForColumn:@"scateId"]];
+            clothesInfo.numSeaId = [NSNumber numberWithInt:[rs intForColumn:@"seaId"]];
+            clothesInfo.strBrand = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"brand"]];
+            clothesInfo.file = [UIImage imageWithData:[rs dataForColumn:@"file"]];
+            clothesInfo.date = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"date"]];
+            
+            [arr addObject:clothesInfo];
         }
         [_db close];
+        return arr;
     }
-
+    return nil;
 }
 
 @end

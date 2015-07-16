@@ -19,6 +19,8 @@
 #import "Public.h"
 #import "YRSideViewController.h"
 #import "AppDelegate.h"
+
+#import "ClothesInfo.h"
 //#import "RC_SQLiteManager.h"
 
 //#import "IS_MobAndAnalyticsManager.h"
