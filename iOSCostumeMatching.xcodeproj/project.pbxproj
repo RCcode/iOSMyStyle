@@ -45,6 +45,9 @@
 		4F62FFEA1B579755005E8C79 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFE51B579755005E8C79 /* FMResultSet.m */; };
 		4F62FFEC1B579770005E8C79 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F62FFEB1B579770005E8C79 /* libsqlite3.dylib */; };
 		4F62FFEE1B57981C005E8C79 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F62FFED1B57981C005E8C79 /* libz.dylib */; };
+		4F62FFF21B57A54D005E8C79 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFF11B57A54D005E8C79 /* UserInfo.m */; };
+		4F62FFF51B57B915005E8C79 /* ClothesInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFF41B57B915005E8C79 /* ClothesInfo.m */; };
+		4F62FFF81B57BC4A005E8C79 /* CollocationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFF71B57BC4A005E8C79 /* CollocationInfo.m */; };
 		4F63418D1B4F9FD200DFC281 /* CutAndWipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F63418B1B4F9FD200DFC281 /* CutAndWipeViewController.m */; };
 		4F63418E1B4F9FD200DFC281 /* CutAndWipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F63418C1B4F9FD200DFC281 /* CutAndWipeViewController.xib */; };
 		4F6341931B4FA44400DFC281 /* UIBezierPath-Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341921B4FA44400DFC281 /* UIBezierPath-Points.m */; };
@@ -163,6 +166,12 @@
 		4F62FFE51B579755005E8C79 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		4F62FFEB1B579770005E8C79 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4F62FFED1B57981C005E8C79 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		4F62FFF01B57A54D005E8C79 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		4F62FFF11B57A54D005E8C79 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		4F62FFF31B57B915005E8C79 /* ClothesInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothesInfo.h; sourceTree = "<group>"; };
+		4F62FFF41B57B915005E8C79 /* ClothesInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothesInfo.m; sourceTree = "<group>"; };
+		4F62FFF61B57BC4A005E8C79 /* CollocationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollocationInfo.h; sourceTree = "<group>"; };
+		4F62FFF71B57BC4A005E8C79 /* CollocationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollocationInfo.m; sourceTree = "<group>"; };
 		4F63418A1B4F9FD200DFC281 /* CutAndWipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutAndWipeViewController.h; sourceTree = "<group>"; };
 		4F63418B1B4F9FD200DFC281 /* CutAndWipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutAndWipeViewController.m; sourceTree = "<group>"; };
 		4F63418C1B4F9FD200DFC281 /* CutAndWipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CutAndWipeViewController.xib; sourceTree = "<group>"; };
@@ -400,6 +409,19 @@
 			name = FMDB;
 			sourceTree = "<group>";
 		};
+		4F62FFEF1B57A51F005E8C79 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F62FFF01B57A54D005E8C79 /* UserInfo.h */,
+				4F62FFF11B57A54D005E8C79 /* UserInfo.m */,
+				4F62FFF31B57B915005E8C79 /* ClothesInfo.h */,
+				4F62FFF41B57B915005E8C79 /* ClothesInfo.m */,
+				4F62FFF61B57BC4A005E8C79 /* CollocationInfo.h */,
+				4F62FFF71B57BC4A005E8C79 /* CollocationInfo.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4F6341891B4F9F6200DFC281 /* Cut&Wipe */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +538,7 @@
 		4F85A6311B46480A0077E12E /* iOSCostumeMatching */ = {
 			isa = PBXGroup;
 			children = (
+				4F62FFEF1B57A51F005E8C79 /* Models */,
 				4F07716A1B53AA83005D61AB /* SDK */,
 				4F6341901B4FA42400DFC281 /* Category */,
 				4F63418F1B4FA3E000DFC281 /* View */,
@@ -707,9 +730,11 @@
 				4F417DDD1B4E8A78000BD540 /* MatchingViewController.m in Sources */,
 				4F63419F1B4FB97B00DFC281 /* STScratchView.m in Sources */,
 				4F0771831B53AAA7005D61AB /* AFSecurityPolicy.m in Sources */,
+				4F62FFF81B57BC4A005E8C79 /* CollocationInfo.m in Sources */,
 				4F62FFE61B579755005E8C79 /* FMDatabase.m in Sources */,
 				4F158D831B53BE6D000CA2FA /* PWSCalendarViewFlowLayout.m in Sources */,
 				4F62FFE81B579755005E8C79 /* FMDatabasePool.m in Sources */,
+				4F62FFF51B57B915005E8C79 /* ClothesInfo.m in Sources */,
 				4FCD30021B551A8200BD6DDB /* ZBFlowView.m in Sources */,
 				4F07719C1B53AB02005D61AB /* MBProgressHUD.m in Sources */,
 				4F0771801B53AAA7005D61AB /* AFHTTPRequestOperationManager.m in Sources */,
@@ -730,6 +755,7 @@
 				4F0771811B53AAA7005D61AB /* AFHTTPSessionManager.m in Sources */,
 				4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */,
 				4F0771681B538E38005D61AB /* CalendarViewController.m in Sources */,
+				4F62FFF21B57A54D005E8C79 /* UserInfo.m in Sources */,
 				4F417DD81B4E8960000BD540 /* WardrobeViewController.m in Sources */,
 				4F0771841B53AAA7005D61AB /* AFURLConnectionOperation.m in Sources */,
 				4F0771851B53AAA7005D61AB /* AFURLRequestSerialization.m in Sources */,
