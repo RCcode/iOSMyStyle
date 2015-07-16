@@ -11,17 +11,16 @@
 
 #ifdef __OBJC__
 
-#import <UIKit/UIKit.h>
 #import "RC_BaseViewController.h"
 #import "RC_NavigationController.h"
 #import "RC_View.h"
+
 #import "CMethods.h"
 #import "Public.h"
 #import "YRSideViewController.h"
 #import "AppDelegate.h"
-//#import "AppDelegate.h"
-//#import "RC_TabBarController.h"
-//
+//#import "RC_SQLiteManager.h"
+
 //#import "IS_MobAndAnalyticsManager.h"
 //#import "RC_RequestManager.h"
 //#import "RC_LocalDataManager.h"

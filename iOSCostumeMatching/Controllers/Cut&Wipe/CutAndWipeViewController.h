@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) UIImage *originalImage;
 
+-(void)setFinishImageBlock:(void(^)(UIImage *image))finishImageBlock;
+
 @end

@@ -12,6 +12,7 @@
 #import "CutAndWipeViewController.h"
 #import "ZBFlowView.h"
 #import "ZBWaterView.h"
+#import "RC_SQLiteManager.h"
 
 @interface TestData : NSObject
 
@@ -132,7 +133,7 @@
 
 - (void)waterView:(ZBWaterView *)waterView didSelectAtIndex:(NSInteger)index
 {
-    NSLog(@"didSelectAtIndex%d",index);
+//    NSLog(@"didSelectAtIndex%d",index);
 }
 
 /**
@@ -200,7 +201,7 @@
 
 - (void)photoAlbumBtnOnClick{
     
-    //判断权限
+//    判断权限
     ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
     if (author == ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied)
     {
@@ -240,8 +241,17 @@
 {
     CutAndWipeViewController *cutAndWipeViewController = [[CutAndWipeViewController alloc]init];
     cutAndWipeViewController.originalImage = image;
+    __weak WardrobeViewController *weakSelf = self;
+    [cutAndWipeViewController setFinishImageBlock:^(UIImage *image) {
+        [weakSelf addClothesToWardrobe:image];
+    }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:cutAndWipeViewController];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+-(void)addClothesToWardrobe:(UIImage *)image
+{
+    [RC_SQLiteManager shareManager];
 }
 
 - (void)didReceiveMemoryWarning {

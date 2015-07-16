@@ -36,7 +36,7 @@
     self.navigationItem.titleView = titleLabel;
     
     btnReturn = [[UIButton alloc]init];
-    btnReturn.frame=CGRectMake(5, 0, NavBarHeight, NavBarHeight);
+    btnReturn.frame=CGRectMake(5, 0, 44, 44);
     [btnReturn addTarget:self action:@selector(returnBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     btnReturn.hidden = YES;
     

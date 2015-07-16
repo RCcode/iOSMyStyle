@@ -15,9 +15,16 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) UIImage *currentImage;
 
+@property (nonatomic, copy) void(^finishImage)(UIImage *image);
+
 @end
 
 @implementation CutAndWipeViewController
+
+-(void)setFinishImageBlock:(void (^)(UIImage *))finishImageBlock
+{
+    _finishImage = finishImageBlock;
+}
 
 -(void)returnBtnPressed:(id)sender
 {
@@ -26,7 +33,9 @@
 
 -(void)doneBtnPressed:(id)sender
 {
-    
+    if (_finishImage) {
+        _finishImage(_currentImage);
+    }
 }
 
 - (void)viewDidLoad {
@@ -34,6 +43,9 @@
     
     self.showReturn = YES;
     [self setReturnBtnTitle:@"返回"];
+    
+    self.showDone = YES;
+    [self setDoneBtnTitle:@"确定"];
     
     [_imageView setImage:_originalImage];
     _currentImage = _originalImage;

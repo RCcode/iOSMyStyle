@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum TableNameType TableNameType;
+
+enum TableNameType
+{
+    TNTUser,
+    TNTWardrobe,
+    TNTCollocation
+};
+
 @interface RC_SQLiteManager : NSObject
 
 + (RC_SQLiteManager *)shareManager;

@@ -111,15 +111,15 @@ static RC_RequestManager *requestManager = nil;
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];
     
-    [self requestServiceWithPost:kPushURL parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
+//    [self requestServiceWithPost:kPushURL parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
+//        if (success) {
+//            success(responseObject);
+//        }
+//    } failure:^(NSError *error) {
+//        if (failure) {
+//            failure(error);
+//        }
+//    }];
 }
 
 #pragma mark -

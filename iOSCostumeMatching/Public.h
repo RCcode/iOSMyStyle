@@ -100,7 +100,7 @@
 //    CIGetFollowersViewController,
 //    CIGiftViewController
 //};
-//
+
 //typedef enum InstagramRequestType InstagramRequestType;
 //
 //enum InstagramRequestType
