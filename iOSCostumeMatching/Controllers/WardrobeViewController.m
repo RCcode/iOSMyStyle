@@ -27,9 +27,11 @@
 
 @interface WardrobeViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ZBWaterViewDatasource,ZBWaterViewDelegate>
 {
-    NSMutableArray *_testDataArr;
     ZBWaterView *_waterView;
 }
+
+@property (nonatomic, strong) NSMutableArray *arrClothes;
+
 @end
 
 @implementation WardrobeViewController
@@ -48,23 +50,13 @@
     self.showReturn = YES;
     [self setReturnBtnTitle:@"菜单"];
     
-    [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     
     _waterView = [[ZBWaterView alloc]  initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];
     _waterView.waterDataSource = self;
     _waterView.waterDelegate = self;
     _waterView.isDataEnd = NO;
-//    [self.view addSubview:_waterView];
     [self.view insertSubview:_waterView atIndex:0];
-    
-    //config test data
-    _testDataArr = [[NSMutableArray alloc]init];
-    for (int i=0; i<20; i++) {
-        TestData *data = [[TestData alloc] init];
-        data.color = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1.0];
-        data.height = arc4random()%300;
-        [_testDataArr addObject:data];
-    }
     
     [_waterView reloadData];
 }
@@ -72,7 +64,7 @@
 #pragma mark - ZBWaterViewDatasource
 - (NSInteger)numberOfFlowViewInWaterView:(ZBWaterView *)waterView
 {
-    return [_testDataArr count];
+    return [_arrClothes count];
 }
 
 - (CustomWaterInfo *)infoOfWaterView:(ZBWaterView*)waterView
@@ -90,41 +82,43 @@
 
 - (ZBFlowView *)waterView:(ZBWaterView *)waterView flowViewAtIndex:(NSInteger)index
 {
-    TestData *data = [_testDataArr objectAtIndex:index];
+    ClothesInfo *info = [_arrClothes objectAtIndex:index];
     ZBFlowView *flowView = [waterView dequeueReusableCellWithIdentifier:@"cell"];
     if (flowView == nil) {
         flowView = [[ZBFlowView alloc] initWithFrame:CGRectZero];
         flowView.reuseIdentifier = @"cell";
     }
     flowView.index = index;
-    flowView.backgroundColor = data.color;
-    
+    flowView.image = info.file;
+    flowView.backgroundColor = [UIColor redColor];
     return flowView;
 }
 
 - (CGFloat)waterView:(ZBWaterView *)waterView heightOfFlowViewAtIndex:(NSInteger)index
 {
-    TestData *data = [_testDataArr objectAtIndex:index];
-    return data.height;
+    ClothesInfo *info = [_arrClothes objectAtIndex:index];
+    CGFloat width = info.file.size.width;
+    CGFloat height = info.file.size.height;
+    CGFloat viewHeight = (ScreenWidth/(2.0*width))*height;
+    return viewHeight;
 }
-
 
 #pragma mark - ZBWaterViewDelegate
 - (void)needLoadMoreByWaterView:(ZBWaterView *)waterView;
 {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [NSThread sleepForTimeInterval:2.0];
-        for (int i=0; i<20; i++) {
-            TestData *data = [[TestData alloc] init];
-            data.color = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1.0];
-            data.height = arc4random()%300;
-            [_testDataArr addObject:data];
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_waterView endLoadMore];
-            [_waterView reloadData];
-        });
-    });
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        [NSThread sleepForTimeInterval:2.0];
+//        for (int i=0; i<20; i++) {
+//            TestData *data = [[TestData alloc] init];
+//            data.color = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1.0];
+//            data.height = arc4random()%300;
+//            [_testDataArr addObject:data];
+//        }
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [_waterView endLoadMore];
+//            [_waterView reloadData];
+//        });
+//    });
 }
 
 - (void)phoneWaterViewDidScroll:(ZBWaterView *)waterView

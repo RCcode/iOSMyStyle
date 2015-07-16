@@ -21,4 +21,6 @@
 @property (nonatomic, strong) NSString *reuseIdentifier;
 @property (nonatomic, assign) id <ZBFlowViewDelegate> flowViewDelegate;
 
+@property (nonatomic, strong) UIImage *image;
+
 @end

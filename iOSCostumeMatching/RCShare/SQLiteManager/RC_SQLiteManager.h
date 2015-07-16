@@ -23,6 +23,6 @@ enum TableNameType
 
 -(BOOL)addClothesToWardrobe:(ClothesInfo *)clothesInfo;
 
--(NSArray *)getAllClothesFromWardrobe;
+-(NSMutableArray *)getAllClothesFromWardrobe;
 
 @end

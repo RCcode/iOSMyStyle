@@ -10,7 +10,7 @@
 
 @interface ZBFlowView()
 {
-    
+    UIButton *btn;
 }
 @end
 
@@ -21,7 +21,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.tag = self.tag;
         btn.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
         btn.autoresizingMask = UIViewAutoresizingFlexibleWidth
@@ -32,6 +32,12 @@
         return self;
     }
     return self;
+}
+
+-(void)setImage:(UIImage *)image
+{
+    _image = image;
+    [btn setImage:image forState:UIControlStateNormal];
 }
 
 - (void)pressed:(id)sender

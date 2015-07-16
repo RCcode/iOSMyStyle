@@ -135,7 +135,7 @@ static RC_SQLiteManager *sqliteManager = nil;
     return success;
 }
 
--(NSArray *)getAllClothesFromWardrobe
+-(NSMutableArray *)getAllClothesFromWardrobe
 {
     if ([_db open]) {
         NSMutableArray *arr = [[NSMutableArray alloc]init];
