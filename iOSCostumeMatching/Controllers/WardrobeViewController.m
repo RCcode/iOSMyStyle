@@ -48,6 +48,8 @@
     self.showReturn = YES;
     [self setReturnBtnTitle:@"菜单"];
     
+    [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+    
     _waterView = [[ZBWaterView alloc]  initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];
     _waterView.waterDataSource = self;
     _waterView.waterDelegate = self;
@@ -251,7 +253,7 @@
 
 -(void)addClothesToWardrobe:(UIImage *)image
 {
-    [RC_SQLiteManager shareManager];
+    [[RC_SQLiteManager shareManager]addClothesToWardrobe:image];
 }
 
 - (void)didReceiveMemoryWarning {

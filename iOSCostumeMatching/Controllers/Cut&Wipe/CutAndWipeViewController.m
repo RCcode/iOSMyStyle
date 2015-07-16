@@ -36,6 +36,7 @@
     if (_finishImage) {
         _finishImage(_currentImage);
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidLoad {

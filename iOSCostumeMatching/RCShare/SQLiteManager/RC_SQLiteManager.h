@@ -21,4 +21,8 @@ enum TableNameType
 
 + (RC_SQLiteManager *)shareManager;
 
+-(BOOL)addClothesToWardrobe:(UIImage *)image;
+
+-(void)getAllClothesFromWardrobe;
+
 @end

@@ -122,22 +122,33 @@ static RC_SQLiteManager *sqliteManager = nil;
             default:
                 break;
         }
+        [_db close];
     }else{
         NSLog(@"fail to open");
     }
 }
 
--(void)addClothesToWardrobe:(UIImage *)image
+-(BOOL)addClothesToWardrobe:(UIImage *)image
 {
     [self createTable:TNTWardrobe];
     BOOL success = [_db executeUpdate:@"insert into Wardrobe (clId,cateId,scateId,seaId,brand,file,date) values(?,?,?,?,?,?,?)",[NSNumber numberWithInt:1],[NSNumber numberWithInt:1] ,[NSNumber numberWithInt:1],[NSNumber numberWithInt:1],@"only",UIImagePNGRepresentation(image),[NSDate date],nil];
-    if (success) {
-        
+    return success;
+}
+
+-(void)getAllClothesFromWardrobe
+{
+    if ([_db open]) {
+        NSString *tableName = @"Wardrobe";
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@",tableName];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            int Id = [rs intForColumn:@"clId"];
+            NSData *data = [rs dataForColumn:@"file"];
+            UIImage *image = [UIImage imageWithData:data];
+        }
+        [_db close];
     }
-    else
-    {
-        
-    }
+
 }
 
 @end
