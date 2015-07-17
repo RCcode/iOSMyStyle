@@ -147,7 +147,7 @@ static RC_SQLiteManager *sqliteManager = nil;
         NSMutableArray *arr = [[NSMutableArray alloc]init];
         
         NSString *tableName = @"Wardrobe";
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by date",tableName];
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by date desc",tableName];
         FMResultSet * rs = [_db executeQuery:sql];
         while ([rs next]) {
             ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];

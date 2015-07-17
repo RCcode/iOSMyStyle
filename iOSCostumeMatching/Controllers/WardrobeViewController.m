@@ -10,16 +10,21 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
 #import "CutAndWipeViewController.h"
-#import "ZBFlowView.h"
-#import "ZBWaterView.h"
 #import "RC_SQLiteManager.h"
+#import "CHTCollectionViewWaterfallLayout.h"
+#import "CHTCollectionViewWaterfallCell.h"
+#import "CHTCollectionViewWaterfallHeader.h"
+#import "CHTCollectionViewWaterfallFooter.h"
 
-@interface WardrobeViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ZBWaterViewDatasource,ZBWaterViewDelegate>
-{
-    ZBWaterView *_waterView;
-}
+#define CELL_IDENTIFIER @"WaterfallCell"
+#define HEADER_IDENTIFIER @"WaterfallHeader"
+#define FOOTER_IDENTIFIER @"WaterfallFooter"
+
+@interface WardrobeViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
 
 @property (nonatomic, strong) NSMutableArray *arrClothes;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSMutableArray *cellSizes;
 
 @end
 
@@ -32,6 +37,33 @@
     [sideViewController showLeftViewController:true];
 }
 
+- (UICollectionView *)collectionView {
+    if (!_collectionView) {
+        CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
+        
+        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.headerHeight = 15;
+        layout.footerHeight = 10;
+        layout.minimumColumnSpacing = 20;
+        layout.minimumInteritemSpacing = 30;
+        
+        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+        _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        _collectionView.dataSource = self;
+        _collectionView.delegate = self;
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        [_collectionView registerClass:[CHTCollectionViewWaterfallCell class]
+            forCellWithReuseIdentifier:CELL_IDENTIFIER];
+        [_collectionView registerClass:[CHTCollectionViewWaterfallHeader class]
+            forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader
+                   withReuseIdentifier:HEADER_IDENTIFIER];
+        [_collectionView registerClass:[CHTCollectionViewWaterfallFooter class]
+            forSupplementaryViewOfKind:CHTCollectionElementKindSectionFooter
+                   withReuseIdentifier:FOOTER_IDENTIFIER];
+    }
+    return _collectionView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,85 +73,75 @@
     
 //    [self addClothesToWardrobe:[UIImage imageNamed:@"ball"]];
      self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+//    [self.view addSubview:self.collectionView];
+    [self.view insertSubview:self.collectionView atIndex:0];
     
-    _waterView = [[ZBWaterView alloc]  initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];
-    _waterView.waterDataSource = self;
-    _waterView.waterDelegate = self;
-    _waterView.isDataEnd = NO;
-    [self.view insertSubview:_waterView atIndex:0];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self updateLayoutForOrientation:[UIApplication sharedApplication].statusBarOrientation];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    [self updateLayoutForOrientation:toInterfaceOrientation];
+}
+
+- (void)updateLayoutForOrientation:(UIInterfaceOrientation)orientation {
+    CHTCollectionViewWaterfallLayout *layout =
+    (CHTCollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
+    layout.columnCount = UIInterfaceOrientationIsPortrait(orientation) ? 2 : 3;
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return _arrClothes.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CHTCollectionViewWaterfallCell *cell =
+    (CHTCollectionViewWaterfallCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
+                                                                                forIndexPath:indexPath];
+//    cell.displayString = [NSString stringWithFormat:@"%ld", (long)indexPath.item];
+    ClothesInfo *info = [_arrClothes objectAtIndex:indexPath.row];
+    cell.image = info.file;
+    return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *reusableView = nil;
     
-    [_waterView reloadData];
-}
-
-#pragma mark - ZBWaterViewDatasource
-- (NSInteger)numberOfFlowViewInWaterView:(ZBWaterView *)waterView
-{
-    return [_arrClothes count];
-}
-
-- (CustomWaterInfo *)infoOfWaterView:(ZBWaterView*)waterView
-{
-    CustomWaterInfo *info = [[CustomWaterInfo alloc] init];
-    info.topMargin = 0;
-    info.leftMargin = 10;
-    info.bottomMargin = 0;
-    info.rightMargin = 10;
-    info.horizonPadding = 5;
-    info.veticalPadding = 5;
-    info.numOfColumn = 2;
-    return info;
-}
-
-- (ZBFlowView *)waterView:(ZBWaterView *)waterView flowViewAtIndex:(NSInteger)index
-{
-    ClothesInfo *info = [_arrClothes objectAtIndex:index];
-    ZBFlowView *flowView = [waterView dequeueReusableCellWithIdentifier:@"cell"];
-    if (flowView == nil) {
-        flowView = [[ZBFlowView alloc] initWithFrame:CGRectZero];
-        flowView.reuseIdentifier = @"cell";
+    if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
+        reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                          withReuseIdentifier:HEADER_IDENTIFIER
+                                                                 forIndexPath:indexPath];
+    } else if ([kind isEqualToString:CHTCollectionElementKindSectionFooter]) {
+        reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                          withReuseIdentifier:FOOTER_IDENTIFIER
+                                                                 forIndexPath:indexPath];
     }
-    flowView.index = index;
-    flowView.image = info.file;
-    flowView.backgroundColor = [UIColor redColor];
-    return flowView;
+    
+    return reusableView;
 }
 
-- (CGFloat)waterView:(ZBWaterView *)waterView heightOfFlowViewAtIndex:(NSInteger)index
-{
-    ClothesInfo *info = [_arrClothes objectAtIndex:index];
+#pragma mark - CHTCollectionViewDelegateWaterfallLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ClothesInfo *info = [_arrClothes objectAtIndex:indexPath.row];
     CGFloat width = info.file.size.width;
     CGFloat height = info.file.size.height;
     CGFloat viewHeight = (ScreenWidth/(2.0*width))*height;
-    return viewHeight;
+    return CGSizeMake((ScreenWidth-30)/2.0, viewHeight);
+    
+//    return [self.cellSizes[indexPath.item] CGSizeValue];
+    
 }
 
-#pragma mark - ZBWaterViewDelegate
-- (void)needLoadMoreByWaterView:(ZBWaterView *)waterView;
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//        [NSThread sleepForTimeInterval:2.0];
-//        for (int i=0; i<20; i++) {
-//            TestData *data = [[TestData alloc] init];
-//            data.color = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1.0];
-//            data.height = arc4random()%300;
-//            [_testDataArr addObject:data];
-//        }
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [_waterView endLoadMore];
-//            [_waterView reloadData];
-//        });
-//    });
-}
-
-- (void)phoneWaterViewDidScroll:(ZBWaterView *)waterView
-{
-    //do what you want to do
-    return;
-}
-
-- (void)waterView:(ZBWaterView *)waterView didSelectAtIndex:(NSInteger)index
-{
-//    NSLog(@"didSelectAtIndex%d",index);
+    
 }
 
 /**
@@ -246,6 +268,8 @@
     clothesInfo.file = image;
     clothesInfo.date = stringFromDate([NSDate date]);
     [[RC_SQLiteManager shareManager]addClothesToWardrobe:clothesInfo];
+    self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+    [_collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
