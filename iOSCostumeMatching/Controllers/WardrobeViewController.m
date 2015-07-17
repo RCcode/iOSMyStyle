@@ -42,10 +42,10 @@
         CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
         
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-        layout.headerHeight = 15;
-        layout.footerHeight = 10;
-        layout.minimumColumnSpacing = 20;
-        layout.minimumInteritemSpacing = 30;
+        layout.headerHeight = 0;
+        layout.footerHeight = 0;
+//        layout.minimumColumnSpacing = 20;
+//        layout.minimumInteritemSpacing = 30;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -104,7 +104,6 @@
     CHTCollectionViewWaterfallCell *cell =
     (CHTCollectionViewWaterfallCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
                                                                                 forIndexPath:indexPath];
-//    cell.displayString = [NSString stringWithFormat:@"%ld", (long)indexPath.item];
     ClothesInfo *info = [_arrClothes objectAtIndex:indexPath.row];
     cell.image = info.file;
     return cell;
@@ -132,16 +131,13 @@
     ClothesInfo *info = [_arrClothes objectAtIndex:indexPath.row];
     CGFloat width = info.file.size.width;
     CGFloat height = info.file.size.height;
-    CGFloat viewHeight = (ScreenWidth/(2.0*width))*height;
+    CGFloat viewHeight = ((ScreenWidth-30)/(2.0*width))*height;
     return CGSizeMake((ScreenWidth-30)/2.0, viewHeight);
-    
-//    return [self.cellSizes[indexPath.item] CGSizeValue];
-    
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    CLog(@"%d",indexPath.row);
 }
 
 /**
