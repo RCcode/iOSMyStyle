@@ -297,6 +297,9 @@ using namespace std;
     NSAssert([self.waterDataSource respondsToSelector:@selector(numberOfFlowViewInWaterView:)]
              ,@"numberOfFlowViewInWaterView must be implement");
     int numbers = (int)[self.waterDataSource numberOfFlowViewInWaterView:self];
+    if (numbers == 0) {
+        return;
+    }
     for (int i=0; i<numbers; i++) {
         NSAssert([self.waterDataSource respondsToSelector:@selector(waterView:heightOfFlowViewAtIndex:)]
                  ,@"waterView:heightOfFlowViewAtIndex: must be implement");

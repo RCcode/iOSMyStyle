@@ -59,6 +59,10 @@
 		4F6341A81B4FBA8200DFC281 /* WipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6341A61B4FBA8200DFC281 /* WipeViewController.xib */; };
 		4F6341AA1B4FCAA100DFC281 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F6341A91B4FCAA100DFC281 /* ball.png */; };
 		4F6341AE1B4FDF1100DFC281 /* PIDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341AD1B4FDF1100DFC281 /* PIDrawerView.m */; };
+		4F6FB3F31B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB3EC1B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.m */; };
+		4F6FB3F41B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB3EE1B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m */; };
+		4F6FB3F51B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB3F01B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.m */; };
+		4F6FB3F61B58E5D000C5CB0A /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB3F21B58E5D000C5CB0A /* CHTCollectionViewWaterfallLayout.m */; };
 		4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */; };
 		4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */; };
 		4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */; };
@@ -190,6 +194,14 @@
 		4F6341A91B4FCAA100DFC281 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		4F6341AC1B4FDF1100DFC281 /* PIDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDrawerView.h; sourceTree = "<group>"; };
 		4F6341AD1B4FDF1100DFC281 /* PIDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDrawerView.m; sourceTree = "<group>"; };
+		4F6FB3EB1B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallCell.h; sourceTree = "<group>"; };
+		4F6FB3EC1B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallCell.m; sourceTree = "<group>"; };
+		4F6FB3ED1B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallFooter.h; sourceTree = "<group>"; };
+		4F6FB3EE1B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallFooter.m; sourceTree = "<group>"; };
+		4F6FB3EF1B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallHeader.h; sourceTree = "<group>"; };
+		4F6FB3F01B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallHeader.m; sourceTree = "<group>"; };
+		4F6FB3F11B58E5D000C5CB0A /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
+		4F6FB3F21B58E5D000C5CB0A /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
 		4F808CA71B54BD6E001A89AA /* RC_RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_RequestManager.h; sourceTree = "<group>"; };
 		4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_RequestManager.m; sourceTree = "<group>"; };
 		4F808CAB1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IS_MobAndAnalyticsManager.h; sourceTree = "<group>"; };
@@ -441,6 +453,7 @@
 		4F63418F1B4FA3E000DFC281 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F6FB3DE1B58E52700C5CB0A /* CollectionView */,
 				4F6FB3DD1B58B7D600C5CB0A /* Cell */,
 				4FCD2FFA1B551A8200BD6DDB /* WaterView */,
 				4F158D741B53BE6D000CA2FA /* PWSCalendar */,
@@ -492,6 +505,21 @@
 			children = (
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		4F6FB3DE1B58E52700C5CB0A /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4F6FB3EB1B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.h */,
+				4F6FB3EC1B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.m */,
+				4F6FB3ED1B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.h */,
+				4F6FB3EE1B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m */,
+				4F6FB3EF1B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.h */,
+				4F6FB3F01B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.m */,
+				4F6FB3F11B58E5D000C5CB0A /* CHTCollectionViewWaterfallLayout.h */,
+				4F6FB3F21B58E5D000C5CB0A /* CHTCollectionViewWaterfallLayout.m */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		4F808CA61B54BD6E001A89AA /* RequestManager */ = {
@@ -761,6 +789,7 @@
 				4FCD30011B551A8200BD6DDB /* UIScrollView+LoadingMore.m in Sources */,
 				4F85A6351B46480A0077E12E /* main.m in Sources */,
 				4F0771811B53AAA7005D61AB /* AFHTTPSessionManager.m in Sources */,
+				4F6FB3F51B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.m in Sources */,
 				4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */,
 				4F0771681B538E38005D61AB /* CalendarViewController.m in Sources */,
 				4F62FFF21B57A54D005E8C79 /* UserInfo.m in Sources */,
@@ -771,15 +800,18 @@
 				4F0771861B53AAA7005D61AB /* AFURLResponseSerialization.m in Sources */,
 				4F158D851B53BE6D000CA2FA /* PWSCalendarDayCell.m in Sources */,
 				4F63418D1B4F9FD200DFC281 /* CutAndWipeViewController.m in Sources */,
+				4F6FB3F31B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.m in Sources */,
 				4F6341AE1B4FDF1100DFC281 /* PIDrawerView.m in Sources */,
 				4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */,
 				4F62FFE91B579755005E8C79 /* FMDatabaseQueue.m in Sources */,
 				4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */,
+				4F6FB3F41B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				4FCD30031B551A8200BD6DDB /* ZBWaterView.mm in Sources */,
 				4F62FFE71B579755005E8C79 /* FMDatabaseAdditions.m in Sources */,
 				4F6341A31B4FB9A500DFC281 /* MZCroppableView.m in Sources */,
 				4F62FFEA1B579755005E8C79 /* FMResultSet.m in Sources */,
 				4F158D861B53BE6D000CA2FA /* PWSCalendarView.m in Sources */,
+				4F6FB3F61B58E5D000C5CB0A /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */,
 				4F417DBB1B4E6875000BD540 /* RC_NavigationController.m in Sources */,
 				4F0771821B53AAA7005D61AB /* AFNetworkReachabilityManager.m in Sources */,
