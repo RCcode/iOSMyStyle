@@ -15,6 +15,8 @@
 #import "CHTCollectionViewWaterfallHeader.h"
 #import "CHTCollectionViewWaterfallFooter.h"
 
+#import "ShowClothesDetailsViewController.h"
+
 #define CELL_IDENTIFIER @"WaterfallCell"
 #define HEADER_IDENTIFIER @"WaterfallHeader"
 #define FOOTER_IDENTIFIER @"WaterfallFooter"
@@ -133,7 +135,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CLog(@"%d",indexPath.row);
+    ClothesInfo *info = _arrClothes[indexPath.row];
+    ShowClothesDetailsViewController *showDetails = [[ShowClothesDetailsViewController alloc]init];
+    showDetails.clothesInfo = info;
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showDetails];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 /**

@@ -69,6 +69,8 @@
 		4F6FB3FE1B58E77500C5CB0A /* cat4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB3FA1B58E77500C5CB0A /* cat4.jpg */; };
 		4F6FB4031B59038200C5CB0A /* WriteClothesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB4011B59038200C5CB0A /* WriteClothesDetailsViewController.m */; };
 		4F6FB4041B59038200C5CB0A /* WriteClothesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB4021B59038200C5CB0A /* WriteClothesDetailsViewController.xib */; };
+		4F6FB4091B5909A300C5CB0A /* ShowClothesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB4071B5909A300C5CB0A /* ShowClothesDetailsViewController.m */; };
+		4F6FB40A1B5909A300C5CB0A /* ShowClothesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */; };
 		4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */; };
 		4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */; };
 		4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */; };
@@ -212,6 +214,9 @@
 		4F6FB4001B59038200C5CB0A /* WriteClothesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteClothesDetailsViewController.h; sourceTree = "<group>"; };
 		4F6FB4011B59038200C5CB0A /* WriteClothesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteClothesDetailsViewController.m; sourceTree = "<group>"; };
 		4F6FB4021B59038200C5CB0A /* WriteClothesDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteClothesDetailsViewController.xib; sourceTree = "<group>"; };
+		4F6FB4061B5909A300C5CB0A /* ShowClothesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowClothesDetailsViewController.h; sourceTree = "<group>"; };
+		4F6FB4071B5909A300C5CB0A /* ShowClothesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowClothesDetailsViewController.m; sourceTree = "<group>"; };
+		4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowClothesDetailsViewController.xib; sourceTree = "<group>"; };
 		4F808CA71B54BD6E001A89AA /* RC_RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_RequestManager.h; sourceTree = "<group>"; };
 		4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_RequestManager.m; sourceTree = "<group>"; };
 		4F808CAB1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IS_MobAndAnalyticsManager.h; sourceTree = "<group>"; };
@@ -390,6 +395,7 @@
 		4F417DCA1B4E7285000BD540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F6FB4051B59098400C5CB0A /* ShowClothesDetails */,
 				4F6FB3FF1B59034E00C5CB0A /* WriteClothesDetails */,
 				4F6341891B4F9F6200DFC281 /* Cut&Wipe */,
 				4F417DCB1B4E72B8000BD540 /* LeftMenuViewController.h */,
@@ -534,6 +540,16 @@
 				4F6FB4021B59038200C5CB0A /* WriteClothesDetailsViewController.xib */,
 			);
 			path = WriteClothesDetails;
+			sourceTree = "<group>";
+		};
+		4F6FB4051B59098400C5CB0A /* ShowClothesDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4F6FB4061B5909A300C5CB0A /* ShowClothesDetailsViewController.h */,
+				4F6FB4071B5909A300C5CB0A /* ShowClothesDetailsViewController.m */,
+				4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */,
+			);
+			path = ShowClothesDetails;
 			sourceTree = "<group>";
 		};
 		4F808CA61B54BD6E001A89AA /* RequestManager */ = {
@@ -754,6 +770,7 @@
 				4F6FB3FB1B58E77500C5CB0A /* cat1.jpg in Resources */,
 				4F6341AA1B4FCAA100DFC281 /* ball.png in Resources */,
 				4F6FB3FE1B58E77500C5CB0A /* cat4.jpg in Resources */,
+				4F6FB40A1B5909A300C5CB0A /* ShowClothesDetailsViewController.xib in Resources */,
 				4FCD2FE61B5503CD00BD6DDB /* 1.jpeg in Resources */,
 				4F85A6401B46480A0077E12E /* Images.xcassets in Resources */,
 			);
@@ -794,6 +811,7 @@
 				4F63419A1B4FA48300DFC281 /* CutViewController.m in Sources */,
 				4F417DBC1B4E6875000BD540 /* RC_View.m in Sources */,
 				4F0771A01B53AB07005D61AB /* Reachability.m in Sources */,
+				4F6FB4091B5909A300C5CB0A /* ShowClothesDetailsViewController.m in Sources */,
 				4F158D821B53BE6D000CA2FA /* PWSCalendarSegmentView.m in Sources */,
 				4F85A6351B46480A0077E12E /* main.m in Sources */,
 				4F0771811B53AAA7005D61AB /* AFHTTPSessionManager.m in Sources */,
