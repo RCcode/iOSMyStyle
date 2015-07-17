@@ -106,10 +106,12 @@ static RC_SQLiteManager *sqliteManager = nil;
                      seaId	季节id:0.所有; 1.春夏;2.秋冬	int		N
                      brand	品牌	String	255	N
                  )
+                 
+                 coId	搭配id	int		N
                  */
                 NSString *tableName = @"Collocation";
                 if (![_db tableExists:tableName]) {
-                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (styleId INTEGER,occId INTEGER,description text,file data,brand text,list data)",tableName];
+                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (coId INTEGER,styleId INTEGER,occId INTEGER,description text,file data,list data)",tableName];
                     if ([_db executeUpdate:strExecute]) {
                         CLog(@"create table Wardrobe success");
                     }else{
