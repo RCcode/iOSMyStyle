@@ -39,6 +39,7 @@
     self.showReturn = YES;
     [self setReturnBtnTitle:@"菜单"];
     
+//    [self addClothesToWardrobe:[UIImage imageNamed:@"ball"]];
      self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     
     _waterView = [[ZBWaterView alloc]  initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64)];

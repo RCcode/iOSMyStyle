@@ -8,8 +8,11 @@
 
 #import "MatchingViewController.h"
 
-@interface MatchingViewController ()
-
+@interface MatchingViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    UICollectionView *_collectionView;  // 集合视图
+    NSMutableArray *_cellDataArray;     // 所有单元格数组对象
+}
 @end
 
 @implementation MatchingViewController
@@ -26,7 +29,55 @@
     self.showReturn = YES;
     [self setNavTitle:@"我的搭配"];
     [self setReturnBtnTitle:@"菜单"];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self createCollectionView];
+}
+
+#pragma mark - View
+- (void)createCollectionView
+{
+    // 创建布局对象，需要对显示图片的布局进行调整所有传递给布局对象
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    
+    // layout 决定来 collectionView 中所有 cell (单元格) 的布局
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavBarHeight-20) collectionViewLayout:flowLayout];
+    
+    _collectionView.dataSource = self;
+    _collectionView.delegate = self;
+    
+    // 创建 集合视图单元格 ，放在重用队列里面
+    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellid"];
+    
+    _collectionView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:_collectionView];
+    
+} // 创建集合视图
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellid" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor redColor];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate UICollectionViewDelegateFlowLayout
+
+//设置整个分区相对上下左右的间距
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(10, 10, 10, 10);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((ScreenWidth-30)/2.0, (ScreenWidth-30)/2.0);
 }
 
 - (void)didReceiveMemoryWarning {

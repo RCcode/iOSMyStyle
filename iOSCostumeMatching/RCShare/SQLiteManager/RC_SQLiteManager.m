@@ -142,11 +142,12 @@ static RC_SQLiteManager *sqliteManager = nil;
 
 -(NSMutableArray *)getAllClothesFromWardrobe
 {
+    [self createTable:TNTWardrobe];
     if ([_db open]) {
         NSMutableArray *arr = [[NSMutableArray alloc]init];
         
         NSString *tableName = @"Wardrobe";
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@",tableName];
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by date",tableName];
         FMResultSet * rs = [_db executeQuery:sql];
         while ([rs next]) {
             ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];
