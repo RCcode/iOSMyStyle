@@ -92,24 +92,141 @@
 
 #define APPDELEGATE (AppDelegate *)([UIApplication sharedApplication].delegate)
 
-//typedef enum ControllerIndex ControllerIndex;
-//
-//enum ControllerIndex
-//{
-//    CIEarnCoinsViewController,
-//    CIGetFollowersViewController,
-//    CIGiftViewController
-//};
 
-//typedef enum InstagramRequestType InstagramRequestType;
-//
-//enum InstagramRequestType
-//{
-//    IRTGetUserProfile,
-//    IRTGetOtherUserProfile,
-//    IRTGetUserRecentMedia,
-//    IRTGetOtherUserRecentMedia,
-//    IRTChangeRelationship
-//};
+//衣橱季节
+typedef enum WardrobeSeason WardrobeSeason;
+
+enum WardrobeSeason
+{
+    WSAll,
+    WSSpringAndSummer,
+    WSAutumnAndWinter
+};
+
+//衣橱类型
+typedef enum WardrobeType WardrobeType;
+
+enum WardrobeType
+{
+    WTAll,
+    WTUpper,
+    WTBottoms,
+    WTShoes,
+    WTBag,
+    WTAccessory,
+    WTJewelry,
+    WTUnderwear
+};
+
+//衣橱类别
+typedef enum WardrobeCategory WardrobeCategory;
+
+enum WardrobeCategory
+{
+    WCAll,
+    
+    //上装
+    
+    WCJacket,                           //夹克
+    WCShirt,                            //衬衫
+    WCT_shirt,                          //T恤
+    WCBusiness_suit,                    //西装
+    WCWoollen_sweater,                  //羊毛衫
+    WCKnitwear,                         //针织衫
+    WCOne_piece_dress,                  //连衣裙
+    WCOutdoor_clothing,                 //户外服装
+    WCSport_suit,                       //运动服
+    WCWind_coat,                        //风衣
+    WCJeans_wear,                       //牛仔
+    WCUnderwaist,                       //背心
+    
+    //下装
+    
+    WCLong_dress,                       //长裙
+    WCShort_skirt,                      //短裙
+    WCTrousers,                         //长裤
+    WCShorts,                           //短裤
+    WCJean,                             //牛仔
+    WCLeggings,                         //打底裤
+    
+    //鞋
+    
+    WCFlattie,                          //平底鞋
+    WCDress_shoes,                      //晚装鞋
+    WCHigh_heel_shoe,                   //高跟鞋
+    WCBoots,                            //靴子
+    WCPlatform_shoes,                   //松糕鞋
+    WCSandal,                           //凉鞋
+    WCWedge_heel,                       //坡跟鞋
+    WCSneaker,                          //运动鞋
+    WCSlippers,                         //拖鞋
+    
+    //包
+    WCEvening_bag,                      //晚装包
+    WCBackpack,                         //双肩包
+    WCParty_package,                    //宴会包
+    WCSide_shoulder_bag,                //侧肩包
+    WCSatchel,                          //小背包
+    WCVanity,                           //手袋
+    WCWallet,                           //钱包
+    
+    //配饰
+    
+    WCBelt,                             //腰带
+    WCHat,                              //帽子
+    WCSunglass,                         //太阳镜
+    WCScarf,                            //围巾
+    WCGlove,                            //手套
+    WCWatch,                            //手表
+    WCCosmetic,                         //化妆品
+    WCPerfume,                          //香水
+    
+    //首饰
+    
+    WCBracelet,                         //手镯
+    WCNecklace,                         //项链
+    WCRing,                             //戒指
+    WCChain_bracelet,                   //手链
+    WCEarrings,                         //耳环
+    WCEar_stud,                         //耳钉
+    
+    //内衣
+    
+    WCBra,                              //胸罩
+    WCSun_top,                          //吊带衫
+    WCUnderdress,                       //衬裙
+    WCNight_robe,                       //睡袍
+    WCSilk_stockings,                   //丝袜
+    WCNight_suit,                       //睡衣
+    WCBriefs,                           //内裤
+    WCSocks,                            //袜子
+    WCBathrobe,                         //浴袍
+};
+
+//搭配风格
+typedef enum CollocationStyle CollocationStyle;
+
+enum CollocationStyle
+{
+    CSAll,
+    CSFormal_wear,                      //正装
+    CSCasual_Wear,                      //休闲
+    CSSportswear                        //运动
+};
+
+//搭配场合
+typedef enum CollocationOccasion CollocationOccasion;
+
+enum CollocationOccasion
+{
+    COAll,
+    COWorking,                          //工作
+    COHome,                             //家居
+    CODinner,                           //晚宴
+    COParty,                            //聚会
+    COFitness,                          //健身
+    COJourney                           //出游
+};
+
 
 #endif
