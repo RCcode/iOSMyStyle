@@ -10,7 +10,6 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
 #import "CutAndWipeViewController.h"
-#import "RC_SQLiteManager.h"
 #import "CHTCollectionViewWaterfallLayout.h"
 #import "CHTCollectionViewWaterfallCell.h"
 #import "CHTCollectionViewWaterfallHeader.h"
@@ -71,11 +70,8 @@
     self.showReturn = YES;
     [self setReturnBtnTitle:@"菜单"];
     
-//    [self addClothesToWardrobe:[UIImage imageNamed:@"ball"]];
-     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
-//    [self.view addSubview:self.collectionView];
+    self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [self.view insertSubview:self.collectionView atIndex:0];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -246,25 +242,21 @@
     CutAndWipeViewController *cutAndWipeViewController = [[CutAndWipeViewController alloc]init];
     cutAndWipeViewController.originalImage = image;
     __weak WardrobeViewController *weakSelf = self;
-    [cutAndWipeViewController setFinishImageBlock:^(UIImage *image) {
-        [weakSelf addClothesToWardrobe:image];
+    [cutAndWipeViewController setFinishImageBlock:^(ClothesInfo *info) {
+        [weakSelf addClothesToWardrobe:info];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:cutAndWipeViewController];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
--(void)addClothesToWardrobe:(UIImage *)image
+-(void)addClothesToWardrobe:(ClothesInfo *)info
 {
-    ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];
-    clothesInfo.numClId = [NSNumber numberWithInt:(int)(_arrClothes.count+1)];
-    clothesInfo.numCateId = [NSNumber numberWithInt:0];
-    clothesInfo.numScateId = [NSNumber numberWithInt:0];
-    clothesInfo.numSeaId = [NSNumber numberWithInt:0];
-    clothesInfo.strBrand = @"hhhh";
-    clothesInfo.file = image;
-    clothesInfo.date = stringFromDate([NSDate date]);
-    [[RC_SQLiteManager shareManager]addClothesToWardrobe:clothesInfo];
+    info.numClId = [NSNumber numberWithInt:(int)(_arrClothes.count+1)];
+    
+    [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
+    
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+    
     [_collectionView reloadData];
 }
 

@@ -67,6 +67,8 @@
 		4F6FB3FC1B58E77500C5CB0A /* cat2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB3F81B58E77500C5CB0A /* cat2.jpg */; };
 		4F6FB3FD1B58E77500C5CB0A /* cat3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB3F91B58E77500C5CB0A /* cat3.jpg */; };
 		4F6FB3FE1B58E77500C5CB0A /* cat4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB3FA1B58E77500C5CB0A /* cat4.jpg */; };
+		4F6FB4031B59038200C5CB0A /* WriteClothesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB4011B59038200C5CB0A /* WriteClothesDetailsViewController.m */; };
+		4F6FB4041B59038200C5CB0A /* WriteClothesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB4021B59038200C5CB0A /* WriteClothesDetailsViewController.xib */; };
 		4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */; };
 		4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */; };
 		4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */; };
@@ -207,6 +209,9 @@
 		4F6FB3F81B58E77500C5CB0A /* cat2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat2.jpg; sourceTree = "<group>"; };
 		4F6FB3F91B58E77500C5CB0A /* cat3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat3.jpg; sourceTree = "<group>"; };
 		4F6FB3FA1B58E77500C5CB0A /* cat4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat4.jpg; sourceTree = "<group>"; };
+		4F6FB4001B59038200C5CB0A /* WriteClothesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteClothesDetailsViewController.h; sourceTree = "<group>"; };
+		4F6FB4011B59038200C5CB0A /* WriteClothesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteClothesDetailsViewController.m; sourceTree = "<group>"; };
+		4F6FB4021B59038200C5CB0A /* WriteClothesDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteClothesDetailsViewController.xib; sourceTree = "<group>"; };
 		4F808CA71B54BD6E001A89AA /* RC_RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_RequestManager.h; sourceTree = "<group>"; };
 		4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_RequestManager.m; sourceTree = "<group>"; };
 		4F808CAB1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IS_MobAndAnalyticsManager.h; sourceTree = "<group>"; };
@@ -385,6 +390,7 @@
 		4F417DCA1B4E7285000BD540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F6FB3FF1B59034E00C5CB0A /* WriteClothesDetails */,
 				4F6341891B4F9F6200DFC281 /* Cut&Wipe */,
 				4F417DCB1B4E72B8000BD540 /* LeftMenuViewController.h */,
 				4F417DCC1B4E72B8000BD540 /* LeftMenuViewController.m */,
@@ -518,6 +524,16 @@
 				4F6FB3F21B58E5D000C5CB0A /* CHTCollectionViewWaterfallLayout.m */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		4F6FB3FF1B59034E00C5CB0A /* WriteClothesDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4F6FB4001B59038200C5CB0A /* WriteClothesDetailsViewController.h */,
+				4F6FB4011B59038200C5CB0A /* WriteClothesDetailsViewController.m */,
+				4F6FB4021B59038200C5CB0A /* WriteClothesDetailsViewController.xib */,
+			);
+			path = WriteClothesDetails;
 			sourceTree = "<group>";
 		};
 		4F808CA61B54BD6E001A89AA /* RequestManager */ = {
@@ -724,6 +740,7 @@
 				4F417DD91B4E8960000BD540 /* WardrobeViewController.xib in Resources */,
 				4FCD2FED1B5503CD00BD6DDB /* 7.jpeg in Resources */,
 				4FCD2FE71B5503CD00BD6DDB /* 10.jpeg in Resources */,
+				4F6FB4041B59038200C5CB0A /* WriteClothesDetailsViewController.xib in Resources */,
 				4F6FB3FC1B58E77500C5CB0A /* cat2.jpg in Resources */,
 				4F6341A81B4FBA8200DFC281 /* WipeViewController.xib in Resources */,
 				4FCD2FEF1B5503CD00BD6DDB /* 9.jpeg in Resources */,
@@ -805,6 +822,7 @@
 				4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */,
 				4F417DBB1B4E6875000BD540 /* RC_NavigationController.m in Sources */,
 				4F0771821B53AAA7005D61AB /* AFNetworkReachabilityManager.m in Sources */,
+				4F6FB4031B59038200C5CB0A /* WriteClothesDetailsViewController.m in Sources */,
 				4F417DBA1B4E6875000BD540 /* RC_BaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

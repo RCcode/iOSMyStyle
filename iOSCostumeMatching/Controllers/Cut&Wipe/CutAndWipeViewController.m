@@ -9,21 +9,24 @@
 #import "CutAndWipeViewController.h"
 #import "CutViewController.h"
 #import "WipeViewController.h"
+#import "WriteClothesDetailsViewController.h"
 
 @interface CutAndWipeViewController ()
-
+{
+    WriteClothesDetailsViewController *writeClothesDetailsViewController;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) UIImage *currentImage;
 
-@property (nonatomic, copy) void(^finishImage)(UIImage *image);
+@property (nonatomic, copy) void(^finish)(ClothesInfo *info);
 
 @end
 
 @implementation CutAndWipeViewController
 
--(void)setFinishImageBlock:(void (^)(UIImage *))finishImageBlock
+-(void)setFinishImageBlock:(void (^)(ClothesInfo *))finishBlock
 {
-    _finishImage = finishImageBlock;
+    _finish = finishBlock;
 }
 
 -(void)returnBtnPressed:(id)sender
@@ -33,10 +36,16 @@
 
 -(void)doneBtnPressed:(id)sender
 {
-    if (_finishImage) {
-        _finishImage(_currentImage);
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    writeClothesDetailsViewController.image = _currentImage;
+    __weak CutAndWipeViewController *weakSelf = self;
+    [writeClothesDetailsViewController setFinishImageBlock:^(ClothesInfo *info) {
+        weakSelf.finish(info);
+    }];
+    [self.navigationController pushViewController:writeClothesDetailsViewController animated:YES];
+//    if (_finishImage) {
+//        _finishImage(_currentImage);
+//    }
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
@@ -50,6 +59,8 @@
     
     [_imageView setImage:_originalImage];
     _currentImage = _originalImage;
+    
+    writeClothesDetailsViewController = [[WriteClothesDetailsViewController alloc]init];
     // Do any additional setup after loading the view from its nib.
 }
 
