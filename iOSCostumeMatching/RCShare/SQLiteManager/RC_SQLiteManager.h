@@ -22,7 +22,7 @@ enum TableNameType
 + (RC_SQLiteManager *)shareManager;
 
 -(BOOL)addClothesToWardrobe:(ClothesInfo *)clothesInfo;
-
+-(BOOL)deleteClotheFromWardrobe:(ClothesInfo *)clothesInfo;
 -(NSMutableArray *)getAllClothesFromWardrobe;
 
 @end

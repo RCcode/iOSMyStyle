@@ -142,6 +142,18 @@ static RC_SQLiteManager *sqliteManager = nil;
     return NO;
 }
 
+-(BOOL)deleteClotheFromWardrobe:(ClothesInfo *)clothesInfo
+{
+    [self createTable:TNTWardrobe];
+    if([_db open])
+    {
+        BOOL success = [_db executeUpdate:@"delete from Wardrobe where date = ?",clothesInfo.date,nil];
+        [_db close];
+        return success;
+    }
+    return NO;
+}
+
 -(NSMutableArray *)getAllClothesFromWardrobe
 {
     [self createTable:TNTWardrobe];

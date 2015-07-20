@@ -8,13 +8,20 @@
 
 #import "ShowClothesDetailsViewController.h"
 
-@interface ShowClothesDetailsViewController ()
+@interface ShowClothesDetailsViewController ()<UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+@property (nonatomic, copy) void(^delete)(ClothesInfo *info);
 
 @end
 
 @implementation ShowClothesDetailsViewController
+
+-(void)setDeleteBlock:(void (^)(ClothesInfo *))deleteBlock
+{
+    _delete = deleteBlock;
+}
 
 -(void)returnBtnPressed:(id)sender
 {
@@ -29,6 +36,28 @@
     
     [_imageView setImage:_clothesInfo.file];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (IBAction)showMore:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"分享", nil];
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        CLog(@"删除");
+        if (_delete) {
+            _delete(_clothesInfo);
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else if(buttonIndex == 1)
+    {
+        CLog(@"分享");
+    }
 }
 
 - (void)didReceiveMemoryWarning {

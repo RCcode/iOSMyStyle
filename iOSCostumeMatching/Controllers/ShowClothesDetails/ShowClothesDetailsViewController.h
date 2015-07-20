@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) ClothesInfo *clothesInfo;
 
+-(void)setDeleteBlock:(void(^)(ClothesInfo *info))deleteBlock;
+
 @end

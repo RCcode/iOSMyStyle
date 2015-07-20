@@ -138,8 +138,19 @@
     ClothesInfo *info = _arrClothes[indexPath.row];
     ShowClothesDetailsViewController *showDetails = [[ShowClothesDetailsViewController alloc]init];
     showDetails.clothesInfo = info;
+    __weak WardrobeViewController *weakSelf = self;
+    [showDetails setDeleteBlock:^(ClothesInfo *info) {
+        [weakSelf deleteClothes:info];
+    }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showDetails];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+-(void)deleteClothes:(ClothesInfo *)info
+{
+    [[RC_SQLiteManager shareManager]deleteClotheFromWardrobe:info];
+    self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+    [_collectionView reloadData];
 }
 
 /**

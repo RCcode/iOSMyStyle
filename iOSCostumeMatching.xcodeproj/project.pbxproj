@@ -74,6 +74,10 @@
 		4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */; };
 		4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */; };
 		4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */; };
+		4F8329D11B5CA1C6005588D7 /* CreateCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329CF1B5CA1C6005588D7 /* CreateCollectionViewController.m */; };
+		4F8329D21B5CA1C6005588D7 /* CreateCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329D01B5CA1C6005588D7 /* CreateCollectionViewController.xib */; };
+		4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329D61B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m */; };
+		4F8329D91B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329D71B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib */; };
 		4F85A6351B46480A0077E12E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6341B46480A0077E12E /* main.m */; };
 		4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6371B46480A0077E12E /* AppDelegate.m */; };
 		4F85A6401B46480A0077E12E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85A63F1B46480A0077E12E /* Images.xcassets */; };
@@ -223,6 +227,12 @@
 		4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IS_MobAndAnalyticsManager.m; sourceTree = "<group>"; };
 		4F808CB11B54C997001A89AA /* RC_SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_SQLiteManager.h; sourceTree = "<group>"; };
 		4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_SQLiteManager.m; sourceTree = "<group>"; };
+		4F8329CE1B5CA1C6005588D7 /* CreateCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCollectionViewController.h; sourceTree = "<group>"; };
+		4F8329CF1B5CA1C6005588D7 /* CreateCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCollectionViewController.m; sourceTree = "<group>"; };
+		4F8329D01B5CA1C6005588D7 /* CreateCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCollectionViewController.xib; sourceTree = "<group>"; };
+		4F8329D51B5CA2C3005588D7 /* WriteCollectionDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteCollectionDetailsViewController.h; sourceTree = "<group>"; };
+		4F8329D61B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteCollectionDetailsViewController.m; sourceTree = "<group>"; };
+		4F8329D71B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteCollectionDetailsViewController.xib; sourceTree = "<group>"; };
 		4F85A62F1B46480A0077E12E /* iOSCostumeMatching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCostumeMatching.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85A6331B46480A0077E12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85A6341B46480A0077E12E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -395,6 +405,8 @@
 		4F417DCA1B4E7285000BD540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F8329D41B5CA29E005588D7 /* WriteCollectionDetails */,
+				4F8329CD1B5CA1A5005588D7 /* CreateCollection */,
 				4F6FB4051B59098400C5CB0A /* ShowClothesDetails */,
 				4F6FB3FF1B59034E00C5CB0A /* WriteClothesDetails */,
 				4F6341891B4F9F6200DFC281 /* Cut&Wipe */,
@@ -579,6 +591,26 @@
 			path = SQLiteManager;
 			sourceTree = "<group>";
 		};
+		4F8329CD1B5CA1A5005588D7 /* CreateCollection */ = {
+			isa = PBXGroup;
+			children = (
+				4F8329CE1B5CA1C6005588D7 /* CreateCollectionViewController.h */,
+				4F8329CF1B5CA1C6005588D7 /* CreateCollectionViewController.m */,
+				4F8329D01B5CA1C6005588D7 /* CreateCollectionViewController.xib */,
+			);
+			path = CreateCollection;
+			sourceTree = "<group>";
+		};
+		4F8329D41B5CA29E005588D7 /* WriteCollectionDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4F8329D51B5CA2C3005588D7 /* WriteCollectionDetailsViewController.h */,
+				4F8329D61B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m */,
+				4F8329D71B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib */,
+			);
+			path = WriteCollectionDetails;
+			sourceTree = "<group>";
+		};
 		4F85A6261B46480A0077E12E = {
 			isa = PBXGroup;
 			children = (
@@ -754,6 +786,7 @@
 				4FCD2FEB1B5503CD00BD6DDB /* 5.jpeg in Resources */,
 				4FCD2FE81B5503CD00BD6DDB /* 2.jpeg in Resources */,
 				4F417DD91B4E8960000BD540 /* WardrobeViewController.xib in Resources */,
+				4F8329D91B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib in Resources */,
 				4FCD2FED1B5503CD00BD6DDB /* 7.jpeg in Resources */,
 				4FCD2FE71B5503CD00BD6DDB /* 10.jpeg in Resources */,
 				4F6FB4041B59038200C5CB0A /* WriteClothesDetailsViewController.xib in Resources */,
@@ -762,6 +795,7 @@
 				4FCD2FEF1B5503CD00BD6DDB /* 9.jpeg in Resources */,
 				4F0771691B538E38005D61AB /* CalendarViewController.xib in Resources */,
 				4FCD2FEA1B5503CD00BD6DDB /* 4.jpeg in Resources */,
+				4F8329D21B5CA1C6005588D7 /* CreateCollectionViewController.xib in Resources */,
 				4F417DD21B4E72B8000BD540 /* LeftMenuViewController.xib in Resources */,
 				4F417DDE1B4E8A78000BD540 /* MatchingViewController.xib in Resources */,
 				4F63419B1B4FA48300DFC281 /* CutViewController.xib in Resources */,
@@ -803,6 +837,7 @@
 				4F158D871B53BE6D000CA2FA /* PWSCalendarViewCell.m in Sources */,
 				4F07717F1B53AAA7005D61AB /* AFHTTPRequestOperation.m in Sources */,
 				4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */,
+				4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */,
 				4F6341A71B4FBA8200DFC281 /* WipeViewController.m in Sources */,
 				4F6341931B4FA44400DFC281 /* UIBezierPath-Points.m in Sources */,
 				4F158D841B53BE6D000CA2FA /* PWSHelper.m in Sources */,
@@ -828,6 +863,7 @@
 				4F63418D1B4F9FD200DFC281 /* CutAndWipeViewController.m in Sources */,
 				4F6FB3F31B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.m in Sources */,
 				4F6341AE1B4FDF1100DFC281 /* PIDrawerView.m in Sources */,
+				4F8329D11B5CA1C6005588D7 /* CreateCollectionViewController.m in Sources */,
 				4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */,
 				4F62FFE91B579755005E8C79 /* FMDatabaseQueue.m in Sources */,
 				4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "MatchingViewController.h"
+#import "CreateCollectionViewController.h"
 
 @interface MatchingViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
@@ -33,6 +34,12 @@
     [self createCollectionView];
 }
 
+- (IBAction)addCollection:(id)sender {
+    CreateCollectionViewController *createCollection = [[CreateCollectionViewController alloc]init];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createCollection];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
 #pragma mark - View
 - (void)createCollectionView
 {
@@ -49,7 +56,8 @@
     [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellid"];
     
     _collectionView.backgroundColor = [UIColor blueColor];
-    [self.view addSubview:_collectionView];
+    
+    [self.view insertSubview:_collectionView atIndex:0];
     
 } // 创建集合视图
 
