@@ -82,6 +82,8 @@
 		4F8329EB1B5CEB43005588D7 /* ic_main_del@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329EA1B5CEB43005588D7 /* ic_main_del@2x.png */; };
 		4F8329ED1B5CEB63005588D7 /* ic_main_operate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329EC1B5CEB63005588D7 /* ic_main_operate@2x.png */; };
 		4F8329F01B5CF0FF005588D7 /* ZDStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329EF1B5CF0FF005588D7 /* ZDStickerView.m */; };
+		4F8329F61B5D0DF2005588D7 /* ShowCollectionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329F41B5D0DF2005588D7 /* ShowCollectionDetailsViewController.m */; };
+		4F8329F71B5D0DF2005588D7 /* ShowCollectionDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329F51B5D0DF2005588D7 /* ShowCollectionDetailsViewController.xib */; };
 		4F85A6351B46480A0077E12E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6341B46480A0077E12E /* main.m */; };
 		4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6371B46480A0077E12E /* AppDelegate.m */; };
 		4F85A6401B46480A0077E12E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85A63F1B46480A0077E12E /* Images.xcassets */; };
@@ -243,6 +245,9 @@
 		4F8329EC1B5CEB63005588D7 /* ic_main_operate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_main_operate@2x.png"; sourceTree = "<group>"; };
 		4F8329EE1B5CF0FF005588D7 /* ZDStickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDStickerView.h; sourceTree = "<group>"; };
 		4F8329EF1B5CF0FF005588D7 /* ZDStickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDStickerView.m; sourceTree = "<group>"; };
+		4F8329F31B5D0DF2005588D7 /* ShowCollectionDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCollectionDetailsViewController.h; sourceTree = "<group>"; };
+		4F8329F41B5D0DF2005588D7 /* ShowCollectionDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCollectionDetailsViewController.m; sourceTree = "<group>"; };
+		4F8329F51B5D0DF2005588D7 /* ShowCollectionDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowCollectionDetailsViewController.xib; sourceTree = "<group>"; };
 		4F85A62F1B46480A0077E12E /* iOSCostumeMatching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCostumeMatching.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85A6331B46480A0077E12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85A6341B46480A0077E12E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -415,6 +420,7 @@
 		4F417DCA1B4E7285000BD540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F8329F21B5D0DD1005588D7 /* ShowCollectionDetails */,
 				4F8329D41B5CA29E005588D7 /* WriteCollectionDetails */,
 				4F8329CD1B5CA1A5005588D7 /* CreateCollection */,
 				4F6FB4051B59098400C5CB0A /* ShowClothesDetails */,
@@ -633,6 +639,16 @@
 			path = StickerView;
 			sourceTree = "<group>";
 		};
+		4F8329F21B5D0DD1005588D7 /* ShowCollectionDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4F8329F31B5D0DF2005588D7 /* ShowCollectionDetailsViewController.h */,
+				4F8329F41B5D0DF2005588D7 /* ShowCollectionDetailsViewController.m */,
+				4F8329F51B5D0DF2005588D7 /* ShowCollectionDetailsViewController.xib */,
+			);
+			path = ShowCollectionDetails;
+			sourceTree = "<group>";
+		};
 		4F85A6261B46480A0077E12E = {
 			isa = PBXGroup;
 			children = (
@@ -816,6 +832,7 @@
 				4FCD2FE71B5503CD00BD6DDB /* 10.jpeg in Resources */,
 				4F6FB4041B59038200C5CB0A /* WriteClothesDetailsViewController.xib in Resources */,
 				4F6FB3FC1B58E77500C5CB0A /* cat2.jpg in Resources */,
+				4F8329F71B5D0DF2005588D7 /* ShowCollectionDetailsViewController.xib in Resources */,
 				4F6341A81B4FBA8200DFC281 /* WipeViewController.xib in Resources */,
 				4FCD2FEF1B5503CD00BD6DDB /* 9.jpeg in Resources */,
 				4F0771691B538E38005D61AB /* CalendarViewController.xib in Resources */,
@@ -897,6 +914,7 @@
 				4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */,
 				4F6FB3F41B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				4F62FFE71B579755005E8C79 /* FMDatabaseAdditions.m in Sources */,
+				4F8329F61B5D0DF2005588D7 /* ShowCollectionDetailsViewController.m in Sources */,
 				4F6341A31B4FB9A500DFC281 /* MZCroppableView.m in Sources */,
 				4F62FFEA1B579755005E8C79 /* FMResultSet.m in Sources */,
 				4F158D861B53BE6D000CA2FA /* PWSCalendarView.m in Sources */,

@@ -9,7 +9,7 @@
 #import "MatchingViewController.h"
 #import "CreateCollectionViewController.h"
 #import "CHTCollectionViewWaterfallCell.h"
-
+#import "ShowCollectionDetailsViewController.h"
 @interface MatchingViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     UICollectionView *_collectionView;  // 集合视图
@@ -109,6 +109,25 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return CGSizeMake((ScreenWidth-30)/2.0, (ScreenWidth-30)/2.0);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ShowCollectionDetailsViewController *showDetails = [[ShowCollectionDetailsViewController alloc]init];
+    [showDetails setCollocationInfo:[_arrCollection objectAtIndex:indexPath.row]];
+    __weak MatchingViewController *weakSelf = self;
+    [showDetails setDeleteBlock:^(CollocationInfo *info) {
+        [weakSelf deleteCollection:info];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showDetails];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+-(void)deleteCollection:(CollocationInfo *)info
+{
+    [[RC_SQLiteManager shareManager]deleteCollection:info];
+    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
+    [_collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
