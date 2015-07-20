@@ -12,11 +12,13 @@
 
 - (void)dealloc
 {
+    self.numCoId = nil;
     self.numStyleId = nil;
     self.numOccId = nil;
     self.strDescription = nil;
     self.file = nil;
     self.dicList = nil;
+    self.date = nil;
 }
 
 @end

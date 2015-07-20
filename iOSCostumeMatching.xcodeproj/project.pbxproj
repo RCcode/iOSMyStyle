@@ -78,6 +78,10 @@
 		4F8329D21B5CA1C6005588D7 /* CreateCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329D01B5CA1C6005588D7 /* CreateCollectionViewController.xib */; };
 		4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329D61B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m */; };
 		4F8329D91B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329D71B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib */; };
+		4F8329E61B5CE91E005588D7 /* SPGripViewBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329E51B5CE91E005588D7 /* SPGripViewBorderView.m */; };
+		4F8329EB1B5CEB43005588D7 /* ic_main_del@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329EA1B5CEB43005588D7 /* ic_main_del@2x.png */; };
+		4F8329ED1B5CEB63005588D7 /* ic_main_operate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329EC1B5CEB63005588D7 /* ic_main_operate@2x.png */; };
+		4F8329F01B5CF0FF005588D7 /* ZDStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329EF1B5CF0FF005588D7 /* ZDStickerView.m */; };
 		4F85A6351B46480A0077E12E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6341B46480A0077E12E /* main.m */; };
 		4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6371B46480A0077E12E /* AppDelegate.m */; };
 		4F85A6401B46480A0077E12E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85A63F1B46480A0077E12E /* Images.xcassets */; };
@@ -233,6 +237,12 @@
 		4F8329D51B5CA2C3005588D7 /* WriteCollectionDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteCollectionDetailsViewController.h; sourceTree = "<group>"; };
 		4F8329D61B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteCollectionDetailsViewController.m; sourceTree = "<group>"; };
 		4F8329D71B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteCollectionDetailsViewController.xib; sourceTree = "<group>"; };
+		4F8329E41B5CE91E005588D7 /* SPGripViewBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGripViewBorderView.h; sourceTree = "<group>"; };
+		4F8329E51B5CE91E005588D7 /* SPGripViewBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGripViewBorderView.m; sourceTree = "<group>"; };
+		4F8329EA1B5CEB43005588D7 /* ic_main_del@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_main_del@2x.png"; sourceTree = "<group>"; };
+		4F8329EC1B5CEB63005588D7 /* ic_main_operate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_main_operate@2x.png"; sourceTree = "<group>"; };
+		4F8329EE1B5CF0FF005588D7 /* ZDStickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDStickerView.h; sourceTree = "<group>"; };
+		4F8329EF1B5CF0FF005588D7 /* ZDStickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDStickerView.m; sourceTree = "<group>"; };
 		4F85A62F1B46480A0077E12E /* iOSCostumeMatching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCostumeMatching.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85A6331B46480A0077E12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85A6341B46480A0077E12E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -476,6 +486,7 @@
 		4F63418F1B4FA3E000DFC281 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F8329DD1B5CE85D005588D7 /* StickerView */,
 				4F6FB3DE1B58E52700C5CB0A /* CollectionView */,
 				4F6FB3DD1B58B7D600C5CB0A /* Cell */,
 				4F158D741B53BE6D000CA2FA /* PWSCalendar */,
@@ -611,9 +622,22 @@
 			path = WriteCollectionDetails;
 			sourceTree = "<group>";
 		};
+		4F8329DD1B5CE85D005588D7 /* StickerView */ = {
+			isa = PBXGroup;
+			children = (
+				4F8329EE1B5CF0FF005588D7 /* ZDStickerView.h */,
+				4F8329EF1B5CF0FF005588D7 /* ZDStickerView.m */,
+				4F8329E41B5CE91E005588D7 /* SPGripViewBorderView.h */,
+				4F8329E51B5CE91E005588D7 /* SPGripViewBorderView.m */,
+			);
+			path = StickerView;
+			sourceTree = "<group>";
+		};
 		4F85A6261B46480A0077E12E = {
 			isa = PBXGroup;
 			children = (
+				4F8329EA1B5CEB43005588D7 /* ic_main_del@2x.png */,
+				4F8329EC1B5CEB63005588D7 /* ic_main_operate@2x.png */,
 				4F62FFED1B57981C005E8C79 /* libz.dylib */,
 				4F62FFEB1B579770005E8C79 /* libsqlite3.dylib */,
 				4F6341A91B4FCAA100DFC281 /* ball.png */,
@@ -780,6 +804,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8329ED1B5CEB63005588D7 /* ic_main_operate@2x.png in Resources */,
 				4F6FB3FD1B58E77500C5CB0A /* cat3.jpg in Resources */,
 				4FCD2FEE1B5503CD00BD6DDB /* 8.jpeg in Resources */,
 				4FCD2FEC1B5503CD00BD6DDB /* 6.jpeg in Resources */,
@@ -807,6 +832,7 @@
 				4F6FB40A1B5909A300C5CB0A /* ShowClothesDetailsViewController.xib in Resources */,
 				4FCD2FE61B5503CD00BD6DDB /* 1.jpeg in Resources */,
 				4F85A6401B46480A0077E12E /* Images.xcassets in Resources */,
+				4F8329EB1B5CEB43005588D7 /* ic_main_del@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,8 +864,10 @@
 				4F07717F1B53AAA7005D61AB /* AFHTTPRequestOperation.m in Sources */,
 				4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */,
 				4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */,
+				4F8329E61B5CE91E005588D7 /* SPGripViewBorderView.m in Sources */,
 				4F6341A71B4FBA8200DFC281 /* WipeViewController.m in Sources */,
 				4F6341931B4FA44400DFC281 /* UIBezierPath-Points.m in Sources */,
+				4F8329F01B5CF0FF005588D7 /* ZDStickerView.m in Sources */,
 				4F158D841B53BE6D000CA2FA /* PWSHelper.m in Sources */,
 				4F417DC61B4E6DFD000BD540 /* CMethods.m in Sources */,
 				4F417DD11B4E72B8000BD540 /* LeftMenuViewController.m in Sources */,

@@ -10,4 +10,8 @@
 
 @interface WriteCollectionDetailsViewController : RC_BaseViewController
 
+@property (nonatomic, strong) UIImage *image;
+
+-(void)setCollectionFinishBlock:(void(^)(CollocationInfo *info))collectionfinishBlock;
+
 @end

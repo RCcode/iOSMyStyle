@@ -23,12 +23,15 @@
  seaId	季节id:0.所有; 1.春夏;2.秋冬	int		N
  brand	品牌	String	255	N
  )
+ coId       搭配ID
  */
 
+@property (nonatomic, copy) NSNumber *numCoId;
 @property (nonatomic, copy) NSNumber *numStyleId;
 @property (nonatomic, copy) NSNumber *numOccId;
 @property (nonatomic, copy) NSString *strDescription;
 @property (nonatomic, copy) UIImage *file;
 @property (nonatomic, copy) NSMutableDictionary *dicList;
+@property (nonatomic, copy) NSString *date;
 
 @end

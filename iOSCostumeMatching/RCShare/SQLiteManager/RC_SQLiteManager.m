@@ -111,7 +111,7 @@ static RC_SQLiteManager *sqliteManager = nil;
                  */
                 NSString *tableName = @"Collocation";
                 if (![_db tableExists:tableName]) {
-                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (coId INTEGER,styleId INTEGER,occId INTEGER,description text,file data,list data)",tableName];
+                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (coId INTEGER,styleId INTEGER,occId INTEGER,description text,file data,list data,date text)",tableName];
                     if ([_db executeUpdate:strExecute]) {
                         CLog(@"create table Wardrobe success");
                     }else{
@@ -171,6 +171,58 @@ static RC_SQLiteManager *sqliteManager = nil;
             clothesInfo.numScateId = [NSNumber numberWithInt:[rs intForColumn:@"scateId"]];
             clothesInfo.numSeaId = [NSNumber numberWithInt:[rs intForColumn:@"seaId"]];
             clothesInfo.strBrand = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"brand"]];
+            clothesInfo.file = [UIImage imageWithData:[rs dataForColumn:@"file"]];
+            clothesInfo.date = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"date"]];
+            
+            [arr addObject:clothesInfo];
+        }
+        [_db close];
+        return arr;
+    }
+    return nil;
+}
+
+#pragma mark -
+
+-(BOOL)addCollection:(CollocationInfo *)collocationInfo
+{
+    [self createTable:TNTCollocation];
+    if([_db open])
+    {
+        BOOL success = [_db executeUpdate:@"insert into Collocation (coId ,styleId ,occId ,description ,file ,date) values(?,?,?,?,?,?)",collocationInfo.numCoId,collocationInfo.numStyleId, collocationInfo.numOccId, collocationInfo.strDescription,UIImagePNGRepresentation(collocationInfo.file),collocationInfo.date,nil];
+        [_db close];
+        return success;
+    }
+    return NO;
+}
+
+-(BOOL)deleteCollection:(CollocationInfo *)collocationInfo
+{
+    [self createTable:TNTCollocation];
+    if([_db open])
+    {
+        BOOL success = [_db executeUpdate:@"delete from Collocation where date = ?",collocationInfo.date,nil];
+        [_db close];
+        return success;
+    }
+    return NO;
+}
+
+-(NSMutableArray *)getAllCollection
+{
+    [self createTable:TNTCollocation];
+    if ([_db open]) {
+        NSMutableArray *arr = [[NSMutableArray alloc]init];
+        NSString *tableName = @"Collocation";
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by date desc",tableName];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            CollocationInfo *clothesInfo = [[CollocationInfo alloc]init];
+            
+            clothesInfo.numCoId = [NSNumber numberWithInt:[rs intForColumn:@"coId"]];
+            clothesInfo.numStyleId = [NSNumber numberWithInt:[rs intForColumn:@"styleId"]];
+            clothesInfo.numOccId = [NSNumber numberWithInt:[rs intForColumn:@"occId"]];
+            clothesInfo.strDescription = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"description"]];
             clothesInfo.file = [UIImage imageWithData:[rs dataForColumn:@"file"]];
             clothesInfo.date = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"date"]];
             

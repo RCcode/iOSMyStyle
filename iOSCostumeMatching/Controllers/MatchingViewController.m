@@ -8,12 +8,16 @@
 
 #import "MatchingViewController.h"
 #import "CreateCollectionViewController.h"
+#import "CHTCollectionViewWaterfallCell.h"
 
 @interface MatchingViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     UICollectionView *_collectionView;  // 集合视图
     NSMutableArray *_cellDataArray;     // 所有单元格数组对象
 }
+
+@property (nonatomic, strong) NSMutableArray *arrCollection;
+
 @end
 
 @implementation MatchingViewController
@@ -31,13 +35,29 @@
     [self setNavTitle:@"我的搭配"];
     [self setReturnBtnTitle:@"菜单"];
     
+    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
     [self createCollectionView];
 }
 
 - (IBAction)addCollection:(id)sender {
     CreateCollectionViewController *createCollection = [[CreateCollectionViewController alloc]init];
+    __weak MatchingViewController *weakSelf = self;
+    [createCollection setCollectionFinishBlock:^(CollocationInfo *info) {
+        [weakSelf addCollocation:info];
+    }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createCollection];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+-(void)addCollocation:(CollocationInfo *)info
+{
+    info.numCoId = [NSNumber numberWithInt:(int)(_arrCollection.count+1)];
+    
+    [[RC_SQLiteManager shareManager]addCollection:info];
+    
+    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
+    
+    [_collectionView reloadData];
 }
 
 #pragma mark - View
@@ -53,9 +73,9 @@
     _collectionView.delegate = self;
     
     // 创建 集合视图单元格 ，放在重用队列里面
-    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellid"];
+    [_collectionView registerClass:[CHTCollectionViewWaterfallCell class] forCellWithReuseIdentifier:@"cellid"];
     
-    _collectionView.backgroundColor = [UIColor blueColor];
+    _collectionView.backgroundColor = [UIColor clearColor];
     
     [self.view insertSubview:_collectionView atIndex:0];
     
@@ -65,13 +85,16 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return _arrCollection.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellid" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    CHTCollectionViewWaterfallCell *cell =
+    (CHTCollectionViewWaterfallCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellid"
+                                                                                forIndexPath:indexPath];
+    ClothesInfo *info = [_arrCollection objectAtIndex:indexPath.row];
+    cell.image = info.file;
     return cell;
 }
 

@@ -21,6 +21,7 @@
 #import "AppDelegate.h"
 
 #import "ClothesInfo.h"
+#import "CollocationInfo.h"
 #import "RC_SQLiteManager.h"
 
 //#import "IS_MobAndAnalyticsManager.h"

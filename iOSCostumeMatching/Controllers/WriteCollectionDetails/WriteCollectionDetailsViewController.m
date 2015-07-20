@@ -10,9 +10,17 @@
 
 @interface WriteCollectionDetailsViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (nonatomic, copy) void(^finish)(CollocationInfo *info);
+
 @end
 
 @implementation WriteCollectionDetailsViewController
+
+-(void)dealloc
+{
+    
+}
 
 -(void)returnBtnPressed:(id)sender
 {
@@ -21,7 +29,21 @@
 
 -(void)doneBtnPressed:(id)sender
 {
-    
+    CollocationInfo *collocationInfo = [[CollocationInfo alloc]init];
+    collocationInfo.file = _image;
+    collocationInfo.numStyleId = [NSNumber numberWithInt:1];
+    collocationInfo.numOccId = [NSNumber numberWithInt:1];
+    collocationInfo.strDescription = @"宴会";
+    collocationInfo.date = stringFromDate([NSDate date]);
+    if (_finish) {
+        _finish(collocationInfo);
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)setCollectionFinishBlock:(void (^)(CollocationInfo *))collectionfinishBlock
+{
+    _finish = collectionfinishBlock;
 }
 
 - (void)viewDidLoad {
@@ -32,6 +54,8 @@
     self.showReturn = YES;
     [self setReturnBtnTitle:@"返回"];
     [self setDoneBtnTitle:@"完成"];
+    
+    _imageView.image = _image;
     // Do any additional setup after loading the view from its nib.
 }
 

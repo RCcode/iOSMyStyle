@@ -10,4 +10,6 @@
 
 @interface CreateCollectionViewController : RC_BaseViewController
 
+-(void)setCollectionFinishBlock:(void(^)(CollocationInfo *info))collectionfinishBlock;
+
 @end
