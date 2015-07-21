@@ -19,7 +19,6 @@
 const float PWSCalendarTimeHeadViewHeight = 60;
 //const float PWSCalendarDataHeadViewHeight = 60;
 const float PWSCalendarSegmentHeight = 25;
-const float PWSCalendarSeperateLineHeight= 5;
 const float PWSCalendarWeekDaysHeight = 25;
 
 extern NSString* PWSCalendarViewCellId;
@@ -37,17 +36,23 @@ UICollectionViewDelegate>
     
     // head view
     UIView*            m_view_head;
-    UILabel*           m_label_time;       // the label
-    UIView*            m_time_head_view;   // the time view
     UIView*            m_data_head_view;   // the data view
     PWSCalendarSegmentView*  m_segment;
     UIView*            m_view_weekdays;
     
     UICollectionView*  m_view_calendar;
 }
+
+@property (nonatomic, copy) void(^changeMonth)(NSDate *date);
+
 @end
 //////////////////////////////////////////////////////////////////////////////
 @implementation PWSCalendarView
+
+-(void)setChangeMonthBlock:(void (^)(NSDate *))changeMonthBlock
+{
+    _changeMonth = changeMonthBlock;
+}
 
 - (id) initWithFrame:(CGRect)frame
 {
@@ -61,76 +66,17 @@ UICollectionViewDelegate>
     if (self)
     {
         self.type = pType;
-        self.headType = en_calendar_head_type_default;
         m_current_date = [NSDate date];
         [self SetInitialValue];
     }
     return self;
 }
 
-- (float) GetCalendarViewHeight
-{
-    PWSCalendarViewCell* the_cell = [[m_view_calendar visibleCells] lastObject];
-    float rt = the_cell.getCalendarHeight;
-    rt += [self GetHeaderViewHeight];
-    return rt;
-}
-
-- (void) setHeadType:(enCalendarViewHeaderViewType)headType
-{
-    _headType = headType;
-    if (headType == en_calendar_head_type_default)
-    {
-        // if set to default, remove the custom views
-        if (_customDataView)
-        {
-            [_customDataView removeFromSuperview];
-        }
-        if (_customTimeView)
-        {
-            [_customTimeView removeFromSuperview];
-        }
-        
-        // add the default views
-        [self SetTimeHeadView];
-        [self SetDataHeadView];
-    }
-}
-
-- (void) setCustomTimeView:(UIView *)customTimeView
-{
-    _customTimeView = customTimeView;
-    if (_headType == en_calendar_head_type_custom)
-    {
-        [m_time_head_view removeFromSuperview];
-        m_time_head_view = customTimeView;
-        [self addSubview:m_time_head_view];
-        [self AutoLayoutCustomHeadView];
-    }
-}
-
-- (void) setCustomDataView:(UIView *)customDataView
-{
-    _customDataView = customDataView;
-    if (_headType == en_calendar_head_type_custom)
-    {
-        [m_data_head_view removeFromSuperview];
-        m_data_head_view = customDataView;
-        [self addSubview:customDataView];
-        [self AutoLayoutCustomHeadView];
-    }
-}
-
 - (void) AutoLayoutCustomHeadView
 {
     float origin_y = 0;
-
-    CGRect frame = m_time_head_view.frame;
-    frame.origin.y = origin_y;
-    [m_time_head_view setFrame:frame];
-    origin_y += frame.size.height;
     
-    frame = m_data_head_view.frame;
+    CGRect frame = m_data_head_view.frame;
     frame.origin.y = origin_y;
     [m_data_head_view setFrame:frame];
     origin_y += frame.size.height;
@@ -139,61 +85,11 @@ UICollectionViewDelegate>
     [m_view_calendar setFrame:CGRectMake(0, origin_y, self.frame.size.width, self.frame.size.height-origin_y)];
 }
 
-- (float) GetHeaderViewHeight
-{
-    float rt = [self GetDataHeadViewHeight] + [self GetTimeHeadViewHeight];
-    return rt;
-}
-
-- (float) GetTimeHeadViewHeight
-{
-    float rt = 0;
-    if (_headType == en_calendar_head_type_custom && _customTimeView)
-    {
-        rt = _customTimeView.frame.size.height;
-    }
-    else
-    {
-        rt = PWSCalendarTimeHeadViewHeight;
-    }
-    return rt;
-}
-
-- (float) GetDataHeadViewHeight
-{
-    float rt = 0;
-    if (_headType == en_calendar_head_type_custom && _customDataView)
-    {
-        rt = _customDataView.frame.size.height;
-    }
-    else
-    {
-        rt = PWSCalendarSegmentHeight+PWSCalendarSeperateLineHeight+PWSCalendarWeekDaysHeight;
-    }
-    return rt;
-}
 
 - (void) SetInitialValue
 {
-    [self SetTimeHeadView];
     [self SetDataHeadView];
     [self SetCollectionView];
-}
-
-- (void) SetTimeHeadView
-{
-    if (m_time_head_view)
-    {
-        return;
-    }
-    m_time_head_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [self GetTimeHeadViewHeight])];
-    [self addSubview:m_time_head_view];
-    
-    m_label_time = [[UILabel alloc] init];
-    [m_label_time setFrame:m_time_head_view.bounds];
-    [m_label_time setText:@"2014-2-29"];
-    [m_label_time setTextAlignment:NSTextAlignmentCenter];
-    [m_time_head_view addSubview:m_label_time];
 }
 
 - (void) SetDataHeadView
@@ -206,26 +102,19 @@ UICollectionViewDelegate>
     float origin_x = 0;
     
     // the view
-    m_data_head_view = [[UIView alloc] initWithFrame:CGRectMake(0, [self GetTimeHeadViewHeight], width, [self GetDataHeadViewHeight])];
+    m_data_head_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, PWSCalendarWeekDaysHeight)];
     [self addSubview:m_data_head_view];
+
+//    // segment
+//    NSArray* items = [NSArray arrayWithObjects:[self GetSegmentItemWithTitle:@"TODAY"], [self GetSegmentItemWithTitle:@"WEEKLY"], [self GetSegmentItemWithTitle:@"MONTHLY"], nil];
+//    m_segment = [PWSCalendarSegmentView CreateWithItems:items Frame:CGRectMake(0, origin_x, width, PWSCalendarSegmentHeight)];
+//    [m_segment setP_delegate:self];
+//    [m_data_head_view addSubview:m_segment];
+//    
+//    // weekdays
+//    origin_x += PWSCalendarSegmentHeight;
     
-    // segment
-    NSArray* items = [NSArray arrayWithObjects:[self GetSegmentItemWithTitle:@"TODAY"], [self GetSegmentItemWithTitle:@"WEEKLY"], [self GetSegmentItemWithTitle:@"MONTHLY"], nil];
-    m_segment = [PWSCalendarSegmentView CreateWithItems:items Frame:CGRectMake(0, origin_x, width, PWSCalendarSegmentHeight)];
-    [m_segment setP_delegate:self];
-    [m_data_head_view addSubview:m_segment];
-    
-    // seperate line
-    origin_x += PWSCalendarSegmentHeight;
-    float edge = 10;
-    UIView* line = [[UIView alloc] initWithFrame:CGRectMake(edge, origin_x, width-2*edge, 2)];
-    [line.layer setCornerRadius:5];
-    [line setBackgroundColor:[UIColor lightGrayColor]];
-    [m_data_head_view addSubview:line];
-    
-    // weekdays
-    origin_x += PWSCalendarSeperateLineHeight;
-    NSArray* weekdays = [NSArray arrayWithObjects:@"SUN", @"MON", @"TUE", @"WED", @"THU", @"FRI", @"SAT", nil];
+    NSArray* weekdays = [NSArray arrayWithObjects:@"日", @"一", @"二", @"三", @"四", @"五", @"六", nil];
     float day_width = width/7;
     for (int i=0; i<7; i++)
     {
@@ -240,12 +129,8 @@ UICollectionViewDelegate>
 
 - (void) SetLabelDate:(NSDate*)_date
 {
-    NSDateFormatter* ff = [[NSDateFormatter alloc] init];
-    [ff setDateFormat:@"yyyy-MM-dd"];
-    NSString* date = [ff stringFromDate:_date];
-    if (m_label_time)
-    {
-        [m_label_time setText:date];
+    if (_changeMonth) {
+        _changeMonth(_date);
     }
 }
 
@@ -265,10 +150,10 @@ UICollectionViewDelegate>
     UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setMinimumLineSpacing:0];
     [layout setMinimumInteritemSpacing:0];
-    [layout setItemSize:CGSizeMake(width, height-[self GetHeaderViewHeight])];
+    [layout setItemSize:CGSizeMake(width, height-50)];
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     
-    m_view_calendar = [[UICollectionView alloc] initWithFrame:CGRectMake(0, [self GetHeaderViewHeight], width, height-[self GetHeaderViewHeight]) collectionViewLayout:layout];
+    m_view_calendar = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 25, width, height-25) collectionViewLayout:layout];
     [m_view_calendar setShowsHorizontalScrollIndicator:YES];
     [m_view_calendar setDelegate:self];
     [m_view_calendar setDataSource:self];

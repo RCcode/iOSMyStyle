@@ -24,12 +24,17 @@
 
 @property (nonatomic, strong) id<PWSCalendarDelegate> delegate;
 @property (nonatomic, assign) enCalendarViewType      type;
-@property (nonatomic, assign) enCalendarViewHeaderViewType headType;
 @property (nonatomic, strong) UIView*                 customTimeView;
 @property (nonatomic, strong) UIView*                 customDataView;
 
 - (id) initWithFrame:(CGRect)frame CalendarType:(enCalendarViewType)pType;
 
-- (float) GetCalendarViewHeight __deprecated;
+//- (float) GetCalendarViewHeight __deprecated;
+
+#pragma mark -
+
+-(void)setChangeMonthBlock:(void(^)(NSDate *date))changeMonthBlock;
+
+- (void) ScrollToToday;
 
 @end

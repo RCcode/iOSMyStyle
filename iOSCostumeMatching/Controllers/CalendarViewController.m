@@ -10,7 +10,9 @@
 #import "PWSCalendarView.h"
 
 @interface CalendarViewController ()<PWSCalendarDelegate>
-
+{
+    PWSCalendarView *calendarView;
+}
 @end
 
 @implementation CalendarViewController
@@ -22,17 +24,37 @@
     [sideViewController showLeftViewController:true];
 }
 
+-(void)doneBtnPressed:(id)sender
+{
+    [calendarView ScrollToToday];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.showReturn = YES;
     [self setNavTitle:@"我的日历"];
     [self setReturnBtnTitle:@"菜单"];
+    self.showDone = YES;
+    [self setDoneBtnTitle:@"今天"];
     
-    PWSCalendarView* view = [[PWSCalendarView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 400) CalendarType:en_calendar_type_month];
-    [view setBackgroundColor:[UIColor cyanColor]];
-    [self.view addSubview:view];
-    [view setDelegate:self];
+    [self setTitleDate:[NSDate date]];
+    calendarView = [[PWSCalendarView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 250) CalendarType:en_calendar_type_month];
+    __weak CalendarViewController *weakSelf = self;
+    [calendarView setChangeMonthBlock:^(NSDate *date) {
+        [weakSelf setTitleDate:date];
+    }];
+    [calendarView setBackgroundColor:[UIColor cyanColor]];
+    [self.view addSubview:calendarView];
+    [calendarView setDelegate:self];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)setTitleDate:(NSDate *)date
+{
+    NSDateFormatter* ff = [[NSDateFormatter alloc] init];
+    [ff setDateFormat:@"yyyy-MM-dd"];
+    NSString* strDate = [ff stringFromDate:date];
+    [self setNavTitle:strDate];
 }
 
 #pragma mark - PWSCalendarDelegate
