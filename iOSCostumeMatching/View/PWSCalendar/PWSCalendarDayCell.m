@@ -39,7 +39,7 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
     m_date.clipsToBounds = YES;
     m_date.layer.cornerRadius = CGRectGetWidth(m_date.frame)/2.0;
     [self addSubview:m_date];
-    self.backgroundColor = [UIColor purpleColor];
+    self.backgroundColor = [UIColor clearColor];
 }
 
 - (void) setSelected:(BOOL)selected

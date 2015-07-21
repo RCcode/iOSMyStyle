@@ -148,7 +148,7 @@ UICollectionViewDelegate>
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     
     m_view_calendar = [[UICollectionView alloc] initWithFrame:CGRectMake(0, PWSCalendarWeekDaysHeight, width, height-PWSCalendarWeekDaysHeight) collectionViewLayout:layout];
-    [m_view_calendar setShowsHorizontalScrollIndicator:YES];
+    [m_view_calendar setShowsHorizontalScrollIndicator:NO];
     [m_view_calendar setDelegate:self];
     [m_view_calendar setDataSource:self];
     [m_view_calendar setBackgroundColor:[UIColor clearColor]];
@@ -384,11 +384,11 @@ UICollectionViewDelegate>
     CGRect frame_self = self.frame;
     frame_self.size.height = _height+PWSCalendarWeekDaysHeight;
     [self setFrame:frame_self];
-//
-//    // callback delegate
-//    if ([self.delegate respondsToSelector:@selector(PWSCalendar:didChangeViewHeight:)])
-//    {
-//        [self.delegate PWSCalendar:self didChangeViewHeight:height];
-//    }
+
+    // callback delegate
+    if ([self.delegate respondsToSelector:@selector(PWSCalendar:didChangeViewHeight:)])
+    {
+        [self.delegate PWSCalendar:self didChangeViewHeight:_height+PWSCalendarWeekDaysHeight];
+    }
 }
 @end

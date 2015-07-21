@@ -31,7 +31,7 @@ UICollectionViewDelegateFlowLayout>
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColor:[UIColor yellowColor]];
+        [self setBackgroundColor:[UIColor lightGrayColor]];
         self.type = en_calendar_type_month;
         m_calendar = [NSCalendar currentCalendar];
         m_first_date = [NSDate date];
@@ -51,7 +51,7 @@ UICollectionViewDelegateFlowLayout>
     m_collection_view = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
     [self.contentView addSubview:m_collection_view];
     
-    [m_collection_view setBackgroundColor:[UIColor redColor]];
+    [m_collection_view setBackgroundColor:[UIColor clearColor]];
     [m_collection_view setDelegate:self];
     [m_collection_view setDataSource:self];
     [m_collection_view setScrollEnabled:NO];
