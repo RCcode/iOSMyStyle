@@ -9,13 +9,7 @@
 #import "PWSCalendarView.h"
 #import "PWSCalendarSegmentView.h"
 #import "PWSCalendarViewCell.h"
-//////////////////////////////////////////////////////////////////////////////
-//const float PWSCalendarHeadTimeLabelHeight = 67;
-//const float PWSCalendarHeadSegmentHeight = 25;
-//const float PWSCalendarHeadSeperateLineHeight = 5;
-//const float PWSCalendarHeadWeekdaysHeight = 25;
-
-
+/////////////////////////////////////////////////////////////////////////////
 const float PWSCalendarTimeHeadViewHeight = 60;
 //const float PWSCalendarDataHeadViewHeight = 60;
 const float PWSCalendarSegmentHeight = 25;
@@ -150,14 +144,14 @@ UICollectionViewDelegate>
     UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setMinimumLineSpacing:0];
     [layout setMinimumInteritemSpacing:0];
-    [layout setItemSize:CGSizeMake(width, height-50)];
+    [layout setItemSize:CGSizeMake(width, height-PWSCalendarWeekDaysHeight)];
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     
-    m_view_calendar = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 25, width, height-25) collectionViewLayout:layout];
+    m_view_calendar = [[UICollectionView alloc] initWithFrame:CGRectMake(0, PWSCalendarWeekDaysHeight, width, height-PWSCalendarWeekDaysHeight) collectionViewLayout:layout];
     [m_view_calendar setShowsHorizontalScrollIndicator:YES];
     [m_view_calendar setDelegate:self];
     [m_view_calendar setDataSource:self];
-    [m_view_calendar setBackgroundColor:[UIColor redColor]];
+    [m_view_calendar setBackgroundColor:[UIColor clearColor]];
     [self addSubview:m_view_calendar];
     m_view_calendar.pagingEnabled = YES;
 //    m_view_calendar.clipsToBounds = YES;
@@ -246,7 +240,7 @@ UICollectionViewDelegate>
     }
     
     [self SetLabelDate:m_current_date];
-    [self PWSCalendar:nil didChangeViewHeight:0];
+//    [self PWSCalendar:nil didChangeViewHeight:0];
 }
 
 - (void) ScrollToToday
@@ -343,7 +337,6 @@ UICollectionViewDelegate>
         NSArray* cells = [m_view_calendar visibleCells];
         for (PWSCalendarViewCell* each_cell in cells)
         {
-            each_cell.firstShow = YES;
             [each_cell setType:en_calendar_type_week];
         }
     }
@@ -354,7 +347,6 @@ UICollectionViewDelegate>
         NSArray* cells = [m_view_calendar visibleCells];
         for (PWSCalendarViewCell* each_cell in cells)
         {
-            each_cell.firstShow = YES;
             [each_cell setType:en_calendar_type_month];
         }
     }
@@ -379,23 +371,20 @@ UICollectionViewDelegate>
 
 - (void) PWSCalendar:(PWSCalendarView *)_calendar didChangeViewHeight:(CGFloat)_height
 {
-//    float height = [self GetCalendarViewHeight];
-//    
-//    // change calendar height
-//    float calendar_height = height-[self GetHeaderViewHeight];
-//    CGRect calendar_frame = m_view_calendar.frame;
-//    calendar_frame.size.height = calendar_height;
-//    UICollectionViewFlowLayout* layout = (UICollectionViewFlowLayout*)m_view_calendar.collectionViewLayout;
-//    CGSize flowlayout_size = layout.itemSize;
-//    flowlayout_size.height = calendar_height;
-//    layout.itemSize = flowlayout_size;
-//    [m_view_calendar setFrame:calendar_frame];
-//    
-//    // set self height
-//    CGRect frame_self = self.frame;
-//    frame_self.size.height = height;
-//    [self setFrame:frame_self];
-//    
+    // change calendar height
+    CGRect calendar_frame = m_view_calendar.frame;
+    calendar_frame.size.height = _height;
+    UICollectionViewFlowLayout* layout = (UICollectionViewFlowLayout*)m_view_calendar.collectionViewLayout;
+    CGSize flowlayout_size = layout.itemSize;
+    flowlayout_size.height = _height;
+    layout.itemSize = flowlayout_size;
+    [m_view_calendar setFrame:calendar_frame];
+    
+    // set self height
+    CGRect frame_self = self.frame;
+    frame_self.size.height = _height+PWSCalendarWeekDaysHeight;
+    [self setFrame:frame_self];
+//
 //    // callback delegate
 //    if ([self.delegate respondsToSelector:@selector(PWSCalendar:didChangeViewHeight:)])
 //    {

@@ -31,8 +31,7 @@ UICollectionViewDelegateFlowLayout>
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColor:[UIColor clearColor]];
-        _firstShow = YES;
+        [self setBackgroundColor:[UIColor yellowColor]];
         self.type = en_calendar_type_month;
         m_calendar = [NSCalendar currentCalendar];
         m_first_date = [NSDate date];
@@ -45,12 +44,14 @@ UICollectionViewDelegateFlowLayout>
 {
     PWSCalendarViewFlowLayout* layout = [[PWSCalendarViewFlowLayout alloc] init];
     CGFloat itemWidth = floorf(CGRectGetWidth(self.bounds) / 7);
-    layout.itemSize = CGSizeMake(itemWidth, itemWidth/2);
+    layout.itemSize = CGSizeMake(itemWidth, itemWidth);
+    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 1;
     
     m_collection_view = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
     [self.contentView addSubview:m_collection_view];
     
-    [m_collection_view setBackgroundColor:[UIColor clearColor]];
+    [m_collection_view setBackgroundColor:[UIColor redColor]];
     [m_collection_view setDelegate:self];
     [m_collection_view setDataSource:self];
     [m_collection_view setScrollEnabled:NO];
@@ -70,14 +71,9 @@ UICollectionViewDelegateFlowLayout>
     collection_view_frame.size.height = self.calendarHeight;
     [m_collection_view setFrame:collection_view_frame];
     
-    // change view height
-    if (_firstShow)
+    if ([self.delegate respondsToSelector:@selector(PWSCalendar:didChangeViewHeight:)])
     {
-        if ([self.delegate respondsToSelector:@selector(PWSCalendar:didChangeViewHeight:)])
-        {
-            [self.delegate performSelector:@selector(PWSCalendar:didChangeViewHeight:) withObject:nil withObject:nil];
-        }
-        _firstShow = NO;
+        [self.delegate PWSCalendar:nil didChangeViewHeight:self.calendarHeight];
     }
 }
 
@@ -128,11 +124,11 @@ UICollectionViewDelegateFlowLayout>
 {
     int rt = 0;
     CGFloat itemWidth = floorf(CGRectGetWidth(m_collection_view.bounds) / 7);
-    CGFloat itemHeight = itemWidth/2;
+    CGFloat itemHeight = itemWidth;
     if (self.type == en_calendar_type_month)
     {
         NSRange rangeOfWeeks = [[NSCalendar currentCalendar] rangeOfUnit:NSWeekCalendarUnit inUnit:NSMonthCalendarUnit forDate:m_first_date];
-        self.calendarHeight = itemHeight*rangeOfWeeks.length;
+        self.calendarHeight = (itemHeight+2)*rangeOfWeeks.length+4;
         rt = (rangeOfWeeks.length * 7);
     }
     else if (self.type == en_calendar_type_week)
@@ -191,16 +187,5 @@ UICollectionViewDelegateFlowLayout>
     BOOL rt = [PWSHelper CheckSameMonth:selected_date AnotherMonth:m_first_date];
     return rt;
 }
-
-
-#pragma mark - UICollectionViewFlowLayoutDelegate
-//
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    CGFloat itemWidth = floorf(CGRectGetWidth(m_collection_view.bounds) / 7);
-//    
-//    return CGSizeMake(itemWidth, itemWidth/2);
-//}
-
 
 @end

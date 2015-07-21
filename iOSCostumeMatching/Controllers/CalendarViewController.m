@@ -38,7 +38,7 @@
     [self setDoneBtnTitle:@"今天"];
     
     [self setTitleDate:[NSDate date]];
-    calendarView = [[PWSCalendarView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 250) CalendarType:en_calendar_type_month];
+    calendarView = [[PWSCalendarView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 320) CalendarType:en_calendar_type_month];
     __weak CalendarViewController *weakSelf = self;
     [calendarView setChangeMonthBlock:^(NSDate *date) {
         [weakSelf setTitleDate:date];
