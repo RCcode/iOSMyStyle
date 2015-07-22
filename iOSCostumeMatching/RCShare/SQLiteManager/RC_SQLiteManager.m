@@ -121,6 +121,36 @@ static RC_SQLiteManager *sqliteManager = nil;
                 }
                 break;
             }
+            case TNTActivity:
+            {
+                /**
+                 title        风格id                            int		N
+                 location          场合id                            int		N
+                 isAllDay	描述                              String	255	Y
+                 file           图片文件                           File		N
+                 list           搭配服饰信息列表(传brand不为空衣服)              N
+                 (
+                 clId	服饰id,可为空	int		Y
+                 cateId	一级分类id,所有为0	int		N
+                 scateId	一级分类id,所有为0	int		N
+                 seaId	季节id:0.所有; 1.春夏;2.秋冬	int		N
+                 brand	品牌	String	255	N
+                 )
+                 
+                 coId	搭配id	int		N
+                 */
+                NSString *tableName = @"Activity";
+                if (![_db tableExists:tableName]) {
+                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (coId INTEGER,styleId INTEGER,occId INTEGER,description text,file data,list data,date text)",tableName];
+                    if ([_db executeUpdate:strExecute]) {
+                        CLog(@"create table Wardrobe success");
+                    }else{
+                        CLog(@"fail to create table Wardrobe");
+                    }
+                }else {
+                }
+                break;
+            }
             default:
                 break;
         }

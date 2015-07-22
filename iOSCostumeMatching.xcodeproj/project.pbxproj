@@ -71,6 +71,11 @@
 		4F6FB4041B59038200C5CB0A /* WriteClothesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB4021B59038200C5CB0A /* WriteClothesDetailsViewController.xib */; };
 		4F6FB4091B5909A300C5CB0A /* ShowClothesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB4071B5909A300C5CB0A /* ShowClothesDetailsViewController.m */; };
 		4F6FB40A1B5909A300C5CB0A /* ShowClothesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */; };
+		4F7B64E81B5F4D46004643D2 /* MyWardrobeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B64E61B5F4D46004643D2 /* MyWardrobeViewController.m */; };
+		4F7B64E91B5F4D46004643D2 /* MyWardrobeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7B64E71B5F4D46004643D2 /* MyWardrobeViewController.xib */; };
+		4F7B64EE1B5F5386004643D2 /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B64EC1B5F5386004643D2 /* MyCollectionViewController.m */; };
+		4F7B64EF1B5F5386004643D2 /* MyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7B64ED1B5F5386004643D2 /* MyCollectionViewController.xib */; };
+		4F7B64F31B5F8073004643D2 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B64F21B5F8073004643D2 /* ItemView.m */; };
 		4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */; };
 		4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */; };
 		4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */; };
@@ -88,6 +93,8 @@
 		4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6371B46480A0077E12E /* AppDelegate.m */; };
 		4F85A6401B46480A0077E12E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85A63F1B46480A0077E12E /* Images.xcassets */; };
 		4F85A64F1B46480B0077E12E /* iOSCostumeMatchingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A64E1B46480B0077E12E /* iOSCostumeMatchingTests.m */; };
+		4F9E7E3F1B5E3C13006D1E34 /* CreateActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E7E3D1B5E3C13006D1E34 /* CreateActivityViewController.m */; };
+		4F9E7E401B5E3C13006D1E34 /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9E7E3E1B5E3C13006D1E34 /* CreateActivityViewController.xib */; };
 		4FCD2FE61B5503CD00BD6DDB /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FDC1B5503CD00BD6DDB /* 1.jpeg */; };
 		4FCD2FE71B5503CD00BD6DDB /* 10.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FDD1B5503CD00BD6DDB /* 10.jpeg */; };
 		4FCD2FE81B5503CD00BD6DDB /* 2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FDE1B5503CD00BD6DDB /* 2.jpeg */; };
@@ -227,6 +234,14 @@
 		4F6FB4061B5909A300C5CB0A /* ShowClothesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowClothesDetailsViewController.h; sourceTree = "<group>"; };
 		4F6FB4071B5909A300C5CB0A /* ShowClothesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowClothesDetailsViewController.m; sourceTree = "<group>"; };
 		4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowClothesDetailsViewController.xib; sourceTree = "<group>"; };
+		4F7B64E51B5F4D46004643D2 /* MyWardrobeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWardrobeViewController.h; sourceTree = "<group>"; };
+		4F7B64E61B5F4D46004643D2 /* MyWardrobeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWardrobeViewController.m; sourceTree = "<group>"; };
+		4F7B64E71B5F4D46004643D2 /* MyWardrobeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWardrobeViewController.xib; sourceTree = "<group>"; };
+		4F7B64EB1B5F5386004643D2 /* MyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewController.h; sourceTree = "<group>"; };
+		4F7B64EC1B5F5386004643D2 /* MyCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewController.m; sourceTree = "<group>"; };
+		4F7B64ED1B5F5386004643D2 /* MyCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionViewController.xib; sourceTree = "<group>"; };
+		4F7B64F11B5F8073004643D2 /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
+		4F7B64F21B5F8073004643D2 /* ItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
 		4F808CA71B54BD6E001A89AA /* RC_RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_RequestManager.h; sourceTree = "<group>"; };
 		4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_RequestManager.m; sourceTree = "<group>"; };
 		4F808CAB1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IS_MobAndAnalyticsManager.h; sourceTree = "<group>"; };
@@ -257,6 +272,9 @@
 		4F85A6481B46480B0077E12E /* iOSCostumeMatchingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSCostumeMatchingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85A64D1B46480B0077E12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85A64E1B46480B0077E12E /* iOSCostumeMatchingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSCostumeMatchingTests.m; sourceTree = "<group>"; };
+		4F9E7E3C1B5E3C13006D1E34 /* CreateActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityViewController.h; sourceTree = "<group>"; };
+		4F9E7E3D1B5E3C13006D1E34 /* CreateActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityViewController.m; sourceTree = "<group>"; };
+		4F9E7E3E1B5E3C13006D1E34 /* CreateActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActivityViewController.xib; sourceTree = "<group>"; };
 		4FCD2FDC1B5503CD00BD6DDB /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
 		4FCD2FDD1B5503CD00BD6DDB /* 10.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpeg; sourceTree = "<group>"; };
 		4FCD2FDE1B5503CD00BD6DDB /* 2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpeg; sourceTree = "<group>"; };
@@ -420,6 +438,9 @@
 		4F417DCA1B4E7285000BD540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F7B64EA1B5F536B004643D2 /* MyCollection */,
+				4F7B64E41B5F4D21004643D2 /* MyWardrobe */,
+				4F9E7E3B1B5E3BF2006D1E34 /* CreateActivity */,
 				4F8329F21B5D0DD1005588D7 /* ShowCollectionDetails */,
 				4F8329D41B5CA29E005588D7 /* WriteCollectionDetails */,
 				4F8329CD1B5CA1A5005588D7 /* CreateCollection */,
@@ -492,6 +513,7 @@
 		4F63418F1B4FA3E000DFC281 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F7B64F01B5F8044004643D2 /* ItemView */,
 				4F8329DD1B5CE85D005588D7 /* StickerView */,
 				4F6FB3DE1B58E52700C5CB0A /* CollectionView */,
 				4F6FB3DD1B58B7D600C5CB0A /* Cell */,
@@ -579,6 +601,35 @@
 				4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */,
 			);
 			path = ShowClothesDetails;
+			sourceTree = "<group>";
+		};
+		4F7B64E41B5F4D21004643D2 /* MyWardrobe */ = {
+			isa = PBXGroup;
+			children = (
+				4F7B64E51B5F4D46004643D2 /* MyWardrobeViewController.h */,
+				4F7B64E61B5F4D46004643D2 /* MyWardrobeViewController.m */,
+				4F7B64E71B5F4D46004643D2 /* MyWardrobeViewController.xib */,
+			);
+			path = MyWardrobe;
+			sourceTree = "<group>";
+		};
+		4F7B64EA1B5F536B004643D2 /* MyCollection */ = {
+			isa = PBXGroup;
+			children = (
+				4F7B64EB1B5F5386004643D2 /* MyCollectionViewController.h */,
+				4F7B64EC1B5F5386004643D2 /* MyCollectionViewController.m */,
+				4F7B64ED1B5F5386004643D2 /* MyCollectionViewController.xib */,
+			);
+			path = MyCollection;
+			sourceTree = "<group>";
+		};
+		4F7B64F01B5F8044004643D2 /* ItemView */ = {
+			isa = PBXGroup;
+			children = (
+				4F7B64F11B5F8073004643D2 /* ItemView.h */,
+				4F7B64F21B5F8073004643D2 /* ItemView.m */,
+			);
+			path = ItemView;
 			sourceTree = "<group>";
 		};
 		4F808CA61B54BD6E001A89AA /* RequestManager */ = {
@@ -719,6 +770,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4F9E7E3B1B5E3BF2006D1E34 /* CreateActivity */ = {
+			isa = PBXGroup;
+			children = (
+				4F9E7E3C1B5E3C13006D1E34 /* CreateActivityViewController.h */,
+				4F9E7E3D1B5E3C13006D1E34 /* CreateActivityViewController.m */,
+				4F9E7E3E1B5E3C13006D1E34 /* CreateActivityViewController.xib */,
+			);
+			path = CreateActivity;
+			sourceTree = "<group>";
+		};
 		4FCD2FDB1B5503CD00BD6DDB /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,6 +889,7 @@
 				4FCD2FE81B5503CD00BD6DDB /* 2.jpeg in Resources */,
 				4F417DD91B4E8960000BD540 /* WardrobeViewController.xib in Resources */,
 				4F8329D91B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib in Resources */,
+				4F7B64E91B5F4D46004643D2 /* MyWardrobeViewController.xib in Resources */,
 				4FCD2FED1B5503CD00BD6DDB /* 7.jpeg in Resources */,
 				4FCD2FE71B5503CD00BD6DDB /* 10.jpeg in Resources */,
 				4F6FB4041B59038200C5CB0A /* WriteClothesDetailsViewController.xib in Resources */,
@@ -835,6 +897,7 @@
 				4F8329F71B5D0DF2005588D7 /* ShowCollectionDetailsViewController.xib in Resources */,
 				4F6341A81B4FBA8200DFC281 /* WipeViewController.xib in Resources */,
 				4FCD2FEF1B5503CD00BD6DDB /* 9.jpeg in Resources */,
+				4F9E7E401B5E3C13006D1E34 /* CreateActivityViewController.xib in Resources */,
 				4F0771691B538E38005D61AB /* CalendarViewController.xib in Resources */,
 				4FCD2FEA1B5503CD00BD6DDB /* 4.jpeg in Resources */,
 				4F8329D21B5CA1C6005588D7 /* CreateCollectionViewController.xib in Resources */,
@@ -845,6 +908,7 @@
 				4F63418E1B4F9FD200DFC281 /* CutAndWipeViewController.xib in Resources */,
 				4F6FB3FB1B58E77500C5CB0A /* cat1.jpg in Resources */,
 				4F6341AA1B4FCAA100DFC281 /* ball.png in Resources */,
+				4F7B64EF1B5F5386004643D2 /* MyCollectionViewController.xib in Resources */,
 				4F6FB3FE1B58E77500C5CB0A /* cat4.jpg in Resources */,
 				4F6FB40A1B5909A300C5CB0A /* ShowClothesDetailsViewController.xib in Resources */,
 				4FCD2FE61B5503CD00BD6DDB /* 1.jpeg in Resources */,
@@ -896,6 +960,7 @@
 				4F85A6351B46480A0077E12E /* main.m in Sources */,
 				4F0771811B53AAA7005D61AB /* AFHTTPSessionManager.m in Sources */,
 				4F6FB3F51B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.m in Sources */,
+				4F9E7E3F1B5E3C13006D1E34 /* CreateActivityViewController.m in Sources */,
 				4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */,
 				4F0771681B538E38005D61AB /* CalendarViewController.m in Sources */,
 				4F62FFF21B57A54D005E8C79 /* UserInfo.m in Sources */,
@@ -914,6 +979,7 @@
 				4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */,
 				4F6FB3F41B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				4F62FFE71B579755005E8C79 /* FMDatabaseAdditions.m in Sources */,
+				4F7B64F31B5F8073004643D2 /* ItemView.m in Sources */,
 				4F8329F61B5D0DF2005588D7 /* ShowCollectionDetailsViewController.m in Sources */,
 				4F6341A31B4FB9A500DFC281 /* MZCroppableView.m in Sources */,
 				4F62FFEA1B579755005E8C79 /* FMResultSet.m in Sources */,
@@ -922,8 +988,10 @@
 				4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */,
 				4F417DBB1B4E6875000BD540 /* RC_NavigationController.m in Sources */,
 				4F0771821B53AAA7005D61AB /* AFNetworkReachabilityManager.m in Sources */,
+				4F7B64EE1B5F5386004643D2 /* MyCollectionViewController.m in Sources */,
 				4F6FB4031B59038200C5CB0A /* WriteClothesDetailsViewController.m in Sources */,
 				4F417DBA1B4E6875000BD540 /* RC_BaseViewController.m in Sources */,
+				4F7B64E81B5F4D46004643D2 /* MyWardrobeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

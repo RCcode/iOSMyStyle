@@ -8,6 +8,7 @@
 
 #import "CalendarViewController.h"
 #import "PWSCalendarView.h"
+#import "CreateActivityViewController.h"
 
 @interface CalendarViewController ()<PWSCalendarDelegate>
 {
@@ -47,6 +48,12 @@
     [self.view addSubview:calendarView];
     [calendarView setDelegate:self];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (IBAction)addActivity:(id)sender {
+    CreateActivityViewController *createActivity = [[CreateActivityViewController alloc]init];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createActivity];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 -(void)setTitleDate:(NSDate *)date

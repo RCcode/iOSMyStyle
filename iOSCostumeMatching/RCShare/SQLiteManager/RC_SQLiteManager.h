@@ -14,7 +14,8 @@ enum TableNameType
 {
     TNTUser,
     TNTWardrobe,
-    TNTCollocation
+    TNTCollocation,
+    TNTActivity
 };
 
 @interface RC_SQLiteManager : NSObject
