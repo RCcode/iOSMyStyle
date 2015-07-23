@@ -10,4 +10,6 @@
 
 @interface CreateActivityViewController : RC_BaseViewController
 
+-(void)setActivityFinishBlock:(void(^)(ActivityInfo *info))activityfinishBlock;
+
 @end

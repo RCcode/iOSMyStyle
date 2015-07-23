@@ -23,6 +23,8 @@
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (weak, nonatomic) IBOutlet UITextField *addTitle;
 
+@property (nonatomic, copy) void(^finish)(ActivityInfo *info);
+
 @end
 
 @implementation CreateActivityViewController
@@ -34,7 +36,29 @@
 
 -(void)doneBtnPressed:(id)sender
 {
-    
+    ActivityInfo *activityInfo = [[ActivityInfo alloc]init];
+    activityInfo.numId = [NSNumber numberWithInt:1];
+    activityInfo.strTitle = @"lalalal";
+    activityInfo.strLocation = @"bei";
+    activityInfo.numIsAllDay = [NSNumber numberWithBool:YES];
+    activityInfo.dateStartTime = [NSDate date];
+    activityInfo.dateFinishTime = [NSDate date];
+    activityInfo.dateFirstRemindTime = [NSDate date];
+    activityInfo.dateSecondRemindTime = [NSDate date];
+    activityInfo.numColor = [NSNumber numberWithInt:1];
+    activityInfo.arrData = _dataArray;
+    activityInfo.strYear = @"2015";
+    activityInfo.strMonth = @"2015";
+    activityInfo.strDay = @"2015";
+    if (_finish) {
+        _finish(activityInfo);
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)setActivityFinishBlock:(void (^)(ActivityInfo *))activityfinishBlock
+{
+    _finish = activityfinishBlock;
 }
 
 - (void)viewDidLoad {

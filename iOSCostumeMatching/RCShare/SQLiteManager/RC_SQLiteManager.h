@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ActivityInfo.h"
 
 typedef enum TableNameType TableNameType;
 
@@ -21,6 +22,7 @@ enum TableNameType
 @interface RC_SQLiteManager : NSObject
 
 + (RC_SQLiteManager *)shareManager;
+-(BOOL)deleteTable:(TableNameType)tableNameType;
 
 -(BOOL)addClothesToWardrobe:(ClothesInfo *)clothesInfo;
 -(BOOL)deleteClotheFromWardrobe:(ClothesInfo *)clothesInfo;
@@ -29,5 +31,8 @@ enum TableNameType
 -(BOOL)addCollection:(CollocationInfo *)collocationInfo;
 -(NSMutableArray *)getAllCollection;
 -(BOOL)deleteCollection:(CollocationInfo *)collocationInfo;
+
+-(BOOL)addActivityInfo:(ActivityInfo *)activityInfo;
+-(NSMutableArray *)getAllActivity;
 
 @end

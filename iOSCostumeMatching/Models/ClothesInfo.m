@@ -10,14 +10,35 @@
 
 @implementation ClothesInfo
 
-//-(id)init
-//{
-//    self = [super init];
-//    if (self) {
-//        <#statements#>
-//    }
-//    return self;
-//}
+//===========================================================
+//  Keyed Archiving
+//
+//===========================================================
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.numClId forKey:@"numClId"];
+    [encoder encodeObject:self.numCateId forKey:@"numCateId"];
+    [encoder encodeObject:self.numScateId forKey:@"numScateId"];
+    [encoder encodeObject:self.numSeaId forKey:@"numSeaId"];
+    [encoder encodeObject:self.strBrand forKey:@"strBrand"];
+    [encoder encodeObject:self.file forKey:@"file"];
+    [encoder encodeObject:self.date forKey:@"date"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (self) {
+        self.numClId = [decoder decodeObjectForKey:@"numClId"];
+        self.numCateId = [decoder decodeObjectForKey:@"numCateId"];
+        self.numScateId = [decoder decodeObjectForKey:@"numScateId"];
+        self.numSeaId = [decoder decodeObjectForKey:@"numSeaId"];
+        self.strBrand = [decoder decodeObjectForKey:@"strBrand"];
+        self.file = [decoder decodeObjectForKey:@"file"];
+        self.date = [decoder decodeObjectForKey:@"date"];
+    }
+    return self;
+}
 
 - (void)dealloc
 {

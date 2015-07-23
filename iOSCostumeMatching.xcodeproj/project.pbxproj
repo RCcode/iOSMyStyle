@@ -38,6 +38,8 @@
 		4F417DDD1B4E8A78000BD540 /* MatchingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DDB1B4E8A78000BD540 /* MatchingViewController.m */; };
 		4F417DDE1B4E8A78000BD540 /* MatchingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F417DDC1B4E8A78000BD540 /* MatchingViewController.xib */; };
 		4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DE31B4E9139000BD540 /* YRSideViewController.m */; };
+		4F5A50661B60A3540001D5D1 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A50641B60A3540001D5D1 /* ActivityCell.m */; };
+		4F5A50671B60A3540001D5D1 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50651B60A3540001D5D1 /* ActivityCell.xib */; };
 		4F62FFE61B579755005E8C79 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDC1B579755005E8C79 /* FMDatabase.m */; };
 		4F62FFE71B579755005E8C79 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDE1B579755005E8C79 /* FMDatabaseAdditions.m */; };
 		4F62FFE81B579755005E8C79 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFE01B579755005E8C79 /* FMDatabasePool.m */; };
@@ -76,6 +78,7 @@
 		4F7B64EE1B5F5386004643D2 /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B64EC1B5F5386004643D2 /* MyCollectionViewController.m */; };
 		4F7B64EF1B5F5386004643D2 /* MyCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7B64ED1B5F5386004643D2 /* MyCollectionViewController.xib */; };
 		4F7B64F31B5F8073004643D2 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B64F21B5F8073004643D2 /* ItemView.m */; };
+		4F7B64F61B5FAA7B004643D2 /* ActivityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B64F51B5FAA7B004643D2 /* ActivityInfo.m */; };
 		4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */; };
 		4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */; };
 		4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */; };
@@ -179,6 +182,9 @@
 		4F417DDC1B4E8A78000BD540 /* MatchingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchingViewController.xib; sourceTree = "<group>"; };
 		4F417DE21B4E9139000BD540 /* YRSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRSideViewController.h; sourceTree = "<group>"; };
 		4F417DE31B4E9139000BD540 /* YRSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRSideViewController.m; sourceTree = "<group>"; };
+		4F5A50631B60A3540001D5D1 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
+		4F5A50641B60A3540001D5D1 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
+		4F5A50651B60A3540001D5D1 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
 		4F62FFDB1B579755005E8C79 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		4F62FFDC1B579755005E8C79 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		4F62FFDD1B579755005E8C79 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -242,6 +248,8 @@
 		4F7B64ED1B5F5386004643D2 /* MyCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionViewController.xib; sourceTree = "<group>"; };
 		4F7B64F11B5F8073004643D2 /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
 		4F7B64F21B5F8073004643D2 /* ItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
+		4F7B64F41B5FAA7B004643D2 /* ActivityInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInfo.h; sourceTree = "<group>"; };
+		4F7B64F51B5FAA7B004643D2 /* ActivityInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityInfo.m; sourceTree = "<group>"; };
 		4F808CA71B54BD6E001A89AA /* RC_RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_RequestManager.h; sourceTree = "<group>"; };
 		4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_RequestManager.m; sourceTree = "<group>"; };
 		4F808CAB1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IS_MobAndAnalyticsManager.h; sourceTree = "<group>"; };
@@ -490,6 +498,8 @@
 				4F62FFF41B57B915005E8C79 /* ClothesInfo.m */,
 				4F62FFF61B57BC4A005E8C79 /* CollocationInfo.h */,
 				4F62FFF71B57BC4A005E8C79 /* CollocationInfo.m */,
+				4F7B64F41B5FAA7B004643D2 /* ActivityInfo.h */,
+				4F7B64F51B5FAA7B004643D2 /* ActivityInfo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -564,6 +574,9 @@
 		4F6FB3DD1B58B7D600C5CB0A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				4F5A50631B60A3540001D5D1 /* ActivityCell.h */,
+				4F5A50641B60A3540001D5D1 /* ActivityCell.m */,
+				4F5A50651B60A3540001D5D1 /* ActivityCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -899,6 +912,7 @@
 				4FCD2FEF1B5503CD00BD6DDB /* 9.jpeg in Resources */,
 				4F9E7E401B5E3C13006D1E34 /* CreateActivityViewController.xib in Resources */,
 				4F0771691B538E38005D61AB /* CalendarViewController.xib in Resources */,
+				4F5A50671B60A3540001D5D1 /* ActivityCell.xib in Resources */,
 				4FCD2FEA1B5503CD00BD6DDB /* 4.jpeg in Resources */,
 				4F8329D21B5CA1C6005588D7 /* CreateCollectionViewController.xib in Resources */,
 				4F417DD21B4E72B8000BD540 /* LeftMenuViewController.xib in Resources */,
@@ -947,6 +961,7 @@
 				4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */,
 				4F8329E61B5CE91E005588D7 /* SPGripViewBorderView.m in Sources */,
 				4F6341A71B4FBA8200DFC281 /* WipeViewController.m in Sources */,
+				4F7B64F61B5FAA7B004643D2 /* ActivityInfo.m in Sources */,
 				4F6341931B4FA44400DFC281 /* UIBezierPath-Points.m in Sources */,
 				4F8329F01B5CF0FF005588D7 /* ZDStickerView.m in Sources */,
 				4F158D841B53BE6D000CA2FA /* PWSHelper.m in Sources */,
@@ -977,6 +992,7 @@
 				4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */,
 				4F62FFE91B579755005E8C79 /* FMDatabaseQueue.m in Sources */,
 				4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */,
+				4F5A50661B60A3540001D5D1 /* ActivityCell.m in Sources */,
 				4F6FB3F41B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				4F62FFE71B579755005E8C79 /* FMDatabaseAdditions.m in Sources */,
 				4F7B64F31B5F8073004643D2 /* ItemView.m in Sources */,

@@ -9,11 +9,16 @@
 #import "CalendarViewController.h"
 #import "PWSCalendarView.h"
 #import "CreateActivityViewController.h"
+#import "ActivityCell.h"
 
-@interface CalendarViewController ()<PWSCalendarDelegate>
+@interface CalendarViewController ()<PWSCalendarDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     PWSCalendarView *calendarView;
+    UITableView *activityTableView;
 }
+
+@property (nonatomic, strong) NSMutableArray *arrActivity;
+
 @end
 
 @implementation CalendarViewController
@@ -47,13 +52,33 @@
     [calendarView setBackgroundColor:[UIColor cyanColor]];
     [self.view addSubview:calendarView];
     [calendarView setDelegate:self];
-    // Do any additional setup after loading the view from its nib.
+    
+    [[RC_SQLiteManager shareManager]deleteTable:TNTActivity];
+    self.arrActivity = [[RC_SQLiteManager shareManager]getAllActivity];
+    
+    activityTableView = [[UITableView alloc]init];
+    [activityTableView registerNib:[UINib nibWithNibName:@"ActivityCell" bundle:nil] forCellReuseIdentifier:@"ActivityCell"];
+    activityTableView.delegate = self;
+    activityTableView.dataSource = self;
+    [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-20-CGRectGetHeight(calendarView.frame))];
+    [self.view insertSubview:activityTableView atIndex:0];
 }
 
 - (IBAction)addActivity:(id)sender {
     CreateActivityViewController *createActivity = [[CreateActivityViewController alloc]init];
+    __weak CalendarViewController *weakSelf = self;
+    [createActivity setActivityFinishBlock:^(ActivityInfo *info) {
+        [weakSelf addNewActivity:info];
+    }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createActivity];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+-(void)addNewActivity:(ActivityInfo *)info
+{
+    [[RC_SQLiteManager shareManager]addActivityInfo:info];
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivity];
+    [activityTableView reloadData];
 }
 
 -(void)setTitleDate:(NSDate *)date
@@ -64,6 +89,40 @@
     [self setNavTitle:strDate];
 }
 
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 125;
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _arrActivity.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityCell"];
+    ActivityInfo *info = [_arrActivity objectAtIndex:[indexPath row]];
+    id object = [info.arrData objectAtIndex:0];
+    UIImage *image;
+    if ([object isKindOfClass:[ClothesInfo class]]) {
+        image = ((ClothesInfo *)object).file;
+    }
+    else
+    {
+        image = ((CollocationInfo *)object).file;
+    }
+    cell.lblTitle.text = [NSString stringWithFormat:@"%d",[info.numId intValue]];
+    [cell.lblTime setText:[NSString stringWithFormat:@"%d",indexPath.row]];
+    [cell.clothesOrCollectionImageView setImage:image];
+    return cell;
+}
+
+
 #pragma mark - PWSCalendarDelegate
 
 - (void) PWSCalendar:(PWSCalendarView*)_calendar didSelecteDate:(NSDate*)_date
@@ -73,6 +132,7 @@
 
 - (void) PWSCalendar:(PWSCalendarView*)_calendar didChangeViewHeight:(CGFloat)_height
 {
+    [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-64-CGRectGetHeight(calendarView.frame))];
 }
 
 - (void)didReceiveMemoryWarning {

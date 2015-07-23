@@ -32,6 +32,41 @@ static RC_SQLiteManager *sqliteManager = nil;
     return sqliteManager;
 }
 
+-(BOOL)deleteTable:(TableNameType)tableNameType
+{
+    if ([_db open]) {
+        NSString *tableName;
+        switch (tableNameType) {
+            case TNTUser:
+            {
+                tableName = @"user";
+                break;
+            }
+            case TNTWardrobe:
+            {
+                tableName = @"Wardrobe";
+                break;
+            }
+            case TNTCollocation:
+            {
+                tableName = @"Collocation";
+                break;
+            }
+            case TNTActivity:
+            {
+                tableName = @"Activity";
+                break;
+            }
+            default:
+                break;
+        }
+        BOOL success = [_db executeUpdate:[NSString stringWithFormat:@"DROP TABLE %@",tableName]];
+        [_db close];
+        return success;
+    }
+    return NO;
+}
+
 -(void)createTable:(TableNameType)tableNameType
 {
     if ([_db open]) {
@@ -113,9 +148,9 @@ static RC_SQLiteManager *sqliteManager = nil;
                 if (![_db tableExists:tableName]) {
                     NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (coId INTEGER,styleId INTEGER,occId INTEGER,description text,file data,list data,date text)",tableName];
                     if ([_db executeUpdate:strExecute]) {
-                        CLog(@"create table Wardrobe success");
+                        CLog(@"create table Collocation success");
                     }else{
-                        CLog(@"fail to create table Wardrobe");
+                        CLog(@"fail to create table Collocation");
                     }
                 }else {
                 }
@@ -124,28 +159,29 @@ static RC_SQLiteManager *sqliteManager = nil;
             case TNTActivity:
             {
                 /**
-                 title        风格id                            int		N
-                 location          场合id                            int		N
-                 isAllDay	描述                              String	255	Y
-                 file           图片文件                           File		N
-                 list           搭配服饰信息列表(传brand不为空衣服)              N
-                 (
-                 clId	服饰id,可为空	int		Y
-                 cateId	一级分类id,所有为0	int		N
-                 scateId	一级分类id,所有为0	int		N
-                 seaId	季节id:0.所有; 1.春夏;2.秋冬	int		N
-                 brand	品牌	String	255	N
-                 )
+                 title           标题
+                 location        位置
+                 isAllDay        全天
+                 startTime       开始时间
+                 finishTime      结束时间
+                 firstRemindTime     第一次提醒时间
+                 secondRemindTime    第二次提醒时间
+                 color           颜色
+                 arrData        衣服或搭配数组
+                 year            年
+                 month           月
+                 day             日
                  
-                 coId	搭配id	int		N
+                 id              活动标识
                  */
+                
                 NSString *tableName = @"Activity";
                 if (![_db tableExists:tableName]) {
-                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (coId INTEGER,styleId INTEGER,occId INTEGER,description text,file data,list data,date text)",tableName];
+                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (id INTEGER PRIMARY KEY AUTOINCREMENT,title text,location text,isAllDay bool,startTime date,finishTime date,firstRemindTime date,secondRemindTime date,color INTEGER,arrData data,year text,month text,day text)",tableName];
                     if ([_db executeUpdate:strExecute]) {
-                        CLog(@"create table Wardrobe success");
+                        CLog(@"create table Activity success");
                     }else{
-                        CLog(@"fail to create table Wardrobe");
+                        CLog(@"fail to create table Activity");
                     }
                 }else {
                 }
@@ -263,5 +299,86 @@ static RC_SQLiteManager *sqliteManager = nil;
     }
     return nil;
 }
+
+#pragma mark -
+
+-(BOOL)addActivityInfo:(ActivityInfo *)activityInfo
+{
+    [self createTable:TNTActivity];
+    if([_db open])
+    {
+        NSMutableData *mData = [[NSMutableData alloc] init];
+        NSKeyedArchiver *myKeyedArchiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:mData];
+        [myKeyedArchiver encodeObject:activityInfo.arrData];
+        [myKeyedArchiver finishEncoding];
+        
+        BOOL success = [_db executeUpdate:@"insert into Activity (title ,location ,isAllDay ,startTime ,finishTime ,firstRemindTime ,secondRemindTime ,color ,arrData ,year ,month ,day) values(?,?,?,?,?,?,?,?,?,?,?,?)",activityInfo.strTitle,activityInfo.strLocation, activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.dateFirstRemindTime,activityInfo.dateSecondRemindTime,activityInfo.numColor,mData,activityInfo.strYear,activityInfo.strMonth,activityInfo.strDay,nil];
+        [_db close];
+        return success;
+    }
+    return NO;
+}
+
+-(NSMutableArray *)getAllActivity
+{
+    [self createTable:TNTActivity];
+    if ([_db open]) {
+        NSMutableArray *arr = [[NSMutableArray alloc]init];
+        NSString *tableName = @"Activity";
+//        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by startTime desc",tableName];
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@",tableName];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            ActivityInfo *activityInfo = [[ActivityInfo alloc]init];
+            
+            activityInfo.numId = [NSNumber numberWithInt:[rs intForColumn:@"id"]];
+            activityInfo.numColor = [NSNumber numberWithInt:[rs intForColumn:@"color"]];
+            activityInfo.numIsAllDay = [NSNumber numberWithInt:[rs intForColumn:@"isAllDay"]];
+            activityInfo.strDay = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"day"]];
+            activityInfo.strLocation = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"location"]];
+            activityInfo.strMonth = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"month"]];
+            activityInfo.strTitle = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"title"]];
+            activityInfo.strYear = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"year"]];
+            activityInfo.dateFinishTime = [rs dateForColumn:@"finishTime"];
+            activityInfo.dateFirstRemindTime = [rs dateForColumn:@"firstRemindTime"];
+            activityInfo.dateSecondRemindTime = [rs dateForColumn:@"secondRemindTime"];
+            activityInfo.dateStartTime = [rs dateForColumn:@"startTime"];
+            
+            NSKeyedUnarchiver *myKeyedUnarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:[rs dataForColumn:@"arrData"]];
+            NSArray *arrData = [myKeyedUnarchiver decodeObject];
+            activityInfo.arrData = arrData;
+            
+            [arr addObject:activityInfo];
+        }
+        [_db close];
+        return arr;
+    }
+    return nil;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
