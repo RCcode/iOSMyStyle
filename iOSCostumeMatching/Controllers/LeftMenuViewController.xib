@@ -47,6 +47,9 @@
                     <state key="normal" title="搭配灵感">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="pressCollectionInspiration:" destination="-1" eventType="touchUpInside" id="CgY-X4-Luv"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCK-wT-R3g">
                     <rect key="frame" x="30" y="306" width="90" height="30"/>

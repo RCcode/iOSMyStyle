@@ -17,6 +17,7 @@
 @property (strong, nonatomic) RC_NavigationController *navWardrobeController;
 @property (strong, nonatomic) RC_NavigationController *navMatchingController;
 @property (strong, nonatomic) RC_NavigationController *navCalendarController;
+@property (strong, nonatomic) RC_NavigationController *navCollectionInspirationController;
 
 @end
 

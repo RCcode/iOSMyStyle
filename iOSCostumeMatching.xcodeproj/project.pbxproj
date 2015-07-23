@@ -42,6 +42,8 @@
 		4F5A50671B60A3540001D5D1 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50651B60A3540001D5D1 /* ActivityCell.xib */; };
 		4F5A506D1B60E48B0001D5D1 /* ShowActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A506B1B60E48B0001D5D1 /* ShowActivityViewController.m */; };
 		4F5A506E1B60E48B0001D5D1 /* ShowActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A506C1B60E48B0001D5D1 /* ShowActivityViewController.xib */; };
+		4F5A50781B60EC050001D5D1 /* CollectionInspirationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A50761B60EC050001D5D1 /* CollectionInspirationViewController.m */; };
+		4F5A50791B60EC050001D5D1 /* CollectionInspirationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50771B60EC050001D5D1 /* CollectionInspirationViewController.xib */; };
 		4F62FFE61B579755005E8C79 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDC1B579755005E8C79 /* FMDatabase.m */; };
 		4F62FFE71B579755005E8C79 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDE1B579755005E8C79 /* FMDatabaseAdditions.m */; };
 		4F62FFE81B579755005E8C79 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFE01B579755005E8C79 /* FMDatabasePool.m */; };
@@ -190,6 +192,9 @@
 		4F5A506A1B60E48B0001D5D1 /* ShowActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowActivityViewController.h; sourceTree = "<group>"; };
 		4F5A506B1B60E48B0001D5D1 /* ShowActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowActivityViewController.m; sourceTree = "<group>"; };
 		4F5A506C1B60E48B0001D5D1 /* ShowActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowActivityViewController.xib; sourceTree = "<group>"; };
+		4F5A50751B60EC050001D5D1 /* CollectionInspirationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionInspirationViewController.h; sourceTree = "<group>"; };
+		4F5A50761B60EC050001D5D1 /* CollectionInspirationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionInspirationViewController.m; sourceTree = "<group>"; };
+		4F5A50771B60EC050001D5D1 /* CollectionInspirationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionInspirationViewController.xib; sourceTree = "<group>"; };
 		4F62FFDB1B579755005E8C79 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		4F62FFDC1B579755005E8C79 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		4F62FFDD1B579755005E8C79 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -473,6 +478,9 @@
 				4F0771651B538E38005D61AB /* CalendarViewController.h */,
 				4F0771661B538E38005D61AB /* CalendarViewController.m */,
 				4F0771671B538E38005D61AB /* CalendarViewController.xib */,
+				4F5A50751B60EC050001D5D1 /* CollectionInspirationViewController.h */,
+				4F5A50761B60EC050001D5D1 /* CollectionInspirationViewController.m */,
+				4F5A50771B60EC050001D5D1 /* CollectionInspirationViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -945,6 +953,7 @@
 				4FCD2FE61B5503CD00BD6DDB /* 1.jpeg in Resources */,
 				4F85A6401B46480A0077E12E /* Images.xcassets in Resources */,
 				4F8329EB1B5CEB43005588D7 /* ic_main_del@2x.png in Resources */,
+				4F5A50791B60EC050001D5D1 /* CollectionInspirationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -973,6 +982,7 @@
 				4F07719C1B53AB02005D61AB /* MBProgressHUD.m in Sources */,
 				4F0771801B53AAA7005D61AB /* AFHTTPRequestOperationManager.m in Sources */,
 				4F158D871B53BE6D000CA2FA /* PWSCalendarViewCell.m in Sources */,
+				4F5A50781B60EC050001D5D1 /* CollectionInspirationViewController.m in Sources */,
 				4F07717F1B53AAA7005D61AB /* AFHTTPRequestOperation.m in Sources */,
 				4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */,
 				4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */,

@@ -40,6 +40,13 @@
     [sideViewController hideSideViewController:YES];
 }
 
+- (IBAction)pressCollectionInspiration:(id)sender {
+    AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+    YRSideViewController *sideViewController=[delegate sideViewController];
+    sideViewController.rootViewController=delegate.navCollectionInspirationController;
+    [sideViewController hideSideViewController:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

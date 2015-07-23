@@ -1,28 +1,23 @@
 //
-//  MatchingViewController.m
+//  CollectionInspirationViewController.m
 //  iOSCostumeMatching
 //
-//  Created by TCH on 15/7/9.
+//  Created by TCH on 15/7/23.
 //  Copyright (c) 2015年 TCH. All rights reserved.
 //
 
-#import "MatchingViewController.h"
-#import "CreateCollectionViewController.h"
+#import "CollectionInspirationViewController.h"
 #import "CHTCollectionViewWaterfallCell.h"
-#import "ShowCollectionDetailsViewController.h"
 
-#define CELL_IDENTIFIER @"MatchingCell"
+#define CELL_IDENTIFIER @"CollectionInspirationCell"
 
-@interface MatchingViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface CollectionInspirationViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     UICollectionView *_collectionView;  // 集合视图
 }
-
-@property (nonatomic, strong) NSMutableArray *arrCollection;
-
 @end
 
-@implementation MatchingViewController
+@implementation CollectionInspirationViewController
 
 -(void)returnBtnPressed:(id)sender
 {
@@ -34,35 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.showReturn = YES;
-    [self setNavTitle:@"我的搭配"];
+    [self setNavTitle:@"搭配灵感"];
     [self setReturnBtnTitle:@"菜单"];
     
-    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
     [self createCollectionView];
-}
-
-- (IBAction)addCollection:(id)sender {
-    CreateCollectionViewController *createCollection = [[CreateCollectionViewController alloc]init];
-    __weak MatchingViewController *weakSelf = self;
-    [createCollection setCollectionFinishBlock:^(CollocationInfo *info) {
-        [weakSelf addCollocation:info];
-    }];
-    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createCollection];
-    [self presentViewController:nav animated:YES completion:nil];
-}
-
--(void)addCollocation:(CollocationInfo *)info
-{
-    info.numCoId = [NSNumber numberWithInt:(int)(_arrCollection.count+1)];
-    
-    [[RC_SQLiteManager shareManager]addCollection:info];
-    
-    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
-    
     [_collectionView reloadData];
+    // Do any additional setup after loading the view from its nib.
 }
 
-#pragma mark - View
 - (void)createCollectionView
 {
     // 创建布局对象，需要对显示图片的布局进行调整所有传递给布局对象
@@ -70,7 +44,6 @@
     
     // layout 决定来 collectionView 中所有 cell (单元格) 的布局
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavBarHeight-20) collectionViewLayout:flowLayout];
-    
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     
@@ -79,15 +52,14 @@
     
     _collectionView.backgroundColor = [UIColor clearColor];
     
-    [self.view insertSubview:_collectionView atIndex:0];
-    
+    [self.view addSubview:_collectionView];
 } // 创建集合视图
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return _arrCollection.count;
+    return 10;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -95,8 +67,7 @@
     CHTCollectionViewWaterfallCell *cell =
     (CHTCollectionViewWaterfallCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
                                                                                 forIndexPath:indexPath];
-    ClothesInfo *info = [_arrCollection objectAtIndex:indexPath.row];
-    cell.image = info.file;
+    cell.image = [UIImage imageNamed:@"ball"];
     return cell;
 }
 
@@ -115,21 +86,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ShowCollectionDetailsViewController *showDetails = [[ShowCollectionDetailsViewController alloc]init];
-    [showDetails setCollocationInfo:[_arrCollection objectAtIndex:indexPath.row]];
-    __weak MatchingViewController *weakSelf = self;
-    [showDetails setDeleteBlock:^(CollocationInfo *info) {
-        [weakSelf deleteCollection:info];
-    }];
-    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showDetails];
-    [self presentViewController:nav animated:YES completion:nil];
-}
-
--(void)deleteCollection:(CollocationInfo *)info
-{
-    [[RC_SQLiteManager shareManager]deleteCollection:info];
-    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
-    [_collectionView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
