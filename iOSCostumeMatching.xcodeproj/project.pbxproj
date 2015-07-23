@@ -40,6 +40,8 @@
 		4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DE31B4E9139000BD540 /* YRSideViewController.m */; };
 		4F5A50661B60A3540001D5D1 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A50641B60A3540001D5D1 /* ActivityCell.m */; };
 		4F5A50671B60A3540001D5D1 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50651B60A3540001D5D1 /* ActivityCell.xib */; };
+		4F5A506D1B60E48B0001D5D1 /* ShowActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A506B1B60E48B0001D5D1 /* ShowActivityViewController.m */; };
+		4F5A506E1B60E48B0001D5D1 /* ShowActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A506C1B60E48B0001D5D1 /* ShowActivityViewController.xib */; };
 		4F62FFE61B579755005E8C79 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDC1B579755005E8C79 /* FMDatabase.m */; };
 		4F62FFE71B579755005E8C79 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDE1B579755005E8C79 /* FMDatabaseAdditions.m */; };
 		4F62FFE81B579755005E8C79 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFE01B579755005E8C79 /* FMDatabasePool.m */; };
@@ -185,6 +187,9 @@
 		4F5A50631B60A3540001D5D1 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		4F5A50641B60A3540001D5D1 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		4F5A50651B60A3540001D5D1 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
+		4F5A506A1B60E48B0001D5D1 /* ShowActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowActivityViewController.h; sourceTree = "<group>"; };
+		4F5A506B1B60E48B0001D5D1 /* ShowActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowActivityViewController.m; sourceTree = "<group>"; };
+		4F5A506C1B60E48B0001D5D1 /* ShowActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowActivityViewController.xib; sourceTree = "<group>"; };
 		4F62FFDB1B579755005E8C79 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		4F62FFDC1B579755005E8C79 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		4F62FFDD1B579755005E8C79 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -446,6 +451,7 @@
 		4F417DCA1B4E7285000BD540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F5A50691B60E4310001D5D1 /* ShowActivity */,
 				4F7B64EA1B5F536B004643D2 /* MyCollection */,
 				4F7B64E41B5F4D21004643D2 /* MyWardrobe */,
 				4F9E7E3B1B5E3BF2006D1E34 /* CreateActivity */,
@@ -469,6 +475,16 @@
 				4F0771671B538E38005D61AB /* CalendarViewController.xib */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4F5A50691B60E4310001D5D1 /* ShowActivity */ = {
+			isa = PBXGroup;
+			children = (
+				4F5A506A1B60E48B0001D5D1 /* ShowActivityViewController.h */,
+				4F5A506B1B60E48B0001D5D1 /* ShowActivityViewController.m */,
+				4F5A506C1B60E48B0001D5D1 /* ShowActivityViewController.xib */,
+			);
+			path = ShowActivity;
 			sourceTree = "<group>";
 		};
 		4F62FFDA1B57974B005E8C79 /* FMDB */ = {
@@ -912,6 +928,7 @@
 				4FCD2FEF1B5503CD00BD6DDB /* 9.jpeg in Resources */,
 				4F9E7E401B5E3C13006D1E34 /* CreateActivityViewController.xib in Resources */,
 				4F0771691B538E38005D61AB /* CalendarViewController.xib in Resources */,
+				4F5A506E1B60E48B0001D5D1 /* ShowActivityViewController.xib in Resources */,
 				4F5A50671B60A3540001D5D1 /* ActivityCell.xib in Resources */,
 				4FCD2FEA1B5503CD00BD6DDB /* 4.jpeg in Resources */,
 				4F8329D21B5CA1C6005588D7 /* CreateCollectionViewController.xib in Resources */,
@@ -981,6 +998,7 @@
 				4F62FFF21B57A54D005E8C79 /* UserInfo.m in Sources */,
 				4F417DD81B4E8960000BD540 /* WardrobeViewController.m in Sources */,
 				4F0771841B53AAA7005D61AB /* AFURLConnectionOperation.m in Sources */,
+				4F5A506D1B60E48B0001D5D1 /* ShowActivityViewController.m in Sources */,
 				4F0771851B53AAA7005D61AB /* AFURLRequestSerialization.m in Sources */,
 				4F0771871B53AAA7005D61AB /* AFURLSessionManager.m in Sources */,
 				4F0771861B53AAA7005D61AB /* AFURLResponseSerialization.m in Sources */,

@@ -10,6 +10,7 @@
 #import "PWSCalendarView.h"
 #import "CreateActivityViewController.h"
 #import "ActivityCell.h"
+#import "ShowActivityViewController.h"
 
 @interface CalendarViewController ()<PWSCalendarDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -53,7 +54,7 @@
     [self.view addSubview:calendarView];
     [calendarView setDelegate:self];
     
-    [[RC_SQLiteManager shareManager]deleteTable:TNTActivity];
+//    [[RC_SQLiteManager shareManager]deleteTable:TNTActivity];
     self.arrActivity = [[RC_SQLiteManager shareManager]getAllActivity];
     
     activityTableView = [[UITableView alloc]init];
@@ -94,6 +95,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 125;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ShowActivityViewController *showActivity = [[ShowActivityViewController alloc]init];
+    showActivity.activityInfo = [_arrActivity objectAtIndex:indexPath.row];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showActivity];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource
