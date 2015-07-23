@@ -47,6 +47,13 @@
     [sideViewController hideSideViewController:YES];
 }
 
+- (IBAction)pressLike:(id)sender {
+    AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+    YRSideViewController *sideViewController=[delegate sideViewController];
+    sideViewController.rootViewController=delegate.navLikeController;
+    [sideViewController hideSideViewController:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

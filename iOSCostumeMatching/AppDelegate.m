@@ -12,6 +12,7 @@
 #import "MatchingViewController.h"
 #import "CalendarViewController.h"
 #import "CollectionInspirationViewController.h"
+#import "LikeViewController.h"
 
 @interface AppDelegate ()
 
@@ -38,6 +39,9 @@
     
     CollectionInspirationViewController *collectionInspirationViewController = [[CollectionInspirationViewController alloc]init];
     _navCollectionInspirationController = [[RC_NavigationController alloc]initWithRootViewController:collectionInspirationViewController];
+    
+    LikeViewController *likeViewController = [[LikeViewController alloc]init];
+    _navLikeController = [[RC_NavigationController alloc]initWithRootViewController:likeViewController];
     
     _sideViewController=[[YRSideViewController alloc]initWithNibName:nil bundle:nil];
     _sideViewController.rootViewController=_navWardrobeController;

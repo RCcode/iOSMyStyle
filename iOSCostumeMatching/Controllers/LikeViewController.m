@@ -1,24 +1,25 @@
 //
-//  CollectionInspirationViewController.m
+//  LikeViewController.m
 //  iOSCostumeMatching
 //
 //  Created by TCH on 15/7/23.
 //  Copyright (c) 2015年 TCH. All rights reserved.
 //
 
-#import "CollectionInspirationViewController.h"
+#import "LikeViewController.h"
 #import "CHTCollectionViewWaterfallCell.h"
-#import "ShowCollectionInspirationDetailsViewController.h"
+#import "LikeDetailViewController.h"
 
-#define CELL_IDENTIFIER @"CollectionInspirationCell"
+#define CELL_IDENTIFIER @"LikeCell"
 
-@interface CollectionInspirationViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface LikeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     UICollectionView *_collectionView;  // 集合视图
 }
+
 @end
 
-@implementation CollectionInspirationViewController
+@implementation LikeViewController
 
 -(void)returnBtnPressed:(id)sender
 {
@@ -29,6 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     self.showReturn = YES;
     [self setNavTitle:@"搭配灵感"];
     [self setReturnBtnTitle:@"菜单"];
@@ -87,10 +90,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ShowCollectionInspirationDetailsViewController *showDetail = [[ShowCollectionInspirationDetailsViewController alloc]init];
-    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showDetail];
+    LikeDetailViewController *likeDetail = [[LikeDetailViewController alloc]init];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:likeDetail];
     [self presentViewController:nav animated:YES completion:nil];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

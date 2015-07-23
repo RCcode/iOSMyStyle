@@ -44,6 +44,12 @@
 		4F5A506E1B60E48B0001D5D1 /* ShowActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A506C1B60E48B0001D5D1 /* ShowActivityViewController.xib */; };
 		4F5A50781B60EC050001D5D1 /* CollectionInspirationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A50761B60EC050001D5D1 /* CollectionInspirationViewController.m */; };
 		4F5A50791B60EC050001D5D1 /* CollectionInspirationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50771B60EC050001D5D1 /* CollectionInspirationViewController.xib */; };
+		4F5A507E1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A507C1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.m */; };
+		4F5A507F1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A507D1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.xib */; };
+		4F5A50831B60F28F0001D5D1 /* LikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A50811B60F28F0001D5D1 /* LikeViewController.m */; };
+		4F5A50841B60F28F0001D5D1 /* LikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50821B60F28F0001D5D1 /* LikeViewController.xib */; };
+		4F5A508A1B60FAB70001D5D1 /* LikeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A50881B60FAB70001D5D1 /* LikeDetailViewController.m */; };
+		4F5A508B1B60FAB70001D5D1 /* LikeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50891B60FAB70001D5D1 /* LikeDetailViewController.xib */; };
 		4F62FFE61B579755005E8C79 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDC1B579755005E8C79 /* FMDatabase.m */; };
 		4F62FFE71B579755005E8C79 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDE1B579755005E8C79 /* FMDatabaseAdditions.m */; };
 		4F62FFE81B579755005E8C79 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFE01B579755005E8C79 /* FMDatabasePool.m */; };
@@ -195,6 +201,15 @@
 		4F5A50751B60EC050001D5D1 /* CollectionInspirationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionInspirationViewController.h; sourceTree = "<group>"; };
 		4F5A50761B60EC050001D5D1 /* CollectionInspirationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionInspirationViewController.m; sourceTree = "<group>"; };
 		4F5A50771B60EC050001D5D1 /* CollectionInspirationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionInspirationViewController.xib; sourceTree = "<group>"; };
+		4F5A507B1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCollectionInspirationDetailsViewController.h; sourceTree = "<group>"; };
+		4F5A507C1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCollectionInspirationDetailsViewController.m; sourceTree = "<group>"; };
+		4F5A507D1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowCollectionInspirationDetailsViewController.xib; sourceTree = "<group>"; };
+		4F5A50801B60F28F0001D5D1 /* LikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeViewController.h; sourceTree = "<group>"; };
+		4F5A50811B60F28F0001D5D1 /* LikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeViewController.m; sourceTree = "<group>"; };
+		4F5A50821B60F28F0001D5D1 /* LikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeViewController.xib; sourceTree = "<group>"; };
+		4F5A50871B60FAB70001D5D1 /* LikeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeDetailViewController.h; sourceTree = "<group>"; };
+		4F5A50881B60FAB70001D5D1 /* LikeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeDetailViewController.m; sourceTree = "<group>"; };
+		4F5A50891B60FAB70001D5D1 /* LikeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeDetailViewController.xib; sourceTree = "<group>"; };
 		4F62FFDB1B579755005E8C79 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		4F62FFDC1B579755005E8C79 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		4F62FFDD1B579755005E8C79 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -456,6 +471,8 @@
 		4F417DCA1B4E7285000BD540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F5A50851B60FA820001D5D1 /* LikeDetail */,
+				4F5A507A1B60F0630001D5D1 /* ShowCollectionInspirationDetails */,
 				4F5A50691B60E4310001D5D1 /* ShowActivity */,
 				4F7B64EA1B5F536B004643D2 /* MyCollection */,
 				4F7B64E41B5F4D21004643D2 /* MyWardrobe */,
@@ -481,6 +498,9 @@
 				4F5A50751B60EC050001D5D1 /* CollectionInspirationViewController.h */,
 				4F5A50761B60EC050001D5D1 /* CollectionInspirationViewController.m */,
 				4F5A50771B60EC050001D5D1 /* CollectionInspirationViewController.xib */,
+				4F5A50801B60F28F0001D5D1 /* LikeViewController.h */,
+				4F5A50811B60F28F0001D5D1 /* LikeViewController.m */,
+				4F5A50821B60F28F0001D5D1 /* LikeViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -493,6 +513,26 @@
 				4F5A506C1B60E48B0001D5D1 /* ShowActivityViewController.xib */,
 			);
 			path = ShowActivity;
+			sourceTree = "<group>";
+		};
+		4F5A507A1B60F0630001D5D1 /* ShowCollectionInspirationDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4F5A507B1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.h */,
+				4F5A507C1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.m */,
+				4F5A507D1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.xib */,
+			);
+			path = ShowCollectionInspirationDetails;
+			sourceTree = "<group>";
+		};
+		4F5A50851B60FA820001D5D1 /* LikeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4F5A50871B60FAB70001D5D1 /* LikeDetailViewController.h */,
+				4F5A50881B60FAB70001D5D1 /* LikeDetailViewController.m */,
+				4F5A50891B60FAB70001D5D1 /* LikeDetailViewController.xib */,
+			);
+			path = LikeDetail;
 			sourceTree = "<group>";
 		};
 		4F62FFDA1B57974B005E8C79 /* FMDB */ = {
@@ -921,6 +961,7 @@
 				4F8329ED1B5CEB63005588D7 /* ic_main_operate@2x.png in Resources */,
 				4F6FB3FD1B58E77500C5CB0A /* cat3.jpg in Resources */,
 				4FCD2FEE1B5503CD00BD6DDB /* 8.jpeg in Resources */,
+				4F5A50841B60F28F0001D5D1 /* LikeViewController.xib in Resources */,
 				4FCD2FEC1B5503CD00BD6DDB /* 6.jpeg in Resources */,
 				4FCD2FEB1B5503CD00BD6DDB /* 5.jpeg in Resources */,
 				4FCD2FE81B5503CD00BD6DDB /* 2.jpeg in Resources */,
@@ -929,6 +970,7 @@
 				4F7B64E91B5F4D46004643D2 /* MyWardrobeViewController.xib in Resources */,
 				4FCD2FED1B5503CD00BD6DDB /* 7.jpeg in Resources */,
 				4FCD2FE71B5503CD00BD6DDB /* 10.jpeg in Resources */,
+				4F5A508B1B60FAB70001D5D1 /* LikeDetailViewController.xib in Resources */,
 				4F6FB4041B59038200C5CB0A /* WriteClothesDetailsViewController.xib in Resources */,
 				4F6FB3FC1B58E77500C5CB0A /* cat2.jpg in Resources */,
 				4F8329F71B5D0DF2005588D7 /* ShowCollectionDetailsViewController.xib in Resources */,
@@ -954,6 +996,7 @@
 				4F85A6401B46480A0077E12E /* Images.xcassets in Resources */,
 				4F8329EB1B5CEB43005588D7 /* ic_main_del@2x.png in Resources */,
 				4F5A50791B60EC050001D5D1 /* CollectionInspirationViewController.xib in Resources */,
+				4F5A507F1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,6 +1031,7 @@
 				4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */,
 				4F8329E61B5CE91E005588D7 /* SPGripViewBorderView.m in Sources */,
 				4F6341A71B4FBA8200DFC281 /* WipeViewController.m in Sources */,
+				4F5A50831B60F28F0001D5D1 /* LikeViewController.m in Sources */,
 				4F7B64F61B5FAA7B004643D2 /* ActivityInfo.m in Sources */,
 				4F6341931B4FA44400DFC281 /* UIBezierPath-Points.m in Sources */,
 				4F8329F01B5CF0FF005588D7 /* ZDStickerView.m in Sources */,
@@ -1006,9 +1050,11 @@
 				4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */,
 				4F0771681B538E38005D61AB /* CalendarViewController.m in Sources */,
 				4F62FFF21B57A54D005E8C79 /* UserInfo.m in Sources */,
+				4F5A507E1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.m in Sources */,
 				4F417DD81B4E8960000BD540 /* WardrobeViewController.m in Sources */,
 				4F0771841B53AAA7005D61AB /* AFURLConnectionOperation.m in Sources */,
 				4F5A506D1B60E48B0001D5D1 /* ShowActivityViewController.m in Sources */,
+				4F5A508A1B60FAB70001D5D1 /* LikeDetailViewController.m in Sources */,
 				4F0771851B53AAA7005D61AB /* AFURLRequestSerialization.m in Sources */,
 				4F0771871B53AAA7005D61AB /* AFURLSessionManager.m in Sources */,
 				4F0771861B53AAA7005D61AB /* AFURLResponseSerialization.m in Sources */,
