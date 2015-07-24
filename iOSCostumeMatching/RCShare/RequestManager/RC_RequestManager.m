@@ -12,8 +12,13 @@
 
 #define InstagramGetAccess_tokenURL  @"https://api.instagram.com/oauth/access_token?scope=likes+relationships"
 
-#define ServerRootURL                @"http://f4f.rcplatformhk.net/RcGetFollowsWeb/V2%@"
-//#define ServerRootURL                @"http://192.168.0.86:8084/RcGetFollowsWeb/V2%@"
+//#define ServerRootURL                @"http://f4f.rcplatformhk.net/RcGetFollowsWeb/V2%@"
+//#define ServerRootURL                @"http://192.168.0.86:8082/MyStyle%@"
+#define ServerRootURL                @"http://192.168.0.89:8083/MyStyleWeb%@"
+#define LoginURL                     @"/user/login.do"
+
+
+
 #define RegisteUseInfoURL            @"/user/registeUseInfo.do"
 #define UpdateClassifyURL            @"/user/updateClassify.do"
 #define GetFollowsURL                @"/user/getFollows.do"
@@ -140,6 +145,27 @@ static RC_RequestManager *requestManager = nil;
         }
     }];
     
+}
+
+-(void)loginWith:(UserInfo *)userInfo success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+{
+    if (![self checkNetWorking])
+        return;
+    NSDictionary *params = @{@"uid":userInfo.strUid,@"tplat":userInfo.numTplat,@"token":userInfo.strToken,@"tname":userInfo.strTname,@"plat":userInfo.numPlat};
+    
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:30];
+    
+    NSString *url = [NSString stringWithFormat:ServerRootURL,LoginURL];
+    [self requestServiceWithPost:url parameters:params jsonRequestSerializer:requestSerializer success:^(id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 }
 
 /**

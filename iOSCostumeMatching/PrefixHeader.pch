@@ -19,14 +19,14 @@
 #import "Public.h"
 #import "YRSideViewController.h"
 #import "AppDelegate.h"
-
+#import "UserInfo.h"
 #import "ClothesInfo.h"
 #import "CollocationInfo.h"
 #import "RC_SQLiteManager.h"
 #import "ActivityInfo.h"
 
 //#import "IS_MobAndAnalyticsManager.h"
-//#import "RC_RequestManager.h"
+#import "RC_RequestManager.h"
 //#import "RC_LocalDataManager.h"
 //#import "UIImageView+WebCache.h"
 //#import "UserInfo.h"

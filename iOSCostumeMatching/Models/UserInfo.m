@@ -10,6 +10,35 @@
 
 @implementation UserInfo
 
++ (NSString *)userDataPath
+{
+    return [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"UserData.data"];
+}
+
++ (void)archiverUserInfo:(UserInfo *)userInfo
+{
+    [NSKeyedArchiver archiveRootObject:userInfo toFile:[UserInfo userDataPath]];
+}
+
++ (UserInfo *)unarchiverUserData
+{
+    if(![[NSFileManager defaultManager] fileExistsAtPath:[self userDataPath]])
+    {
+        return nil;
+    }
+    
+    UserInfo *info = [NSKeyedUnarchiver unarchiveObjectWithFile:[UserInfo userDataPath]];
+    
+    return info;
+}
+
++ (void)deleteArchieveData
+{
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[self userDataPath]]) {
+        [[NSFileManager defaultManager] removeItemAtPath:[self userDataPath] error:nil];
+    }
+}
+
 //===========================================================
 // dealloc
 //===========================================================
@@ -24,8 +53,9 @@
     self.strTname = nil;
     self.strEmail = nil;
     self.strBirth = nil;
-    self.pic = nil;
+    self.strPicURL = nil;
     self.strCountry = nil;
+    self.numLocalId = nil;
 }
 
 //===========================================================
@@ -43,8 +73,9 @@
     [encoder encodeObject:self.strTname forKey:@"strTname"];
     [encoder encodeObject:self.strEmail forKey:@"strEmail"];
     [encoder encodeObject:self.strBirth forKey:@"strBirth"];
-    [encoder encodeObject:self.pic forKey:@"pic"];
+    [encoder encodeObject:self.strPicURL forKey:@"strPicURL"];
     [encoder encodeObject:self.strCountry forKey:@"strCountry"];
+    [encoder encodeObject:self.numLocalId forKey:@"numLocalId"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -60,8 +91,9 @@
         self.strTname  = [decoder decodeObjectForKey:@"strTname"];
         self.strEmail  = [decoder decodeObjectForKey:@"strEmail"];
         self.strBirth  = [decoder decodeObjectForKey:@"strBirth"];
-        self.pic  = [decoder decodeObjectForKey:@"pic"];
+        self.strPicURL  = [decoder decodeObjectForKey:@"strPicURL"];
         self.strCountry  = [decoder decodeObjectForKey:@"strCountry"];
+        self.numLocalId = [decoder decodeObjectForKey:@"numLocalId"];
     }
     return self;
 }

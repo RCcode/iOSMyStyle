@@ -86,12 +86,13 @@ static RC_SQLiteManager *sqliteManager = nil;
                  akey       android推送key             String	Y
                  gender     性别:0.女;1.男              int		Y
                  birth      生日(yyyy-MM-dd)           datetime	Y
-                 pic        头像                       String	Y
+                 picURL        头像                       String	Y
                  country	国家                       String	Y
+                 localId    本地自增标识
                  */
-                NSString *tableName = @"user";
+                NSString *tableName = @"User";
                 if (![_db tableExists:tableName]) {
-                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (id INTEGER,uid text,tplat INTEGER,token text,tname text,plat INTEGER,email text, ikey text,akey text,gender INTEGER,birth text,pic data,country text)",tableName];
+                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (localId INTEGER PRIMARY KEY AUTOINCREMENT,id INTEGER,uid text,tplat INTEGER,token text,tname text,plat INTEGER,email text, ikey text,akey text,gender INTEGER,birth text,picURL text,country text)",tableName];
                     if ([_db executeUpdate:strExecute]) {
                         CLog(@"create table Wardrobe success");
                     }else{
@@ -195,6 +196,20 @@ static RC_SQLiteManager *sqliteManager = nil;
         NSLog(@"fail to open");
     }
 }
+
+-(BOOL)addUser:(UserInfo *)userInfo
+{
+    [self createTable:TNTUser];
+    if([_db open])
+    {
+        BOOL success = [_db executeUpdate:@"insert into User (localId ,id ,uid ,tplat ,token ,tname ,plat ,picURL) values(?,?,?,?,?,?,?,?)",[NSNumber numberWithInt:1],userInfo.numId, userInfo.strUid, userInfo.numTplat, userInfo.strToken, userInfo.strTname,userInfo.numPlat,userInfo.strPicURL,nil];
+        [_db close];
+        return success;
+    }
+    return NO;
+}
+
+#pragma mark -
 
 -(BOOL)addClothesToWardrobe:(ClothesInfo *)clothesInfo
 {

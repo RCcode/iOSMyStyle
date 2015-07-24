@@ -23,8 +23,10 @@
  akey       android推送key             String	Y
  gender     性别:0.女;1.男              int		Y
  birth      生日(yyyy-MM-dd)           datetime	Y
- pic        头像                       String	Y
+ picURL        头像                       String	Y
  country	国家                       String	Y
+ 
+ localId    本地自增标识
  */
 
 @property (nonatomic, copy) NSNumber *numId;
@@ -36,7 +38,13 @@
 @property (nonatomic, copy) NSString *strEmail;
 @property (nonatomic, copy) NSNumber *numGender;
 @property (nonatomic, copy) NSString *strBirth;
-@property (nonatomic, copy) UIImage *pic;
+@property (nonatomic, copy) NSString *strPicURL;
 @property (nonatomic, copy) NSString *strCountry;
+
+@property (nonatomic, copy) NSNumber *numLocalId;
+
++ (void)archiverUserInfo:(UserInfo *)userInfo;
++ (UserInfo *)unarchiverUserData;
++ (void)deleteArchieveData;
 
 @end
