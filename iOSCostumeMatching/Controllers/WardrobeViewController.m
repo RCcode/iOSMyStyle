@@ -268,13 +268,19 @@
 
 -(void)addClothesToWardrobe:(ClothesInfo *)info
 {
-    info.numClId = [NSNumber numberWithInt:(int)(_arrClothes.count+1)];
+    [[RC_RequestManager shareManager]addClothingWithColothesInfo:info success:^(id responseObject) {
+        CLog(@"%@",responseObject);
+    } andFailed:^(NSError *error) {
+        CLog(@"%@",error);
+    }];
     
-    [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
-    
-    self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
-    
-    [_collectionView reloadData];
+//    info.numClId = [NSNumber numberWithInt:(int)(_arrClothes.count+1)];
+//    
+//    [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
+//    
+//    self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+//    
+//    [_collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -92,7 +92,7 @@ static RC_SQLiteManager *sqliteManager = nil;
                  */
                 NSString *tableName = @"User";
                 if (![_db tableExists:tableName]) {
-                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (localId INTEGER PRIMARY KEY AUTOINCREMENT,id INTEGER,uid text,tplat INTEGER,token text,tname text,plat INTEGER,email text, ikey text,akey text,gender INTEGER,birth text,picURL text,country text)",tableName];
+                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (localId INTEGER PRIMARY KEY AUTOINCREMENT,id INTEGER,uid text,tplat INTEGER,token text(100),tname text,plat INTEGER,email text, ikey text,akey text,gender INTEGER,birth text,picURL text,country text)",tableName];
                     if ([_db executeUpdate:strExecute]) {
                         CLog(@"create table Wardrobe success");
                     }else{
@@ -202,7 +202,34 @@ static RC_SQLiteManager *sqliteManager = nil;
     [self createTable:TNTUser];
     if([_db open])
     {
-        BOOL success = [_db executeUpdate:@"insert into User (localId ,id ,uid ,tplat ,token ,tname ,plat ,picURL) values(?,?,?,?,?,?,?,?)",[NSNumber numberWithInt:1],userInfo.numId, userInfo.strUid, userInfo.numTplat, userInfo.strToken, userInfo.strTname,userInfo.numPlat,userInfo.strPicURL,nil];
+        BOOL isExit = NO;
+        NSString * sql = [NSString stringWithFormat:@"select * from User where uid = %@",userInfo.strUid];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            isExit = YES;
+        }
+        BOOL success;
+        if (isExit) {
+            NSString *updateSql = [[NSString alloc] initWithFormat:@"UPDATE User SET id = %@ ,token = '%@' ,tname = '%@', picURL = '%@' where uid = %@",userInfo.numId,userInfo.strToken,userInfo.strTname,userInfo.strPicURL,userInfo.strUid];
+            success = [_db executeUpdate:updateSql];
+        }
+        else
+        {
+            success = [_db executeUpdate:@"insert into User (id ,uid ,tplat ,token ,tname ,plat ,picURL) values(?,?,?,?,?,?,?)",userInfo.numId, userInfo.strUid, userInfo.numTplat, userInfo.strToken, userInfo.strTname,userInfo.numPlat,userInfo.strPicURL,nil];
+        }
+        
+        [_db close];
+        return success;
+    }
+    return NO;
+}
+
+-(BOOL)deleteUser:(UserInfo *)userInfo
+{
+    [self createTable:TNTUser];
+    if([_db open])
+    {
+        BOOL success = [_db executeUpdate:@"delete from User where uid = ?",userInfo.strUid,nil];
         [_db close];
         return success;
     }

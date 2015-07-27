@@ -24,6 +24,7 @@ enum TableNameType
 + (RC_SQLiteManager *)shareManager;
 -(BOOL)deleteTable:(TableNameType)tableNameType;
 
+-(BOOL)deleteUser:(UserInfo *)userInfo;
 -(BOOL)addUser:(UserInfo *)userInfo;
 
 -(BOOL)addClothesToWardrobe:(ClothesInfo *)clothesInfo;

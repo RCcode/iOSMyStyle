@@ -16,6 +16,7 @@
 //#define ServerRootURL                @"http://192.168.0.86:8082/MyStyle%@"
 #define ServerRootURL                @"http://192.168.0.89:8083/MyStyleWeb%@"
 #define LoginURL                     @"/user/login.do"
+#define AddClothingURL               @"/user/addClothing.do"
 
 
 
@@ -151,7 +152,11 @@ static RC_RequestManager *requestManager = nil;
 {
     if (![self checkNetWorking])
         return;
-    NSDictionary *params = @{@"uid":userInfo.strUid,@"tplat":userInfo.numTplat,@"token":userInfo.strToken,@"tname":userInfo.strTname,@"plat":userInfo.numPlat};
+    NSDictionary *params = @{@"uid":userInfo.strUid,
+                             @"tplat":userInfo.numTplat,
+                             @"token":userInfo.strToken,
+                             @"tname":userInfo.strTname,
+                             @"plat":userInfo.numPlat};
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];
@@ -167,6 +172,104 @@ static RC_RequestManager *requestManager = nil;
         }
     }];
 }
+
+-(void)addClothingWithColothesInfo:(ClothesInfo *)clothesInfo success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+{
+    if (![self checkNetWorking])
+        return;
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+//    NSDictionary *params = @{@"uid":userInfo.strUid,
+//                             @"token":userInfo.strToken,
+//                             @"cateId":clothesInfo.numCateId,
+//                             @"scateId":clothesInfo.numScateId,
+//                             @"seaId":clothesInfo.numSeaId,
+//                             @"file":UIImagePNGRepresentation(clothesInfo.file),
+//                             @"brand":clothesInfo.strBrand};
+    NSDictionary *params = @{@"uid":userInfo.strUid,
+                             @"token":userInfo.strToken,
+                             @"cateId":clothesInfo.numCateId,
+                             @"scateId":clothesInfo.numScateId,
+                             @"seaId":clothesInfo.numSeaId,
+                             @"brand":clothesInfo.strBrand};
+
+    
+//    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+//    [requestSerializer setTimeoutInterval:30];
+//    
+    NSString *url = [NSString stringWithFormat:ServerRootURL,AddClothingURL];
+//    [self requestServiceWithPost:url parameters:params jsonRequestSerializer:requestSerializer success:^(id responseObject) {
+//        if (success) {
+//            success(responseObject);
+//        }
+//    } failure:^(NSError *error) {
+//        if (failure) {
+//            failure(error);
+//        }
+//    }];
+    
+    
+    [_operation POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSData *imageData = UIImageJPEGRepresentation(clothesInfo.file, 1);
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+        
+        // 上传图片，以文件流的格式
+        [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  *  注册更新用户信息

@@ -20,22 +20,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     UserInfo *userInfo = [UserInfo unarchiverUserData];
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
-    
-//    [[RC_RequestManager shareManager]loginWith:userInfo success:^(id responseObject) {
-//        CLog(@"%@",responseObject);
-//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//            if ([[responseObject objectForKey:@"stat"]integerValue] == 10000) {
-//                userInfo.numId = [responseObject objectForKey:@"id"];
-//                [UserInfo archiverUserInfo:userInfo];
-//                [[RC_SQLiteManager shareManager]addUser:userInfo];
-//            }
-//        }
-//    } andFailed:^(NSError *error) {
-//        CLog(@"%@",error);
-//    }];
+    if (userInfo) {
+        [_headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
+        [[RC_RequestManager shareManager]loginWith:userInfo success:^(id responseObject) {
+            CLog(@"%@",responseObject);
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                if ([[responseObject objectForKey:@"stat"]integerValue] == 10000) {
+                    userInfo.numId = [responseObject objectForKey:@"id"];
+                    [UserInfo archiverUserInfo:userInfo];
+                    [[RC_SQLiteManager shareManager]addUser:userInfo];
+                }
+            }
+        } andFailed:^(NSError *error) {
+            CLog(@"%@",error);
+        }];
+
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -52,7 +53,7 @@
     userInfo.numPlat = [NSNumber numberWithShort:1];
     
     [UserInfo archiverUserInfo:userInfo];
-//    __weak LeftMenuViewController *weakSelf = self;
+    __weak LeftMenuViewController *weakSelf = self;
     [[RC_RequestManager shareManager]loginWith:userInfo success:^(id responseObject) {
         CLog(@"%@",responseObject);
 //        [weakSelf loginServerSuccess:responseObject];
@@ -61,6 +62,7 @@
                 userInfo.numId = [responseObject objectForKey:@"id"];
                 [UserInfo archiverUserInfo:userInfo];
                 [[RC_SQLiteManager shareManager]addUser:userInfo];
+                [weakSelf.headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
             }
         }
     } andFailed:^(NSError *error) {
