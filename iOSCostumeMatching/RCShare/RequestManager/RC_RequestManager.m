@@ -12,9 +12,9 @@
 
 #define InstagramGetAccess_tokenURL  @"https://api.instagram.com/oauth/access_token?scope=likes+relationships"
 
-//#define ServerRootURL                @"http://f4f.rcplatformhk.net/RcGetFollowsWeb/V2%@"
-//#define ServerRootURL                @"http://192.168.0.86:8082/MyStyle%@"
 #define ServerRootURL                @"http://192.168.0.89:8083/MyStyleWeb%@"
+//#define ServerRootURL                @"http://192.168.0.194:8080/MyStyleWeb%@"
+
 #define LoginURL                     @"/user/login.do"
 #define AddClothingURL               @"/user/addClothing.do"
 
@@ -34,7 +34,7 @@
 
 @interface RC_RequestManager()
 
-@property (nonatomic,strong) AFHTTPRequestOperationManager *operation;
+@property (nonatomic,strong) AFHTTPRequestOperationManager *manager;
 
 @end
 
@@ -47,7 +47,7 @@ static RC_RequestManager *requestManager = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         requestManager = [[RC_RequestManager alloc]init];
-        requestManager.operation = [AFHTTPRequestOperationManager manager];
+        requestManager.manager = [AFHTTPRequestOperationManager manager];
     });
     return requestManager;
 }
@@ -58,11 +58,11 @@ static RC_RequestManager *requestManager = nil;
 -(void)requestServiceWithGet:(NSString *)url_Str success:(void(^)(id responseObject))success failure:(void (^)(NSError *error))failure
 {
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    _operation.requestSerializer = requestSerializer;
+    _manager.requestSerializer = requestSerializer;
     AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
-    _operation.responseSerializer = responseSerializer;
+    _manager.responseSerializer = responseSerializer;
     
-    [_operation GET:url_Str parameters:nil
+    [_manager GET:url_Str parameters:nil
             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 //解析数据
                 if (success) {
@@ -80,19 +80,21 @@ static RC_RequestManager *requestManager = nil;
 #pragma mark -
 #pragma mark 公共请求 （Post）
 
-- (void)requestServiceWithPost:(NSString *)url_Str parameters:(id)parameters jsonRequestSerializer:(AFJSONRequestSerializer *)requestSerializer success:(void(^)(id responseObject))success failure:(void (^)(NSError *error))failure
+- (void)requestServiceWithPost:(NSString *)url_Str parameters:(id)parameters RequestSerializer:(AFJSONRequestSerializer *)requestSerializer ResponseSerializer:(AFJSONResponseSerializer *)responseSerializer success:(void(^)(id responseObject))success failure:(void (^)(NSError *error))failure
 {
     if (requestSerializer) {
-        _operation.requestSerializer = requestSerializer;
+        _manager.requestSerializer = requestSerializer;
     }
     else
     {
-        _operation.requestSerializer = [AFHTTPRequestSerializer serializer];
+        _manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    }
+    
+    if (responseSerializer) {
+        _manager.responseSerializer = responseSerializer;
     }
 
-    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
-    _operation.responseSerializer = responseSerializer;
-    [_operation POST:url_Str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [_manager POST:url_Str parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //解析数据
         if (success) {
             success(responseObject);
@@ -136,7 +138,10 @@ static RC_RequestManager *requestManager = nil;
     if (![self checkNetWorking])
         return;
     
-    [self requestServiceWithPost:InstagramGetAccess_tokenURL parameters:dictionary jsonRequestSerializer:nil success:^(id responseObject) {
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    
+    [self requestServiceWithPost:InstagramGetAccess_tokenURL parameters:dictionary RequestSerializer:nil ResponseSerializer:responseSerializer success:^(id responseObject) {
         if (success) {
             success(responseObject);
         }
@@ -145,7 +150,6 @@ static RC_RequestManager *requestManager = nil;
             failure(error);
         }
     }];
-    
 }
 
 -(void)loginWith:(UserInfo *)userInfo success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
@@ -161,8 +165,11 @@ static RC_RequestManager *requestManager = nil;
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];
     
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
     NSString *url = [NSString stringWithFormat:ServerRootURL,LoginURL];
-    [self requestServiceWithPost:url parameters:params jsonRequestSerializer:requestSerializer success:^(id responseObject) {
+    [self requestServiceWithPost:url parameters:params RequestSerializer:requestSerializer ResponseSerializer:responseSerializer success:^(id responseObject) {
         if (success) {
             success(responseObject);
         }
@@ -178,38 +185,27 @@ static RC_RequestManager *requestManager = nil;
     if (![self checkNetWorking])
         return;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
-//    NSDictionary *params = @{@"uid":userInfo.strUid,
+//    NSDictionary *params = @{@"id":userInfo.numId,
 //                             @"token":userInfo.strToken,
 //                             @"cateId":clothesInfo.numCateId,
 //                             @"scateId":clothesInfo.numScateId,
 //                             @"seaId":clothesInfo.numSeaId,
-//                             @"file":UIImagePNGRepresentation(clothesInfo.file),
 //                             @"brand":clothesInfo.strBrand};
-    NSDictionary *params = @{@"uid":userInfo.strUid,
-                             @"token":userInfo.strToken,
-                             @"cateId":clothesInfo.numCateId,
-                             @"scateId":clothesInfo.numScateId,
-                             @"seaId":clothesInfo.numSeaId,
-                             @"brand":clothesInfo.strBrand};
+    NSDictionary *params = @{@"id":@"3",@"token":@"1111111",@"cateId":@"1",@"scateId":@"1",@"seaId":@"1",@"brand":@"1"};
 
-    
-//    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-//    [requestSerializer setTimeoutInterval:30];
-//    
     NSString *url = [NSString stringWithFormat:ServerRootURL,AddClothingURL];
-//    [self requestServiceWithPost:url parameters:params jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-//        if (success) {
-//            success(responseObject);
-//        }
-//    } failure:^(NSError *error) {
-//        if (failure) {
-//            failure(error);
-//        }
-//    }];
     
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:30];
+    _manager.requestSerializer = requestSerializer;
     
-    [_operation POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        NSData *imageData = UIImageJPEGRepresentation(clothesInfo.file, 1);
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    _manager.responseSerializer = responseSerializer;
+    _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+
+//    NSData *imageData = UIImageJPEGRepresentation(clothesInfo.file, 0.3);
+    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"ball"], 0.3);
+    AFHTTPRequestOperation *request = [_manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyyMMddHHmmss";
@@ -217,7 +213,11 @@ static RC_RequestManager *requestManager = nil;
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
         
         // 上传图片，以文件流的格式
-        [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
+        [formData appendPartWithFileData:imageData name:@"File" fileName:fileName mimeType:@"image/jpeg"];
+        
+        
+//        [formData appendPartWithFormData:imageData name:@"file"];
+        
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(responseObject);
@@ -227,314 +227,10 @@ static RC_RequestManager *requestManager = nil;
             failure(error);
         }
     }];
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- *  注册更新用户信息
- *
- *  @param dictionary <#dictionary description#>
- *  @param success    <#success description#>
- *  @param failure    <#failure description#>
- */
-
--(void)registeUseInfo:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
-{
-    if (![self checkNetWorking])
-        return;
+//    [request setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+//        NSLog(@"百分比:%f",totalBytesWritten*1.0/totalBytesExpectedToWrite);
+//    }];
     
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    
-    NSString *url = [NSString stringWithFormat:ServerRootURL,RegisteUseInfoURL];
-    [self requestServiceWithPost:url parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
-/**
- *  更新用户兴趣分类
- *
- *  @param dictionary <#dictionary description#>
- *  @param success    <#success description#>
- *  @param failure    <#failure description#>
- */
-
--(void)updateClassify:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
-{
-    if (![self checkNetWorking])
-        return;
-    
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    
-    NSString *url = [NSString stringWithFormat:ServerRootURL,UpdateClassifyURL];
-    [self requestServiceWithPost:url parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
-/**
- *  获取follow用户列表
- *
- *  @param dictionary <#dictionary description#>
- *  @param success    <#success description#>
- *  @param failure    <#failure description#>
- */
-
--(void)getFollows:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
-{
-    if (![self checkNetWorking])
-        return;
-    
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    
-    NSString *url = [NSString stringWithFormat:ServerRootURL,GetFollowsURL];
-    [self requestServiceWithPost:url parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
-/**
- *  上报follow用户列表
- *
- *  @param dictionary <#dictionary description#>
- *  @param success    <#success description#>
- *  @param failure    <#failure description#>
- */
-
--(void)postFollows:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
-{
-    if (![self checkNetWorking])
-        return;
-    
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    
-    NSString *url = [NSString stringWithFormat:ServerRootURL,PostFollowsURL];
-    [self requestServiceWithPost:url parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
-/**
- *  更新用户分享IG
- *
- *  @param dictionary <#dictionary description#>
- *  @param success    <#success description#>
- *  @param failure    <#failure description#>
- */
-
--(void)updateShareIg:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
-{
-    if (![self checkNetWorking])
-        return;
-    
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    
-    NSString *url = [NSString stringWithFormat:ServerRootURL,UpdateShareIgURL];
-    [self requestServiceWithPost:url parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
-/**
- *  更新用户评论五星状态
- *
- *  @param dictionary <#dictionary description#>
- *  @param success    <#success description#>
- *  @param failure    <#failure description#>
- */
-
--(void)updateFiveStart:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
-{
-    if (![self checkNetWorking])
-        return;
-    
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    
-    NSString *url = [NSString stringWithFormat:ServerRootURL,UpdateFiveStartURL];
-    [self requestServiceWithPost:url parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
-/**
- *  点击广告增加金币
- *
- *  @param dictionary <#dictionary description#>
- *  @param success    <#success description#>
- *  @param failure    <#failure description#>
- */
-
--(void)updateAdvCoin:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
-{
-    if (![self checkNetWorking])
-        return;
-    
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    
-    NSString *url = [NSString stringWithFormat:ServerRootURL,UpdateAdvCoin];
-    [self requestServiceWithPost:url parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
-/**
- *  获取用户基本信息状态
- *
- *  @param dictionary <#dictionary description#>
- *  @param success    <#success description#>
- *  @param failure    <#failure description#>
- */
-
--(void)getUserInfo:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
-{
-    if (![self checkNetWorking])
-        return;
-    
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    
-    NSString *url = [NSString stringWithFormat:ServerRootURL,GetUserInfoURL];
-    [self requestServiceWithPost:url parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
--(void)postOrders:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
-{
-    if (![self checkNetWorking])
-        return;
-    
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    
-    NSString *url = [NSString stringWithFormat:ServerRootURL,PostOrdersURL];
-    [self requestServiceWithPost:url parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
-/////
-
--(void)reportUser:(NSDictionary *)dictionary success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
-{
-    if (![self checkNetWorking])
-        return;
-    
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    
-    NSString *url = [NSString stringWithFormat:ServerRootURL,ReportUserURL];
-    [self requestServiceWithPost:url parameters:dictionary jsonRequestSerializer:requestSerializer success:^(id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
 }
 
 #pragma mark -
@@ -549,7 +245,7 @@ static RC_RequestManager *requestManager = nil;
 
 - (void)cancleAllRequests
 {
-    [_operation.operationQueue cancelAllOperations];
+    [_manager.operationQueue cancelAllOperations];
 }
 
 
