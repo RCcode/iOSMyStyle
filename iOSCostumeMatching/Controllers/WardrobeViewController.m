@@ -284,13 +284,14 @@
         hideMBProgressHUD();
         if([responseObject isKindOfClass:[NSDictionary class]])
         {
-            NSDictionary *dic = responseObject;
-            info.numClId = [NSNumber numberWithInt:[[dic objectForKey:@"clId"] intValue]];
-            [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
-            weakSelf.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
-            [weakSelf.collectionView reloadData];
+            if ([[responseObject objectForKey:@"stat"]integerValue] == 10000) {
+                NSDictionary *dic = responseObject;
+                info.numClId = [NSNumber numberWithInt:[[dic objectForKey:@"clId"] intValue]];
+                [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
+                weakSelf.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+                [weakSelf.collectionView reloadData];
+            }
         }
-        
     } andFailed:^(NSError *error) {
         CLog(@"%@",error);
         hideMBProgressHUD();

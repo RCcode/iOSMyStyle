@@ -43,5 +43,16 @@ NSString *getWardrobeTypeName(WardrobeType type);
 NSArray *getAllWardrobeType();
 
 NSString *getWardrobeCategoryeName(WardrobeCategory type);
-NSArray *getAllWardrobeCategorye();
+NSArray *getAllWardrobeCategorye(WardrobeType type);
+
+NSString *getWardrobeSeasonName(WardrobeSeason type);
+NSArray *getAllWardrobeSeason();
+
+NSString *getCollocationStyleName(CollocationStyle type);
+NSArray *getAllCollocationStyle();
+
+NSString *getCollocationOccasionName(CollocationOccasion type);
+NSArray *getCollocationOccasion();
+
+
 @end

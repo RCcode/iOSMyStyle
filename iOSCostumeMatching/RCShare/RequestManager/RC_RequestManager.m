@@ -193,12 +193,23 @@ static RC_RequestManager *requestManager = nil;
     if (![self checkNetWorking])
         return;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
-    NSDictionary *params = @{@"id":userInfo.numId,
-                             @"token":userInfo.strToken,
-                             @"cateId":clothesInfo.numCateId,
-                             @"scateId":clothesInfo.numScateId,
-                             @"seaId":clothesInfo.numSeaId,
-                             @"brand":clothesInfo.strBrand};
+    NSDictionary *params;
+    if (clothesInfo.strBrand) {
+        params = @{@"id":userInfo.numId,
+                                 @"token":userInfo.strToken,
+                                 @"cateId":clothesInfo.numCateId,
+                                 @"scateId":clothesInfo.numScateId,
+                                 @"seaId":clothesInfo.numSeaId,
+                                 @"brand":clothesInfo.strBrand};
+    }
+    else
+    {
+        params = @{@"id":userInfo.numId,
+                                 @"token":userInfo.strToken,
+                                 @"cateId":clothesInfo.numCateId,
+                                 @"scateId":clothesInfo.numScateId,
+                                 @"seaId":clothesInfo.numSeaId};
+    }
 
     NSString *url = [NSString stringWithFormat:ServerRootURL,AddClothingURL];
     

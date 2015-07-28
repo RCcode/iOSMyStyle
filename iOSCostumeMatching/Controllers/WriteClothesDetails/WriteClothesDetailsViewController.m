@@ -13,6 +13,7 @@
 {
     WardrobeType type;
     WardrobeCategory category;
+    WardrobeSeason season;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, copy) void(^finish)(ClothesInfo *info);
@@ -41,11 +42,12 @@
 {
     if (_finish) {
         ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];
-//        clothesInfo.numClId = [NSNumber numberWithInt:(int)(_arrClothes.count+1)];
-        clothesInfo.numCateId = [NSNumber numberWithInt:0];
-        clothesInfo.numScateId = [NSNumber numberWithInt:0];
-        clothesInfo.numSeaId = [NSNumber numberWithInt:0];
-        clothesInfo.strBrand = @"hhhh";
+        clothesInfo.numCateId = [NSNumber numberWithInt:category];
+        clothesInfo.numScateId = [NSNumber numberWithInt:type];
+        clothesInfo.numSeaId = [NSNumber numberWithInt:season];
+        if (_txtBrand.text) {
+            clothesInfo.strBrand = _txtBrand.text;
+        }
         clothesInfo.file = _image;
         clothesInfo.date = stringFromDate([NSDate date]);
         _finish(clothesInfo);
@@ -83,10 +85,45 @@
 - (IBAction)selectCategory:(id)sender {
     SelectViewController *selectCategory = [[SelectViewController alloc]init];
     [selectCategory setNavagationTitle:@"选择类别"];
-    selectCategory.array = getAllWardrobeCategorye();
+    selectCategory.array = getAllWardrobeCategorye(type);
     __weak WriteClothesDetailsViewController *weakSelf = self;
     [selectCategory setSelectedBlock:^(int index) {
-        category = index;
+        switch (type) {
+            case WTAll:{
+                category = index;
+                break;
+            }
+            case WTUpper:{
+                category = index+1;
+                break;
+            }
+            case WTBottoms:{
+                category = index+13;
+                break;
+            }
+            case WTShoes:{
+                category = index+19;
+                break;
+            }
+            case WTBag:{
+                category = index+28;
+                break;
+            }
+            case WTAccessory:{
+                category = index+35;
+                break;
+            }
+            case WTJewelry:{
+                category = index+43;
+                break;
+            }
+            case WTUnderwear:{
+                category = index+49;
+                break;
+            }
+            default:
+                break;
+        }
         [weakSelf.btnCategory setTitle:getWardrobeCategoryeName(category) forState:UIControlStateNormal];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectCategory];
@@ -94,7 +131,16 @@
 }
 
 - (IBAction)selectSeason:(id)sender {
-    
+    SelectViewController *selectCategory = [[SelectViewController alloc]init];
+    [selectCategory setNavagationTitle:@"选择季节"];
+    selectCategory.array = getAllWardrobeSeason();
+    __weak WriteClothesDetailsViewController *weakSelf = self;
+    [selectCategory setSelectedBlock:^(int index) {
+        season = index;
+        [weakSelf.btnSeason setTitle:getWardrobeSeasonName(season) forState:UIControlStateNormal];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectCategory];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - UITextFieldDelegate

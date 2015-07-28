@@ -398,22 +398,145 @@ NSString *getWardrobeCategoryeName(WardrobeCategory type)
     return str;
 }
 
-NSArray *getAllWardrobeCategorye()
+NSArray *getAllWardrobeCategorye(WardrobeType type)
 {
-    NSArray *arr = @[@"ALL",
+    NSArray *arr;
+    switch (type) {
+        case WTAll:
+        {
+            arr = @[@"ALL",
                      @"夹克",@"衬衫",@"T恤",@"西装",@"羊毛衫",@"针织衫",@"连衣裙",@"户外服装",@"运动服",@"风衣",@"牛仔",@"背心",
-                      
+                     
                      @"长裙",@"短裙",@"长裤",@"短裤",@"牛仔",@"打底裤",
-                      
+                     
                      @"平底鞋",@"晚装鞋",@"高跟鞋",@"靴子",@"松糕鞋",@"凉鞋",@"坡跟鞋",@"运动鞋",@"拖鞋",
-                      
+                     
                      @"晚装包",@"双肩包",@"宴会包",@"侧肩包",@"小背包",@"手袋",@"钱包",
-                      
+                     
                      @"腰带",@"帽子",@"太阳镜",@"围巾",@"手套",@"手表",@"化妆品",@"香水",
-                      
+                     
                      @"手镯",@"项链",@"戒指",@"手链",@"耳环",@"耳钉",
-                      
+                     
                      @"胸罩",@"吊带衫",@"衬裙",@"睡袍",@"丝袜",@"睡衣",@"内裤",@"袜子",@"浴袍"];
+            break;
+        }
+        case WTUpper:
+        {
+            arr = @[@"夹克",@"衬衫",@"T恤",@"西装",@"羊毛衫",@"针织衫",@"连衣裙",@"户外服装",@"运动服",@"风衣",@"牛仔",@"背心"];
+            break;
+        }
+        case WTBottoms:
+        {
+            arr = @[@"长裙",@"短裙",@"长裤",@"短裤",@"牛仔",@"打底裤"];
+            break;
+        }
+        case WTShoes:
+        {
+            arr = @[@"平底鞋",@"晚装鞋",@"高跟鞋",@"靴子",@"松糕鞋",@"凉鞋",@"坡跟鞋",@"运动鞋",@"拖鞋"];
+            break;
+        }
+        case WTBag:
+        {
+            arr = @[@"晚装包",@"双肩包",@"宴会包",@"侧肩包",@"小背包",@"手袋",@"钱包"];
+            break;
+        }
+        case WTAccessory:
+        {
+            arr = @[@"腰带",@"帽子",@"太阳镜",@"围巾",@"手套",@"手表",@"化妆品",@"香水"];
+            break;
+        }
+        case WTJewelry:
+        {
+            arr = @[@"手镯",@"项链",@"戒指",@"手链",@"耳环",@"耳钉"];
+            break;
+        }
+        case WTUnderwear:
+        {
+            arr = @[@"胸罩",@"吊带衫",@"衬裙",@"睡袍",@"丝袜",@"睡衣",@"内裤",@"袜子",@"浴袍"];
+            break;
+        }
+        default:
+            break;
+    }
+    
+    return arr;
+}
+
+NSString *getWardrobeSeasonName(WardrobeSeason type)
+{
+    NSString *str;
+    switch (type) {
+        case WSAll:{str = @"ALL";break;}
+            
+        case WSSpringAndSummer:{str = @"春夏";break;}
+            
+        case WSAutumnAndWinter:{str = @"秋冬";break;}
+            
+        default:
+            break;
+    }
+    return str;
+}
+
+NSArray *getAllWardrobeSeason()
+{
+    NSArray *arr = @[@"ALL",@"春夏",@"秋冬"];
+    
+    return arr;
+}
+
+NSString *getCollocationStyleName(CollocationStyle type)
+{
+    NSString *str;
+    switch (type) {
+        case CSAll:{str = @"ALL";break;}
+            
+        case CSFormal_wear:{str = @"正装";break;}
+            
+        case CSCasual_Wear:{str = @"休闲";break;}
+            
+        case CSSportswear:{str = @"运动";break;}
+            
+        default:
+            break;
+    }
+    return str;
+}
+
+NSArray *getAllCollocationStyle()
+{
+    NSArray *arr = @[@"ALL",@"正装",@"休闲",@"运动"];
+    
+    return arr;
+}
+
+NSString *getCollocationOccasionName(CollocationOccasion type)
+{
+    NSString *str;
+    switch (type) {
+        case COAll:{str = @"ALL";break;}
+            
+        case COWorking:{str = @"工作";break;}
+            
+        case COHome:{str = @"家居";break;}
+            
+        case CODinner:{str = @"晚宴";break;}
+            
+        case COParty:{str = @"聚会";break;}
+            
+        case COFitness:{str = @"健身";break;}
+            
+        case COJourney:{str = @"出游";break;}
+            
+        default:
+            break;
+    }
+    return str;
+}
+
+NSArray *getCollocationOccasion()
+{
+    NSArray *arr = @[@"ALL",@"工作",@"家居",@"晚宴",@"聚会",@"健身",@"出游"];
     
     return arr;
 }
