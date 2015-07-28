@@ -42,8 +42,8 @@
 {
     if (_finish) {
         ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];
-        clothesInfo.numCateId = [NSNumber numberWithInt:category];
-        clothesInfo.numScateId = [NSNumber numberWithInt:type];
+        clothesInfo.numCateId = [NSNumber numberWithInt:type];
+        clothesInfo.numScateId = [NSNumber numberWithInt:category];
         clothesInfo.numSeaId = [NSNumber numberWithInt:season];
         if (_txtBrand.text) {
             clothesInfo.strBrand = _txtBrand.text;
