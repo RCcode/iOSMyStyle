@@ -33,7 +33,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.showReturn = YES;
-    [self setNavTitle:@"搭配灵感"];
+    [self setNavTitle:@"我喜欢的搭配"];
     [self setReturnBtnTitle:@"菜单"];
     
     [self createCollectionView];

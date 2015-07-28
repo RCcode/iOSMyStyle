@@ -18,6 +18,7 @@
  clId       服饰id
  
  date       创建或修改日期
+ localId    本地自增标识
  */
 
 @property (nonatomic, copy) NSNumber *numClId;
@@ -29,5 +30,6 @@
 @property (nonatomic, copy) UIImage *file;
 
 @property (nonatomic, copy) NSString *date;
+@property (nonatomic, copy) NSNumber *numLocalId;
 
 @end

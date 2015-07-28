@@ -17,7 +17,7 @@
     self.numOccId = nil;
     self.strDescription = nil;
     self.file = nil;
-    self.dicList = nil;
+    self.arrList = nil;
     self.date = nil;
 }
 
@@ -32,7 +32,7 @@
     [encoder encodeObject:self.numOccId forKey:@"numOccId"];
     [encoder encodeObject:self.strDescription forKey:@"strDescription"];
     [encoder encodeObject:self.file forKey:@"file"];
-    [encoder encodeObject:self.dicList forKey:@"dicList"];
+    [encoder encodeObject:self.arrList forKey:@"arrList"];
     [encoder encodeObject:self.date forKey:@"date"];
 }
 
@@ -45,7 +45,7 @@
         self.numOccId = [decoder decodeObjectForKey:@"numOccId"];
         self.strDescription = [decoder decodeObjectForKey:@"strDescription"];
         self.file = [decoder decodeObjectForKey:@"file"];
-        self.dicList = [decoder decodeObjectForKey:@"dicList"];
+        self.arrList = [decoder decodeObjectForKey:@"arrList"];
         self.date = [decoder decodeObjectForKey:@"date"];
     }
     return self;

@@ -31,6 +31,7 @@
 {
     CollocationInfo *collocationInfo = [[CollocationInfo alloc]init];
     collocationInfo.file = _image;
+    collocationInfo.arrList = _arrList;
     collocationInfo.numStyleId = [NSNumber numberWithInt:1];
     collocationInfo.numOccId = [NSNumber numberWithInt:1];
     collocationInfo.strDescription = @"宴会";

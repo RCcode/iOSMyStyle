@@ -53,13 +53,19 @@
 
 -(void)addCollocation:(CollocationInfo *)info
 {
-    info.numCoId = [NSNumber numberWithInt:(int)(_arrCollection.count+1)];
+    [[RC_RequestManager shareManager]addCollocationWithCollocationInfo:info success:^(id responseObject) {
+        CLog(@"%@",responseObject);
+    } andFailed:^(NSError *error) {
+        CLog(@"%@",error);
+    }];
     
-    [[RC_SQLiteManager shareManager]addCollection:info];
-    
-    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
-    
-    [_collectionView reloadData];
+//    info.numCoId = [NSNumber numberWithInt:(int)(_arrCollection.count+1)];
+//    
+//    [[RC_SQLiteManager shareManager]addCollection:info];
+//    
+//    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
+//    
+//    [_collectionView reloadData];
 }
 
 #pragma mark - View

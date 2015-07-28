@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *selectView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *arrClothes;
+@property (nonatomic, strong) NSMutableArray *arrList;
 
 @property (nonatomic, copy) void(^finish)(CollocationInfo *info);
 
@@ -47,6 +48,7 @@
         weakSelf.finish(info);
     }];
     writeCollection.image = image;
+    writeCollection.arrList = _arrList;
     [self.navigationController pushViewController:writeCollection animated:YES];
 }
 
@@ -83,6 +85,8 @@
     self.showDone = YES;
     [self setReturnBtnTitle:@"取消"];
     [self setDoneBtnTitle:@"继续"];
+    
+    self.arrList = [[NSMutableArray alloc]init];
     
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [self.selectView insertSubview:self.collectionView atIndex:0];
@@ -154,6 +158,8 @@
 {
     ClothesInfo *info = _arrClothes[indexPath.row];
     
+    [_arrList addObject:info];
+    
     CGFloat imageWidth = info.file.size.width;
     CGFloat imageHeight = info.file.size.height;
     CGFloat width,height;
@@ -171,7 +177,7 @@
                                initWithImage:info.file];
     ZDStickerView *userResizableView1 = [[ZDStickerView alloc] initWithFrame:gripFrame];
     userResizableView1.center = _createImageView.center;
-    userResizableView1.tag = 0;
+    userResizableView1.tag = [info.numLocalId integerValue];
     userResizableView1.stickerViewDelegate = self;
     userResizableView1.contentView = imageView1;//contentView;
     userResizableView1.preventsPositionOutsideSuperview = NO;
@@ -211,7 +217,14 @@
 
 - (void)stickerViewDidClose:(ZDStickerView *)sticker
 {
-    NSLog(@"%s [%zd]",__func__, sticker.tag);
+    NSLog(@"%s 删除 [%zd]",__func__, sticker.tag);
+    for (id object in _arrList) {
+        ClothesInfo *info = object;
+        if ([info.numLocalId integerValue]==sticker.tag) {
+            [_arrList removeObject:info];
+            break;
+        }
+    }
 }
 
 - (void)stickerViewDidCustomButtonTap:(ZDStickerView *)sticker

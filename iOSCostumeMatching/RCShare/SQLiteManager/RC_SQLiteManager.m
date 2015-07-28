@@ -117,7 +117,7 @@ static RC_SQLiteManager *sqliteManager = nil;
                 
                 NSString *tableName = @"Wardrobe";
                 if (![_db tableExists:tableName]) {
-                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (clId INTEGER,cateId INTEGER,scateId INTEGER,seaId INTEGER,brand text,file data,date text)",tableName];
+                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (localId INTEGER PRIMARY KEY AUTOINCREMENT,clId INTEGER,cateId INTEGER,scateId INTEGER,seaId INTEGER,brand text,file data,date text)",tableName];
                     if ([_db executeUpdate:strExecute]) {
                         CLog(@"create table Wardrobe success");
                     }else{
@@ -274,6 +274,7 @@ static RC_SQLiteManager *sqliteManager = nil;
         while ([rs next]) {
             ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];
             
+            clothesInfo.numLocalId = [NSNumber numberWithInt:[rs intForColumn:@"localId"]];
             clothesInfo.numClId = [NSNumber numberWithInt:[rs intForColumn:@"clId"]];
             clothesInfo.numCateId = [NSNumber numberWithInt:[rs intForColumn:@"cateId"]];
             clothesInfo.numScateId = [NSNumber numberWithInt:[rs intForColumn:@"scateId"]];

@@ -11,6 +11,7 @@
 @interface WriteCollectionDetailsViewController : RC_BaseViewController
 
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSMutableArray *arrList;
 
 -(void)setCollectionFinishBlock:(void(^)(CollocationInfo *info))collectionfinishBlock;
 

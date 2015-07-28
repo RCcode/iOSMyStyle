@@ -31,7 +31,7 @@
 @property (nonatomic, copy) NSNumber *numOccId;
 @property (nonatomic, copy) NSString *strDescription;
 @property (nonatomic, copy) UIImage *file;
-@property (nonatomic, copy) NSMutableDictionary *dicList;
+@property (nonatomic, copy) NSMutableArray *arrList;
 @property (nonatomic, copy) NSString *date;
 
 @end

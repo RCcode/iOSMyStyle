@@ -17,20 +17,12 @@
 
 #define LoginURL                     @"/user/login.do"
 #define AddClothingURL               @"/user/addClothing.do"
-
-
-
-#define RegisteUseInfoURL            @"/user/registeUseInfo.do"
-#define UpdateClassifyURL            @"/user/updateClassify.do"
-#define GetFollowsURL                @"/user/getFollows.do"
-#define PostFollowsURL               @"/user/postFollows.do"
-#define UpdateShareIgURL             @"/user/updateShareIg.do"
-#define UpdateFiveStartURL           @"/user/updateFiveStart.do"
-#define GetUserInfoURL               @"/user/getUserInfo.do"
-#define PostOrdersURL                @"/user/postOrders.do"
-#define ReportUserURL                @"/user/reportUser.do"
-#define UpdateAdvCoin                @"/user/updateAdvCoin.do"
-
+#define AddCollocationURL            @"/user/addCollocation.do"
+#define ReportCollocationURL         @"/user/reportCollocation.do"
+#define SearchCollocationURL         @"/user/reportCollocation.do"
+#define GetCollocationDetailURL      @"/user/getCollocation.do"
+#define LikeCollocationURL           @"/user/likeCollocation.do"
+#define GetLikedCollocationListURL   @"/user/getLikedCollocation.do"
 
 @interface RC_RequestManager()
 
@@ -152,6 +144,14 @@ static RC_RequestManager *requestManager = nil;
     }];
 }
 
+/**
+ *  登陆服务器
+ *
+ *  @param userInfo <#userInfo description#>
+ *  @param success  <#success description#>
+ *  @param failure  <#failure description#>
+ */
+
 -(void)loginWith:(UserInfo *)userInfo success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
 {
     if (![self checkNetWorking])
@@ -179,6 +179,14 @@ static RC_RequestManager *requestManager = nil;
         }
     }];
 }
+
+/**
+ *  添加衣服
+ *
+ *  @param clothesInfo <#clothesInfo description#>
+ *  @param success     <#success description#>
+ *  @param failure     <#failure description#>
+ */
 
 -(void)addClothingWithColothesInfo:(ClothesInfo *)clothesInfo success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
 {
@@ -226,6 +234,253 @@ static RC_RequestManager *requestManager = nil;
         NSLog(@"百分比:%f",totalBytesWritten*1.0/totalBytesExpectedToWrite);
     }];
     
+}
+
+/**
+ *  添加搭配
+ *
+ *  @param collocationInfo <#collocationInfo description#>
+ *  @param success         <#success description#>
+ *  @param failure         <#failure description#>
+ */
+
+-(void)addCollocationWithCollocationInfo:(CollocationInfo *)collocationInfo success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+{
+    if (![self checkNetWorking])
+        return;
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    NSMutableArray *arrList = [[NSMutableArray alloc]init];
+    for (ClothesInfo *info in collocationInfo.arrList) {
+        if (info.strBrand && (![info.strBrand isEqualToString:@""])) {
+            NSDictionary *dic;
+            if (info.numClId) {
+                 dic = @{@"clId":info.numClId,
+                         @"cateId":info.numCateId,
+                         @"scateId":info.numScateId,
+                         @"seaId":info.numSeaId,
+                         @"brand":info.strBrand};
+            }
+            else
+            {
+                dic = @{@"cateId":info.numCateId,
+                        @"scateId":info.numScateId,
+                        @"seaId":info.numSeaId,
+                        @"brand":info.strBrand};
+            }
+            [arrList addObject:dic];
+        }
+    }
+    NSDictionary *params = @{@"id":userInfo.numId,
+                             @"token":userInfo.strToken,
+                             @"styleId":collocationInfo.numStyleId,
+                             @"occId":collocationInfo.numOccId,
+                             @"description":collocationInfo.strDescription,
+                             @"list":arrList};
+    NSString *url = [NSString stringWithFormat:ServerRootURL,AddCollocationURL];
+    
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:30];
+    _manager.requestSerializer = requestSerializer;
+    
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    _manager.responseSerializer = responseSerializer;
+    _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    NSData *imageData = UIImageJPEGRepresentation(collocationInfo.file, 0.8);
+    AFHTTPRequestOperation *request = [_manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+        
+        // 上传图片，以文件流的格式
+        [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    [request setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        NSLog(@"百分比:%f",totalBytesWritten*1.0/totalBytesExpectedToWrite);
+    }];
+    
+}
+
+/**
+ *  举报搭配
+ *
+ *  @param coId    <#coId description#>
+ *  @param success <#success description#>
+ *  @param failure <#failure description#>
+ */
+
+-(void)ReportCollocationWithCoId:(NSString *)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+{
+    if (![self checkNetWorking])
+        return;
+     UserInfo *userInfo = [UserInfo unarchiverUserData];
+    NSDictionary *params = @{@"id":userInfo.numId,
+                             @"token":userInfo.strToken,
+                             @"coId":coId};
+    
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:30];
+    
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    NSString *url = [NSString stringWithFormat:ServerRootURL,ReportCollocationURL];
+    [self requestServiceWithPost:url parameters:params RequestSerializer:requestSerializer ResponseSerializer:responseSerializer success:^(id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+/**
+ *  获取搭配列表
+ *
+ *  @param styleId <#styleId description#>
+ *  @param occId   <#occId description#>
+ *  @param type    <#type description#>
+ *  @param mId     <#mId description#>
+ *  @param count   <#count description#>
+ *  @param success <#success description#>
+ *  @param failure <#failure description#>
+ */
+
+-(void)SearchCollocationWithStyleId:(NSString *)styleId OccId:(NSString *)occId Type:(NSString *)type MinId:(NSString *)mId Count:(NSString *)count success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+{
+    if (![self checkNetWorking])
+        return;
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    NSDictionary *params = @{@"id":userInfo.numId,
+                             @"token":userInfo.strToken,
+                             @"styleId":styleId,
+                             @"occId":occId,
+                             @"type":type,
+                             @"mId":mId,
+                             @"count":count};
+    
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:30];
+    
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    NSString *url = [NSString stringWithFormat:ServerRootURL,SearchCollocationURL];
+    [self requestServiceWithPost:url parameters:params RequestSerializer:requestSerializer ResponseSerializer:responseSerializer success:^(id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+-(void)GetCollocationDetailWithCoId:(NSString *)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+{
+    if (![self checkNetWorking])
+        return;
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    NSDictionary *params = @{@"id":userInfo.numId,
+                             @"token":userInfo.strToken,
+                             @"coId":coId};
+    
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:30];
+    
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    NSString *url = [NSString stringWithFormat:ServerRootURL,ReportCollocationURL];
+    [self requestServiceWithPost:url parameters:params RequestSerializer:requestSerializer ResponseSerializer:responseSerializer success:^(id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+/**
+ *  赞搭配
+ *
+ *  @param coId    <#coId description#>
+ *  @param success <#success description#>
+ *  @param failure <#failure description#>
+ */
+
+-(void)LikeCollocationWithCoId:(NSString *)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+{
+    if (![self checkNetWorking])
+        return;
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    NSDictionary *params = @{@"id":userInfo.numId,
+                             @"token":userInfo.strToken,
+                             @"coId":coId};
+    
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:30];
+    
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    NSString *url = [NSString stringWithFormat:ServerRootURL,LikeCollocationURL];
+    [self requestServiceWithPost:url parameters:params RequestSerializer:requestSerializer ResponseSerializer:responseSerializer success:^(id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+-(void)GetLikedCollocationWithStyleId:(NSString *)styleId OccId:(NSString *)occId Type:(NSString *)type MinId:(NSString *)mId Count:(NSString *)count success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+{
+    if (![self checkNetWorking])
+        return;
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    NSDictionary *params = @{@"id":userInfo.numId,
+                             @"token":userInfo.strToken,
+                             @"styleId":styleId,
+                             @"occId":occId,
+                             @"type":type,
+                             @"mId":mId,
+                             @"count":count};
+    
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setTimeoutInterval:30];
+    
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
+    NSString *url = [NSString stringWithFormat:ServerRootURL,GetLikedCollocationListURL];
+    [self requestServiceWithPost:url parameters:params RequestSerializer:requestSerializer ResponseSerializer:responseSerializer success:^(id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 }
 
 #pragma mark -

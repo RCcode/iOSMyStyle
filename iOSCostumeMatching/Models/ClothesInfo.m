@@ -23,6 +23,7 @@
     [encoder encodeObject:self.strBrand forKey:@"strBrand"];
     [encoder encodeObject:self.file forKey:@"file"];
     [encoder encodeObject:self.date forKey:@"date"];
+    [encoder encodeObject:self.numLocalId forKey:@"numLocalId"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -36,6 +37,7 @@
         self.strBrand = [decoder decodeObjectForKey:@"strBrand"];
         self.file = [decoder decodeObjectForKey:@"file"];
         self.date = [decoder decodeObjectForKey:@"date"];
+        self.numLocalId = [decoder decodeObjectForKey:@"numLocalId"];
     }
     return self;
 }

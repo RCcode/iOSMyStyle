@@ -18,9 +18,9 @@
 
 -(void)loginWith:(UserInfo *)userInfo success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
 
-
 -(void)addClothingWithColothesInfo:(ClothesInfo *)clothesInfo success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
 
+-(void)addCollocationWithCollocationInfo:(CollocationInfo *)collocationInfo success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
 
 - (void)cancleAllRequests;
 
