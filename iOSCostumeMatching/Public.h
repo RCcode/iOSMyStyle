@@ -110,13 +110,13 @@ typedef enum WardrobeType WardrobeType;
 enum WardrobeType
 {
     WTAll,
-    WTUpper,
-    WTBottoms,
-    WTShoes,
-    WTBag,
-    WTAccessory,
-    WTJewelry,
-    WTUnderwear
+    WTUpper,//上装
+    WTBottoms,//下装
+    WTShoes,//鞋
+    WTBag,//包
+    WTAccessory,//配饰
+    WTJewelry,//首饰
+    WTUnderwear//内衣
 };
 
 //衣橱类别

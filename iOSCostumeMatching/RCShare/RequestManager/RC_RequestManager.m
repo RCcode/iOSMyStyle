@@ -248,68 +248,100 @@ static RC_RequestManager *requestManager = nil;
 {
     if (![self checkNetWorking])
         return;
-    UserInfo *userInfo = [UserInfo unarchiverUserData];
-    NSMutableArray *arrList = [[NSMutableArray alloc]init];
-    for (ClothesInfo *info in collocationInfo.arrList) {
-        if (info.strBrand && (![info.strBrand isEqualToString:@""])) {
-            NSDictionary *dic;
-            if (info.numClId) {
-                 dic = @{@"clId":info.numClId,
-                         @"cateId":info.numCateId,
-                         @"scateId":info.numScateId,
-                         @"seaId":info.numSeaId,
-                         @"brand":info.strBrand};
-            }
-            else
-            {
-                dic = @{@"cateId":info.numCateId,
-                        @"scateId":info.numScateId,
-                        @"seaId":info.numSeaId,
-                        @"brand":info.strBrand};
-            }
-            [arrList addObject:dic];
-        }
-    }
-    NSDictionary *params = @{@"id":userInfo.numId,
-                             @"token":userInfo.strToken,
-                             @"styleId":collocationInfo.numStyleId,
-                             @"occId":collocationInfo.numOccId,
-                             @"description":collocationInfo.strDescription,
-                             @"list":arrList};
-    NSString *url = [NSString stringWithFormat:ServerRootURL,AddCollocationURL];
     
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setTimeoutInterval:30];
-    _manager.requestSerializer = requestSerializer;
     
-    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
-    _manager.responseSerializer = responseSerializer;
-    _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
+    [requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Accept"];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:@3 forKeyPath:@"id"];
+    [params setValue:@1 forKeyPath:@"styleId"];
+    [params setValue:@1 forKey:@"occId"];
+    [params setValue:@"宴会" forKeyPath:@"description"];
+    [params setValue:@"1450349199.814a781.dda32c5fe2ee4969b95c8c1bb6fe12f3" forKeyPath:@"token"];
     
-    NSData *imageData = UIImageJPEGRepresentation(collocationInfo.file, 0.8);
-    AFHTTPRequestOperation *request = [_manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"yyyyMMddHHmmss";
-        NSString *str = [formatter stringFromDate:[NSDate date]];
-        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
-        
-        // 上传图片，以文件流的格式
-        [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
-        
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
+    [params setValue:@"hhhh" forKey:@"list[0].brand"];
+    [params setValue:@0 forKey:@"list[0].scateId"];
+    [params setValue:@13 forKey:@"list[0].clId"];
+    [params setValue:@0 forKey:@"list[0].cateId"];
+    [params setValue:@0 forKey:@"list[0].seaId"];
+    
+    [manager POST:@"http://192.168.0.194:8080/MyStyleWeb/user/addCollocation.do" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"result = %@", (NSDictionary *)responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-    [request setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        NSLog(@"百分比:%f",totalBytesWritten*1.0/totalBytesExpectedToWrite);
+        NSLog(@"error.local = %@", error.localizedDescription);
     }];
     
+//    UserInfo *userInfo = [UserInfo unarchiverUserData];
+//    NSMutableArray *arrList = [[NSMutableArray alloc]init];
+//    for (ClothesInfo *info in collocationInfo.arrList) {
+//        if (info.strBrand && (![info.strBrand isEqualToString:@""])) {
+//            NSDictionary *dic;
+//            if (info.numClId) {
+//                 dic = @{@"clId":info.numClId,
+//                         @"cateId":info.numCateId,
+//                         @"scateId":info.numScateId,
+//                         @"seaId":info.numSeaId,
+//                         @"brand":info.strBrand};
+//            }
+//            else
+//            {
+//                dic = @{@"cateId":info.numCateId,
+//                        @"scateId":info.numScateId,
+//                        @"seaId":info.numSeaId,
+//                        @"brand":info.strBrand};
+//            }
+//            [arrList addObject:dic];
+//        }
+//    }
+//    NSDictionary *params = @{@"id":userInfo.numId,
+//                             @"token":userInfo.strToken,
+//                             @"styleId":collocationInfo.numStyleId,
+//                             @"occId":collocationInfo.numOccId,
+//                             @"description":collocationInfo.strDescription,
+//                             @"list":arrList};
+//    NSString *url = [NSString stringWithFormat:ServerRootURL,AddCollocationURL];
+//    
+//    NSError *error;
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params
+//                                                       options:NSJSONWritingPrettyPrinted
+//                                                         error:&error];
+//    NSString *jsonString = [[NSString alloc] initWithData:jsonData
+//                                                 encoding:NSUTF8StringEncoding];
+//    CLog(@"%@",jsonString);
+//    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+//    [requestSerializer setTimeoutInterval:30];
+//    _manager.requestSerializer = requestSerializer;
+//    
+//    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+//    _manager.responseSerializer = responseSerializer;
+////    _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+//    
+//    NSData *imageData = UIImageJPEGRepresentation(collocationInfo.file, 0.8);
+//    AFHTTPRequestOperation *request = [_manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//        
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//        formatter.dateFormat = @"yyyyMMddHHmmss";
+//        NSString *str = [formatter stringFromDate:[NSDate date]];
+//        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+//        
+//        // 上传图片，以文件流的格式
+//        [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
+//        
+//    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        if (success) {
+//            success(responseObject);
+//        }
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        if (failure) {
+//            failure(error);
+//        }
+//    }];
+//    [request setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+//        NSLog(@"百分比:%f",totalBytesWritten*1.0/totalBytesExpectedToWrite);
+//    }];
 }
 
 /**

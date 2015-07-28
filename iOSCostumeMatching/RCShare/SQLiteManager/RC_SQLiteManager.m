@@ -147,7 +147,7 @@ static RC_SQLiteManager *sqliteManager = nil;
                  */
                 NSString *tableName = @"Collocation";
                 if (![_db tableExists:tableName]) {
-                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (coId INTEGER,styleId INTEGER,occId INTEGER,description text,file data,list data,date text)",tableName];
+                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (localId INTEGER PRIMARY KEY AUTOINCREMENT,coId INTEGER,styleId INTEGER,occId INTEGER,description text,file data,list data,date text)",tableName];
                     if ([_db executeUpdate:strExecute]) {
                         CLog(@"create table Collocation success");
                     }else{

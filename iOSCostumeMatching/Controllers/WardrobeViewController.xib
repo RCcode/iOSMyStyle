@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WardrobeViewController">
             <connections>
+                <outlet property="btnCategory" destination="0Qc-iZ-WJz" id="Z3s-5X-rmL"/>
+                <outlet property="btnStyle" destination="OpU-yZ-3eE" id="Rkw-QQ-pJZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,6 +25,26 @@
                     </state>
                     <connections>
                         <action selector="addClothes:" destination="-1" eventType="touchUpInside" id="xaw-cM-2i5"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpU-yZ-3eE">
+                    <rect key="frame" x="0.0" y="0.0" width="153" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="类型：ALL">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selectStyle:" destination="-1" eventType="touchUpInside" id="pq3-ny-UrW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qc-iZ-WJz">
+                    <rect key="frame" x="161" y="0.0" width="159" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="类别：ALL">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selectCategory:" destination="-1" eventType="touchUpInside" id="uNT-Yh-4zg"/>
                     </connections>
                 </button>
             </subviews>

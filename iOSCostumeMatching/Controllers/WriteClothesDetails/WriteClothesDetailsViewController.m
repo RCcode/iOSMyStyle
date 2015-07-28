@@ -7,11 +7,19 @@
 //
 
 #import "WriteClothesDetailsViewController.h"
+#import "SelectViewController.h"
 
-@interface WriteClothesDetailsViewController ()
-
+@interface WriteClothesDetailsViewController ()<UITextFieldDelegate>
+{
+    WardrobeType type;
+    WardrobeCategory category;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, copy) void(^finish)(ClothesInfo *info);
+@property (weak, nonatomic) IBOutlet UITextField *txtBrand;
+@property (weak, nonatomic) IBOutlet UIButton *btnStyle;
+@property (weak, nonatomic) IBOutlet UIButton *btnCategory;
+@property (weak, nonatomic) IBOutlet UIButton *btnSeason;
 
 @end
 
@@ -54,7 +62,47 @@
     [self setDoneBtnTitle:@"完成"];
     
     _imageView.image = _image;
+    
+    _txtBrand.delegate = self;
     // Do any additional setup after loading the view from its nib.
+}
+
+- (IBAction)selectStyle:(id)sender {
+    SelectViewController *selectStyle = [[SelectViewController alloc]init];
+    [selectStyle setNavagationTitle:@"选择类型"];
+    selectStyle.array = getAllWardrobeType();
+    __weak WriteClothesDetailsViewController *weakSelf = self;
+    [selectStyle setSelectedBlock:^(int index) {
+        type = index;
+        [weakSelf.btnStyle setTitle:getWardrobeTypeName(type) forState:UIControlStateNormal] ;
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)selectCategory:(id)sender {
+    SelectViewController *selectCategory = [[SelectViewController alloc]init];
+    [selectCategory setNavagationTitle:@"选择类别"];
+    selectCategory.array = getAllWardrobeCategorye();
+    __weak WriteClothesDetailsViewController *weakSelf = self;
+    [selectCategory setSelectedBlock:^(int index) {
+        category = index;
+        [weakSelf.btnCategory setTitle:getWardrobeCategoryeName(category) forState:UIControlStateNormal];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectCategory];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)selectSeason:(id)sender {
+    
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

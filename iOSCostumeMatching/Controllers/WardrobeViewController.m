@@ -26,6 +26,8 @@
 @property (nonatomic, strong) NSMutableArray *arrClothes;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *cellSizes;
+@property (weak, nonatomic) IBOutlet UIButton *btnStyle;
+@property (weak, nonatomic) IBOutlet UIButton *btnCategory;
 
 @end
 
@@ -48,7 +50,7 @@
 //        layout.minimumColumnSpacing = 20;
 //        layout.minimumInteritemSpacing = 30;
         
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_btnStyle.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnStyle.frame)-64) collectionViewLayout:layout];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
@@ -151,6 +153,13 @@
     [[RC_SQLiteManager shareManager]deleteClotheFromWardrobe:info];
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [_collectionView reloadData];
+}
+
+- (IBAction)selectStyle:(id)sender {
+    
+}
+
+- (IBAction)selectCategory:(id)sender {
 }
 
 /**

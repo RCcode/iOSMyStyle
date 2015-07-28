@@ -25,6 +25,8 @@
 
 @property (nonatomic, copy) void(^finish)(ActivityInfo *info);
 
+
+
 @end
 
 @implementation CreateActivityViewController

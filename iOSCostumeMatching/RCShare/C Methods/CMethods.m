@@ -266,4 +266,157 @@ NSString *getCategoryName(int index)
     }
 }
 
+NSString *getWardrobeTypeName(WardrobeType type)
+{
+    NSString *str;
+    switch (type) {
+        case WTAll:
+        {
+            str = @"ALL";
+            break;
+        }
+        case WTUpper:
+        {
+            str = @"上装";
+            break;
+        }
+        case WTBottoms:
+        {
+            str = @"下装";
+            break;
+        }
+        case WTShoes:
+        {
+            str = @"鞋";
+            break;
+        }
+        case WTBag:
+        {
+            str = @"包";
+            break;
+        }
+        case WTAccessory:
+        {
+            str = @"配饰";
+            break;
+        }
+        case WTJewelry:
+        {
+            str = @"首饰";
+            break;
+        }
+        case WTUnderwear:
+        {
+            str = @"内衣";
+            break;
+        }
+        default:
+            break;
+    }
+    return str;
+}
+
+NSArray *getAllWardrobeType()
+{
+    NSArray *arr = @[@"ALL",@"上装",@"下装",@"鞋",@"包",@"配饰",@"首饰",@"内衣"];
+    
+    return arr;
+}
+
+NSString *getWardrobeCategoryeName(WardrobeCategory type)
+{
+    NSString *str;
+    switch (type) {
+        case WCAll:{str = @"ALL";break;}
+            
+        case WCJacket:{str = @"夹克";break;}
+        case WCShirt:{str = @"衬衫";break;}
+        case WCT_shirt:{str = @"T恤";break;}
+        case WCBusiness_suit:{str = @"西装";break;}
+        case WCWoollen_sweater:{str = @"羊毛衫";break;}
+        case WCKnitwear:{str = @"针织衫";break;}
+        case WCOne_piece_dress:{str = @"连衣裙";break;}
+        case WCOutdoor_clothing:{str = @"户外服装";break;}
+        case WCSport_suit:{str = @"运动服";break;}
+        case WCWind_coat:{str = @"风衣";break;}
+        case WCJeans_wear:{str = @"牛仔";break;}
+        case WCUnderwaist:{str = @"背心";break;}
+            //下装
+        case WCLong_dress:{str = @"长裙";break;}
+        case WCShort_skirt:{str = @"短裙";break;}
+        case WCTrousers:{str = @"长裤";break;}
+        case WCShorts:{str = @"短裤";break;}
+        case WCJean:{str = @"牛仔";break;}
+        case WCLeggings:{str = @"打底裤";break;}
+            //鞋
+        case WCFlattie:{str = @"平底鞋";break;}
+        case WCDress_shoes:{str = @"晚装鞋";break;}
+        case WCHigh_heel_shoe:{str = @"高跟鞋";break;}
+        case WCBoots:{str = @"靴子";break;}
+        case WCPlatform_shoes:{str = @"松糕鞋";break;}
+        case WCSandal:{str = @"凉鞋";break;}
+        case WCWedge_heel:{str = @"坡跟鞋";break;}
+        case WCSneaker:{str = @"运动鞋";break;}
+        case WCSlippers:{str = @"拖鞋";break;}
+            //包
+        case WCEvening_bag:{str = @"晚装包";break;}
+        case WCBackpack:{str = @"双肩包";break;}
+        case WCParty_package:{str = @"宴会包";break;}
+        case WCSide_shoulder_bag:{str = @"侧肩包";break;}
+        case WCSatchel:{str = @"小背包";break;}
+        case WCVanity:{str = @"手袋";break;}
+        case WCWallet:{str = @"钱包";break;}
+            //配饰
+        case WCBelt:{str = @"腰带";break;}
+        case WCHat:{str = @"帽子";break;}
+        case WCSunglass:{str = @"太阳镜";break;}
+        case WCScarf:{str = @"围巾";break;}
+        case WCGlove:{str = @"手套";break;}
+        case WCWatch:{str = @"手表";break;}
+        case WCCosmetic:{str = @"化妆品";break;}
+        case WCPerfume:{str = @"香水";break;}
+            //首饰
+        case WCBracelet:{str = @"手镯";break;}
+        case WCNecklace:{str = @"项链";break;}
+        case WCRing:{str = @"戒指";break;}
+        case WCChain_bracelet:{str = @"手链";break;}
+        case WCEarrings:{str = @"耳环";break;}
+        case WCEar_stud:{str = @"耳钉";break;}
+            //内衣
+        case WCBra:{str = @"胸罩";break;}
+        case WCSun_top:{str = @"吊带衫";break;}
+        case WCUnderdress:{str = @"衬裙";break;}
+        case WCNight_robe:{str = @"睡袍";break;}
+        case WCSilk_stockings:{str = @"丝袜";break;}
+        case WCNight_suit:{str = @"睡衣";break;}
+        case WCBriefs:{str = @"内裤";break;}
+        case WCSocks:{str = @"袜子";break;}
+        case WCBathrobe:{str = @"浴袍";break;}
+        default:
+            break;
+    }
+    return str;
+}
+
+NSArray *getAllWardrobeCategorye()
+{
+    NSArray *arr = @[@"ALL",
+                     @"夹克",@"衬衫",@"T恤",@"西装",@"羊毛衫",@"针织衫",@"连衣裙",@"户外服装",@"运动服",@"风衣",@"牛仔",@"背心",
+                      
+                     @"长裙",@"短裙",@"长裤",@"短裤",@"牛仔",@"打底裤",
+                      
+                     @"平底鞋",@"晚装鞋",@"高跟鞋",@"靴子",@"松糕鞋",@"凉鞋",@"坡跟鞋",@"运动鞋",@"拖鞋",
+                      
+                     @"晚装包",@"双肩包",@"宴会包",@"侧肩包",@"小背包",@"手袋",@"钱包",
+                      
+                     @"腰带",@"帽子",@"太阳镜",@"围巾",@"手套",@"手表",@"化妆品",@"香水",
+                      
+                     @"手镯",@"项链",@"戒指",@"手链",@"耳环",@"耳钉",
+                      
+                     @"胸罩",@"吊带衫",@"衬裙",@"睡袍",@"丝袜",@"睡衣",@"内裤",@"袜子",@"浴袍"];
+    
+    return arr;
+}
+
+
 @end

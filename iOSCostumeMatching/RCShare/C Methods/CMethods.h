@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
+#import "Public.h"
 //#include <stdio.h>
 
 //用户当前的语言环境
@@ -38,4 +39,9 @@ void hideMBProgressHUD();
 
 NSString *getCategoryName(int index);
 
+NSString *getWardrobeTypeName(WardrobeType type);
+NSArray *getAllWardrobeType();
+
+NSString *getWardrobeCategoryeName(WardrobeCategory type);
+NSArray *getAllWardrobeCategorye();
 @end

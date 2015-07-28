@@ -59,13 +59,13 @@
         CLog(@"%@",error);
     }];
     
-//    info.numCoId = [NSNumber numberWithInt:(int)(_arrCollection.count+1)];
-//    
-//    [[RC_SQLiteManager shareManager]addCollection:info];
-//    
-//    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
-//    
-//    [_collectionView reloadData];
+    info.numCoId = [NSNumber numberWithInt:(int)(_arrCollection.count+1)];
+    
+    [[RC_SQLiteManager shareManager]addCollection:info];
+    
+    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
+    
+    [_collectionView reloadData];
 }
 
 #pragma mark - View

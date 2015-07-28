@@ -42,6 +42,8 @@
 		4F5A508A1B60FAB70001D5D1 /* LikeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A50881B60FAB70001D5D1 /* LikeDetailViewController.m */; };
 		4F5A508B1B60FAB70001D5D1 /* LikeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50891B60FAB70001D5D1 /* LikeDetailViewController.xib */; };
 		4F5A508F1B6104140001D5D1 /* InstagramLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A508E1B6104140001D5D1 /* InstagramLoginViewController.m */; };
+		4F5F94591B67735F00399681 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5F94571B67735F00399681 /* SelectViewController.m */; };
+		4F5F945A1B67735F00399681 /* SelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5F94581B67735F00399681 /* SelectViewController.xib */; };
 		4F62FFE61B579755005E8C79 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDC1B579755005E8C79 /* FMDatabase.m */; };
 		4F62FFE71B579755005E8C79 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDE1B579755005E8C79 /* FMDatabaseAdditions.m */; };
 		4F62FFE81B579755005E8C79 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFE01B579755005E8C79 /* FMDatabasePool.m */; };
@@ -210,6 +212,9 @@
 		4F5A50891B60FAB70001D5D1 /* LikeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeDetailViewController.xib; sourceTree = "<group>"; };
 		4F5A508D1B6104140001D5D1 /* InstagramLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramLoginViewController.h; sourceTree = "<group>"; };
 		4F5A508E1B6104140001D5D1 /* InstagramLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramLoginViewController.m; sourceTree = "<group>"; };
+		4F5F94561B67735F00399681 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
+		4F5F94571B67735F00399681 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
+		4F5F94581B67735F00399681 /* SelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectViewController.xib; sourceTree = "<group>"; };
 		4F62FFDB1B579755005E8C79 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		4F62FFDC1B579755005E8C79 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		4F62FFDD1B579755005E8C79 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -498,6 +503,7 @@
 		4F417DCA1B4E7285000BD540 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4F5F94551B67734300399681 /* Select */,
 				4F5A508C1B6104000001D5D1 /* Login */,
 				4F5A50851B60FA820001D5D1 /* LikeDetail */,
 				4F5A507A1B60F0630001D5D1 /* ShowCollectionInspirationDetails */,
@@ -570,6 +576,16 @@
 				4F5A508E1B6104140001D5D1 /* InstagramLoginViewController.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		4F5F94551B67734300399681 /* Select */ = {
+			isa = PBXGroup;
+			children = (
+				4F5F94561B67735F00399681 /* SelectViewController.h */,
+				4F5F94571B67735F00399681 /* SelectViewController.m */,
+				4F5F94581B67735F00399681 /* SelectViewController.xib */,
+			);
+			path = Select;
 			sourceTree = "<group>";
 		};
 		4F62FFDA1B57974B005E8C79 /* FMDB */ = {
@@ -1061,6 +1077,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F5F945A1B67735F00399681 /* SelectViewController.xib in Resources */,
 				4F8329ED1B5CEB63005588D7 /* ic_main_operate@2x.png in Resources */,
 				4F6FB3FD1B58E77500C5CB0A /* cat3.jpg in Resources */,
 				4FCD2FEE1B5503CD00BD6DDB /* 8.jpeg in Resources */,
@@ -1179,6 +1196,7 @@
 				4F62FFE91B579755005E8C79 /* FMDatabaseQueue.m in Sources */,
 				4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */,
 				4F7B9AB41B6254AD003D94BF /* MKAnnotationView+WebCache.m in Sources */,
+				4F5F94591B67735F00399681 /* SelectViewController.m in Sources */,
 				4FB374191B66450F009ED71E /* AFURLConnectionOperation.m in Sources */,
 				4F7B9AB61B6254AD003D94BF /* SDImageCache.m in Sources */,
 				4F7B9AC11B6254AD003D94BF /* UIImageView+HighlightedWebCache.m in Sources */,
