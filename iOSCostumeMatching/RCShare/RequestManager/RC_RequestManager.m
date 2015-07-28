@@ -185,13 +185,12 @@ static RC_RequestManager *requestManager = nil;
     if (![self checkNetWorking])
         return;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
-//    NSDictionary *params = @{@"id":userInfo.numId,
-//                             @"token":userInfo.strToken,
-//                             @"cateId":clothesInfo.numCateId,
-//                             @"scateId":clothesInfo.numScateId,
-//                             @"seaId":clothesInfo.numSeaId,
-//                             @"brand":clothesInfo.strBrand};
-    NSDictionary *params = @{@"id":@"3",@"token":@"1111111",@"cateId":@"1",@"scateId":@"1",@"seaId":@"1",@"brand":@"1"};
+    NSDictionary *params = @{@"id":userInfo.numId,
+                             @"token":userInfo.strToken,
+                             @"cateId":clothesInfo.numCateId,
+                             @"scateId":clothesInfo.numScateId,
+                             @"seaId":clothesInfo.numSeaId,
+                             @"brand":clothesInfo.strBrand};
 
     NSString *url = [NSString stringWithFormat:ServerRootURL,AddClothingURL];
     
@@ -203,8 +202,7 @@ static RC_RequestManager *requestManager = nil;
     _manager.responseSerializer = responseSerializer;
     _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
 
-//    NSData *imageData = UIImageJPEGRepresentation(clothesInfo.file, 0.3);
-    NSData *imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"ball"], 0.3);
+    NSData *imageData = UIImageJPEGRepresentation(clothesInfo.file, 0.8);
     AFHTTPRequestOperation *request = [_manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -213,10 +211,7 @@ static RC_RequestManager *requestManager = nil;
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
         
         // 上传图片，以文件流的格式
-        [formData appendPartWithFileData:imageData name:@"File" fileName:fileName mimeType:@"image/jpeg"];
-        
-        
-//        [formData appendPartWithFormData:imageData name:@"file"];
+        [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
         
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
@@ -227,9 +222,9 @@ static RC_RequestManager *requestManager = nil;
             failure(error);
         }
     }];
-//    [request setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-//        NSLog(@"百分比:%f",totalBytesWritten*1.0/totalBytesExpectedToWrite);
-//    }];
+    [request setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        NSLog(@"百分比:%f",totalBytesWritten*1.0/totalBytesExpectedToWrite);
+    }];
     
 }
 

@@ -268,19 +268,22 @@
 
 -(void)addClothesToWardrobe:(ClothesInfo *)info
 {
+    __weak WardrobeViewController *weakSelf = self;
     [[RC_RequestManager shareManager]addClothingWithColothesInfo:info success:^(id responseObject) {
         CLog(@"%@",responseObject);
+        
+        if([responseObject isKindOfClass:[NSDictionary class]])
+        {
+            NSDictionary *dic = responseObject;
+            info.numClId = [NSNumber numberWithInt:[[dic objectForKey:@"clId"] intValue]];
+            [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
+            weakSelf.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+            [weakSelf.collectionView reloadData];
+        }
+        
     } andFailed:^(NSError *error) {
         CLog(@"%@",error);
     }];
-    
-//    info.numClId = [NSNumber numberWithInt:(int)(_arrClothes.count+1)];
-//    
-//    [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
-//    
-//    self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
-//    
-//    [_collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
