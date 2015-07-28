@@ -24,6 +24,7 @@
 #import "CollocationInfo.h"
 #import "RC_SQLiteManager.h"
 #import "ActivityInfo.h"
+#import "MBProgressHUD.h"
 
 //#import "IS_MobAndAnalyticsManager.h"
 #import "RC_RequestManager.h"

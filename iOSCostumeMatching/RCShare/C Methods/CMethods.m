@@ -143,59 +143,59 @@ NSString *stringFromDate(NSDate *date)
     
 }
 
-//MBProgressHUD *HUD;
-//void showLabelHUD(NSString *content)
-//{
-//    //显示LoadView
-//    if (HUD==nil) {
-//        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-//        HUD = [[MBProgressHUD alloc] initWithView:window];
-//        HUD.mode = MBProgressHUDModeText;
-//        [window addSubview:HUD];
-//        //如果设置此属性则当前的view置于后台
-//    }
-//    HUD.labelText = content;
-//    [HUD showAnimated:YES whileExecutingBlock:^{
-//        sleep(1.5);
-//    } completionBlock:^{
-//        [HUD removeFromSuperview];
-//        HUD = nil;
-//    }];
-//}
+MBProgressHUD *HUD;
+void showLabelHUD(NSString *content)
+{
+    //显示LoadView
+    if (HUD==nil) {
+        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        HUD = [[MBProgressHUD alloc] initWithView:window];
+        HUD.mode = MBProgressHUDModeText;
+        [window addSubview:HUD];
+        //如果设置此属性则当前的view置于后台
+    }
+    HUD.labelText = content;
+    [HUD showAnimated:YES whileExecutingBlock:^{
+        sleep(1.5);
+    } completionBlock:^{
+        [HUD removeFromSuperview];
+        HUD = nil;
+    }];
+}
 
-//MBProgressHUD *mb;
-//MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView)
-//{
-//    if(mb){
-//        hideMBProgressHUD();
-//    }
-//    
-//    //显示LoadView
-//    if (mb==nil) {
-//        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-//        mb = [[MBProgressHUD alloc] initWithView:window];
-//        mb.mode = showView?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
-//        mb.userInteractionEnabled = NO;
-//        [window addSubview:mb];
-//        //如果设置此属性则当前的view置于后台
-//        mb.dimBackground = YES;
-//        mb.labelText = content;
-//    }else{
-//        
-//        mb.mode = showView?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
-//        mb.labelText = content;
-//    }
-//    
-//    [mb show:YES];
-//    return mb;
-//}
-//
-//void hideMBProgressHUD()
-//{
-//    [mb hide:YES];
-//    [mb removeFromSuperview];
-//    mb = nil;
-//}
+MBProgressHUD *mb;
+MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView)
+{
+    if(mb){
+        hideMBProgressHUD();
+    }
+    
+    //显示LoadView
+    if (mb==nil) {
+        UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+        mb = [[MBProgressHUD alloc] initWithView:window];
+        mb.mode = showView?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
+        mb.userInteractionEnabled = NO;
+        [window addSubview:mb];
+        //如果设置此属性则当前的view置于后台
+        mb.dimBackground = YES;
+        mb.labelText = content;
+    }else{
+        
+        mb.mode = showView?MBProgressHUDModeIndeterminate:MBProgressHUDModeText;
+        mb.labelText = content;
+    }
+    
+    [mb show:YES];
+    return mb;
+}
+
+void hideMBProgressHUD()
+{
+    [mb hide:YES];
+    [mb removeFromSuperview];
+    mb = nil;
+}
 
 UIImage *getViewImage(UIView *view)
 {

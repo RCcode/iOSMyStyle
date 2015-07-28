@@ -268,10 +268,11 @@
 
 -(void)addClothesToWardrobe:(ClothesInfo *)info
 {
+    showMBProgressHUD(nil, YES);
     __weak WardrobeViewController *weakSelf = self;
     [[RC_RequestManager shareManager]addClothingWithColothesInfo:info success:^(id responseObject) {
         CLog(@"%@",responseObject);
-        
+        hideMBProgressHUD();
         if([responseObject isKindOfClass:[NSDictionary class]])
         {
             NSDictionary *dic = responseObject;
@@ -283,6 +284,7 @@
         
     } andFailed:^(NSError *error) {
         CLog(@"%@",error);
+        hideMBProgressHUD();
     }];
 }
 

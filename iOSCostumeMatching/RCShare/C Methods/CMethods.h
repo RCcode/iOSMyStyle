@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import "MBProgressHUD.h"
+#import "MBProgressHUD.h"
 //#include <stdio.h>
 
 //用户当前的语言环境
@@ -33,8 +33,8 @@ void showLabelHUD(NSString *content);
 
 UIImage *getViewImage(UIView *view);
 
-//MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView);
-//void hideMBProgressHUD();
+MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView);
+void hideMBProgressHUD();
 
 NSString *getCategoryName(int index);
 
