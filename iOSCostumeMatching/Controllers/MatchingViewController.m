@@ -15,10 +15,11 @@
 
 @interface MatchingViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
-    UICollectionView *_collectionView;  // 集合视图
+    
 }
 
 @property (nonatomic, strong) NSMutableArray *arrCollection;
+@property (nonatomic, strong) UICollectionView *collectionView;  // 集合视图
 
 @end
 
@@ -53,19 +54,23 @@
 
 -(void)addCollocation:(CollocationInfo *)info
 {
+    showMBProgressHUD(nil, YES);
+    __weak MatchingViewController *weakSelf = self;
     [[RC_RequestManager shareManager]addCollocationWithCollocationInfo:info success:^(id responseObject) {
         CLog(@"%@",responseObject);
+        hideMBProgressHUD();
+        if([responseObject isKindOfClass:[NSDictionary class]])
+        {
+            NSDictionary *dic = responseObject;
+            info.numCoId = [NSNumber numberWithInt:[[dic objectForKey:@"coId"] intValue]];
+            [[RC_SQLiteManager shareManager]addCollection:info];;
+            weakSelf.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
+            [weakSelf.collectionView reloadData];
+        }
     } andFailed:^(NSError *error) {
+        hideMBProgressHUD();
         CLog(@"%@",error);
     }];
-    
-    info.numCoId = [NSNumber numberWithInt:(int)(_arrCollection.count+1)];
-    
-    [[RC_SQLiteManager shareManager]addCollection:info];
-    
-    self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
-    
-    [_collectionView reloadData];
 }
 
 #pragma mark - View

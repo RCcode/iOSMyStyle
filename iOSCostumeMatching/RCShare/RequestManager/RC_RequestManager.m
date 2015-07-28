@@ -248,29 +248,67 @@ static RC_RequestManager *requestManager = nil;
 {
     if (![self checkNetWorking])
         return;
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
     [requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Accept"];
+//    manager.requestSerializer = requestSerializer;
+    
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    manager.responseSerializer = responseSerializer;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:@3 forKeyPath:@"id"];
-    [params setValue:@1 forKeyPath:@"styleId"];
-    [params setValue:@1 forKey:@"occId"];
-    [params setValue:@"宴会" forKeyPath:@"description"];
-    [params setValue:@"1450349199.814a781.dda32c5fe2ee4969b95c8c1bb6fe12f3" forKeyPath:@"token"];
+    [params setValue:userInfo.numId forKeyPath:@"id"];
+    [params setValue:userInfo.strToken forKeyPath:@"token"];
+    [params setValue:collocationInfo.numStyleId forKeyPath:@"styleId"];
+    [params setValue:collocationInfo.numOccId forKey:@"occId"];
+    [params setValue:collocationInfo.strDescription forKeyPath:@"description"];
     
-    [params setValue:@"hhhh" forKey:@"list[0].brand"];
-    [params setValue:@0 forKey:@"list[0].scateId"];
-    [params setValue:@13 forKey:@"list[0].clId"];
-    [params setValue:@0 forKey:@"list[0].cateId"];
-    [params setValue:@0 forKey:@"list[0].seaId"];
+    for(int i = 0 ;i<collocationInfo.arrList.count;i++)
+    {
+        ClothesInfo *info = [collocationInfo.arrList objectAtIndex:i];
+        if (info.strBrand && (![info.strBrand isEqualToString:@""])) {
+            if (info.numClId) {
+                [params setValue:info.numClId forKey:[NSString stringWithFormat:@"list[%d].clId",i]];
+                [params setValue:info.strBrand forKey:[NSString stringWithFormat:@"list[%d].brand",i]];
+                [params setValue:info.numScateId forKey:[NSString stringWithFormat:@"list[%d].scateId",i]];
+                [params setValue:info.numScateId forKey:[NSString stringWithFormat:@"list[%d].cateId",i]];
+                [params setValue:info.numSeaId forKey:[NSString stringWithFormat:@"list[%d].seaId",i]];
+            }
+            else
+            {
+                [params setValue:info.strBrand forKey:[NSString stringWithFormat:@"list[%d].brand",i]];
+                [params setValue:info.numScateId forKey:[NSString stringWithFormat:@"list[%d].scateId",i]];
+                [params setValue:info.numScateId forKey:[NSString stringWithFormat:@"list[%d].cateId",i]];
+                [params setValue:info.numSeaId forKey:[NSString stringWithFormat:@"list[%d].seaId",i]];
+            }
+        }
+    }
     
-    [manager POST:@"http://192.168.0.194:8080/MyStyleWeb/user/addCollocation.do" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString *url = [NSString stringWithFormat:ServerRootURL,AddCollocationURL];
+    NSData *imageData = UIImageJPEGRepresentation(collocationInfo.file, 0.8);
+    [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+        
+        // 上传图片，以文件流的格式
+        [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"result = %@", (NSDictionary *)responseObject);
+        if (success) {
+            success(responseObject);
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error.local = %@", error.localizedDescription);
+        if (failure) {
+            failure(error);
+        }
     }];
     
 //    UserInfo *userInfo = [UserInfo unarchiverUserData];
@@ -329,7 +367,7 @@ static RC_RequestManager *requestManager = nil;
 //        
 //        // 上传图片，以文件流的格式
 //        [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
-//        
+//
 //    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        if (success) {
 //            success(responseObject);
