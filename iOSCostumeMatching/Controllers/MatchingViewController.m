@@ -10,16 +10,20 @@
 #import "CreateCollectionViewController.h"
 #import "CHTCollectionViewWaterfallCell.h"
 #import "ShowCollectionDetailsViewController.h"
+#import "SelectViewController.h"
 
 #define CELL_IDENTIFIER @"MatchingCell"
 
 @interface MatchingViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
-    
+    int style;
+    int occasion;
 }
 
 @property (nonatomic, strong) NSMutableArray *arrCollection;
 @property (nonatomic, strong) UICollectionView *collectionView;  // 集合视图
+@property (weak, nonatomic) IBOutlet UIButton *btnStyle;
+@property (weak, nonatomic) IBOutlet UIButton *btnOccasion;
 
 @end
 
@@ -40,6 +44,41 @@
     
     self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
     [self createCollectionView];
+}
+
+-(void)updateCollectionView
+{
+    self.arrCollection = [[RC_SQLiteManager shareManager]getCollectionWithStyle:style occasion:occasion];
+    [_collectionView reloadData];
+}
+
+- (IBAction)selectStyle:(id)sender {
+    SelectViewController *selectStyle = [[SelectViewController alloc]init];
+    [selectStyle setNavagationTitle:@"选择风格"];
+    selectStyle.array = getAllCollocationStyle();
+    __weak MatchingViewController *weakSelf = self;
+    [selectStyle setSelectedBlock:^(int index) {
+        style = index;
+        [weakSelf.btnStyle setTitle:getCollocationStyleName(style) forState:UIControlStateNormal] ;
+        [weakSelf updateCollectionView];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
+    [self presentViewController:nav animated:YES completion:nil];
+
+}
+
+- (IBAction)selectOccasion:(id)sender {
+    SelectViewController *selectOccasion = [[SelectViewController alloc]init];
+    [selectOccasion setNavagationTitle:@"选择场合"];
+    selectOccasion.array = getAllCollocationOccasion();
+    __weak MatchingViewController *weakSelf = self;
+    [selectOccasion setSelectedBlock:^(int index) {
+        occasion = index;
+        [weakSelf.btnOccasion setTitle:getCollocationOccasionName(occasion) forState:UIControlStateNormal];
+        [weakSelf updateCollectionView];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectOccasion];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (IBAction)addCollection:(id)sender {

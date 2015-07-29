@@ -534,7 +534,7 @@ NSString *getCollocationOccasionName(CollocationOccasion type)
     return str;
 }
 
-NSArray *getCollocationOccasion()
+NSArray *getAllCollocationOccasion()
 {
     NSArray *arr = @[@"ALL",@"工作",@"家居",@"晚宴",@"聚会",@"健身",@"出游"];
     

@@ -34,6 +34,7 @@ enum TableNameType
 
 -(BOOL)addCollection:(CollocationInfo *)collocationInfo;
 -(NSMutableArray *)getAllCollection;
+-(NSMutableArray *)getCollectionWithStyle:(int)style occasion:(int)occasion;
 -(BOOL)deleteCollection:(CollocationInfo *)collocationInfo;
 
 -(BOOL)addActivityInfo:(ActivityInfo *)activityInfo;

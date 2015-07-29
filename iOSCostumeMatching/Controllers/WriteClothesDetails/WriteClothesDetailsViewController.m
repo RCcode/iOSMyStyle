@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, copy) void(^finish)(ClothesInfo *info);
 @property (weak, nonatomic) IBOutlet UITextField *txtBrand;
-@property (weak, nonatomic) IBOutlet UIButton *btnStyle;
+@property (weak, nonatomic) IBOutlet UIButton *btnType;
 @property (weak, nonatomic) IBOutlet UIButton *btnCategory;
 @property (weak, nonatomic) IBOutlet UIButton *btnSeason;
 
@@ -69,14 +69,14 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (IBAction)selectStyle:(id)sender {
+- (IBAction)selectType:(id)sender {
     SelectViewController *selectStyle = [[SelectViewController alloc]init];
     [selectStyle setNavagationTitle:@"选择类型"];
     selectStyle.array = getAllWardrobeType();
     __weak WriteClothesDetailsViewController *weakSelf = self;
     [selectStyle setSelectedBlock:^(int index) {
         type = index;
-        [weakSelf.btnStyle setTitle:getWardrobeTypeName(type) forState:UIControlStateNormal] ;
+        [weakSelf.btnType setTitle:getWardrobeTypeName(type) forState:UIControlStateNormal] ;
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
     [self presentViewController:nav animated:YES completion:nil];
@@ -131,15 +131,15 @@
 }
 
 - (IBAction)selectSeason:(id)sender {
-    SelectViewController *selectCategory = [[SelectViewController alloc]init];
-    [selectCategory setNavagationTitle:@"选择季节"];
-    selectCategory.array = getAllWardrobeSeason();
+    SelectViewController *selectSeason = [[SelectViewController alloc]init];
+    [selectSeason setNavagationTitle:@"选择季节"];
+    selectSeason.array = getAllWardrobeSeason();
     __weak WriteClothesDetailsViewController *weakSelf = self;
-    [selectCategory setSelectedBlock:^(int index) {
+    [selectSeason setSelectedBlock:^(int index) {
         season = index;
         [weakSelf.btnSeason setTitle:getWardrobeSeasonName(season) forState:UIControlStateNormal];
     }];
-    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectCategory];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectSeason];
     [self presentViewController:nav animated:YES completion:nil];
 }
 

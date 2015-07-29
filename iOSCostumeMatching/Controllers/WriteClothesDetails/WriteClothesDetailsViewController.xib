@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="btnCategory" destination="31t-vr-hwb" id="yTT-mX-gYW"/>
                 <outlet property="btnSeason" destination="az8-fJ-yRi" id="EjV-da-aj8"/>
-                <outlet property="btnStyle" destination="eyX-ue-MGS" id="ZFe-fg-w9g"/>
+                <outlet property="btnType" destination="eyX-ue-MGS" id="XyZ-vH-csT"/>
                 <outlet property="imageView" destination="6Fh-4e-HnI" id="wPd-5x-sQS"/>
                 <outlet property="txtBrand" destination="x35-2w-hH7" id="vuL-SA-fhu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -58,7 +58,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="selectStyle:" destination="-1" eventType="touchUpInside" id="SBJ-ON-8Mk"/>
+                        <action selector="selectType:" destination="-1" eventType="touchUpInside" id="HFV-IE-sDA"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="az8-fJ-yRi">

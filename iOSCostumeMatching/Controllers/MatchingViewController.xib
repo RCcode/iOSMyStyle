@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MatchingViewController">
             <connections>
+                <outlet property="btnOccasion" destination="S6O-5J-ibq" id="Xki-PC-Ipd"/>
+                <outlet property="btnStyle" destination="Uy5-IH-H9x" id="87R-ST-nO7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,6 +24,26 @@
                     </state>
                     <connections>
                         <action selector="addCollection:" destination="-1" eventType="touchUpInside" id="3kk-Th-kCX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6O-5J-ibq">
+                    <rect key="frame" x="206" y="0.0" width="87" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="场合">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selectOccasion:" destination="-1" eventType="touchUpInside" id="cIo-x7-GNp"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uy5-IH-H9x">
+                    <rect key="frame" x="37" y="0.0" width="80" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="风格">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selectStyle:" destination="-1" eventType="touchUpInside" id="ITV-S4-Q6w"/>
                     </connections>
                 </button>
             </subviews>

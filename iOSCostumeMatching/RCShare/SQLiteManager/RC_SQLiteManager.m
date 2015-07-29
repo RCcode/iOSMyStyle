@@ -348,6 +348,32 @@ static RC_SQLiteManager *sqliteManager = nil;
     return NO;
 }
 
+-(NSMutableArray *)getCollectionWithStyle:(int)style occasion:(int)occasion
+{
+    [self createTable:TNTCollocation];
+    if ([_db open]) {
+        NSMutableArray *arr = [[NSMutableArray alloc]init];
+        NSString *tableName = @"Collocation";
+        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@ where styleId= %d and occId= %d order by date desc",tableName,style,occasion];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            CollocationInfo *clothesInfo = [[CollocationInfo alloc]init];
+            
+            clothesInfo.numCoId = [NSNumber numberWithInt:[rs intForColumn:@"coId"]];
+            clothesInfo.numStyleId = [NSNumber numberWithInt:[rs intForColumn:@"styleId"]];
+            clothesInfo.numOccId = [NSNumber numberWithInt:[rs intForColumn:@"occId"]];
+            clothesInfo.strDescription = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"description"]];
+            clothesInfo.file = [UIImage imageWithData:[rs dataForColumn:@"file"]];
+            clothesInfo.date = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"date"]];
+            
+            [arr addObject:clothesInfo];
+        }
+        [_db close];
+        return arr;
+    }
+    return nil;
+}
+
 -(NSMutableArray *)getAllCollection
 {
     [self createTable:TNTCollocation];

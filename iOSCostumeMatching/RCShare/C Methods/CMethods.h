@@ -52,7 +52,7 @@ NSString *getCollocationStyleName(CollocationStyle type);
 NSArray *getAllCollocationStyle();
 
 NSString *getCollocationOccasionName(CollocationOccasion type);
-NSArray *getCollocationOccasion();
+NSArray *getAllCollocationOccasion();
 
 
 @end
