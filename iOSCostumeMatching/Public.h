@@ -109,14 +109,14 @@ typedef enum WardrobeType WardrobeType;
 
 enum WardrobeType
 {
-    WTAll,
-    WTUpper,//上装
-    WTBottoms,//下装
-    WTShoes,//鞋
-    WTBag,//包
-    WTAccessory,//配饰
-    WTJewelry,//首饰
-    WTUnderwear//内衣
+    WTAll = 0,
+    WTUpper = 10,               //上装
+    WTBottoms = 11,             //下装
+    WTShoes = 12,               //鞋
+    WTBag = 13,                 //包
+    WTAccessory = 14,           //配饰
+    WTJewelry = 15,             //首饰
+    WTUnderwear = 16            //内衣
 };
 
 //衣橱类别
@@ -124,84 +124,84 @@ typedef enum WardrobeCategory WardrobeCategory;
 
 enum WardrobeCategory
 {
-    WCAll,
+    WCAll = 0,
     
     //上装
     
-    WCJacket,                           //夹克
-    WCShirt,                            //衬衫
-    WCT_shirt,                          //T恤
-    WCBusiness_suit,                    //西装
-    WCWoollen_sweater,                  //羊毛衫
-    WCKnitwear,                         //针织衫
-    WCOne_piece_dress,                  //连衣裙
-    WCOutdoor_clothing,                 //户外服装
-    WCSport_suit,                       //运动服
-    WCWind_coat,                        //风衣
-    WCJeans_wear,                       //牛仔
-    WCUnderwaist,                       //背心
+    WCJacket = 1001,                           //夹克
+    WCShirt = 1002,                            //衬衫
+    WCT_shirt = 1003,                          //T恤
+    WCBusiness_suit = 1004,                    //西装
+    WCWoollen_sweater = 1005,                  //羊毛衫
+    WCKnitwear = 1006,                         //针织衫
+    WCOne_piece_dress = 1007,                  //连衣裙
+    WCOutdoor_clothing = 1008,                 //户外服装
+    WCSport_suit = 1009,                       //运动服
+    WCWind_coat = 1010,                        //风衣
+    WCJeans_wear = 1011,                       //牛仔
+    WCUnderwaist = 1012,                       //背心
     
     //下装
     
-    WCLong_dress,                       //长裙
-    WCShort_skirt,                      //短裙
-    WCTrousers,                         //长裤
-    WCShorts,                           //短裤
-    WCJean,                             //牛仔
-    WCLeggings,                         //打底裤
+    WCLong_dress = 1101,                       //长裙
+    WCShort_skirt = 1102,                      //短裙
+    WCTrousers = 1103,                         //长裤
+    WCShorts = 1104,                           //短裤
+    WCJean = 1105,                             //牛仔
+    WCLeggings = 1106,                         //打底裤
     
     //鞋
     
-    WCFlattie,                          //平底鞋
-    WCDress_shoes,                      //晚装鞋
-    WCHigh_heel_shoe,                   //高跟鞋
-    WCBoots,                            //靴子
-    WCPlatform_shoes,                   //松糕鞋
-    WCSandal,                           //凉鞋
-    WCWedge_heel,                       //坡跟鞋
-    WCSneaker,                          //运动鞋
-    WCSlippers,                         //拖鞋
+    WCFlattie = 1201,                          //平底鞋
+    WCDress_shoes = 1202,                      //晚装鞋
+    WCHigh_heel_shoe = 1203,                   //高跟鞋
+    WCBoots = 1204,                            //靴子
+    WCPlatform_shoes = 1205,                   //松糕鞋
+    WCSandal = 1206,                           //凉鞋
+    WCWedge_heel = 1207,                       //坡跟鞋
+    WCSneaker = 1208,                          //运动鞋
+    WCSlippers = 1209,                         //拖鞋
     
     //包
-    WCEvening_bag,                      //晚装包
-    WCBackpack,                         //双肩包
-    WCParty_package,                    //宴会包
-    WCSide_shoulder_bag,                //侧肩包
-    WCSatchel,                          //小背包
-    WCVanity,                           //手袋
-    WCWallet,                           //钱包
+    WCEvening_bag = 1301,                      //晚装包
+    WCBackpack = 1302,                         //双肩包
+    WCParty_package = 1303,                    //宴会包
+    WCSide_shoulder_bag = 1304,                //侧肩包
+    WCSatchel = 1305,                          //小背包
+    WCVanity = 1306,                           //手袋
+    WCWallet = 1307,                           //钱包
     
     //配饰
     
-    WCBelt,                             //腰带
-    WCHat,                              //帽子
-    WCSunglass,                         //太阳镜
-    WCScarf,                            //围巾
-    WCGlove,                            //手套
-    WCWatch,                            //手表
-    WCCosmetic,                         //化妆品
-    WCPerfume,                          //香水
+    WCBelt = 1401,                             //腰带
+    WCHat = 1402,                              //帽子
+    WCSunglass = 1403,                         //太阳镜
+    WCScarf = 1404,                            //围巾
+    WCGlove = 1405,                            //手套
+    WCWatch = 1406,                            //手表
+    WCCosmetic = 1407,                         //化妆品
+    WCPerfume = 1408,                          //香水
     
     //首饰
     
-    WCBracelet,                         //手镯
-    WCNecklace,                         //项链
-    WCRing,                             //戒指
-    WCChain_bracelet,                   //手链
-    WCEarrings,                         //耳环
-    WCEar_stud,                         //耳钉
+    WCBracelet = 1501,                         //手镯
+    WCNecklace = 1502,                         //项链
+    WCRing = 1503,                             //戒指
+    WCChain_bracelet = 1504,                   //手链
+    WCEarrings = 1505,                         //耳环
+    WCEar_stud = 1506,                         //耳钉
     
     //内衣
     
-    WCBra,                              //胸罩
-    WCSun_top,                          //吊带衫
-    WCUnderdress,                       //衬裙
-    WCNight_robe,                       //睡袍
-    WCSilk_stockings,                   //丝袜
-    WCNight_suit,                       //睡衣
-    WCBriefs,                           //内裤
-    WCSocks,                            //袜子
-    WCBathrobe,                         //浴袍
+    WCBra = 1601,                              //胸罩
+    WCSun_top = 1602,                          //吊带衫
+    WCUnderdress = 1603,                       //衬裙
+    WCNight_robe = 1604,                       //睡袍
+    WCSilk_stockings = 1605,                   //丝袜
+    WCNight_suit = 1606,                       //睡衣
+    WCBriefs = 1607,                           //内裤
+    WCSocks = 1608,                            //袜子
+    WCBathrobe = 1609,                         //浴袍
 };
 
 //搭配风格

@@ -189,7 +189,14 @@
     selectStyle.array = getAllWardrobeType();
     __weak WardrobeViewController *weakSelf = self;
     [selectStyle setSelectedBlock:^(int index) {
-        type = index;
+        if(index == 0)
+        {
+            type = 0;
+        }
+        else
+        {
+            type = index+9;
+        }
         [weakSelf.btnType setTitle:getWardrobeTypeName(type) forState:UIControlStateNormal] ;
         [weakSelf updateCollectionView];
     }];
@@ -205,35 +212,109 @@
     [selectCategory setSelectedBlock:^(int index) {
         switch (type) {
             case WTAll:{
-                category = index;
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    if (index >0 && index<=12) {
+                        category = index+1000;
+                    }
+                    else if(index>12 && index<=18)
+                    {
+                        category = index+1100-12;
+                    }
+                    else if(index>18 && index<=27)
+                    {
+                        category = index+1200-18;
+                    }
+                    else if(index>27 && index<=34)
+                    {
+                        category = index+1300-27;
+                    }
+                    else if(index>34 && index<=42)
+                    {
+                        category = index+1400-34;
+                    }
+                    else if(index>42 && index<=48)
+                    {
+                        category = index+1500-42;
+                    }
+                    else if(index>48)
+                    {
+                        category = index+1600-48;
+                    }
+                }
                 break;
             }
             case WTUpper:{
-                category = index+1;
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1001;
+                }
                 break;
             }
             case WTBottoms:{
-                category = index+13;
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1101;
+                }
                 break;
             }
             case WTShoes:{
-                category = index+19;
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1201;
+                }
                 break;
             }
             case WTBag:{
-                category = index+28;
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1301;
+                }
                 break;
             }
             case WTAccessory:{
-                category = index+35;
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1401;
+                }
                 break;
             }
             case WTJewelry:{
-                category = index+43;
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1501;
+                }
                 break;
             }
             case WTUnderwear:{
-                category = index+49;
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1601;
+                }
                 break;
             }
             default:

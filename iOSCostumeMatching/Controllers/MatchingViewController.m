@@ -100,11 +100,14 @@
         hideMBProgressHUD();
         if([responseObject isKindOfClass:[NSDictionary class]])
         {
-            NSDictionary *dic = responseObject;
-            info.numCoId = [NSNumber numberWithInt:[[dic objectForKey:@"coId"] intValue]];
-            [[RC_SQLiteManager shareManager]addCollection:info];;
-            weakSelf.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
-            [weakSelf.collectionView reloadData];
+            if([[responseObject objectForKey:@"stat"] integerValue] == 10000)
+            {
+                NSDictionary *dic = responseObject;
+                info.numCoId = [NSNumber numberWithInt:[[dic objectForKey:@"coId"] intValue]];
+                [[RC_SQLiteManager shareManager]addCollection:info];;
+                weakSelf.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
+                [weakSelf.collectionView reloadData];
+            }
         }
     } andFailed:^(NSError *error) {
         hideMBProgressHUD();

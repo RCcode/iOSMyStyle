@@ -311,12 +311,10 @@ static RC_RequestManager *requestManager = nil;
         // 上传图片，以文件流的格式
         [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/jpeg"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"result = %@", (NSDictionary *)responseObject);
         if (success) {
             success(responseObject);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error.local = %@", error.localizedDescription);
         if (failure) {
             failure(error);
         }
