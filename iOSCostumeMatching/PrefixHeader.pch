@@ -29,7 +29,7 @@
 //#import "IS_MobAndAnalyticsManager.h"
 #import "RC_RequestManager.h"
 //#import "RC_LocalDataManager.h"
-//#import "UIImageView+WebCache.h"
+#import "UIImageView+WebCache.h"
 //#import "UserInfo.h"
 //#import "InstagramManager.h"
 

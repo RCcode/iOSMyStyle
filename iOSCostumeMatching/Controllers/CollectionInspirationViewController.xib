@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CollectionInspirationViewController">
             <connections>
+                <outlet property="btnOccasion" destination="Azj-U2-L56" id="2o7-5R-d5a"/>
+                <outlet property="btnStyle" destination="FoS-50-rUR" id="nnS-pM-c1a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,9 +16,32 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azj-U2-L56">
+                    <rect key="frame" x="200" y="0.0" width="91" height="30"/>
+                    <color key="backgroundColor" red="0.25987644380000002" green="1" blue="0.59496190149999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="场合">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selectOccasion:" destination="-1" eventType="touchUpInside" id="CYg-9F-jwt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoS-50-rUR">
+                    <rect key="frame" x="19" y="0.0" width="74" height="30"/>
+                    <color key="backgroundColor" red="0.25987644380000002" green="1" blue="0.59496190149999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="风格">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selectStyle:" destination="-1" eventType="touchUpInside" id="Mn6-Uq-GEY"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="183" y="341"/>
         </view>
     </objects>
 </document>

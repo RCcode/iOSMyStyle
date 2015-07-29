@@ -19,7 +19,7 @@
 #define AddClothingURL               @"/user/addClothing.do"
 #define AddCollocationURL            @"/user/addCollocation.do"
 #define ReportCollocationURL         @"/user/reportCollocation.do"
-#define SearchCollocationURL         @"/user/reportCollocation.do"
+#define SearchCollocationURL         @"/user/searchCollocation.do"
 #define GetCollocationDetailURL      @"/user/getCollocation.do"
 #define LikeCollocationURL           @"/user/likeCollocation.do"
 #define GetLikedCollocationListURL   @"/user/getLikedCollocation.do"
@@ -160,7 +160,8 @@ static RC_RequestManager *requestManager = nil;
                              @"tplat":userInfo.numTplat,
                              @"token":userInfo.strToken,
                              @"tname":userInfo.strTname,
-                             @"plat":userInfo.numPlat};
+                             @"plat":userInfo.numPlat,
+                             @"pic":userInfo.strPicURL};
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];
@@ -438,18 +439,18 @@ static RC_RequestManager *requestManager = nil;
  *  @param failure <#failure description#>
  */
 
--(void)SearchCollocationWithStyleId:(NSString *)styleId OccId:(NSString *)occId Type:(NSString *)type MinId:(NSString *)mId Count:(NSString *)count success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+-(void)searchCollocationWithStyleId:(int)styleId OccId:(int)occId MinId:(int)mId Count:(int)count success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
 {
     if (![self checkNetWorking])
         return;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     NSDictionary *params = @{@"id":userInfo.numId,
                              @"token":userInfo.strToken,
-                             @"styleId":styleId,
-                             @"occId":occId,
-                             @"type":type,
-                             @"mId":mId,
-                             @"count":count};
+                             @"styleId":[NSNumber numberWithInt:styleId],
+                             @"occId":[NSNumber numberWithInt:occId],
+                             @"type":[NSNumber numberWithInt:0],
+                             @"mId":[NSNumber numberWithInt:mId],
+                             @"count":[NSNumber numberWithInt:count]};
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];

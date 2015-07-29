@@ -42,6 +42,8 @@
 		4F5A508A1B60FAB70001D5D1 /* LikeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A50881B60FAB70001D5D1 /* LikeDetailViewController.m */; };
 		4F5A508B1B60FAB70001D5D1 /* LikeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50891B60FAB70001D5D1 /* LikeDetailViewController.xib */; };
 		4F5A508F1B6104140001D5D1 /* InstagramLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A508E1B6104140001D5D1 /* InstagramLoginViewController.m */; };
+		4F5D168E1B68E46500B03650 /* InspirationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D168C1B68E46500B03650 /* InspirationCollectionViewCell.m */; };
+		4F5D168F1B68E46500B03650 /* InspirationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5D168D1B68E46500B03650 /* InspirationCollectionViewCell.xib */; };
 		4F5F94591B67735F00399681 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5F94571B67735F00399681 /* SelectViewController.m */; };
 		4F5F945A1B67735F00399681 /* SelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5F94581B67735F00399681 /* SelectViewController.xib */; };
 		4F62FFE61B579755005E8C79 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F62FFDC1B579755005E8C79 /* FMDatabase.m */; };
@@ -212,6 +214,9 @@
 		4F5A50891B60FAB70001D5D1 /* LikeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeDetailViewController.xib; sourceTree = "<group>"; };
 		4F5A508D1B6104140001D5D1 /* InstagramLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramLoginViewController.h; sourceTree = "<group>"; };
 		4F5A508E1B6104140001D5D1 /* InstagramLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramLoginViewController.m; sourceTree = "<group>"; };
+		4F5D168B1B68E46500B03650 /* InspirationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspirationCollectionViewCell.h; sourceTree = "<group>"; };
+		4F5D168C1B68E46500B03650 /* InspirationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspirationCollectionViewCell.m; sourceTree = "<group>"; };
+		4F5D168D1B68E46500B03650 /* InspirationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspirationCollectionViewCell.xib; sourceTree = "<group>"; };
 		4F5F94561B67735F00399681 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
 		4F5F94571B67735F00399681 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
 		4F5F94581B67735F00399681 /* SelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectViewController.xib; sourceTree = "<group>"; };
@@ -694,6 +699,9 @@
 				4F5A50631B60A3540001D5D1 /* ActivityCell.h */,
 				4F5A50641B60A3540001D5D1 /* ActivityCell.m */,
 				4F5A50651B60A3540001D5D1 /* ActivityCell.xib */,
+				4F5D168B1B68E46500B03650 /* InspirationCollectionViewCell.h */,
+				4F5D168C1B68E46500B03650 /* InspirationCollectionViewCell.m */,
+				4F5D168D1B68E46500B03650 /* InspirationCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1117,6 +1125,7 @@
 				4F8329EB1B5CEB43005588D7 /* ic_main_del@2x.png in Resources */,
 				4F5A50791B60EC050001D5D1 /* CollectionInspirationViewController.xib in Resources */,
 				4F5A507F1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.xib in Resources */,
+				4F5D168F1B68E46500B03650 /* InspirationCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1153,6 +1162,7 @@
 				4F7B9AC31B6254AD003D94BF /* UIView+WebCacheOperation.m in Sources */,
 				4F7B9AB81B6254AD003D94BF /* SDWebImageDecoder.m in Sources */,
 				4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */,
+				4F5D168E1B68E46500B03650 /* InspirationCollectionViewCell.m in Sources */,
 				4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */,
 				4F8329E61B5CE91E005588D7 /* SPGripViewBorderView.m in Sources */,
 				4F6341A71B4FBA8200DFC281 /* WipeViewController.m in Sources */,
