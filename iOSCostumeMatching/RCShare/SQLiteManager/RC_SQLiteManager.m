@@ -354,7 +354,23 @@ static RC_SQLiteManager *sqliteManager = nil;
     if ([_db open]) {
         NSMutableArray *arr = [[NSMutableArray alloc]init];
         NSString *tableName = @"Collocation";
-        NSString * sql = [NSString stringWithFormat:@"SELECT * FROM %@ where styleId= %d and occId= %d order by date desc",tableName,style,occasion];
+        NSString * sql;
+        if (style == 0 && occasion == 0) {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by date desc",tableName];
+        }
+        else if(style == 0)
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where occId= %d order by date desc",tableName,occasion];
+        }
+        else if(occasion == 0)
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where styleId= %d order by date desc",tableName,style];
+        }
+        else
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where styleId= %d and occId= %d order by date desc",tableName,style,occasion];
+        }
+        
         FMResultSet * rs = [_db executeQuery:sql];
         while ([rs next]) {
             CollocationInfo *clothesInfo = [[CollocationInfo alloc]init];
