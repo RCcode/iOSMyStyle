@@ -30,6 +30,7 @@ enum TableNameType
 -(BOOL)addClothesToWardrobe:(ClothesInfo *)clothesInfo;
 -(BOOL)deleteClotheFromWardrobe:(ClothesInfo *)clothesInfo;
 -(NSMutableArray *)getAllClothesFromWardrobe;
+-(NSMutableArray *)getClothesFromWardrobeWithSeason:(int)season Type:(int)type Category:(int)category;
 
 -(BOOL)addCollection:(CollocationInfo *)collocationInfo;
 -(NSMutableArray *)getAllCollection;

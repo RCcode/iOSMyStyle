@@ -291,6 +291,37 @@ static RC_SQLiteManager *sqliteManager = nil;
     return nil;
 }
 
+-(NSMutableArray *)getClothesFromWardrobeWithSeason:(int)season Type:(int)type Category:(int)category
+{
+    [self createTable:TNTWardrobe];
+    if ([_db open]) {
+        NSMutableArray *arr = [[NSMutableArray alloc]init];
+        
+        NSString *tableName = @"Wardrobe";
+        NSString * sql;
+        sql = [NSString stringWithFormat:@"SELECT * FROM %@ where cateId = %d and scateId = %d and seaId = %d order by date desc",tableName,type,category,season];
+        
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];
+            
+            clothesInfo.numLocalId = [NSNumber numberWithInt:[rs intForColumn:@"localId"]];
+            clothesInfo.numClId = [NSNumber numberWithInt:[rs intForColumn:@"clId"]];
+            clothesInfo.numCateId = [NSNumber numberWithInt:[rs intForColumn:@"cateId"]];
+            clothesInfo.numScateId = [NSNumber numberWithInt:[rs intForColumn:@"scateId"]];
+            clothesInfo.numSeaId = [NSNumber numberWithInt:[rs intForColumn:@"seaId"]];
+            clothesInfo.strBrand = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"brand"]];
+            clothesInfo.file = [UIImage imageWithData:[rs dataForColumn:@"file"]];
+            clothesInfo.date = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"date"]];
+            
+            [arr addObject:clothesInfo];
+        }
+        [_db close];
+        return arr;
+    }
+    return nil;
+}
+
 #pragma mark -
 
 -(BOOL)addCollection:(CollocationInfo *)collocationInfo

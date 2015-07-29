@@ -14,6 +14,7 @@
 #import "CHTCollectionViewWaterfallCell.h"
 #import "CHTCollectionViewWaterfallHeader.h"
 #import "CHTCollectionViewWaterfallFooter.h"
+#import "SelectViewController.h"
 
 #import "ShowClothesDetailsViewController.h"
 
@@ -22,11 +23,17 @@
 #define FOOTER_IDENTIFIER @"WaterfallFooter"
 
 @interface WardrobeViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
-
+{
+    WardrobeType type;
+    WardrobeCategory category;
+    WardrobeSeason season;
+}
 @property (nonatomic, strong) NSMutableArray *arrClothes;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *cellSizes;
-@property (weak, nonatomic) IBOutlet UIButton *btnStyle;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnSeason;
+@property (weak, nonatomic) IBOutlet UIButton *btnType;
 @property (weak, nonatomic) IBOutlet UIButton *btnCategory;
 
 @end
@@ -50,7 +57,7 @@
 //        layout.minimumColumnSpacing = 20;
 //        layout.minimumInteritemSpacing = 30;
         
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_btnStyle.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnStyle.frame)-64) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_btnType.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64) collectionViewLayout:layout];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
@@ -155,11 +162,88 @@
     [_collectionView reloadData];
 }
 
-- (IBAction)selectStyle:(id)sender {
-    
+-(void)updateCollectionView
+{
+    self.arrClothes = [[RC_SQLiteManager shareManager]getClothesFromWardrobeWithSeason:season Type:type Category:category];
+    [_collectionView reloadData];
+}
+
+- (IBAction)selectSeason:(id)sender {
+    SelectViewController *selectCategory = [[SelectViewController alloc]init];
+    [selectCategory setNavagationTitle:@"选择季节"];
+    selectCategory.array = getAllWardrobeSeason();
+    __weak WardrobeViewController *weakSelf = self;
+    [selectCategory setSelectedBlock:^(int index) {
+        season = index;
+        [weakSelf.btnSeason setTitle:getWardrobeSeasonName(season) forState:UIControlStateNormal];
+        [weakSelf updateCollectionView];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectCategory];
+    [self presentViewController:nav animated:YES completion:nil];
+
+}
+
+- (IBAction)selectType:(id)sender {
+    SelectViewController *selectStyle = [[SelectViewController alloc]init];
+    [selectStyle setNavagationTitle:@"选择类型"];
+    selectStyle.array = getAllWardrobeType();
+    __weak WardrobeViewController *weakSelf = self;
+    [selectStyle setSelectedBlock:^(int index) {
+        type = index;
+        [weakSelf.btnType setTitle:getWardrobeTypeName(type) forState:UIControlStateNormal] ;
+        [weakSelf updateCollectionView];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (IBAction)selectCategory:(id)sender {
+    SelectViewController *selectCategory = [[SelectViewController alloc]init];
+    [selectCategory setNavagationTitle:@"选择类别"];
+    selectCategory.array = getAllWardrobeCategorye(type);
+    __weak WardrobeViewController *weakSelf = self;
+    [selectCategory setSelectedBlock:^(int index) {
+        switch (type) {
+            case WTAll:{
+                category = index;
+                break;
+            }
+            case WTUpper:{
+                category = index+1;
+                break;
+            }
+            case WTBottoms:{
+                category = index+13;
+                break;
+            }
+            case WTShoes:{
+                category = index+19;
+                break;
+            }
+            case WTBag:{
+                category = index+28;
+                break;
+            }
+            case WTAccessory:{
+                category = index+35;
+                break;
+            }
+            case WTJewelry:{
+                category = index+43;
+                break;
+            }
+            case WTUnderwear:{
+                category = index+49;
+                break;
+            }
+            default:
+                break;
+        }
+        [weakSelf.btnCategory setTitle:getWardrobeCategoryeName(category) forState:UIControlStateNormal];
+        [weakSelf updateCollectionView];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectCategory];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 /**
