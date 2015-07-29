@@ -9,6 +9,17 @@
             <connections>
                 <outlet property="actionView" destination="su2-XQ-89a" id="wGC-ex-jU2"/>
                 <outlet property="addTitle" destination="acG-Bl-GTu" id="Jjd-m5-iTZ"/>
+                <outlet property="btnColor" destination="CWT-2r-1Mn" id="FkF-1Y-Q6g"/>
+                <outlet property="btnEndTime" destination="wn3-IZ-4H1" id="kAT-hK-Z5M"/>
+                <outlet property="btnRemind" destination="ttb-HC-TYG" id="HNC-vn-rVv"/>
+                <outlet property="btnSecondRemind" destination="DU0-TN-e69" id="3gZ-Yn-cfZ"/>
+                <outlet property="btnStartTime" destination="66i-6C-hQ2" id="0gp-bD-b1H"/>
+                <outlet property="dateAndTimePicker" destination="cW5-9c-xS9" id="dKe-HV-mnK"/>
+                <outlet property="dateAndTimeView" destination="7YD-C8-X2u" id="MRh-WE-kD6"/>
+                <outlet property="datePicker" destination="zo1-60-VPa" id="eUb-Io-89x"/>
+                <outlet property="dateView" destination="eL2-Vk-aTE" id="2NI-Ty-C3L"/>
+                <outlet property="switchAllDay" destination="hyb-fs-mMW" id="FKq-KL-7Qh"/>
+                <outlet property="txtLocation" destination="G1T-z7-z1i" id="hCk-jm-DcL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,6 +30,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="239" y="184"/>
         </view>
         <view contentMode="scaleToFill" id="su2-XQ-89a">
             <rect key="frame" x="0.0" y="0.0" width="320" height="437"/>
@@ -60,6 +72,9 @@
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hyb-fs-mMW">
                     <rect key="frame" x="219" y="187" width="51" height="31"/>
+                    <connections>
+                        <action selector="isAllDay:" destination="-1" eventType="valueChanged" id="vZR-Ll-v1o"/>
+                    </connections>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="开始" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNg-ro-nel">
                     <rect key="frame" x="42" y="236" width="54" height="21"/>
@@ -86,46 +101,112 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66i-6C-hQ2">
-                    <rect key="frame" x="151" y="236" width="46" height="30"/>
+                    <rect key="frame" x="94" y="232" width="218" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="setStartTime:" destination="-1" eventType="touchUpInside" id="Jma-2l-8VZ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn3-IZ-4H1">
-                    <rect key="frame" x="144" y="274" width="46" height="30"/>
+                    <rect key="frame" x="92" y="269" width="228" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="setEndTime:" destination="-1" eventType="touchUpInside" id="IM3-Zv-Hid"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttb-HC-TYG">
-                    <rect key="frame" x="137" y="311" width="46" height="30"/>
+                    <rect key="frame" x="92" y="311" width="220" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU0-TN-e69">
-                    <rect key="frame" x="164" y="352" width="46" height="30"/>
-                    <state key="normal" title="Button">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                    <connections>
+                        <action selector="setFirstRemind:" destination="-1" eventType="touchUpInside" id="ViR-jO-xLw"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWT-2r-1Mn">
-                    <rect key="frame" x="156" y="390" width="46" height="30"/>
+                    <rect key="frame" x="92" y="390" width="220" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="setColor:" destination="-1" eventType="touchUpInside" id="T9x-zR-v1b"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="第二次提醒" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vl4-VD-mR8">
-                    <rect key="frame" x="42" y="352" width="85" height="21"/>
+                    <rect key="frame" x="11" y="352" width="85" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DU0-TN-e69">
+                    <rect key="frame" x="104" y="352" width="208" height="30"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="setSecondRemind:" destination="-1" eventType="touchUpInside" id="9Fs-8R-Elu"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="712" y="136.5"/>
+            <point key="canvasLocation" x="239" y="-90.5"/>
+        </view>
+        <view contentMode="scaleToFill" id="eL2-Vk-aTE">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zo1-60-VPa">
+                    <rect key="frame" x="0.0" y="38" width="320" height="162"/>
+                    <date key="date" timeIntervalSinceReferenceDate="459846894.49931198">
+                        <!--2015-07-29 07:14:54 +0000-->
+                    </date>
+                </datePicker>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byl-mA-RcE">
+                    <rect key="frame" x="257" y="8" width="46" height="30"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="pressDateDone:" destination="-1" eventType="touchUpInside" id="PTf-uV-aus"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="618" y="-199"/>
+        </view>
+        <view contentMode="scaleToFill" id="7YD-C8-X2u">
+            <rect key="frame" x="0.0" y="-1" width="320" height="202"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="cW5-9c-xS9">
+                    <rect key="frame" x="0.0" y="40" width="320" height="162"/>
+                    <date key="date" timeIntervalSinceReferenceDate="459846904.39597303">
+                        <!--2015-07-29 07:15:04 +0000-->
+                    </date>
+                </datePicker>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLG-aS-EVG">
+                    <rect key="frame" x="257" y="8" width="46" height="30"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="pressDateAndTimeDone:" destination="-1" eventType="touchUpInside" id="FK8-8U-ObB"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="618" y="48"/>
         </view>
     </objects>
 </document>

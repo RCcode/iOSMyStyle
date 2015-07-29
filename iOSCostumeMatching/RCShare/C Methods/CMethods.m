@@ -131,6 +131,54 @@ NSString *doDevicePlatform()
     return (devModel) ? devModel : platform;
 }
 
+NSString *stringAllDayFromDate(NSDate *date)
+{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
+    //    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd EEEE"];
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    return destDateString;
+    
+}
+
+NSString *stringNotAllDayFromDate(NSDate *date)
+{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
+    //    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd EEEE HH:mm"];
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    return destDateString;
+    
+}
+
+NSString *yearFromDate(NSDate *date)
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"yyyy"];
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    return destDateString;
+}
+
+NSString *monthFromDate(NSDate *date)
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"MM"];
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    return destDateString;
+}
+
+NSString *dayFromDate(NSDate *date)
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"dd"];
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    return destDateString;
+}
+
 NSString *stringFromDate(NSDate *date)
 {
     
@@ -209,6 +257,15 @@ UIImage *getViewImage(UIView *view)
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+}
+
+void ViewAnimation(UIView *view ,CGRect frame)
+{
+    __weak UIView *v = view;
+    [UIView animateWithDuration:0.3 animations:^{
+        v.frame = frame;
+    } completion:nil];
+    
 }
 
 NSString *getCategoryName(int index)
@@ -541,5 +598,133 @@ NSArray *getAllCollocationOccasion()
     return arr;
 }
 
+NSString *getNotAllDayRemindName(NotAllDayRemind notAllDayRemind)
+{
+    NSString *str;
+    switch (notAllDayRemind) {
+        case NADR_none:{str = @"无通知";break;}
+            
+        case NADR_before1hour:{str = @"提前一小时";break;}
+            
+        case NADR_before2hour:{str = @"提前两小时";break;}
+            
+        case NADR_before3hour:{str = @"提前三小时";break;}
+            
+        case NADR_before5hour:{str = @"提前五小时";break;}
+            
+        case NADR_before1day:{str = @"提前一天";break;}
+            
+        case NADR_before2day:{str = @"提前两天";break;}
+            
+        case NADR_before1week:{str = @"提前一周";break;}
+            
+        default:
+            break;
+    }
+    return str;
+}
+
+NSArray *getNotAllDayRemind()
+{
+    NSArray *arr = @[@"无通知",@"提前一小时",@"提前两小时",@"提前三小时",@"提前五小时",@"提前一天",@"提前两天",@"提前一周"];
+    
+    return arr;
+}
+
+NSString *getAllDayRemindName(AllDayRemind allDayRemind)
+{
+    NSString *str;
+    switch (allDayRemind) {
+        case ADR_none:{str = @"无通知";break;}
+            
+        case ADR_before1day:{str = @"提前一天";break;}
+            
+        case ADR_before2day:{str = @"提前两天";break;}
+            
+        case ADR_before3day:{str = @"提前三天";break;}
+            
+        case ADR_before1week:{str = @"提前一周";break;}
+            
+        default:
+            break;
+    }
+    return str;
+}
+
+NSArray *getAllDayRemind()
+{
+    NSArray *arr = @[@"无通知",@"提前一天",@"提前两天",@"提前三天",@"提前一周"];
+    
+    return arr;
+}
+
+NSString *getColorName(ActivityColor color)
+{
+    NSString *str;
+    switch (color) {
+        case AC0:{str = @"默认";break;}
+            
+        case AC1:{str = @"红";break;}
+            
+        case AC2:{str = @"黄";break;}
+            
+        case AC3:{str = @"蓝";break;}
+            
+        case AC4:{str = @"绿";break;}
+            
+        case AC5:{str = @"紫";break;}
+                        
+        default:
+            break;
+    }
+    return str;
+}
+
+NSArray *getAllColor()
+{
+    NSArray *arr = @[@"默认",@"红",@"黄",@"蓝",@"绿",@"紫"];
+    
+    return arr;
+}
+
+UIColor *getColor(ActivityColor activityColor)
+{
+    UIColor *color;
+    switch (activityColor) {
+        case AC0:
+        {
+            color = [UIColor grayColor];
+            break;
+        }
+        case AC1:
+        {
+            color = [UIColor redColor];
+            break;
+        }
+        case AC2:
+        {
+            color = [UIColor yellowColor];
+            break;
+        }
+        case AC3:
+        {
+            color = [UIColor blueColor];
+            break;
+        }
+        case AC4:
+        {
+            color = [UIColor greenColor];
+            break;
+        }
+        case AC5:
+        {
+            color = [UIColor purpleColor];
+            break;
+        }            
+        default:
+            break;
+    }
+    return color;
+}
 
 @end

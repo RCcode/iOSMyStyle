@@ -229,5 +229,44 @@ enum CollocationOccasion
     COJourney                           //出游
 };
 
+//非全天通知
+typedef enum NotAllDayRemind NotAllDayRemind;
+
+enum NotAllDayRemind
+{
+    NADR_none,
+    NADR_before1hour,
+    NADR_before2hour,
+    NADR_before3hour,
+    NADR_before5hour,
+    NADR_before1day,
+    NADR_before2day,
+    NADR_before1week,
+};
+
+//全天通知
+typedef enum AllDayRemind AllDayRemind;
+
+enum AllDayRemind
+{
+    ADR_none,
+    ADR_before1day,
+    ADR_before2day,
+    ADR_before3day,
+    ADR_before1week,
+};
+
+//颜色
+typedef enum ActivityColor ActivityColor;
+
+enum ActivityColor
+{
+    AC0,
+    AC1,
+    AC2,
+    AC3,
+    AC4,
+    AC5
+};
 
 #endif

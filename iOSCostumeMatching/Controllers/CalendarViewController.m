@@ -125,12 +125,12 @@
     {
         image = ((CollocationInfo *)object).file;
     }
-    cell.lblTitle.text = [NSString stringWithFormat:@"%d",[info.numId intValue]];
-    [cell.lblTime setText:[NSString stringWithFormat:@"%d",indexPath.row]];
+    cell.lblTitle.text = [NSString stringWithFormat:@"%@",info.strTitle];
+    [cell.lblTitle setBackgroundColor:getColor([info.numColor intValue])];
+    [cell.lblTime setText:dayFromDate(info.dateStartTime)];
     [cell.clothesOrCollectionImageView setImage:image];
     return cell;
 }
-
 
 #pragma mark - PWSCalendarDelegate
 

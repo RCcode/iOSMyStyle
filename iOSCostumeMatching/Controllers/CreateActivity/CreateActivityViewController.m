@@ -10,6 +10,7 @@
 #import "MyWardrobeViewController.h"
 #import "MyCollectionViewController.h"
 #import "ItemView.h"
+#import "SelectViewController.h"
 
 #define GAPWIDTH 10.0
 
@@ -17,11 +18,33 @@
 {
     UIScrollView *scrollView;
     UIView *addImageView;
+    BOOL isAllDay;
+    NSDate *startTime;
+    NSDate *endTime;
+    int firstRemind;
+    int secondRemind;
+    ActivityColor color;
+    
+    BOOL setStartTime;
 }
 @property (strong, nonatomic) IBOutlet UIView *actionView;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (weak, nonatomic) IBOutlet UITextField *addTitle;
+@property (weak, nonatomic) IBOutlet UITextField *txtLocation;
+
+
+@property (weak, nonatomic) IBOutlet UISwitch *switchAllDay;
+@property (weak, nonatomic) IBOutlet UIButton *btnStartTime;
+@property (weak, nonatomic) IBOutlet UIButton *btnEndTime;
+@property (weak, nonatomic) IBOutlet UIButton *btnRemind;
+@property (weak, nonatomic) IBOutlet UIButton *btnSecondRemind;
+@property (weak, nonatomic) IBOutlet UIButton *btnColor;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UIDatePicker *dateAndTimePicker;
+@property (strong, nonatomic) IBOutlet UIView *dateView;
+@property (strong, nonatomic) IBOutlet UIView *dateAndTimeView;
+
 
 @property (nonatomic, copy) void(^finish)(ActivityInfo *info);
 
@@ -40,18 +63,18 @@
 {
     ActivityInfo *activityInfo = [[ActivityInfo alloc]init];
     activityInfo.numId = [NSNumber numberWithInt:1];
-    activityInfo.strTitle = @"lalalal";
-    activityInfo.strLocation = @"bei";
-    activityInfo.numIsAllDay = [NSNumber numberWithBool:YES];
-    activityInfo.dateStartTime = [NSDate date];
-    activityInfo.dateFinishTime = [NSDate date];
+    activityInfo.strTitle = _addTitle.text;
+    activityInfo.strLocation = _txtLocation.text;
+    activityInfo.numIsAllDay = [NSNumber numberWithBool:isAllDay];
+    activityInfo.dateStartTime = startTime;
+    activityInfo.dateFinishTime = endTime;
     activityInfo.dateFirstRemindTime = [NSDate date];
     activityInfo.dateSecondRemindTime = [NSDate date];
-    activityInfo.numColor = [NSNumber numberWithInt:1];
+    activityInfo.numColor = [NSNumber numberWithInt:color];
     activityInfo.arrData = _dataArray;
-    activityInfo.strYear = @"2015";
-    activityInfo.strMonth = @"2015";
-    activityInfo.strDay = @"2015";
+    activityInfo.strYear = yearFromDate(startTime);
+    activityInfo.strMonth = monthFromDate(startTime);
+    activityInfo.strDay = dayFromDate(startTime);
     if (_finish) {
         _finish(activityInfo);
     }
@@ -71,6 +94,7 @@
     self.showDone = YES;
     [self setDoneBtnTitle:@"保存"];
     
+    isAllDay = NO;
     _dataArray = [[NSMutableArray alloc]init];
     
     addImageView = [[UIView alloc]init];
@@ -85,7 +109,14 @@
     scrollView.contentSize = self.actionView.frame.size;
     [scrollView addSubview:_actionView];
     
+    [_dateView setFrame:CGRectMake(0, ScreenHeight-64, ScreenWidth, CGRectGetHeight(_dateView.frame))];
+    [_dateAndTimeView setFrame:CGRectMake(0, ScreenHeight-64, ScreenWidth, CGRectGetHeight(_dateAndTimeView.frame))];
+    [self.view addSubview:_dateView];
+    [self.view addSubview:_dateAndTimeView];
+    
+    
     _addTitle.delegate = self;
+    _txtLocation.delegate = self;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -154,6 +185,129 @@
 {
     [_dataArray addObject:object];
     [self updateView];
+}
+
+- (IBAction)isAllDay:(id)sender {
+    UISwitch *s = sender;
+    isAllDay = s.on;
+}
+
+- (IBAction)setStartTime:(id)sender {
+    setStartTime = YES;
+    if (isAllDay) {
+        ViewAnimation(_dateView, CGRectMake(0, ScreenHeight-64-CGRectGetHeight(_dateView.frame), ScreenWidth, CGRectGetHeight(_dateView.frame)));
+    }
+    else
+    {
+        ViewAnimation(_dateAndTimeView, CGRectMake(0, ScreenHeight-64-CGRectGetHeight(_dateView.frame), ScreenWidth, CGRectGetHeight(_dateAndTimeView.frame)));
+    }
+}
+
+- (IBAction)setEndTime:(id)sender {
+    setStartTime = NO;
+    if (isAllDay) {
+        ViewAnimation(_dateView, CGRectMake(0, ScreenHeight-64-CGRectGetHeight(_dateView.frame), ScreenWidth, CGRectGetHeight(_dateView.frame)));
+    }
+    else
+    {
+        ViewAnimation(_dateAndTimeView, CGRectMake(0, ScreenHeight-64-CGRectGetHeight(_dateView.frame), ScreenWidth, CGRectGetHeight(_dateAndTimeView.frame)));
+    }
+}
+
+- (IBAction)setFirstRemind:(id)sender {
+    SelectViewController *selectFirstRemind = [[SelectViewController alloc]init];
+    [selectFirstRemind setNavagationTitle:@"选择时间"];
+    if (isAllDay) {
+        selectFirstRemind.array = getAllDayRemind();
+    }
+    else
+    {
+        selectFirstRemind.array = getNotAllDayRemind();
+    }
+    
+    __weak CreateActivityViewController *weakSelf = self;
+    [selectFirstRemind setSelectedBlock:^(int index) {
+        firstRemind = index;
+        NSString *title;
+        if (isAllDay) {
+            title = getAllDayRemindName(index);
+        }
+        else
+        {
+            title = getNotAllDayRemindName(index);
+        }
+        [weakSelf.btnRemind setTitle:title forState:UIControlStateNormal] ;
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectFirstRemind];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)setSecondRemind:(id)sender {
+    SelectViewController *selectFirstRemind = [[SelectViewController alloc]init];
+    [selectFirstRemind setNavagationTitle:@"选择时间"];
+    if (isAllDay) {
+        selectFirstRemind.array = getAllDayRemind();
+    }
+    else
+    {
+        selectFirstRemind.array = getNotAllDayRemind();
+    }
+    
+    __weak CreateActivityViewController *weakSelf = self;
+    [selectFirstRemind setSelectedBlock:^(int index) {
+        secondRemind = index;
+        NSString *title;
+        if (isAllDay) {
+            title = getAllDayRemindName(index);
+        }
+        else
+        {
+            title = getNotAllDayRemindName(index);
+        }
+        [weakSelf.btnSecondRemind setTitle:title forState:UIControlStateNormal] ;
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectFirstRemind];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)setColor:(id)sender {
+    SelectViewController *selectColor = [[SelectViewController alloc]init];
+    [selectColor setNavagationTitle:@"选择颜色"];
+    selectColor.array = getAllColor();
+    
+    __weak CreateActivityViewController *weakSelf = self;
+    [selectColor setSelectedBlock:^(int index) {
+        color = index;
+        [weakSelf.btnColor setTitle:getColorName(color) forState:UIControlStateNormal] ;
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectColor];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)pressDateDone:(id)sender {
+    if (setStartTime) {
+        startTime = _datePicker.date;
+        [_btnStartTime setTitle:stringAllDayFromDate(startTime) forState:UIControlStateNormal];
+    }
+    else
+    {
+        endTime = _datePicker.date;
+        [_btnEndTime setTitle:stringAllDayFromDate(endTime) forState:UIControlStateNormal];
+    }
+    ViewAnimation(_dateView, CGRectMake(0, ScreenHeight-64, ScreenWidth, CGRectGetHeight(_dateView.frame)));
+}
+
+- (IBAction)pressDateAndTimeDone:(id)sender {
+    if (setStartTime) {
+        startTime = _dateAndTimePicker.date;
+        [_btnStartTime setTitle:stringNotAllDayFromDate(startTime) forState:UIControlStateNormal];
+    }
+    else
+    {
+        endTime = _dateAndTimePicker.date;
+        [_btnEndTime setTitle:stringNotAllDayFromDate(endTime) forState:UIControlStateNormal];
+    }
+    ViewAnimation(_dateAndTimeView, CGRectMake(0, ScreenHeight-64, ScreenWidth, CGRectGetHeight(_dateAndTimeView.frame)));
 }
 
 - (void)didReceiveMemoryWarning {

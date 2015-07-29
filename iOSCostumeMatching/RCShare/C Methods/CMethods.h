@@ -28,7 +28,12 @@ NSString *LocalizedString(NSString *translation_key, id none);
 //获取设备型号
 NSString *doDevicePlatform();
 
+NSString *yearFromDate(NSDate *date);
+NSString *monthFromDate(NSDate *date);
+NSString *dayFromDate(NSDate *date);
 NSString *stringFromDate(NSDate *date);
+NSString *stringAllDayFromDate(NSDate *date);
+NSString *stringNotAllDayFromDate(NSDate *date);
 
 void showLabelHUD(NSString *content);
 
@@ -36,6 +41,8 @@ UIImage *getViewImage(UIView *view);
 
 MBProgressHUD * showMBProgressHUD(NSString *content,BOOL showView);
 void hideMBProgressHUD();
+
+void ViewAnimation(UIView *view ,CGRect frame);
 
 NSString *getCategoryName(int index);
 
@@ -54,5 +61,14 @@ NSArray *getAllCollocationStyle();
 NSString *getCollocationOccasionName(CollocationOccasion type);
 NSArray *getAllCollocationOccasion();
 
+NSString *getNotAllDayRemindName(NotAllDayRemind notAllDayRemind);
+NSArray *getNotAllDayRemind();
+
+NSString *getAllDayRemindName(AllDayRemind allDayRemind);
+NSArray *getAllDayRemind();
+
+NSString *getColorName(ActivityColor color);
+NSArray *getAllColor();
+UIColor *getColor(ActivityColor activityColor);
 
 @end
