@@ -121,19 +121,23 @@
 {
     ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityCell"];
     ActivityInfo *info = [_arrActivity objectAtIndex:[indexPath row]];
-    id object = [info.arrData objectAtIndex:0];
-    UIImage *image;
-    if ([object isKindOfClass:[ClothesInfo class]]) {
-        image = ((ClothesInfo *)object).file;
-    }
-    else
+    if(info.arrData.count>0)
     {
-        image = ((CollocationInfo *)object).file;
+        id object = [info.arrData objectAtIndex:0];
+        UIImage *image;
+        if ([object isKindOfClass:[ClothesInfo class]]) {
+            image = ((ClothesInfo *)object).file;
+        }
+        else
+        {
+            image = ((CollocationInfo *)object).file;
+        }
+        [cell.clothesOrCollectionImageView setImage:image];
     }
     cell.lblTitle.text = [NSString stringWithFormat:@"%@",info.strTitle];
     [cell.lblTitle setBackgroundColor:getColor([info.numColor intValue])];
     [cell.lblTime setText:dayFromDate(info.dateStartTime)];
-    [cell.clothesOrCollectionImageView setImage:image];
+    
     return cell;
 }
 
