@@ -20,4 +20,7 @@ typedef NS_ENUM(NSInteger, DrawingMode) {
 
 @property (nonatomic, strong) UIImage *originalImage;
 
+-(void)undo;
+-(void)redo;
+
 @end

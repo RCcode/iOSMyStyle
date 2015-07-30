@@ -12,6 +12,9 @@
 {
     CGPoint previousPoint;
     CGPoint currentPoint;
+    NSMutableArray *undoArr;
+    NSMutableArray *redoArr;
+    BOOL isEnd;
 }
 @property (nonatomic, strong) UIImage * viewImage;
 @end
@@ -39,6 +42,7 @@
     _originalImage = originalImage;
     [self initialize];
     self.viewImage = _originalImage;
+    [undoArr addObject:self.viewImage];
 }
 
 #pragma mark - Private methods
@@ -50,7 +54,8 @@
     _drawingMode = DrawingModeNone;
     
     _selectedColor = [UIColor blackColor];
-    self.viewImage = [UIImage imageNamed:@"ball"];
+    redoArr = [[NSMutableArray alloc]init];
+    undoArr = [[NSMutableArray alloc]init];
 }
 
 - (void)eraseLine
@@ -71,6 +76,10 @@
     self.viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     previousPoint = currentPoint;
+    
+    if (isEnd) {
+        [undoArr addObject:self.viewImage];
+    }
     
     [self setNeedsDisplay];
 }
@@ -96,6 +105,13 @@
     [self setNeedsDisplay];
 }
 
+-(void)drawImage
+{
+    UIGraphicsBeginImageContext(self.bounds.size);
+    [self.viewImage drawInRect:self.bounds];
+    [self setNeedsDisplay];
+}
+
 - (void)handleTouches
 {
     if (self.drawingMode == DrawingModeNone) {
@@ -115,6 +131,12 @@
 {
     CGPoint p = [[touches anyObject] locationInView:self];
     previousPoint = p;
+    isEnd = NO;
+    if (redoArr.count>0) {
+        UIImage *image = [redoArr objectAtIndex:0];
+        [redoArr removeAllObjects];
+        [undoArr addObject:image];
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -127,8 +149,52 @@
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     currentPoint = [[touches anyObject] locationInView:self];
-    
+    isEnd = YES;
     [self handleTouches];
+    
+}
+
+-(void)redo
+{
+    if (redoArr.count>0) {
+        if (undoArr.count == 0) {
+            UIImage *image = [redoArr objectAtIndex:0];
+            [redoArr removeObject:image];
+            [undoArr addObject:image];
+        }
+        UIImage *image = [redoArr objectAtIndex:0];
+        self.viewImage = image;
+        [redoArr removeObject:image];
+        [undoArr addObject:image];
+        [self drawImage];
+    }
+}
+
+-(void)undo
+{
+    if (undoArr.count>0) {
+        if(redoArr.count == 0)
+        {
+            UIImage *image = [undoArr lastObject];
+            [undoArr removeObject:image];
+            [redoArr insertObject:image atIndex:0];
+        }
+        UIImage *image = [undoArr lastObject];
+        self.viewImage = image;
+        [undoArr removeObject:image];
+        [redoArr insertObject:image atIndex:0];
+        [self drawImage];
+    }
+}
+
+-(BOOL)canUnDo
+{
+    return undoArr.count>1;
+}
+
+-(BOOL)canReDo
+{
+    return redoArr.count>0;
 }
 
 @end
