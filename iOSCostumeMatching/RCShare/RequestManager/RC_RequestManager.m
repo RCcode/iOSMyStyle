@@ -532,18 +532,18 @@ static RC_RequestManager *requestManager = nil;
     }];
 }
 
--(void)GetLikedCollocationWithStyleId:(NSString *)styleId OccId:(NSString *)occId Type:(NSString *)type MinId:(NSString *)mId Count:(NSString *)count success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+-(void)getLikedCollocationWithStyleId:(int)styleId OccId:(int)occId MinId:(int)mId Count:(int)count success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
 {
     if (![self checkNetWorking])
         return;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     NSDictionary *params = @{@"id":userInfo.numId,
                              @"token":userInfo.strToken,
-                             @"styleId":styleId,
-                             @"occId":occId,
-                             @"type":type,
-                             @"mId":mId,
-                             @"count":count};
+                             @"styleId":[NSNumber numberWithInt:styleId],
+                             @"occId":[NSNumber numberWithInt:occId],
+                             @"type":[NSNumber numberWithInt:0],
+                             @"mId":[NSNumber numberWithInt:mId],
+                             @"count":[NSNumber numberWithInt:count]};
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];

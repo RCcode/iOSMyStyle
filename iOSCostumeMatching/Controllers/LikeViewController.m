@@ -7,15 +7,25 @@
 //
 
 #import "LikeViewController.h"
-#import "CHTCollectionViewWaterfallCell.h"
 #import "LikeDetailViewController.h"
+#import "SelectViewController.h"
+#import "InspirationCollectionViewCell.h"
+#import "ShowCollectionInspirationDetailsViewController.h"
 
 #define CELL_IDENTIFIER @"LikeCell"
 
 @interface LikeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
-    UICollectionView *_collectionView;  // 集合视图
+    int style;
+    int occasion;
 }
+
+@property (weak, nonatomic) IBOutlet UIButton *btnStyle;
+@property (weak, nonatomic) IBOutlet UIButton *btnOccasion;
+@property (nonatomic, strong) UICollectionView *collectionView;  // 集合视图
+
+@property (nonatomic, strong) NSMutableArray *arrCollection;
+@property (nonatomic) int mId;
 
 @end
 
@@ -37,7 +47,7 @@
     [self setReturnBtnTitle:@"菜单"];
     
     [self createCollectionView];
-    [_collectionView reloadData];
+    [self updateCollectionView];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -52,26 +62,93 @@
     _collectionView.delegate = self;
     
     // 创建 集合视图单元格 ，放在重用队列里面
-    [_collectionView registerClass:[CHTCollectionViewWaterfallCell class] forCellWithReuseIdentifier:CELL_IDENTIFIER];
+    [_collectionView registerNib:[UINib nibWithNibName:@"InspirationCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:CELL_IDENTIFIER];
     
     _collectionView.backgroundColor = [UIColor clearColor];
     
-    [self.view addSubview:_collectionView];
+    [self.view insertSubview:_collectionView atIndex:0];
 } // 创建集合视图
+
+-(void)updateCollectionView
+{
+    __weak LikeViewController *weakSelf = self;
+    
+    [[RC_RequestManager shareManager]getLikedCollocationWithStyleId:style OccId:occasion MinId:_mId Count:10 success:^(id responseObject) {
+        CLog(@"%@",responseObject);
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = responseObject;
+            if ([[dic objectForKey:@"stat"] integerValue]== 10000) {
+                weakSelf.arrCollection = [dic objectForKey:@"list"];
+                weakSelf.mId = [[dic objectForKey:@"mId"]intValue];
+                [weakSelf.collectionView reloadData];
+            }
+        }
+    } andFailed:^(NSError *error) {
+        CLog(@"%@",error);
+
+    }];
+}
+
+- (IBAction)selectStyle:(id)sender {
+    SelectViewController *selectStyle = [[SelectViewController alloc]init];
+    [selectStyle setNavagationTitle:@"选择风格"];
+    selectStyle.array = getAllCollocationStyle();
+    __weak LikeViewController *weakSelf = self;
+    [selectStyle setSelectedBlock:^(int index) {
+        style = index;
+        [weakSelf.btnStyle setTitle:getCollocationStyleName(style) forState:UIControlStateNormal] ;
+        [weakSelf updateCollectionView];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
+    [self presentViewController:nav animated:YES completion:nil];
+    
+}
+
+- (IBAction)selectOccasion:(id)sender {
+    SelectViewController *selectOccasion = [[SelectViewController alloc]init];
+    [selectOccasion setNavagationTitle:@"选择场合"];
+    selectOccasion.array = getAllCollocationOccasion();
+    __weak LikeViewController *weakSelf = self;
+    [selectOccasion setSelectedBlock:^(int index) {
+        occasion = index;
+        [weakSelf.btnOccasion setTitle:getCollocationOccasionName(occasion) forState:UIControlStateNormal];
+        [weakSelf updateCollectionView];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectOccasion];
+    [self presentViewController:nav animated:YES completion:nil];
+}
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return _arrCollection.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CHTCollectionViewWaterfallCell *cell =
-    (CHTCollectionViewWaterfallCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
-                                                                                forIndexPath:indexPath];
-    cell.image = [UIImage imageNamed:@"ball"];
+    InspirationCollectionViewCell *cell =
+    (InspirationCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
+                                                                               forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor blueColor];
+    NSDictionary *dic = [_arrCollection objectAtIndex:indexPath.row];
+    NSString *url = [dic objectForKey:@"url"];
+    if (url) {
+        [cell.collectionImageView sd_setImageWithURL:[NSURL URLWithString:url]];
+    }
+    NSString *pic = [dic objectForKey:@"pic"];
+    if (pic && (![pic isKindOfClass:[NSNull class]])) {
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:pic]];
+    }
+    else
+    {
+        [cell.headImageView setImage:nil];
+    }
+    NSString *name = [dic objectForKey:@"tname"];
+    if(name)
+    {
+        [cell.lblName setText:name];
+    }
     return cell;
 }
 
@@ -85,13 +162,17 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake((ScreenWidth-30)/2.0, (ScreenWidth-30)/2.0);
+    return CGSizeMake((ScreenWidth-30)/2.0, (ScreenWidth-30)/2.0+50);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    LikeDetailViewController *likeDetail = [[LikeDetailViewController alloc]init];
-    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:likeDetail];
+    NSDictionary *dic = [_arrCollection objectAtIndex:indexPath.row];
+    int coId = [[dic objectForKey:@"coId"] intValue];
+    ShowCollectionInspirationDetailsViewController *showDetail = [[ShowCollectionInspirationDetailsViewController alloc]init];
+    showDetail.coId = coId;
+    showDetail.dic = dic;
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showDetail];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
