@@ -19,6 +19,16 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)setCoId:(int)coId
+{
+    _coId = coId;
+    [[RC_RequestManager shareManager]GetCollocationDetailWithCoId:_coId success:^(id responseObject) {
+        CLog(@"%@",responseObject);
+    } andFailed:^(NSError *error) {
+        CLog(@"%@",error);
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"灵感详情"];

@@ -470,14 +470,16 @@ static RC_RequestManager *requestManager = nil;
     }];
 }
 
--(void)GetCollocationDetailWithCoId:(NSString *)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+-(void)GetCollocationDetailWithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
 {
     if (![self checkNetWorking])
         return;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     NSDictionary *params = @{@"id":userInfo.numId,
                              @"token":userInfo.strToken,
-                             @"coId":coId};
+                             @"coId":[NSNumber numberWithInt:coId],
+                             @"mId":[NSNumber numberWithInt:0],
+                             @"count":[NSNumber numberWithInt:10]};
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];
@@ -485,7 +487,7 @@ static RC_RequestManager *requestManager = nil;
     AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
     responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
-    NSString *url = [NSString stringWithFormat:ServerRootURL,ReportCollocationURL];
+    NSString *url = [NSString stringWithFormat:ServerRootURL,GetCollocationDetailURL];
     [self requestServiceWithPost:url parameters:params RequestSerializer:requestSerializer ResponseSerializer:responseSerializer success:^(id responseObject) {
         if (success) {
             success(responseObject);

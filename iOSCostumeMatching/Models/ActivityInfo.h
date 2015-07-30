@@ -37,8 +37,8 @@
 @property (nonatomic, copy) NSDate *dateSecondRemindTime;
 @property (nonatomic, copy) NSNumber *numColor;
 @property (nonatomic, copy) NSArray *arrData;
-@property (nonatomic, copy) NSString *strYear;
-@property (nonatomic, copy) NSString *strMonth;
-@property (nonatomic, copy) NSString *strDay;
+@property (nonatomic, copy) NSNumber *numYear;
+@property (nonatomic, copy) NSNumber *numMonth;
+@property (nonatomic, copy) NSNumber *numDay;
 
 @end

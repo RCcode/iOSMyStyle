@@ -24,6 +24,8 @@
 
 -(void)searchCollocationWithStyleId:(int)styleId OccId:(int)occId MinId:(int)mId Count:(int)count success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
 
+-(void)GetCollocationDetailWithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
+
 - (void)cancleAllRequests;
 
 @end

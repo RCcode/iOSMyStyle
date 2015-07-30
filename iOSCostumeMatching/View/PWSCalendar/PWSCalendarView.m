@@ -362,7 +362,7 @@ UICollectionViewDelegate>
 - (void) PWSCalendar:(PWSCalendarView *)_calendar didSelecteDate:(NSDate *)_date
 {
     m_current_date = _date;
-    [self SetLabelDate:_date];
+//    [self SetLabelDate:_date];
     if ([self.delegate respondsToSelector:@selector(PWSCalendar:didSelecteDate:)])
     {
         [self.delegate PWSCalendar:self didSelecteDate:_date];

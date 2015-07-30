@@ -10,4 +10,6 @@
 
 @interface ShowCollectionInspirationDetailsViewController : RC_BaseViewController
 
+@property (nonatomic) int coId;
+
 @end

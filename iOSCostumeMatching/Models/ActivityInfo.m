@@ -15,11 +15,11 @@
     self.numId = nil;
     self.numColor = nil;
     self.numIsAllDay = nil;
-    self.strDay = nil;
+    self.numDay = nil;
     self.strLocation = nil;
-    self.strMonth = nil;
+    self.numMonth = nil;
     self.strTitle = nil;
-    self.strYear = nil;
+    self.numYear = nil;
     self.dateFinishTime = nil;
     self.dateFirstRemindTime = nil;
     self.dateSecondRemindTime = nil;

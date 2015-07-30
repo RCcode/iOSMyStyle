@@ -44,7 +44,8 @@
     self.showDone = YES;
     [self setDoneBtnTitle:@"今天"];
     
-    [self setTitleDate:[NSDate date]];
+//    [[RC_SQLiteManager shareManager]deleteTable:TNTActivity];
+    
     calendarView = [[PWSCalendarView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 320) CalendarType:en_calendar_type_month];
     __weak CalendarViewController *weakSelf = self;
     [calendarView setChangeMonthBlock:^(NSDate *date) {
@@ -53,16 +54,15 @@
     [calendarView setBackgroundColor:[UIColor cyanColor]];
     [self.view addSubview:calendarView];
     [calendarView setDelegate:self];
-    
-//    [[RC_SQLiteManager shareManager]deleteTable:TNTActivity];
-    self.arrActivity = [[RC_SQLiteManager shareManager]getAllActivity];
-    
+        
     activityTableView = [[UITableView alloc]init];
     [activityTableView registerNib:[UINib nibWithNibName:@"ActivityCell" bundle:nil] forCellReuseIdentifier:@"ActivityCell"];
     activityTableView.delegate = self;
     activityTableView.dataSource = self;
     [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-20-CGRectGetHeight(calendarView.frame))];
     [self.view insertSubview:activityTableView atIndex:0];
+    
+    [self setTitleDate:[NSDate date]];
 }
 
 - (IBAction)addActivity:(id)sender {
@@ -85,9 +85,14 @@
 -(void)setTitleDate:(NSDate *)date
 {
     NSDateFormatter* ff = [[NSDateFormatter alloc] init];
-    [ff setDateFormat:@"yyyy-MM-dd"];
+//    [ff setDateFormat:@"yyyy-MM-dd"];
+    [ff setDateFormat:@"yyyy-MM"];
     NSString* strDate = [ff stringFromDate:date];
     [self setNavTitle:strDate];
+    NSString *year = yearFromDate(date);
+    NSString *month = monthFromDate(date);
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
+    [activityTableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate
@@ -137,6 +142,11 @@
 - (void) PWSCalendar:(PWSCalendarView*)_calendar didSelecteDate:(NSDate*)_date
 {
     NSLog(@"select = %@", _date);
+    NSString *year = yearFromDate(_date);
+    NSString *month = monthFromDate(_date);
+    NSString *day = dayFromDate(_date);
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:day];
+    [activityTableView reloadData];
 }
 
 - (void) PWSCalendar:(PWSCalendarView*)_calendar didChangeViewHeight:(CGFloat)_height

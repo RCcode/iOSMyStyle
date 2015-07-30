@@ -72,9 +72,9 @@
     activityInfo.dateSecondRemindTime = [NSDate date];
     activityInfo.numColor = [NSNumber numberWithInt:color];
     activityInfo.arrData = _dataArray;
-    activityInfo.strYear = yearFromDate(startTime);
-    activityInfo.strMonth = monthFromDate(startTime);
-    activityInfo.strDay = dayFromDate(startTime);
+    activityInfo.numYear = [NSNumber numberWithInt:[yearFromDate(startTime) intValue]];
+    activityInfo.numMonth = [NSNumber numberWithInt:[monthFromDate(startTime) intValue]];
+    activityInfo.numDay = [NSNumber numberWithInt:[dayFromDate(startTime) intValue]];
     if (_finish) {
         _finish(activityInfo);
     }

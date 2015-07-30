@@ -164,7 +164,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *dic = [_arrCollection objectAtIndex:indexPath.row];
+    int coId = [[dic objectForKey:@"coId"] intValue];
     ShowCollectionInspirationDetailsViewController *showDetail = [[ShowCollectionInspirationDetailsViewController alloc]init];
+    showDetail.coId = coId;
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showDetail];
     [self presentViewController:nav animated:YES completion:nil];
 }

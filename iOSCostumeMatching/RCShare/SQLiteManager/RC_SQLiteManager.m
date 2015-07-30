@@ -178,7 +178,7 @@ static RC_SQLiteManager *sqliteManager = nil;
                 
                 NSString *tableName = @"Activity";
                 if (![_db tableExists:tableName]) {
-                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (id INTEGER PRIMARY KEY AUTOINCREMENT,title text,location text,isAllDay bool,startTime date,finishTime date,firstRemindTime date,secondRemindTime date,color INTEGER,arrData data,year text,month text,day text)",tableName];
+                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (id INTEGER PRIMARY KEY AUTOINCREMENT,title text,location text,isAllDay bool,startTime date,finishTime date,firstRemindTime date,secondRemindTime date,color INTEGER,arrData data,year INTEGER,month INTEGER,day INTEGER)",tableName];
                     if ([_db executeUpdate:strExecute]) {
                         CLog(@"create table Activity success");
                     }else{
@@ -428,7 +428,7 @@ static RC_SQLiteManager *sqliteManager = nil;
         [myKeyedArchiver encodeObject:activityInfo.arrData];
         [myKeyedArchiver finishEncoding];
         
-        BOOL success = [_db executeUpdate:@"insert into Activity (title ,location ,isAllDay ,startTime ,finishTime ,firstRemindTime ,secondRemindTime ,color ,arrData ,year ,month ,day) values(?,?,?,?,?,?,?,?,?,?,?,?)",activityInfo.strTitle,activityInfo.strLocation, activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.dateFirstRemindTime,activityInfo.dateSecondRemindTime,activityInfo.numColor,mData,activityInfo.strYear,activityInfo.strMonth,activityInfo.strDay,nil];
+        BOOL success = [_db executeUpdate:@"insert into Activity (title ,location ,isAllDay ,startTime ,finishTime ,firstRemindTime ,secondRemindTime ,color ,arrData ,year ,month ,day) values(?,?,?,?,?,?,?,?,?,?,?,?)",activityInfo.strTitle,activityInfo.strLocation, activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.dateFirstRemindTime,activityInfo.dateSecondRemindTime,activityInfo.numColor,mData,activityInfo.numYear,activityInfo.numMonth,activityInfo.numDay,nil];
         [_db close];
         return success;
     }
@@ -450,11 +450,11 @@ static RC_SQLiteManager *sqliteManager = nil;
             activityInfo.numId = [NSNumber numberWithInt:[rs intForColumn:@"id"]];
             activityInfo.numColor = [NSNumber numberWithInt:[rs intForColumn:@"color"]];
             activityInfo.numIsAllDay = [NSNumber numberWithInt:[rs intForColumn:@"isAllDay"]];
-            activityInfo.strDay = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"day"]];
+            activityInfo.numDay = [NSNumber numberWithInt:[rs intForColumn:@"day"]];
             activityInfo.strLocation = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"location"]];
-            activityInfo.strMonth = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"month"]];
+            activityInfo.numMonth = [NSNumber numberWithInt:[rs intForColumn:@"month"]];
             activityInfo.strTitle = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"title"]];
-            activityInfo.strYear = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"year"]];
+            activityInfo.numYear = [NSNumber numberWithInt:[rs intForColumn:@"year"]];
             activityInfo.dateFinishTime = [rs dateForColumn:@"finishTime"];
             activityInfo.dateFirstRemindTime = [rs dateForColumn:@"firstRemindTime"];
             activityInfo.dateSecondRemindTime = [rs dateForColumn:@"secondRemindTime"];
@@ -472,6 +472,49 @@ static RC_SQLiteManager *sqliteManager = nil;
     return nil;
 }
 
+-(NSMutableArray *)getAllActivityWithYear:(NSString *)year andMonth:(NSString *)month andDay:(NSString *)day
+{
+    [self createTable:TNTActivity];
+    if ([_db open]) {
+        NSMutableArray *arr = [[NSMutableArray alloc]init];
+        NSString *tableName = @"Activity";
+        NSString * sql;
+        if(year && month && day)
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where year = %d and month = %d and day = %d",tableName,[year intValue],[month intValue],[day intValue]];
+        }
+        else if (year && month) {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where year = %d and month = %d order by day",tableName,[year intValue],[month intValue]];
+        }
+        CLog(@"%@",sql);
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            ActivityInfo *activityInfo = [[ActivityInfo alloc]init];
+            
+            activityInfo.numId = [NSNumber numberWithInt:[rs intForColumn:@"id"]];
+            activityInfo.numColor = [NSNumber numberWithInt:[rs intForColumn:@"color"]];
+            activityInfo.numIsAllDay = [NSNumber numberWithInt:[rs intForColumn:@"isAllDay"]];
+            activityInfo.numDay = [NSNumber numberWithInt:[rs intForColumn:@"day"]];
+            activityInfo.strLocation = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"location"]];
+            activityInfo.numMonth = [NSNumber numberWithInt:[rs intForColumn:@"month"]];
+            activityInfo.strTitle = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"title"]];
+            activityInfo.numYear = [NSNumber numberWithInt:[rs intForColumn:@"year"]];
+            activityInfo.dateFinishTime = [rs dateForColumn:@"finishTime"];
+            activityInfo.dateFirstRemindTime = [rs dateForColumn:@"firstRemindTime"];
+            activityInfo.dateSecondRemindTime = [rs dateForColumn:@"secondRemindTime"];
+            activityInfo.dateStartTime = [rs dateForColumn:@"startTime"];
+            
+            NSKeyedUnarchiver *myKeyedUnarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:[rs dataForColumn:@"arrData"]];
+            NSArray *arrData = [myKeyedUnarchiver decodeObject];
+            activityInfo.arrData = arrData;
+            
+            [arr addObject:activityInfo];
+        }
+        [_db close];
+        return arr;
+    }
+    return nil;
+}
 
 
 
