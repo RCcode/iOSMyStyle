@@ -9,6 +9,13 @@
 #import "MZCroppableView.h"
 #import "UIBezierPath-Points.h"
 
+@interface MZCroppableView ()
+{
+    NSMutableArray *undoArr;
+    NSMutableArray *redoArr;
+}
+@end
+
 @implementation MZCroppableView
 
 - (id)initWithFrame:(CGRect)frame
@@ -30,6 +37,9 @@
         self.croppingPath = [[UIBezierPath alloc] init];
         [self.croppingPath setLineWidth:self.lineWidth];
         self.lineColor = [UIColor redColor];
+        
+        redoArr = [[NSMutableArray alloc]init];
+        undoArr = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -132,20 +142,93 @@
 #pragma mark - Touch Methods -
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [redoArr removeAllObjects];
+    
     UITouch *mytouch=[[touches allObjects] objectAtIndex:0];
     [self.croppingPath moveToPoint:[mytouch locationInView:self]];
     
+    CGPoint point = [mytouch locationInView:self];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGPoint:point],@"Points",[NSNumber numberWithBool:YES],@"isBegin", nil];
+    [undoArr addObject:dic];
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *mytouch=[[touches allObjects] objectAtIndex:0];
     [self.croppingPath addLineToPoint:[mytouch locationInView:self]];
     
+    CGPoint point = [mytouch locationInView:self];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGPoint:point],@"Points",[NSNumber numberWithBool:NO],@"isBegin", nil];
+    [undoArr addObject:dic];
+    
     [self setNeedsDisplay];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
-    
 }
+
+-(void)unDo
+{
+    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    for (int i=((int)undoArr.count-1); i>0; i--) {
+        NSDictionary *dic = [undoArr objectAtIndex:i];
+        [arr insertObject:dic atIndex:0];
+        if ([[dic objectForKey:@"isBegin"] boolValue]) {
+            break;
+        }
+    }
+    [undoArr removeObjectsInArray:arr];
+//    [redoArr addObjectsFromArray:arr];
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,[arr count])];
+    [redoArr insertObjects:arr atIndexes:indexSet];
+    
+    [self updateView];
+}
+-(void)reDo
+{
+    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    if (redoArr.count>0) {
+        NSDictionary *dic = [redoArr objectAtIndex:0];
+        [arr addObject:dic];
+    }
+    for (int i=1; i<redoArr.count; i++) {
+        NSDictionary *dic = [redoArr objectAtIndex:i];
+        if ([[dic objectForKey:@"isBegin"] boolValue]) {
+            break;
+        }
+        [arr addObject:dic];
+    }
+    [undoArr addObjectsFromArray:arr];
+    [redoArr removeObjectsInArray:arr];
+    
+    [self updateView];
+}
+
+-(void)updateView
+{
+    [self.croppingPath removeAllPoints];
+    for (int i = 0; i<undoArr.count; i++) {
+        NSDictionary *dic = [undoArr objectAtIndex:i];
+        CGPoint point = [[dic objectForKey:@"Points"] CGPointValue];
+        if ([[dic objectForKey:@"isBegin"] boolValue]) {
+            [self.croppingPath moveToPoint:point];
+        }
+        else
+        {
+            [self.croppingPath addLineToPoint:point];
+        }
+    }
+    
+    [self setNeedsDisplay];
+}
+
+-(BOOL)canUnDo
+{
+    return undoArr.count>0;
+}
+
+-(BOOL)canReDo
+{
+    return redoArr.count>0;
+}
+
 @end

@@ -22,4 +22,8 @@
 + (CGRect)scaleRespectAspectFromRect1:(CGRect)rect1 toRect2:(CGRect)rect2;
 
 - (UIImage *)deleteBackgroundOfImage:(UIImageView *)image;
+
+-(void)unDo;
+-(void)reDo;
+
 @end

@@ -88,6 +88,14 @@
     [self.view addSubview:mzCroppableView];
 }
 
+- (IBAction)unDo:(id)sender {
+    [mzCroppableView unDo];
+}
+
+- (IBAction)reDo:(id)sender {
+    [mzCroppableView reDo];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
