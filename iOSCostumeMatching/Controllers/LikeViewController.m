@@ -11,6 +11,7 @@
 #import "SelectViewController.h"
 #import "InspirationCollectionViewCell.h"
 #import "ShowCollectionInspirationDetailsViewController.h"
+#import "MJRefresh.h"
 
 #define CELL_IDENTIFIER @"LikeCell"
 
@@ -48,7 +49,21 @@
     
     [self createCollectionView];
     [self updateCollectionView];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.arrCollection = [[NSMutableArray alloc]init];
+    
+    __weak UICollectionView *weakCollectionView = self.collectionView;
+    __weak LikeViewController *weakSelf = self;
+    // 下拉刷新
+    weakCollectionView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        weakSelf.mId = 0;
+        [weakSelf updateCollectionView];
+    }];
+    
+    // 上拉刷新
+    weakCollectionView.footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf updateCollectionView];
+    }];    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)createCollectionView
@@ -71,21 +86,34 @@
 
 -(void)updateCollectionView
 {
+    if (_mId == 0) {
+        [_arrCollection removeAllObjects];
+    }
+    
     __weak LikeViewController *weakSelf = self;
     
     [[RC_RequestManager shareManager]getLikedCollocationWithStyleId:style OccId:occasion MinId:_mId Count:10 success:^(id responseObject) {
         CLog(@"%@",responseObject);
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *dic = responseObject;
-            if ([[dic objectForKey:@"stat"] integerValue]== 10000) {
-                weakSelf.arrCollection = [dic objectForKey:@"list"];
-                weakSelf.mId = [[dic objectForKey:@"mId"]intValue];
-                [weakSelf.collectionView reloadData];
+            CLog(@"%@",responseObject);
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *dic = responseObject;
+                if ([[dic objectForKey:@"stat"] integerValue]== 10000) {
+                    NSArray *arr = [dic objectForKey:@"list"];
+                    if (arr && (![arr isKindOfClass:[NSNull class]])) {
+                        [weakSelf.arrCollection addObjectsFromArray:arr];
+                        [weakSelf.collectionView reloadData];
+                        weakSelf.mId = [[dic objectForKey:@"mId"]intValue];
+                    }
+                }
             }
+            [weakSelf.collectionView.header endRefreshing];
+            [weakSelf.collectionView.footer endRefreshing];
         }
     } andFailed:^(NSError *error) {
         CLog(@"%@",error);
-
+        [weakSelf.collectionView.header endRefreshing];
+        [weakSelf.collectionView.footer endRefreshing];
     }];
 }
 
@@ -97,6 +125,7 @@
     [selectStyle setSelectedBlock:^(int index) {
         style = index;
         [weakSelf.btnStyle setTitle:getCollocationStyleName(style) forState:UIControlStateNormal] ;
+        weakSelf.mId = 0;
         [weakSelf updateCollectionView];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
@@ -112,6 +141,7 @@
     [selectOccasion setSelectedBlock:^(int index) {
         occasion = index;
         [weakSelf.btnOccasion setTitle:getCollocationOccasionName(occasion) forState:UIControlStateNormal];
+        weakSelf.mId = 0;
         [weakSelf updateCollectionView];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectOccasion];
@@ -175,7 +205,6 @@
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showDetail];
     [self presentViewController:nav animated:YES completion:nil];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
