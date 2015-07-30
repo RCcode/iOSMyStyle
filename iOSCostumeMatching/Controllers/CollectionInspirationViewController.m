@@ -168,6 +168,7 @@
     int coId = [[dic objectForKey:@"coId"] intValue];
     ShowCollectionInspirationDetailsViewController *showDetail = [[ShowCollectionInspirationDetailsViewController alloc]init];
     showDetail.coId = coId;
+    showDetail.dic = dic;
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showDetail];
     [self presentViewController:nav animated:YES completion:nil];
 }

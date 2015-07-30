@@ -12,4 +12,6 @@
 
 @property (nonatomic) int coId;
 
+@property (nonatomic, strong) NSDictionary *dic;
+
 @end

@@ -26,6 +26,10 @@
 
 -(void)GetCollocationDetailWithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
 
+-(void)ReportCollocationWithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
+
+-(void)LikeCollocationWithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
+
 - (void)cancleAllRequests;
 
 @end

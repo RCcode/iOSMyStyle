@@ -400,14 +400,14 @@ static RC_RequestManager *requestManager = nil;
  *  @param failure <#failure description#>
  */
 
--(void)ReportCollocationWithCoId:(NSString *)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+-(void)ReportCollocationWithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
 {
     if (![self checkNetWorking])
         return;
      UserInfo *userInfo = [UserInfo unarchiverUserData];
     NSDictionary *params = @{@"id":userInfo.numId,
                              @"token":userInfo.strToken,
-                             @"coId":coId};
+                             @"coId":[NSNumber numberWithInt:coId]};
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];
@@ -477,9 +477,7 @@ static RC_RequestManager *requestManager = nil;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     NSDictionary *params = @{@"id":userInfo.numId,
                              @"token":userInfo.strToken,
-                             @"coId":[NSNumber numberWithInt:coId],
-                             @"mId":[NSNumber numberWithInt:0],
-                             @"count":[NSNumber numberWithInt:10]};
+                             @"coId":[NSNumber numberWithInt:coId]};
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];
@@ -507,14 +505,14 @@ static RC_RequestManager *requestManager = nil;
  *  @param failure <#failure description#>
  */
 
--(void)LikeCollocationWithCoId:(NSString *)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+-(void)LikeCollocationWithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
 {
     if (![self checkNetWorking])
         return;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     NSDictionary *params = @{@"id":userInfo.numId,
                              @"token":userInfo.strToken,
-                             @"coId":coId};
+                             @"coId":[NSNumber numberWithInt:coId]};
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];
