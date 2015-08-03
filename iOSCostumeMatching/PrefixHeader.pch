@@ -32,7 +32,7 @@
 #import "UIImageView+WebCache.h"
 //#import "UserInfo.h"
 //#import "InstagramManager.h"
-
+#import <FacebookSDK/FacebookSDK.h>
 #endif
 
 #ifdef DEBUG

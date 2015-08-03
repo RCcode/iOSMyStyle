@@ -120,6 +120,8 @@
 		4F7D00A31B6A1D6000BE18CE /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D008E1B6A1D6000BE18CE /* UIScrollView+MJExtension.m */; };
 		4F7D00A41B6A1D6000BE18CE /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D00901B6A1D6000BE18CE /* UIScrollView+MJRefresh.m */; };
 		4F7D00A51B6A1D6000BE18CE /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D00921B6A1D6000BE18CE /* UIView+MJExtension.m */; };
+		4F7D00A91B6A3F2700BE18CE /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D00A81B6A3F2700BE18CE /* FacebookManager.m */; };
+		4F7D00AB1B6A3F6500BE18CE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7D00AA1B6A3F6500BE18CE /* FacebookSDK.framework */; };
 		4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */; };
 		4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */; };
 		4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */; };
@@ -375,6 +377,9 @@
 		4F7D00901B6A1D6000BE18CE /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		4F7D00911B6A1D6000BE18CE /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		4F7D00921B6A1D6000BE18CE /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		4F7D00A71B6A3F2700BE18CE /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
+		4F7D00A81B6A3F2700BE18CE /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
+		4F7D00AA1B6A3F6500BE18CE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		4F808CA71B54BD6E001A89AA /* RC_RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_RequestManager.h; sourceTree = "<group>"; };
 		4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_RequestManager.m; sourceTree = "<group>"; };
 		4F808CAB1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IS_MobAndAnalyticsManager.h; sourceTree = "<group>"; };
@@ -445,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F62FFEE1B57981C005E8C79 /* libz.dylib in Frameworks */,
+				4F7D00AB1B6A3F6500BE18CE /* FacebookSDK.framework in Frameworks */,
 				4F62FFEC1B579770005E8C79 /* libsqlite3.dylib in Frameworks */,
 				4F0771A41B53AB16005D61AB /* libMobClickLibrary.a in Frameworks */,
 			);
@@ -546,6 +552,7 @@
 		4F417DC21B4E6DE5000BD540 /* RCShare */ = {
 			isa = PBXGroup;
 			children = (
+				4F7D00A61B6A3F2700BE18CE /* FacebookManager */,
 				4F808CB01B54C962001A89AA /* SQLiteManager */,
 				4F808CAA1B54BD8B001A89AA /* MobAndAnalyticsManager */,
 				4F808CA61B54BD6E001A89AA /* RequestManager */,
@@ -961,6 +968,15 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		4F7D00A61B6A3F2700BE18CE /* FacebookManager */ = {
+			isa = PBXGroup;
+			children = (
+				4F7D00A71B6A3F2700BE18CE /* FacebookManager.h */,
+				4F7D00A81B6A3F2700BE18CE /* FacebookManager.m */,
+			);
+			path = FacebookManager;
+			sourceTree = "<group>";
+		};
 		4F808CA61B54BD6E001A89AA /* RequestManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1048,7 @@
 		4F85A6261B46480A0077E12E = {
 			isa = PBXGroup;
 			children = (
+				4F7D00AA1B6A3F6500BE18CE /* FacebookSDK.framework */,
 				4F8329EA1B5CEB43005588D7 /* ic_main_del@2x.png */,
 				4F8329EC1B5CEB63005588D7 /* ic_main_operate@2x.png */,
 				4F62FFED1B57981C005E8C79 /* libz.dylib */,
@@ -1336,6 +1353,7 @@
 				4F417DC61B4E6DFD000BD540 /* CMethods.m in Sources */,
 				4F7D00961B6A1D6000BE18CE /* MJRefreshFooter.m in Sources */,
 				4F7D00A21B6A1D6000BE18CE /* MJRefreshConst.m in Sources */,
+				4F7D00A91B6A3F2700BE18CE /* FacebookManager.m in Sources */,
 				4F417DD11B4E72B8000BD540 /* LeftMenuViewController.m in Sources */,
 				4F63419A1B4FA48300DFC281 /* CutViewController.m in Sources */,
 				4F417DBC1B4E6875000BD540 /* RC_View.m in Sources */,
@@ -1509,6 +1527,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iOSCostumeMatching/PrefixHeader.pch";
 				INFOPLIST_FILE = iOSCostumeMatching/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1526,6 +1548,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/iOSCostumeMatching/PrefixHeader.pch";
 				INFOPLIST_FILE = iOSCostumeMatching/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

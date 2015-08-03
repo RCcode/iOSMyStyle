@@ -9,6 +9,8 @@
 #import "LeftMenuViewController.h"
 #import "InstagramLoginViewController.h"
 #import "UIImageView+WebCache.h"
+#import "FacebookManager.h"
+
 @interface LeftMenuViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -108,6 +110,45 @@
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:instagramLoginViewController];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)loginFaceBook:(id)sender {
+    __weak LeftMenuViewController *weakSelf = self;
+    [[FacebookManager shareManager]loginSuccess:^{
+        [weakSelf getFacebookUserInfo];
+    } andFailed:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+-(void)getFacebookUserInfo
+{
+    [[FacebookManager shareManager] getUserInfoSuccess:^(NSDictionary *userInfo) {
+        NSLog(@"userInfo:%@",userInfo);
+//        weakSelf.userInfo.facebookid = [userInfo objectForKey:@"id"];
+//        weakSelf.userInfo.facebookname = [userInfo objectForKey:@"name"];
+//        [[NSUserDefaults standardUserDefaults]setObject:[userInfo objectForKey:@"id"] forKey:@"facebookid"];
+//        [[NSUserDefaults standardUserDefaults]setObject:[userInfo objectForKey:@"name"] forKey:@"facebookname"];
+//        [weakSelf updateUserInfo];
+    } andFailed:^(NSError *error) {
+        
+    }];
+    [[FacebookManager shareManager] getCoverGraphPathSuccess:^(NSDictionary *dic) {
+        NSLog(@"headurl:%@",dic);
+//        weakSelf.userInfo.mainurl = [[dic objectForKey:@"cover"]objectForKey:@"source"];
+//        [[NSUserDefaults standardUserDefaults]setObject:[[dic objectForKey:@"cover"]objectForKey:@"source"] forKey:@"mainurl"];
+//        [weakSelf updateUserInfo];
+    } andFailed:^(NSError *error) {
+        
+    }];
+    [[FacebookManager shareManager] getHeadPicturePathSuccess:^(NSDictionary *dic) {
+        NSLog(@"headurl:%@",dic);
+//        weakSelf.userInfo.headurl = [[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"];
+//        [[NSUserDefaults standardUserDefaults]setObject:[[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"] forKey:@"headurl"];
+//        [weakSelf updateUserInfo];
+    } andFailed:^(NSError *error) {
+        
+    }];
 }
 
 - (IBAction)pressWardrobe:(id)sender {

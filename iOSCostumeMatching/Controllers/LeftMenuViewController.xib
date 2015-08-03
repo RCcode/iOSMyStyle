@@ -78,12 +78,21 @@
                     <rect key="frame" x="23" y="19" width="72" height="71"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfI-hd-BAJ">
-                    <rect key="frame" x="114" y="40" width="59" height="30"/>
-                    <state key="normal" title="登陆">
+                    <rect key="frame" x="98" y="40" width="59" height="30"/>
+                    <state key="normal" title="登陆in">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="login:" destination="-1" eventType="touchUpInside" id="SFn-i2-H0y"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEe-e1-pwi">
+                    <rect key="frame" x="165" y="40" width="64" height="30"/>
+                    <state key="normal" title="登陆Face">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="loginFaceBook:" destination="-1" eventType="touchUpInside" id="MW6-CH-Owe"/>
                     </connections>
                 </button>
             </subviews>
