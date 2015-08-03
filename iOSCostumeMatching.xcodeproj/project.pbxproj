@@ -139,6 +139,11 @@
 		4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6371B46480A0077E12E /* AppDelegate.m */; };
 		4F85A6401B46480A0077E12E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85A63F1B46480A0077E12E /* Images.xcassets */; };
 		4F85A64F1B46480B0077E12E /* iOSCostumeMatchingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A64E1B46480B0077E12E /* iOSCostumeMatchingTests.m */; };
+		4F9BE21E1B6F7B7900339E71 /* ACLoupe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9BE2161B6F7B7900339E71 /* ACLoupe.m */; };
+		4F9BE21F1B6F7B7900339E71 /* ACMagnifyingGlass.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9BE2181B6F7B7900339E71 /* ACMagnifyingGlass.m */; };
+		4F9BE2201B6F7B7900339E71 /* ACMagnifyingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9BE21A1B6F7B7900339E71 /* ACMagnifyingView.m */; };
+		4F9BE2211B6F7B7900339E71 /* kb-loupe-hi_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9BE21C1B6F7B7900339E71 /* kb-loupe-hi_6.png */; };
+		4F9BE2221B6F7B7900339E71 /* kb-loupe-hi_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9BE21D1B6F7B7900339E71 /* kb-loupe-hi_7.png */; };
 		4F9E7E3F1B5E3C13006D1E34 /* CreateActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E7E3D1B5E3C13006D1E34 /* CreateActivityViewController.m */; };
 		4F9E7E401B5E3C13006D1E34 /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9E7E3E1B5E3C13006D1E34 /* CreateActivityViewController.xib */; };
 		4FB374141B66450F009ED71E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB374021B66450F009ED71E /* AFHTTPRequestOperation.m */; };
@@ -410,6 +415,14 @@
 		4F85A6481B46480B0077E12E /* iOSCostumeMatchingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSCostumeMatchingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85A64D1B46480B0077E12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85A64E1B46480B0077E12E /* iOSCostumeMatchingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSCostumeMatchingTests.m; sourceTree = "<group>"; };
+		4F9BE2151B6F7B7900339E71 /* ACLoupe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACLoupe.h; sourceTree = "<group>"; };
+		4F9BE2161B6F7B7900339E71 /* ACLoupe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACLoupe.m; sourceTree = "<group>"; };
+		4F9BE2171B6F7B7900339E71 /* ACMagnifyingGlass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMagnifyingGlass.h; sourceTree = "<group>"; };
+		4F9BE2181B6F7B7900339E71 /* ACMagnifyingGlass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACMagnifyingGlass.m; sourceTree = "<group>"; };
+		4F9BE2191B6F7B7900339E71 /* ACMagnifyingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMagnifyingView.h; sourceTree = "<group>"; };
+		4F9BE21A1B6F7B7900339E71 /* ACMagnifyingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACMagnifyingView.m; sourceTree = "<group>"; };
+		4F9BE21C1B6F7B7900339E71 /* kb-loupe-hi_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kb-loupe-hi_6.png"; sourceTree = "<group>"; };
+		4F9BE21D1B6F7B7900339E71 /* kb-loupe-hi_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kb-loupe-hi_7.png"; sourceTree = "<group>"; };
 		4F9E7E3C1B5E3C13006D1E34 /* CreateActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityViewController.h; sourceTree = "<group>"; };
 		4F9E7E3D1B5E3C13006D1E34 /* CreateActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityViewController.m; sourceTree = "<group>"; };
 		4F9E7E3E1B5E3C13006D1E34 /* CreateActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActivityViewController.xib; sourceTree = "<group>"; };
@@ -710,6 +723,8 @@
 		4F63418F1B4FA3E000DFC281 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F9BE2231B6F7E5C00339E71 /* MaskImageView */,
+				4F9BE2141B6F7B7900339E71 /* MagnifyingGlass */,
 				4F7B64F01B5F8044004643D2 /* ItemView */,
 				4F8329DD1B5CE85D005588D7 /* StickerView */,
 				4F6FB3DE1B58E52700C5CB0A /* CollectionView */,
@@ -1116,6 +1131,36 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4F9BE2141B6F7B7900339E71 /* MagnifyingGlass */ = {
+			isa = PBXGroup;
+			children = (
+				4F9BE2151B6F7B7900339E71 /* ACLoupe.h */,
+				4F9BE2161B6F7B7900339E71 /* ACLoupe.m */,
+				4F9BE2171B6F7B7900339E71 /* ACMagnifyingGlass.h */,
+				4F9BE2181B6F7B7900339E71 /* ACMagnifyingGlass.m */,
+				4F9BE2191B6F7B7900339E71 /* ACMagnifyingView.h */,
+				4F9BE21A1B6F7B7900339E71 /* ACMagnifyingView.m */,
+				4F9BE21B1B6F7B7900339E71 /* Resources */,
+			);
+			path = MagnifyingGlass;
+			sourceTree = "<group>";
+		};
+		4F9BE21B1B6F7B7900339E71 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4F9BE21C1B6F7B7900339E71 /* kb-loupe-hi_6.png */,
+				4F9BE21D1B6F7B7900339E71 /* kb-loupe-hi_7.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4F9BE2231B6F7E5C00339E71 /* MaskImageView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MaskImageView;
+			sourceTree = "<group>";
+		};
 		4F9E7E3B1B5E3BF2006D1E34 /* CreateActivity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1260,6 +1305,7 @@
 				4FCD2FEE1B5503CD00BD6DDB /* 8.jpeg in Resources */,
 				4F5A50841B60F28F0001D5D1 /* LikeViewController.xib in Resources */,
 				4FCD2FEC1B5503CD00BD6DDB /* 6.jpeg in Resources */,
+				4F9BE2221B6F7B7900339E71 /* kb-loupe-hi_7.png in Resources */,
 				4FCD2FEB1B5503CD00BD6DDB /* 5.jpeg in Resources */,
 				4FCD2FE81B5503CD00BD6DDB /* 2.jpeg in Resources */,
 				4F417DD91B4E8960000BD540 /* WardrobeViewController.xib in Resources */,
@@ -1294,6 +1340,7 @@
 				4F8329EB1B5CEB43005588D7 /* ic_main_del@2x.png in Resources */,
 				4F5A50791B60EC050001D5D1 /* CollectionInspirationViewController.xib in Resources */,
 				4F5A507F1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.xib in Resources */,
+				4F9BE2211B6F7B7900339E71 /* kb-loupe-hi_6.png in Resources */,
 				4F5D168F1B68E46500B03650 /* InspirationCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1346,6 +1393,8 @@
 				4F7D00A51B6A1D6000BE18CE /* UIView+MJExtension.m in Sources */,
 				4F6341931B4FA44400DFC281 /* UIBezierPath-Points.m in Sources */,
 				4F7B9ABA1B6254AD003D94BF /* SDWebImageDownloaderOperation.m in Sources */,
+				4F9BE21E1B6F7B7900339E71 /* ACLoupe.m in Sources */,
+				4F9BE2201B6F7B7900339E71 /* ACMagnifyingView.m in Sources */,
 				4F8329F01B5CF0FF005588D7 /* ZDStickerView.m in Sources */,
 				4F158D841B53BE6D000CA2FA /* PWSHelper.m in Sources */,
 				4FB374161B66450F009ED71E /* AFHTTPSessionManager.m in Sources */,
@@ -1364,6 +1413,7 @@
 				4F85A6351B46480A0077E12E /* main.m in Sources */,
 				4F5A508F1B6104140001D5D1 /* InstagramLoginViewController.m in Sources */,
 				4F6FB3F51B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.m in Sources */,
+				4F9BE21F1B6F7B7900339E71 /* ACMagnifyingGlass.m in Sources */,
 				4F9E7E3F1B5E3C13006D1E34 /* CreateActivityViewController.m in Sources */,
 				4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */,
 				4F0771681B538E38005D61AB /* CalendarViewController.m in Sources */,

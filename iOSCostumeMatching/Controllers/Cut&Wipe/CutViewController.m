@@ -14,6 +14,7 @@
     MZCroppableView *mzCroppableView;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) UIImageView *magnifyingGlassImageView;
 @property (nonatomic, copy) void(^croppedImageSuccess)(UIImage *image);
 
 @end
@@ -57,6 +58,11 @@
     
     [_imageView setImage:_originalImage];
     
+    _magnifyingGlassImageView  = [[UIImageView alloc]init];
+    [_magnifyingGlassImageView setFrame:CGRectMake(0, 0, 70, 70)];
+    [self.view addSubview:_magnifyingGlassImageView];
+    [_magnifyingGlassImageView setBackgroundColor:[UIColor greenColor]];
+    
     CGRect rect1 = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
     CGRect rect2 = _imageView.frame;
     [_imageView setFrame:[MZCroppableView scaleRespectAspectFromRect1:rect1 toRect2:rect2]];
@@ -85,6 +91,14 @@
 {
     [mzCroppableView removeFromSuperview];
     mzCroppableView = [[MZCroppableView alloc] initWithImageView:_imageView];
+    __weak CutViewController *weakSelf = self;
+    [mzCroppableView setMagnifyingGlassImageBlock:^(UIImage *image) {
+        weakSelf.magnifyingGlassImageView.hidden = NO;
+        [weakSelf.magnifyingGlassImageView setImage:image];
+    }];
+    [mzCroppableView setEndMagnifyingGlassImageBlock:^{
+        weakSelf.magnifyingGlassImageView.hidden = YES;
+    }];
     [self.view addSubview:mzCroppableView];
 }
 

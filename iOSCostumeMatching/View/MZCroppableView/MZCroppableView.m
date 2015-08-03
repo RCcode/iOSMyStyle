@@ -13,10 +13,25 @@
 {
     NSMutableArray *undoArr;
     NSMutableArray *redoArr;
+    UIImage *originalImage;
 }
+
+@property (nonatomic, copy) void(^magnifyingGlassImage)(UIImage *image);
+@property (nonatomic, copy) void(^endMagnifyingGlassImage)();
+
 @end
 
 @implementation MZCroppableView
+
+-(void)setMagnifyingGlassImageBlock:(void (^)(UIImage *))magnifyingGlassImageBlock
+{
+    _magnifyingGlassImage = magnifyingGlassImageBlock;
+}
+
+-(void)setEndMagnifyingGlassImageBlock:(void (^)())endMagnifyingGlassImageBlock
+{
+    _endMagnifyingGlassImage = endMagnifyingGlassImageBlock;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -40,6 +55,8 @@
         
         redoArr = [[NSMutableArray alloc]init];
         undoArr = [[NSMutableArray alloc]init];
+        
+        originalImage = imageView.image;
     }
     return self;
 }
@@ -150,7 +167,12 @@
     CGPoint point = [mytouch locationInView:self];
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSValue valueWithCGPoint:point],@"Points",[NSNumber numberWithBool:YES],@"isBegin", nil];
     [undoArr addObject:dic];
+    
+    if (_magnifyingGlassImage) {
+        _magnifyingGlassImage([self getImageInPoint:point]);
+    }
 }
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *mytouch=[[touches allObjects] objectAtIndex:0];
@@ -161,9 +183,33 @@
     [undoArr addObject:dic];
     
     [self setNeedsDisplay];
+    if (_magnifyingGlassImage) {
+        _magnifyingGlassImage([self getImageInPoint:point]);
+    }
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (_endMagnifyingGlassImage) {
+        _endMagnifyingGlassImage();
+    }
+}
+
+-(UIImage *)getImageInPoint:(CGPoint)point{
+    UIImage* bigImage= originalImage;
+    CGFloat x = point.x * bigImage.size.width/self.frame.size.width -35;
+    CGFloat y = point.y * bigImage.size.height/self.frame.size.height -35;
+    CGRect rect = CGRectMake(x, y, 70, 70);
+    CGImageRef imageRef = bigImage.CGImage;
+    CGImageRef subImageRef = CGImageCreateWithImageInRect(imageRef, rect);
+    CGSize size;
+    size.width = 70;
+    size.height = 70;
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextDrawImage(context, rect, subImageRef);
+    UIImage* smallImage = [UIImage imageWithCGImage:subImageRef];
+    UIGraphicsEndImageContext();
+    return smallImage;
 }
 
 -(void)unDo

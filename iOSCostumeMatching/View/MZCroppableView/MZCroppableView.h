@@ -23,6 +23,9 @@
 
 - (UIImage *)deleteBackgroundOfImage:(UIImageView *)image;
 
+-(void)setMagnifyingGlassImageBlock:(void(^)(UIImage *image))magnifyingGlassImageBlock;
+-(void)setEndMagnifyingGlassImageBlock:(void (^)())endMagnifyingGlassImageBlock;
+
 -(void)unDo;
 -(void)reDo;
 
