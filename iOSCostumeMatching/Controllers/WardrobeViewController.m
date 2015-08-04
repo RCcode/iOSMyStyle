@@ -27,6 +27,11 @@
     WardrobeType type;
     WardrobeCategory category;
     WardrobeSeason season;
+    
+    UIView *alertView;
+    UIButton *btnAdd;
+    UIButton *btnAlbum;
+    UIButton *btnCamera;
 }
 @property (nonatomic, strong) NSMutableArray *arrClothes;
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -51,17 +56,17 @@
     if (!_collectionView) {
         CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
         
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
         layout.headerHeight = 0;
         layout.footerHeight = 0;
-//        layout.minimumColumnSpacing = 20;
-//        layout.minimumInteritemSpacing = 30;
+        layout.minimumColumnSpacing = 5;
+        layout.minimumInteritemSpacing = 5;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_btnType.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64) collectionViewLayout:layout];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.backgroundColor = colorWithHexString(@"#f4f4f4");
         [_collectionView registerClass:[CHTCollectionViewWaterfallCell class]
             forCellWithReuseIdentifier:CELL_IDENTIFIER];
         [_collectionView registerClass:[CHTCollectionViewWaterfallHeader class]
@@ -79,10 +84,36 @@
     
     [self setNavTitle:@"我的衣橱"];
     self.showReturn = YES;
-    [self setReturnBtnTitle:@"菜单"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [self.view insertSubview:self.collectionView atIndex:0];
+    
+    btnAlbum = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 53, 53)];
+    btnAlbum.center = CGPointMake(ScreenWidth/2, ScreenHeight-53/2-13);
+    [btnAlbum setImage:[UIImage imageNamed:@"ic_img"] forState:UIControlStateNormal];
+    [btnAlbum addTarget:self action:@selector(photoAlbumBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    btnCamera = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 53, 53)];
+    btnCamera.center = CGPointMake(ScreenWidth/2, ScreenHeight-53/2-13);
+    [btnCamera setImage:[UIImage imageNamed:@"ic_camera"] forState:UIControlStateNormal];
+    [btnCamera addTarget:self action:@selector(cameraBtnOnClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    alertView = [[UIAlertView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    [app.window addSubview:alertView];
+    alertView.backgroundColor = [UIColor clearColor];
+    btnAdd = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 53, 53)];
+    btnAdd.center = CGPointMake(ScreenWidth/2, ScreenHeight-53/2-13);
+    [btnAdd setImage:[UIImage imageNamed:@"ic_clothes"] forState:UIControlStateNormal];
+    [btnAdd setImage:[UIImage imageNamed:@"ic_clothes_close"] forState:UIControlStateSelected];
+    [btnAdd addTarget:self action:@selector(addClothes:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [alertView addSubview:btnCamera];
+    [alertView addSubview:btnAlbum];
+    btnAlbum.hidden = YES;
+    btnCamera.hidden = YES;
+    [alertView addSubview:btnAdd];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -138,8 +169,8 @@
     ClothesInfo *info = [_arrClothes objectAtIndex:indexPath.row];
     CGFloat width = info.file.size.width;
     CGFloat height = info.file.size.height;
-    CGFloat viewHeight = ((ScreenWidth-30)/(2.0*width))*height;
-    return CGSizeMake((ScreenWidth-30)/2.0, viewHeight);
+    CGFloat viewHeight = ((ScreenWidth-15)/(2.0*width))*height;
+    return CGSizeMake((ScreenWidth-15)/2.0, viewHeight);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -334,8 +365,41 @@
  */
 
 - (IBAction)addClothes:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"添加衣服" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"相机" otherButtonTitles:@"相册", nil];
-    [actionSheet showInView:self.view];
+    
+    btnAdd.selected = !btnAdd.selected;
+    
+    if (btnAdd.selected) {
+        
+        btnAlbum.hidden = NO;
+        btnCamera.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            btnAlbum.center = CGPointMake(ScreenWidth/2-70, ScreenHeight-53/2-13);
+            btnCamera.center = CGPointMake(ScreenWidth/2+70, ScreenHeight-53/2-13);
+        }];
+        alertView.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
+        alertView.hidden = NO;
+    }
+    else
+    {
+        [self close];
+    }
+    
+//    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"添加衣服" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"相机" otherButtonTitles:@"相册", nil];
+//    [actionSheet showInView:self.view];
+}
+
+-(void)close
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        btnAlbum.center = CGPointMake(ScreenWidth/2, ScreenHeight-53/2-13);
+        btnCamera.center = CGPointMake(ScreenWidth/2, ScreenHeight-53/2-13);
+    } completion:^(BOOL finished) {
+        btnAlbum.hidden = YES;
+        btnCamera.hidden = YES;
+    }];
+    alertView.backgroundColor = [UIColor clearColor];
+    alertView.hidden = YES;
+    btnAdd.selected = NO;
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -361,6 +425,8 @@
 }
 
 - (void)cameraBtnOnClick{
+    
+    [self close];
     
     if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
         return;
@@ -392,6 +458,7 @@
 
 - (void)photoAlbumBtnOnClick{
     
+    [self close];
 //    判断权限
     ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
     if (author == ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied)

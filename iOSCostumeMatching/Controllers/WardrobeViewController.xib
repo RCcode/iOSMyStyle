@@ -18,51 +18,112 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0V-bH-CYS">
-                    <rect key="frame" x="10" y="444" width="145" height="30"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="添加衣服">
+                <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0V-bH-CYS">
+                    <rect key="frame" x="134" y="438" width="53" height="53"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="53" id="Rol-uN-LNM"/>
+                        <constraint firstAttribute="height" constant="53" id="dhn-5m-qJf"/>
+                    </constraints>
+                    <state key="normal" image="ic_clothes">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="addClothes:" destination="-1" eventType="touchUpInside" id="xaw-cM-2i5"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpU-yZ-3eE">
-                    <rect key="frame" x="97" y="0.0" width="108" height="30"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpU-yZ-3eE">
+                    <rect key="frame" x="107" y="1" width="106" height="39"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="类型：ALL">
+                        <color key="titleColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="selectType:" destination="-1" eventType="touchUpInside" id="Ryv-s0-4xm"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qc-iZ-WJz">
-                    <rect key="frame" x="207" y="0.0" width="113" height="30"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qc-iZ-WJz">
+                    <rect key="frame" x="214" y="1" width="106" height="39"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="类别：ALL">
+                        <color key="titleColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="selectCategory:" destination="-1" eventType="touchUpInside" id="uNT-Yh-4zg"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVU-sV-vb8">
-                    <rect key="frame" x="0.0" y="0.0" width="95" height="30"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVU-sV-vb8">
+                    <rect key="frame" x="0.0" y="1" width="106" height="39"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="a9S-Jh-vFY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="季节：ALL">
+                        <color key="titleColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="selectSeason:" destination="-1" eventType="touchUpInside" id="47q-bo-CYh"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_xiala" translatesAutoresizingMaskIntoConstraints="NO" id="DRX-qv-OsO">
+                    <rect key="frame" x="89" y="16" width="10" height="10"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="msi-WF-gX9"/>
+                        <constraint firstAttribute="width" constant="10" id="o8c-c2-rT4"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_xiala" translatesAutoresizingMaskIntoConstraints="NO" id="nOc-C7-kDy">
+                    <rect key="frame" x="196" y="16" width="10" height="10"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="jkD-QM-49L"/>
+                        <constraint firstAttribute="width" constant="10" id="oQb-b2-CIq"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_xiala" translatesAutoresizingMaskIntoConstraints="NO" id="d1U-ie-S1j">
+                    <rect key="frame" x="302" y="16" width="10" height="10"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="10" id="1Kb-ux-yNb"/>
+                        <constraint firstAttribute="height" constant="10" id="fBP-xL-Zkt"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.25987644380000002" green="1" blue="0.59496190149999995" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="OpU-yZ-3eE" firstAttribute="height" secondItem="aVU-sV-vb8" secondAttribute="height" id="21N-C1-w9q"/>
+                <constraint firstItem="OpU-yZ-3eE" firstAttribute="width" secondItem="0Qc-iZ-WJz" secondAttribute="width" id="4jK-oe-1fk"/>
+                <constraint firstItem="0Qc-iZ-WJz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="1" id="A72-h0-Iw6"/>
+                <constraint firstItem="OpU-yZ-3eE" firstAttribute="leading" secondItem="aVU-sV-vb8" secondAttribute="trailing" constant="1" id="FcZ-CI-3xq"/>
+                <constraint firstItem="aVU-sV-vb8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HY2-sV-oWo"/>
+                <constraint firstAttribute="trailing" secondItem="d1U-ie-S1j" secondAttribute="trailing" constant="8" id="I1Z-TO-UDU"/>
+                <constraint firstItem="OpU-yZ-3eE" firstAttribute="leading" secondItem="DRX-qv-OsO" secondAttribute="trailing" constant="8" id="Ibm-lM-MgZ"/>
+                <constraint firstAttribute="bottom" secondItem="D0V-bH-CYS" secondAttribute="bottom" constant="13" id="J6o-cQ-0ax"/>
+                <constraint firstItem="0Qc-iZ-WJz" firstAttribute="leading" secondItem="OpU-yZ-3eE" secondAttribute="trailing" constant="1" id="Nse-ET-Kli"/>
+                <constraint firstItem="OpU-yZ-3eE" firstAttribute="height" secondItem="0Qc-iZ-WJz" secondAttribute="height" id="Oac-YR-MWe"/>
+                <constraint firstAttribute="centerX" secondItem="D0V-bH-CYS" secondAttribute="centerX" id="PmL-Ip-V9p"/>
+                <constraint firstItem="OpU-yZ-3eE" firstAttribute="width" secondItem="aVU-sV-vb8" secondAttribute="width" id="TDU-Cq-5Mr"/>
+                <constraint firstAttribute="trailing" secondItem="0Qc-iZ-WJz" secondAttribute="trailing" id="YN0-48-fcx"/>
+                <constraint firstItem="DRX-qv-OsO" firstAttribute="centerY" secondItem="aVU-sV-vb8" secondAttribute="centerY" id="ZAa-k4-HIo"/>
+                <constraint firstItem="DRX-qv-OsO" firstAttribute="centerY" secondItem="nOc-C7-kDy" secondAttribute="centerY" id="dRT-oM-c4p"/>
+                <constraint firstItem="d1U-ie-S1j" firstAttribute="centerY" secondItem="nOc-C7-kDy" secondAttribute="centerY" id="eJH-NH-KGB"/>
+                <constraint firstItem="aVU-sV-vb8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="1" id="k2x-uL-6qV"/>
+                <constraint firstItem="0Qc-iZ-WJz" firstAttribute="leading" secondItem="nOc-C7-kDy" secondAttribute="trailing" constant="8" id="kW7-Mk-JcG"/>
+                <constraint firstItem="OpU-yZ-3eE" firstAttribute="leading" secondItem="aVU-sV-vb8" secondAttribute="trailing" constant="1" id="kxd-j9-OBc"/>
+                <constraint firstItem="0Qc-iZ-WJz" firstAttribute="leading" secondItem="OpU-yZ-3eE" secondAttribute="trailing" constant="1" id="pXY-Ya-ySK"/>
+                <constraint firstItem="OpU-yZ-3eE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="1" id="wkz-sh-84u"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="564" y="322"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_clothes" width="53" height="53"/>
+        <image name="ic_xiala" width="10" height="10"/>
+    </resources>
 </document>

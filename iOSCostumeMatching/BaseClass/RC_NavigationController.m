@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationBar setBarTintColor:colorWithHexString(@"#f4872f")];
+    [self.navigationBar setBarTintColor:colorWithHexString(@"#ffffff")];
     self.navigationBar.translucent = NO;
 }
 

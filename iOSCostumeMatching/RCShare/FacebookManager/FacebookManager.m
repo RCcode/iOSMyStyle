@@ -51,7 +51,7 @@ static FacebookManager *facebookManager = nil;
         [FBSession openActiveSessionWithPublishPermissions:permissions
         defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:YES completionHandler:^(FBSession *session,FBSessionState state,NSError *error) {
             NSLog(@"aaaaa");
-            
+//            session.accessToken
             switch (state) {
                 case FBSessionStateClosedLoginFailed:
                     //TODO handle here.

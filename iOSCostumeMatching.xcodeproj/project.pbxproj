@@ -139,6 +139,15 @@
 		4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A6371B46480A0077E12E /* AppDelegate.m */; };
 		4F85A6401B46480A0077E12E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85A63F1B46480A0077E12E /* Images.xcassets */; };
 		4F85A64F1B46480B0077E12E /* iOSCostumeMatchingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85A64E1B46480B0077E12E /* iOSCostumeMatchingTests.m */; };
+		4F85BBB41B7077930072AB49 /* 首页.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85BBB31B7077930072AB49 /* 首页.xcassets */; };
+		4F85BBB61B7077A30072AB49 /* 侧滑.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85BBB51B7077A30072AB49 /* 侧滑.xcassets */; };
+		4F85BBB81B7077AF0072AB49 /* 裁图.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85BBB71B7077AF0072AB49 /* 裁图.xcassets */; };
+		4F85BBBA1B7077BC0072AB49 /* 填写衣服详情.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85BBB91B7077BC0072AB49 /* 填写衣服详情.xcassets */; };
+		4F85BBBC1B7077C70072AB49 /* 搭配.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85BBBB1B7077C70072AB49 /* 搭配.xcassets */; };
+		4F85BBBE1B7077DA0072AB49 /* 搭配日历.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85BBBD1B7077DA0072AB49 /* 搭配日历.xcassets */; };
+		4F85BBC01B7077E70072AB49 /* 新建日历.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85BBBF1B7077E70072AB49 /* 新建日历.xcassets */; };
+		4F85BBC21B7078120072AB49 /* 活动详情.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85BBC11B7078120072AB49 /* 活动详情.xcassets */; };
+		4F85BBC41B7078230072AB49 /* 查看搭配灵感.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F85BBC31B7078220072AB49 /* 查看搭配灵感.xcassets */; };
 		4F9BE21E1B6F7B7900339E71 /* ACLoupe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9BE2161B6F7B7900339E71 /* ACLoupe.m */; };
 		4F9BE21F1B6F7B7900339E71 /* ACMagnifyingGlass.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9BE2181B6F7B7900339E71 /* ACMagnifyingGlass.m */; };
 		4F9BE2201B6F7B7900339E71 /* ACMagnifyingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9BE21A1B6F7B7900339E71 /* ACMagnifyingView.m */; };
@@ -415,6 +424,15 @@
 		4F85A6481B46480B0077E12E /* iOSCostumeMatchingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSCostumeMatchingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F85A64D1B46480B0077E12E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F85A64E1B46480B0077E12E /* iOSCostumeMatchingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSCostumeMatchingTests.m; sourceTree = "<group>"; };
+		4F85BBB31B7077930072AB49 /* 首页.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "首页.xcassets"; sourceTree = "<group>"; };
+		4F85BBB51B7077A30072AB49 /* 侧滑.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "侧滑.xcassets"; sourceTree = "<group>"; };
+		4F85BBB71B7077AF0072AB49 /* 裁图.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "裁图.xcassets"; sourceTree = "<group>"; };
+		4F85BBB91B7077BC0072AB49 /* 填写衣服详情.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "填写衣服详情.xcassets"; sourceTree = "<group>"; };
+		4F85BBBB1B7077C70072AB49 /* 搭配.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "搭配.xcassets"; sourceTree = "<group>"; };
+		4F85BBBD1B7077DA0072AB49 /* 搭配日历.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "搭配日历.xcassets"; sourceTree = "<group>"; };
+		4F85BBBF1B7077E70072AB49 /* 新建日历.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "新建日历.xcassets"; sourceTree = "<group>"; };
+		4F85BBC11B7078120072AB49 /* 活动详情.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "活动详情.xcassets"; sourceTree = "<group>"; };
+		4F85BBC31B7078220072AB49 /* 查看搭配灵感.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "查看搭配灵感.xcassets"; sourceTree = "<group>"; };
 		4F9BE2151B6F7B7900339E71 /* ACLoupe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACLoupe.h; sourceTree = "<group>"; };
 		4F9BE2161B6F7B7900339E71 /* ACLoupe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACLoupe.m; sourceTree = "<group>"; };
 		4F9BE2171B6F7B7900339E71 /* ACMagnifyingGlass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMagnifyingGlass.h; sourceTree = "<group>"; };
@@ -1099,6 +1117,15 @@
 				4F85A6361B46480A0077E12E /* AppDelegate.h */,
 				4F85A6371B46480A0077E12E /* AppDelegate.m */,
 				4F85A63F1B46480A0077E12E /* Images.xcassets */,
+				4F85BBB31B7077930072AB49 /* 首页.xcassets */,
+				4F85BBB51B7077A30072AB49 /* 侧滑.xcassets */,
+				4F85BBB71B7077AF0072AB49 /* 裁图.xcassets */,
+				4F85BBB91B7077BC0072AB49 /* 填写衣服详情.xcassets */,
+				4F85BBBB1B7077C70072AB49 /* 搭配.xcassets */,
+				4F85BBBD1B7077DA0072AB49 /* 搭配日历.xcassets */,
+				4F85BBBF1B7077E70072AB49 /* 新建日历.xcassets */,
+				4F85BBC11B7078120072AB49 /* 活动详情.xcassets */,
+				4F85BBC31B7078220072AB49 /* 查看搭配灵感.xcassets */,
 				4F85A6321B46480A0077E12E /* Supporting Files */,
 			);
 			path = iOSCostumeMatching;
@@ -1300,8 +1327,12 @@
 			files = (
 				4F5F945A1B67735F00399681 /* SelectViewController.xib in Resources */,
 				4F8329ED1B5CEB63005588D7 /* ic_main_operate@2x.png in Resources */,
+				4F85BBBE1B7077DA0072AB49 /* 搭配日历.xcassets in Resources */,
 				4F7D00A11B6A1D6000BE18CE /* MJRefresh.bundle in Resources */,
+				4F85BBB61B7077A30072AB49 /* 侧滑.xcassets in Resources */,
 				4F6FB3FD1B58E77500C5CB0A /* cat3.jpg in Resources */,
+				4F85BBC01B7077E70072AB49 /* 新建日历.xcassets in Resources */,
+				4F85BBBC1B7077C70072AB49 /* 搭配.xcassets in Resources */,
 				4FCD2FEE1B5503CD00BD6DDB /* 8.jpeg in Resources */,
 				4F5A50841B60F28F0001D5D1 /* LikeViewController.xib in Resources */,
 				4FCD2FEC1B5503CD00BD6DDB /* 6.jpeg in Resources */,
@@ -1323,6 +1354,7 @@
 				4F0771691B538E38005D61AB /* CalendarViewController.xib in Resources */,
 				4F5A506E1B60E48B0001D5D1 /* ShowActivityViewController.xib in Resources */,
 				4F5A50671B60A3540001D5D1 /* ActivityCell.xib in Resources */,
+				4F85BBBA1B7077BC0072AB49 /* 填写衣服详情.xcassets in Resources */,
 				4FCD2FEA1B5503CD00BD6DDB /* 4.jpeg in Resources */,
 				4F8329D21B5CA1C6005588D7 /* CreateCollectionViewController.xib in Resources */,
 				4F417DD21B4E72B8000BD540 /* LeftMenuViewController.xib in Resources */,
@@ -1332,13 +1364,17 @@
 				4F63418E1B4F9FD200DFC281 /* CutAndWipeViewController.xib in Resources */,
 				4F6FB3FB1B58E77500C5CB0A /* cat1.jpg in Resources */,
 				4F6341AA1B4FCAA100DFC281 /* ball.png in Resources */,
+				4F85BBC21B7078120072AB49 /* 活动详情.xcassets in Resources */,
 				4F7B64EF1B5F5386004643D2 /* MyCollectionViewController.xib in Resources */,
+				4F85BBB41B7077930072AB49 /* 首页.xcassets in Resources */,
 				4F6FB3FE1B58E77500C5CB0A /* cat4.jpg in Resources */,
 				4F6FB40A1B5909A300C5CB0A /* ShowClothesDetailsViewController.xib in Resources */,
 				4FCD2FE61B5503CD00BD6DDB /* 1.jpeg in Resources */,
 				4F85A6401B46480A0077E12E /* Images.xcassets in Resources */,
 				4F8329EB1B5CEB43005588D7 /* ic_main_del@2x.png in Resources */,
+				4F85BBC41B7078230072AB49 /* 查看搭配灵感.xcassets in Resources */,
 				4F5A50791B60EC050001D5D1 /* CollectionInspirationViewController.xib in Resources */,
+				4F85BBB81B7077AF0072AB49 /* 裁图.xcassets in Resources */,
 				4F5A507F1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.xib in Resources */,
 				4F9BE2211B6F7B7900339E71 /* kb-loupe-hi_6.png in Resources */,
 				4F5D168F1B68E46500B03650 /* InspirationCollectionViewCell.xib in Resources */,

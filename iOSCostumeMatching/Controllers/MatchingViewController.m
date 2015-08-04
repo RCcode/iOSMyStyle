@@ -120,6 +120,8 @@
 {
     // 创建布局对象，需要对显示图片的布局进行调整所有传递给布局对象
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    flowLayout.minimumLineSpacing = 5;
+    flowLayout.minimumInteritemSpacing = 5;
     
     // layout 决定来 collectionView 中所有 cell (单元格) 的布局
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavBarHeight-20) collectionViewLayout:flowLayout];
@@ -131,7 +133,6 @@
     [_collectionView registerClass:[CHTCollectionViewWaterfallCell class] forCellWithReuseIdentifier:CELL_IDENTIFIER];
     
     _collectionView.backgroundColor = [UIColor clearColor];
-    
     [self.view insertSubview:_collectionView atIndex:0];
     
 } // 创建集合视图
@@ -158,12 +159,12 @@
 //设置整个分区相对上下左右的间距
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(10, 10, 10, 10);
+    return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake((ScreenWidth-30)/2.0, (ScreenWidth-30)/2.0);
+    return CGSizeMake((ScreenWidth-15)/2.0, (ScreenWidth-15)/2.0);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
