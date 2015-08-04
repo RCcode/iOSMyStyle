@@ -70,6 +70,7 @@
     _selectedColor = [UIColor blackColor];
     redoArr = [[NSMutableArray alloc]init];
     undoArr = [[NSMutableArray alloc]init];
+    _eraseWidth = 10;
 }
 
 - (void)eraseLine
@@ -80,7 +81,7 @@
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeClear);
     
     CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), 10);
+    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), _eraseWidth);
     CGContextBeginPath(UIGraphicsGetCurrentContext());
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeClear);
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), previousPoint.x, previousPoint.y);

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) PIDrawerView *drawerView1;
 @property (nonatomic, strong) UIImageView *magnifyingGlassImageView;
 @property (nonatomic, copy) void(^wipeImageSuccess)(UIImage *image);
+@property (weak, nonatomic) IBOutlet UISlider *slider;
 
 @end
 
@@ -66,12 +67,15 @@
     _magnifyingGlassImageView.clipsToBounds = YES;
     _magnifyingGlassImageView.hidden = YES;
     
+    _slider.hidden = YES;
+    
     self.drawerView1 = [[PIDrawerView alloc]init];
     self.drawerView1.backgroundColor = [UIColor clearColor];
     __weak WipeViewController *weakSelf = self;
     [self.drawerView1 setMagnifyingGlassImageBlock:^(UIImage *image) {
         weakSelf.magnifyingGlassImageView.hidden = NO;
         [weakSelf.magnifyingGlassImageView setImage:image];
+        weakSelf.slider.hidden = YES;
     }];
     [self.drawerView1 setEndMagnifyingGlassImageBlock:^{
         weakSelf.magnifyingGlassImageView.hidden = YES;
@@ -89,6 +93,18 @@
     
     [self.drawerView1 setDrawingMode:DrawingModeErase];
     
+}
+
+- (IBAction)changeEarseSize:(id)sender {
+    CGFloat width = _slider.value*20;
+    if (width<1) {
+        width = 1;
+    }
+    self.drawerView1.eraseWidth = width;
+}
+
+- (IBAction)pressErase:(id)sender {
+    _slider.hidden = NO;
 }
 
 - (IBAction)pressUndo:(id)sender {

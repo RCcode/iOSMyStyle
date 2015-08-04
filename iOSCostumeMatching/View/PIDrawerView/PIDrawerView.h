@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, DrawingMode) {
 @property (nonatomic, strong) UIColor *selectedColor;
 
 @property (nonatomic, strong) UIImage *originalImage;
+@property (nonatomic) CGFloat eraseWidth;
 
 -(void)setMagnifyingGlassImageBlock:(void(^)(UIImage *image))magnifyingGlassImageBlock;
 -(void)setEndMagnifyingGlassImageBlock:(void (^)())endMagnifyingGlassImageBlock;
