@@ -15,6 +15,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UIButton *btnLogin;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIView *actionView;
 
 @end
 
@@ -39,6 +41,11 @@
         }];
 
     }
+    _headImageView.layer.cornerRadius = CGRectGetWidth(_headImageView.frame)/2;
+    _headImageView.clipsToBounds = YES;
+    
+    [_scrollView addSubview:_actionView];
+    _scrollView.contentSize = CGSizeMake(CGRectGetWidth(_actionView.frame), CGRectGetHeight(_actionView.frame));
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -47,7 +47,7 @@
     _sideViewController.leftViewController=leftMenuViewController;
     
     
-    _sideViewController.leftViewShowWidth=200;
+    _sideViewController.leftViewShowWidth=260;
 //    _sideViewController.needSwipeShowMenu=true;//默认开启的可滑动展示
     //动画效果可以被自己自定义，具体请看api
     

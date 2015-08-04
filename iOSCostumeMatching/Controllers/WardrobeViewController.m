@@ -400,7 +400,7 @@
             btnAlbum.center = CGPointMake(ScreenWidth/2-70, ScreenHeight-53/2-13);
             btnCamera.center = CGPointMake(ScreenWidth/2+70, ScreenHeight-53/2-13);
         }];
-        alertView.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
+        alertView.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.77];
         alertView.hidden = NO;
     }
     else
