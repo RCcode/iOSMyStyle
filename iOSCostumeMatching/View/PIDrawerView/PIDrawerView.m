@@ -17,9 +17,23 @@
     BOOL isEnd;
 }
 @property (nonatomic, strong) UIImage * viewImage;
+
+@property (nonatomic, copy) void(^magnifyingGlassImage)(UIImage *image);
+@property (nonatomic, copy) void(^endMagnifyingGlassImage)();
+
 @end
 
 @implementation PIDrawerView
+
+-(void)setMagnifyingGlassImageBlock:(void (^)(UIImage *))magnifyingGlassImageBlock
+{
+    _magnifyingGlassImage = magnifyingGlassImageBlock;
+}
+
+-(void)setEndMagnifyingGlassImageBlock:(void (^)())endMagnifyingGlassImageBlock
+{
+    _endMagnifyingGlassImage = endMagnifyingGlassImageBlock;
+}
 
 - (void)awakeFromNib
 {
@@ -137,6 +151,9 @@
         [redoArr removeAllObjects];
         [undoArr addObject:image];
     }
+    if (_magnifyingGlassImage) {
+        _magnifyingGlassImage([self getImageInPoint:p]);
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -144,6 +161,9 @@
     currentPoint = [[touches anyObject] locationInView:self];
     
     [self handleTouches];
+    if (_magnifyingGlassImage) {
+        _magnifyingGlassImage([self getImageInPoint:currentPoint]);
+    }
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -151,7 +171,27 @@
     currentPoint = [[touches anyObject] locationInView:self];
     isEnd = YES;
     [self handleTouches];
-    
+    if (_endMagnifyingGlassImage) {
+        _endMagnifyingGlassImage();
+    }
+}
+
+-(UIImage *)getImageInPoint:(CGPoint)point{
+    UIImage* bigImage= _originalImage;
+    CGFloat x = point.x * bigImage.size.width/self.frame.size.width -35;
+    CGFloat y = point.y * bigImage.size.height/self.frame.size.height -35;
+    CGRect rect = CGRectMake(x, y, 70, 70);
+    CGImageRef imageRef = bigImage.CGImage;
+    CGImageRef subImageRef = CGImageCreateWithImageInRect(imageRef, rect);
+    CGSize size;
+    size.width = 70;
+    size.height = 70;
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextDrawImage(context, rect, subImageRef);
+    UIImage* smallImage = [UIImage imageWithCGImage:subImageRef];
+    UIGraphicsEndImageContext();
+    return smallImage;
 }
 
 -(void)redo

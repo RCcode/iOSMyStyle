@@ -42,6 +42,7 @@
     
     btnDone = [[UIButton alloc]init];
     btnDone.frame = CGRectMake(ScreenWidth-NavBarHeight-5, 0, NavBarHeight, NavBarHeight);
+    [btnDone.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [btnDone addTarget:self action:@selector(doneBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     btnDone.hidden = YES;
     
@@ -119,6 +120,16 @@
 -(void)setDoneBtnTitle:(NSString *)title
 {
     [btnDone setTitle:title forState:UIControlStateNormal];
+}
+
+-(void)setReturnBtnTitleColor:(UIColor *)color
+{
+    [btnReturn setTintColor:color];
+}
+
+-(void)setDoneBtnTitleColor:(UIColor *)color
+{
+    [btnDone setTitleColor:color forState:UIControlStateNormal];
 }
 
 -(void)returnBtnPressed:(id)sender

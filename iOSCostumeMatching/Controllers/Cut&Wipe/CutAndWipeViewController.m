@@ -52,10 +52,13 @@
     [super viewDidLoad];
     
     self.showReturn = YES;
-    [self setReturnBtnTitle:@"返回"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     
     self.showDone = YES;
-    [self setDoneBtnTitle:@"确定"];
+    [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
+    [self setDoneBtnTitle:@"下一步"];
+    
+    [self setNavTitle:@"裁剪"];
     
     [_imageView setImage:_originalImage];
     _currentImage = _originalImage;

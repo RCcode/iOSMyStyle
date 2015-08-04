@@ -16,34 +16,60 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lTx-5h-vaY">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="434"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lTx-5h-vaY">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="430"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hD4-l4-mEt">
-                    <rect key="frame" x="75" y="456" width="62" height="30"/>
-                    <color key="backgroundColor" red="0.25987644380000002" green="1" blue="0.59496190149999995" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="撤销">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fV-xt-WUN">
+                    <rect key="frame" x="197" y="445" width="43" height="43"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="43" id="eaf-gQ-cFW"/>
+                        <constraint firstAttribute="height" constant="43" id="vmL-cL-vED"/>
+                    </constraints>
+                    <state key="normal" image="ic_right">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="unDo:" destination="-1" eventType="touchUpInside" id="ywt-Bo-3CH"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fV-xt-WUN">
-                    <rect key="frame" x="181" y="456" width="68" height="30"/>
-                    <color key="backgroundColor" red="0.25987644380000002" green="1" blue="0.59496190149999995" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="恢复">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                    <state key="highlighted" image="ic_right_h"/>
                     <connections>
                         <action selector="reDo:" destination="-1" eventType="touchUpInside" id="BrO-O6-gWZ"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hD4-l4-mEt">
+                    <rect key="frame" x="80" y="445" width="43" height="43"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="sCG-Uo-BQ1"/>
+                        <constraint firstAttribute="width" constant="43" id="v9a-S2-per"/>
+                    </constraints>
+                    <state key="normal" image="ic_left">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" image="ic_left_h"/>
+                    <connections>
+                        <action selector="unDo:" destination="-1" eventType="touchUpInside" id="ywt-Bo-3CH"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="lTx-5h-vaY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Iim-Et-fXd"/>
+                <constraint firstItem="5fV-xt-WUN" firstAttribute="top" secondItem="lTx-5h-vaY" secondAttribute="bottom" constant="15" id="W53-Q5-yfu"/>
+                <constraint firstAttribute="trailing" secondItem="lTx-5h-vaY" secondAttribute="trailing" id="YKr-Ig-DYY"/>
+                <constraint firstAttribute="trailing" secondItem="5fV-xt-WUN" secondAttribute="trailing" constant="80" id="l17-yT-90A"/>
+                <constraint firstItem="hD4-l4-mEt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="80" id="o2X-JO-8Vt"/>
+                <constraint firstItem="lTx-5h-vaY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oXp-dt-llk"/>
+                <constraint firstAttribute="bottom" secondItem="hD4-l4-mEt" secondAttribute="bottom" constant="16" id="oYc-Yp-4YL"/>
+                <constraint firstAttribute="bottom" secondItem="5fV-xt-WUN" secondAttribute="bottom" constant="16" id="rVc-7p-3qx"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="322" y="189"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_left" width="43" height="43"/>
+        <image name="ic_left_h" width="43" height="43"/>
+        <image name="ic_right" width="43" height="43"/>
+        <image name="ic_right_h" width="43" height="43"/>
+    </resources>
 </document>

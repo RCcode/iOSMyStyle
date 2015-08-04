@@ -53,15 +53,19 @@
     [self setNavTitle:@"裁剪"];
     self.showReturn = YES;
     self.showDone = YES;
-    [self setReturnBtnTitle:@"返回"];
-    [self setDoneBtnTitle:@"确定"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
+    [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
+    [self setDoneBtnTitle:@"完成"];
     
     [_imageView setImage:_originalImage];
     
     _magnifyingGlassImageView  = [[UIImageView alloc]init];
-    [_magnifyingGlassImageView setFrame:CGRectMake(0, 0, 70, 70)];
+    [_magnifyingGlassImageView setFrame:CGRectMake(0, 0, 95, 95)];
     [self.view addSubview:_magnifyingGlassImageView];
-    [_magnifyingGlassImageView setBackgroundColor:[UIColor greenColor]];
+    _magnifyingGlassImageView.layer.borderColor = colorWithHexString(@"#222222").CGColor;
+    _magnifyingGlassImageView.layer.borderWidth = 1.5;
+    _magnifyingGlassImageView.clipsToBounds = YES;
+    _magnifyingGlassImageView.hidden = YES;
     
     CGRect rect1 = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
     CGRect rect2 = _imageView.frame;

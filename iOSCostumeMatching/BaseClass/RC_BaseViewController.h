@@ -20,7 +20,8 @@
 -(void)setDoneBtnNormalImage:(UIImage *)normalImage andHighlightedImage:(UIImage *)highlightedImage;
 -(void)setReturnBtnTitle:(NSString *)title;
 -(void)setDoneBtnTitle:(NSString *)title;
-
+-(void)setReturnBtnTitleColor:(UIColor *)color;
+-(void)setDoneBtnTitleColor:(UIColor *)color;
 
 -(void)returnBtnPressed:(id)sender;
 -(void)doneBtnPressed:(id)sender;

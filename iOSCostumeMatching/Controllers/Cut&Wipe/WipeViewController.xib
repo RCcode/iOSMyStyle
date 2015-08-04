@@ -15,28 +15,50 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m55-6J-mzk">
-                    <rect key="frame" x="60" y="450" width="70" height="30"/>
-                    <state key="normal" title="undo">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m55-6J-mzk">
+                    <rect key="frame" x="80" y="445" width="43" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="QXp-AM-Wj5"/>
+                        <constraint firstAttribute="width" constant="43" id="eCf-0e-JvB"/>
+                    </constraints>
+                    <state key="normal" image="ic_left">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" image="ic_left_h"/>
                     <connections>
                         <action selector="pressUndo:" destination="-1" eventType="touchUpInside" id="gJH-zf-cUV"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD4-vB-oGN">
-                    <rect key="frame" x="187" y="450" width="64" height="30"/>
-                    <state key="normal" title="redo">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD4-vB-oGN">
+                    <rect key="frame" x="197" y="445" width="43" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="43" id="QOy-l0-fuu"/>
+                        <constraint firstAttribute="height" constant="43" id="Ud4-gI-FTW"/>
+                    </constraints>
+                    <state key="normal" image="ic_right">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" image="ic_right_h"/>
                     <connections>
                         <action selector="pressRedo:" destination="-1" eventType="touchUpInside" id="h5x-80-uCS"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="WD4-vB-oGN" secondAttribute="trailing" constant="80" id="HPD-3w-tTX"/>
+                <constraint firstAttribute="bottom" secondItem="m55-6J-mzk" secondAttribute="bottom" constant="16" id="IrX-Mc-7dJ"/>
+                <constraint firstAttribute="bottom" secondItem="WD4-vB-oGN" secondAttribute="bottom" constant="16" id="c5u-qb-loz"/>
+                <constraint firstItem="m55-6J-mzk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="80" id="mUh-re-iQc"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_left" width="43" height="43"/>
+        <image name="ic_left_h" width="43" height="43"/>
+        <image name="ic_right" width="43" height="43"/>
+        <image name="ic_right_h" width="43" height="43"/>
+    </resources>
 </document>

@@ -20,6 +20,9 @@ typedef NS_ENUM(NSInteger, DrawingMode) {
 
 @property (nonatomic, strong) UIImage *originalImage;
 
+-(void)setMagnifyingGlassImageBlock:(void(^)(UIImage *image))magnifyingGlassImageBlock;
+-(void)setEndMagnifyingGlassImageBlock:(void (^)())endMagnifyingGlassImageBlock;
+
 -(void)undo;
 -(void)redo;
 

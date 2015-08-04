@@ -16,7 +16,7 @@
 @property (nonatomic, strong) STScratchView *scratchView;
 
 @property (strong, nonatomic) PIDrawerView *drawerView1;
-
+@property (nonatomic, strong) UIImageView *magnifyingGlassImageView;
 @property (nonatomic, copy) void(^wipeImageSuccess)(UIImage *image);
 
 @end
@@ -54,16 +54,33 @@
     [self setNavTitle:@"擦除"];
     self.showReturn = YES;
     self.showDone = YES;
-    [self setReturnBtnTitle:@"返回"];
-    [self setDoneBtnTitle:@"确定"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
+    [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
+    [self setDoneBtnTitle:@"完成"];
     
+    _magnifyingGlassImageView  = [[UIImageView alloc]init];
+    [_magnifyingGlassImageView setFrame:CGRectMake(0, 0, 95, 95)];
+    [self.view addSubview:_magnifyingGlassImageView];
+    _magnifyingGlassImageView.layer.borderColor = colorWithHexString(@"#222222").CGColor;
+    _magnifyingGlassImageView.layer.borderWidth = 1.5;
+    _magnifyingGlassImageView.clipsToBounds = YES;
+    _magnifyingGlassImageView.hidden = YES;
     
     self.drawerView1 = [[PIDrawerView alloc]init];
     self.drawerView1.backgroundColor = [UIColor clearColor];
+    __weak WipeViewController *weakSelf = self;
+    [self.drawerView1 setMagnifyingGlassImageBlock:^(UIImage *image) {
+        weakSelf.magnifyingGlassImageView.hidden = NO;
+        [weakSelf.magnifyingGlassImageView setImage:image];
+    }];
+    [self.drawerView1 setEndMagnifyingGlassImageBlock:^{
+        weakSelf.magnifyingGlassImageView.hidden = YES;
+    }];
+
     _drawerView1.originalImage = _originalImage;
     
     CGRect rect1 = CGRectMake(0, 0, _originalImage.size.width, _originalImage.size.height);
-    CGRect rect2 = CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavBarHeight-20);
+    CGRect rect2 = CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavBarHeight-20-90);
     CGRect rect = [MZCroppableView scaleRespectAspectFromRect1:rect1 toRect2:rect2];
 
     [self.drawerView1 setFrame:CGRectMake((int)rect.origin.x, (int)rect.origin.y, (int)rect.size.width, (int)rect.size.height)];

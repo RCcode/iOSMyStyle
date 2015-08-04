@@ -16,31 +16,57 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x9l-U2-6Mx">
-                    <rect key="frame" x="0.0" y="42" width="320" height="336"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x9l-U2-6Mx">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="430"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Mq-WG-6JO">
-                    <rect key="frame" x="38" y="460" width="75" height="30"/>
-                    <state key="normal" title="裁剪">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npe-1s-y5a">
+                    <rect key="frame" x="197" y="445" width="43" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="43" id="72w-AI-7fF"/>
+                        <constraint firstAttribute="height" constant="43" id="Ybw-Zm-vhf"/>
+                    </constraints>
+                    <state key="normal" image="ic_erase">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="cutImage:" destination="-1" eventType="touchUpInside" id="8pQ-BC-KfQ"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npe-1s-y5a">
-                    <rect key="frame" x="205" y="460" width="66" height="30"/>
-                    <state key="normal" title="擦除">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                    <state key="highlighted" image="ic_erase_h"/>
                     <connections>
                         <action selector="wipeImage:" destination="-1" eventType="touchUpInside" id="aQ6-WT-8PS"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Mq-WG-6JO">
+                    <rect key="frame" x="80" y="445" width="43" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="l8H-C6-bqp"/>
+                        <constraint firstAttribute="width" constant="43" id="n8Y-P9-JA7"/>
+                    </constraints>
+                    <state key="normal" image="ic_cut">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" image="ic_cut_h"/>
+                    <connections>
+                        <action selector="cutImage:" destination="-1" eventType="touchUpInside" id="8pQ-BC-KfQ"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="0.93333333330000001" green="0.85490196080000003" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Npe-1s-y5a" secondAttribute="bottom" constant="16" id="4TQ-X9-ouc"/>
+                <constraint firstItem="x9l-U2-6Mx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BGg-5i-IeT"/>
+                <constraint firstAttribute="trailing" secondItem="Npe-1s-y5a" secondAttribute="trailing" constant="80" id="F2a-oc-Lix"/>
+                <constraint firstItem="Npe-1s-y5a" firstAttribute="top" secondItem="x9l-U2-6Mx" secondAttribute="bottom" constant="15" id="F6Z-xd-pxh"/>
+                <constraint firstItem="x9l-U2-6Mx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PWb-e0-9B0"/>
+                <constraint firstAttribute="bottom" secondItem="3Mq-WG-6JO" secondAttribute="bottom" constant="16" id="WV5-4X-sXQ"/>
+                <constraint firstItem="3Mq-WG-6JO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="80" id="gTj-7D-Yuu"/>
+                <constraint firstAttribute="trailing" secondItem="x9l-U2-6Mx" secondAttribute="trailing" id="tAW-fo-r4G"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_cut" width="43" height="43"/>
+        <image name="ic_cut_h" width="43" height="43"/>
+        <image name="ic_erase" width="43" height="43"/>
+        <image name="ic_erase_h" width="43" height="43"/>
+    </resources>
 </document>
