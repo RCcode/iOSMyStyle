@@ -22,7 +22,9 @@
 #define HEADER_IDENTIFIER @"WaterfallHeader"
 #define FOOTER_IDENTIFIER @"WaterfallFooter"
 
-@interface WardrobeViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
+#define SHOWHELPKEY @"showHelp"
+
+@interface WardrobeViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
 {
     WardrobeType type;
     WardrobeCategory category;
@@ -40,6 +42,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSeason;
 @property (weak, nonatomic) IBOutlet UIButton *btnType;
 @property (weak, nonatomic) IBOutlet UIButton *btnCategory;
+@property (weak, nonatomic) IBOutlet UIView *helpView;
+@property (weak, nonatomic) IBOutlet UILabel *lblHelp1;
+@property (weak, nonatomic) IBOutlet UILabel *lblHelp2;
+@property (weak, nonatomic) IBOutlet UILabel *lblHelp3;
 
 @end
 
@@ -89,6 +95,18 @@
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [self.view insertSubview:self.collectionView atIndex:0];
     
+    NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
+    if (showHelp) {
+        _helpView.hidden = YES;
+        [_collectionView setFrame:CGRectMake(0, CGRectGetHeight(_btnType.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64)];
+    }
+    else
+    {
+        _helpView.hidden = NO;
+        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:SHOWHELPKEY];
+        [_collectionView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64)];
+    }
+    
     btnAlbum = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 53, 53)];
     btnAlbum.center = CGPointMake(ScreenWidth/2, ScreenHeight-53/2-13);
     [btnAlbum setImage:[UIImage imageNamed:@"ic_img"] forState:UIControlStateNormal];
@@ -102,6 +120,7 @@
     alertView = [[UIAlertView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     AppDelegate *app = [UIApplication sharedApplication].delegate;
     [app.window addSubview:alertView];
+    alertView.hidden = YES;
     alertView.backgroundColor = [UIColor clearColor];
     btnAdd = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 53, 53)];
     btnAdd.center = CGPointMake(ScreenWidth/2, ScreenHeight-53/2-13);
@@ -197,6 +216,11 @@
 {
     self.arrClothes = [[RC_SQLiteManager shareManager]getClothesFromWardrobeWithSeason:season Type:type Category:category];
     [_collectionView reloadData];
+}
+
+- (IBAction)closeHelp:(id)sender {
+    [_helpView removeFromSuperview];
+    [_collectionView setFrame:CGRectMake(0, CGRectGetHeight(_btnType.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64)];
 }
 
 - (IBAction)selectSeason:(id)sender {
@@ -383,45 +407,20 @@
     {
         [self close];
     }
-    
-//    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"添加衣服" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"相机" otherButtonTitles:@"相册", nil];
-//    [actionSheet showInView:self.view];
 }
 
 -(void)close
 {
+    alertView.backgroundColor = [UIColor clearColor];
+    btnAdd.selected = NO;
     [UIView animateWithDuration:0.3 animations:^{
         btnAlbum.center = CGPointMake(ScreenWidth/2, ScreenHeight-53/2-13);
         btnCamera.center = CGPointMake(ScreenWidth/2, ScreenHeight-53/2-13);
     } completion:^(BOOL finished) {
         btnAlbum.hidden = YES;
         btnCamera.hidden = YES;
+        alertView.hidden = YES;
     }];
-    alertView.backgroundColor = [UIColor clearColor];
-    alertView.hidden = YES;
-    btnAdd.selected = NO;
-}
-
-#pragma mark - UIActionSheetDelegate
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    switch (buttonIndex) {
-        case 0:
-        {
-            CLog(@"相机");
-            [self cameraBtnOnClick];
-            break;
-        }
-        case 1:
-        {
-            CLog(@"相册");
-            [self photoAlbumBtnOnClick];
-            break;
-        }
-        default:
-            break;
-    }
 }
 
 - (void)cameraBtnOnClick{

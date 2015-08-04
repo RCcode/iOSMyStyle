@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WardrobeViewController">
@@ -10,6 +11,10 @@
                 <outlet property="btnCategory" destination="0Qc-iZ-WJz" id="Z3s-5X-rmL"/>
                 <outlet property="btnSeason" destination="aVU-sV-vb8" id="4s8-Xj-4HE"/>
                 <outlet property="btnType" destination="OpU-yZ-3eE" id="IHe-e3-Rsv"/>
+                <outlet property="helpView" destination="7V0-pC-STx" id="zjY-hp-6E2"/>
+                <outlet property="lblHelp1" destination="Zhc-1n-FqR" id="jVV-YO-aJg"/>
+                <outlet property="lblHelp2" destination="ska-k0-hTF" id="hrc-Hh-xvQ"/>
+                <outlet property="lblHelp3" destination="x72-gP-2iC" id="wn7-45-C5e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -92,6 +97,73 @@
                         <constraint firstAttribute="height" constant="10" id="fBP-xL-Zkt"/>
                     </constraints>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7V0-pC-STx">
+                    <rect key="frame" x="5" y="45" width="310" height="111"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notice_bg" translatesAutoresizingMaskIntoConstraints="NO" id="y8A-hT-dc6">
+                            <rect key="frame" x="0.0" y="0.0" width="310" height="111"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JR2-cs-fe2">
+                            <rect key="frame" x="280" y="0.0" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="7QF-cY-aSZ"/>
+                                <constraint firstAttribute="height" constant="30" id="utn-aI-UPh"/>
+                            </constraints>
+                            <state key="normal" image="ic_close">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="closeHelp:" destination="-1" eventType="touchUpInside" id="675-tk-sHp"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎来到MyStyle，这里是你的衣橱，" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhc-1n-FqR">
+                            <rect key="frame" x="57" y="8" width="225" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="S3s-R6-n2X"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（拍照时，建议你将衣服悬挂于白色墙面之前，或平整铺在干净的地板上，以取得最佳效果）" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x72-gP-2iC">
+                            <rect key="frame" x="27" y="59" width="243" height="43"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="43" id="Do5-Qh-iS1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" red="0.61176470588235299" green="0.61176470588235299" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现在你可以建立你的电子衣橱了" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ska-k0-hTF">
+                            <rect key="frame" x="72" y="38" width="230" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="fKx-J1-inV"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Zhc-1n-FqR" firstAttribute="leading" secondItem="7V0-pC-STx" secondAttribute="leading" constant="57" id="7Xp-UT-dNl"/>
+                        <constraint firstAttribute="trailing" secondItem="y8A-hT-dc6" secondAttribute="trailing" id="CVb-zz-V1f"/>
+                        <constraint firstItem="x72-gP-2iC" firstAttribute="top" secondItem="ska-k0-hTF" secondAttribute="bottom" id="GFs-qu-HHb"/>
+                        <constraint firstItem="ska-k0-hTF" firstAttribute="leading" secondItem="7V0-pC-STx" secondAttribute="leading" constant="72" id="MvM-85-ZjU"/>
+                        <constraint firstAttribute="trailing" secondItem="ska-k0-hTF" secondAttribute="trailing" constant="8" id="PKa-EW-iux"/>
+                        <constraint firstAttribute="trailing" secondItem="JR2-cs-fe2" secondAttribute="trailing" id="SvR-Cd-b1d"/>
+                        <constraint firstItem="JR2-cs-fe2" firstAttribute="top" secondItem="7V0-pC-STx" secondAttribute="top" id="TiW-b2-w5T"/>
+                        <constraint firstAttribute="width" secondItem="7V0-pC-STx" secondAttribute="height" multiplier="310:111" id="UKA-m3-lrG"/>
+                        <constraint firstItem="y8A-hT-dc6" firstAttribute="leading" secondItem="7V0-pC-STx" secondAttribute="leading" id="Uvy-e2-aMQ"/>
+                        <constraint firstAttribute="bottom" secondItem="y8A-hT-dc6" secondAttribute="bottom" id="hWO-ba-jmX"/>
+                        <constraint firstAttribute="trailing" secondItem="x72-gP-2iC" secondAttribute="trailing" constant="40" id="kG6-FE-EYp"/>
+                        <constraint firstItem="x72-gP-2iC" firstAttribute="leading" secondItem="7V0-pC-STx" secondAttribute="leading" constant="27" id="msl-a3-Xxj"/>
+                        <constraint firstAttribute="trailing" secondItem="Zhc-1n-FqR" secondAttribute="trailing" constant="28" id="r9l-It-2Sc"/>
+                        <constraint firstItem="Zhc-1n-FqR" firstAttribute="top" secondItem="7V0-pC-STx" secondAttribute="top" constant="8" id="sjh-QL-ReI"/>
+                        <constraint firstItem="ska-k0-hTF" firstAttribute="top" secondItem="JR2-cs-fe2" secondAttribute="bottom" constant="8" id="wsi-qr-qOc"/>
+                        <constraint firstItem="y8A-hT-dc6" firstAttribute="top" secondItem="7V0-pC-STx" secondAttribute="top" id="zku-az-DOw"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -99,6 +171,7 @@
                 <constraint firstItem="OpU-yZ-3eE" firstAttribute="width" secondItem="0Qc-iZ-WJz" secondAttribute="width" id="4jK-oe-1fk"/>
                 <constraint firstItem="0Qc-iZ-WJz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="1" id="A72-h0-Iw6"/>
                 <constraint firstItem="OpU-yZ-3eE" firstAttribute="leading" secondItem="aVU-sV-vb8" secondAttribute="trailing" constant="1" id="FcZ-CI-3xq"/>
+                <constraint firstItem="7V0-pC-STx" firstAttribute="top" secondItem="aVU-sV-vb8" secondAttribute="bottom" constant="5" id="GzO-3r-wZ8"/>
                 <constraint firstItem="aVU-sV-vb8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HY2-sV-oWo"/>
                 <constraint firstAttribute="trailing" secondItem="d1U-ie-S1j" secondAttribute="trailing" constant="8" id="I1Z-TO-UDU"/>
                 <constraint firstItem="OpU-yZ-3eE" firstAttribute="leading" secondItem="DRX-qv-OsO" secondAttribute="trailing" constant="8" id="Ibm-lM-MgZ"/>
@@ -109,8 +182,10 @@
                 <constraint firstItem="OpU-yZ-3eE" firstAttribute="width" secondItem="aVU-sV-vb8" secondAttribute="width" id="TDU-Cq-5Mr"/>
                 <constraint firstAttribute="trailing" secondItem="0Qc-iZ-WJz" secondAttribute="trailing" id="YN0-48-fcx"/>
                 <constraint firstItem="DRX-qv-OsO" firstAttribute="centerY" secondItem="aVU-sV-vb8" secondAttribute="centerY" id="ZAa-k4-HIo"/>
+                <constraint firstAttribute="trailing" secondItem="7V0-pC-STx" secondAttribute="trailing" constant="5" id="bJW-Bg-PTF"/>
                 <constraint firstItem="DRX-qv-OsO" firstAttribute="centerY" secondItem="nOc-C7-kDy" secondAttribute="centerY" id="dRT-oM-c4p"/>
                 <constraint firstItem="d1U-ie-S1j" firstAttribute="centerY" secondItem="nOc-C7-kDy" secondAttribute="centerY" id="eJH-NH-KGB"/>
+                <constraint firstItem="7V0-pC-STx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="j6d-g1-dh7"/>
                 <constraint firstItem="aVU-sV-vb8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="1" id="k2x-uL-6qV"/>
                 <constraint firstItem="0Qc-iZ-WJz" firstAttribute="leading" secondItem="nOc-C7-kDy" secondAttribute="trailing" constant="8" id="kW7-Mk-JcG"/>
                 <constraint firstItem="OpU-yZ-3eE" firstAttribute="leading" secondItem="aVU-sV-vb8" secondAttribute="trailing" constant="1" id="kxd-j9-OBc"/>
@@ -123,7 +198,9 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_close" width="22" height="22"/>
         <image name="ic_clothes" width="53" height="53"/>
         <image name="ic_xiala" width="10" height="10"/>
+        <image name="notice_bg" width="310" height="111"/>
     </resources>
 </document>
