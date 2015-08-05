@@ -21,6 +21,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnType;
 @property (weak, nonatomic) IBOutlet UIButton *btnCategory;
 @property (weak, nonatomic) IBOutlet UIButton *btnSeason;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblType;
+@property (weak, nonatomic) IBOutlet UILabel *lblCategory;
+@property (weak, nonatomic) IBOutlet UILabel *lblSeason;
+
+@property (weak, nonatomic) IBOutlet UISwitch *upLoadSwitch;
 
 @end
 
@@ -59,9 +67,13 @@
     [super viewDidLoad];
     [self setNavTitle:@"详情"];
     self.showReturn = YES;
-    [self setReturnBtnTitle:@"返回"];
     self.showDone = YES;
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
+    [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
     [self setDoneBtnTitle:@"完成"];
+    
+    [_scrollView addSubview:_contentView];
+    _scrollView.contentSize = CGSizeMake(CGRectGetWidth(_contentView.frame), CGRectGetHeight(_contentView.frame));
     
     _imageView.image = _image;
     
@@ -83,7 +95,8 @@
         {
             type = index+9;
         }
-        [weakSelf.btnType setTitle:getWardrobeTypeName(type) forState:UIControlStateNormal] ;
+//        [weakSelf.btnType setTitle:getWardrobeTypeName(type) forState:UIControlStateNormal] ;
+        [weakSelf.lblType setText:getWardrobeTypeName(type)];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
     [self presentViewController:nav animated:YES completion:nil];
@@ -205,7 +218,8 @@
             default:
                 break;
         }
-        [weakSelf.btnCategory setTitle:getWardrobeCategoryeName(category) forState:UIControlStateNormal];
+//        [weakSelf.btnCategory setTitle:getWardrobeCategoryeName(category) forState:UIControlStateNormal];
+        [weakSelf.lblCategory setText:getWardrobeCategoryeName(category)];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectCategory];
     [self presentViewController:nav animated:YES completion:nil];
@@ -218,10 +232,14 @@
     __weak WriteClothesDetailsViewController *weakSelf = self;
     [selectSeason setSelectedBlock:^(int index) {
         season = index;
-        [weakSelf.btnSeason setTitle:getWardrobeSeasonName(season) forState:UIControlStateNormal];
+//        [weakSelf.btnSeason setTitle:getWardrobeSeasonName(season) forState:UIControlStateNormal];
+        [weakSelf.lblSeason setText:getWardrobeSeasonName(season)];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectSeason];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)upLoadValueChange:(id)sender {
 }
 
 #pragma mark - UITextFieldDelegate
