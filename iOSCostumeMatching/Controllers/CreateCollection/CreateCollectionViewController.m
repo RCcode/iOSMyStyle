@@ -11,16 +11,29 @@
 #import "CHTCollectionViewWaterfallLayout.h"
 #import "CHTCollectionViewWaterfallCell.h"
 #import "ZDStickerView.h"
+#import "SelectViewController.h"
 
 #define CELL_IDENTIFIER @"WaterfallCell1"
 
 @interface CreateCollectionViewController ()<UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout,ZDStickerViewDelegate,UIGestureRecognizerDelegate>
-
+{
+    WardrobeType type;
+    WardrobeCategory category;
+    WardrobeSeason season;
+    
+    int _lastPosition;
+}
 @property (weak, nonatomic) IBOutlet UIView *createImageView;
 @property (weak, nonatomic) IBOutlet UIView *selectView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *arrClothes;
 @property (nonatomic, strong) NSMutableArray *arrList;
+
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UILabel *lblSeason;
+@property (weak, nonatomic) IBOutlet UILabel *lblType;
+@property (weak, nonatomic) IBOutlet UILabel *lblCategory;
+
 
 @property (nonatomic, copy) void(^finish)(CollocationInfo *info);
 
@@ -71,7 +84,7 @@
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        _collectionView.backgroundColor = [UIColor blueColor];
+        _collectionView.backgroundColor = colorWithHexString(@"#eeeeee");
         [_collectionView registerClass:[CHTCollectionViewWaterfallCell class]
             forCellWithReuseIdentifier:CELL_IDENTIFIER];
     }
@@ -83,17 +96,21 @@
     [self setNavTitle:@"衣服搭配"];
     self.showReturn = YES;
     self.showDone = YES;
-    [self setReturnBtnTitle:@"取消"];
-    [self setDoneBtnTitle:@"继续"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
+    [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
+    [self setDoneBtnTitle:@"下一步"];
     
     self.arrList = [[NSMutableArray alloc]init];
     
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [self.selectView insertSubview:self.collectionView atIndex:0];
     
+    [_collectionView setFrame:CGRectMake(0, CGRectGetMaxY(_lblCategory.frame), CGRectGetWidth(_bottomView.frame), CGRectGetHeight(_collectionView.frame)-CGRectGetMaxY(_lblCategory.frame))];
+    [_bottomView addSubview:_collectionView];
+    
     CHTCollectionViewWaterfallLayout *layout =
     (CHTCollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
-    layout.columnCount = 3;
+    layout.columnCount = 2;
     
     [self addTapGestureWithView:_createImageView];
     // Do any additional setup after loading the view from its nib.
@@ -192,6 +209,19 @@
 
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    int currentPostion = scrollView.contentOffset.y;
+    
+    if (currentPostion - _lastPosition > 20  && currentPostion > 0) {        //这个地方加上 currentPostion > 0 即可）
+        
+        _lastPosition = currentPostion;
+        
+        NSLog(@"ScrollUp now");
+        [self moveUp:YES];
+    }
+}
+
 #pragma mark - sticker手势相关
 
 - (void)handelPhotoPan:(UIPanGestureRecognizer *)recognizer
@@ -232,19 +262,202 @@
     NSLog(@"%s [%zd]",__func__, sticker.tag);
 }
 
+-(void)updateCollectionView
+{
+    self.arrClothes = [[RC_SQLiteManager shareManager]getClothesFromWardrobeWithSeason:season Type:type Category:category];
+    [_collectionView reloadData];
+}
+
+-(void)moveUp:(BOOL)up
+{
+    if (up)
+    {
+        [UIView animateWithDuration:0.5f animations:^{
+            _bottomView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight-64);
+            _collectionView.frame = CGRectMake(0, CGRectGetMaxY(_lblCategory.frame), CGRectGetWidth(_bottomView.frame), CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_lblCategory.frame));
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.5f animations:^{
+            _bottomView.frame = CGRectMake(0, CGRectGetHeight(_createImageView.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_createImageView.frame)-64);
+           _collectionView.frame = CGRectMake(0, CGRectGetMaxY(_lblCategory.frame), CGRectGetWidth(_bottomView.frame), CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_lblCategory.frame));
+        }];
+    }
+}
+
+- (IBAction)pressUpOrDown:(id)sender {
+    if (_bottomView.frame.origin.y == CGRectGetMaxY(_createImageView.frame)) {
+        [self moveUp:YES];
+    }
+    else
+    {
+        [self moveUp:NO];
+    }
+}
+
+- (IBAction)selectSeason:(id)sender {
+    SelectViewController *selectCategory = [[SelectViewController alloc]init];
+    [selectCategory setNavagationTitle:@"选择季节"];
+    selectCategory.array = getAllWardrobeSeason();
+    __weak CreateCollectionViewController *weakSelf = self;
+    [selectCategory setSelectedBlock:^(int index) {
+        season = index;
+        [weakSelf.lblSeason setText:getWardrobeSeasonName(season)];
+        [weakSelf updateCollectionView];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectCategory];
+    [self presentViewController:nav animated:YES completion:nil];
+    
+}
+
+- (IBAction)selectType:(id)sender {
+    SelectViewController *selectStyle = [[SelectViewController alloc]init];
+    [selectStyle setNavagationTitle:@"选择类型"];
+    selectStyle.array = getAllWardrobeType();
+    __weak CreateCollectionViewController *weakSelf = self;
+    [selectStyle setSelectedBlock:^(int index) {
+        if(index == 0)
+        {
+            type = 0;
+        }
+        else
+        {
+            type = index+9;
+        }
+        [weakSelf.lblType setText:getWardrobeTypeName(type)];
+        [weakSelf updateCollectionView];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)selectCategory:(id)sender {
+    SelectViewController *selectCategory = [[SelectViewController alloc]init];
+    [selectCategory setNavagationTitle:@"选择类别"];
+    selectCategory.array = getAllWardrobeCategorye(type);
+    __weak CreateCollectionViewController *weakSelf = self;
+    [selectCategory setSelectedBlock:^(int index) {
+        switch (type) {
+            case WTAll:{
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    if (index >0 && index<=12) {
+                        category = index+1000;
+                    }
+                    else if(index>12 && index<=18)
+                    {
+                        category = index+1100-12;
+                    }
+                    else if(index>18 && index<=27)
+                    {
+                        category = index+1200-18;
+                    }
+                    else if(index>27 && index<=34)
+                    {
+                        category = index+1300-27;
+                    }
+                    else if(index>34 && index<=42)
+                    {
+                        category = index+1400-34;
+                    }
+                    else if(index>42 && index<=48)
+                    {
+                        category = index+1500-42;
+                    }
+                    else if(index>48)
+                    {
+                        category = index+1600-48;
+                    }
+                }
+                break;
+            }
+            case WTUpper:{
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1001;
+                }
+                break;
+            }
+            case WTBottoms:{
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1101;
+                }
+                break;
+            }
+            case WTShoes:{
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1201;
+                }
+                break;
+            }
+            case WTBag:{
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1301;
+                }
+                break;
+            }
+            case WTAccessory:{
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1401;
+                }
+                break;
+            }
+            case WTJewelry:{
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1501;
+                }
+                break;
+            }
+            case WTUnderwear:{
+                if (index == 0) {
+                    category = 0;
+                }
+                else
+                {
+                    category = index+1601;
+                }
+                break;
+            }
+            default:
+                break;
+        }
+        [weakSelf.lblCategory setText:getWardrobeCategoryeName(category)];
+        [weakSelf updateCollectionView];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectCategory];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
