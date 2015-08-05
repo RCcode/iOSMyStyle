@@ -22,7 +22,7 @@
 #define HEADER_IDENTIFIER @"WaterfallHeader"
 #define FOOTER_IDENTIFIER @"WaterfallFooter"
 
-#define SHOWHELPKEY @"showHelp"
+#define SHOWHELPKEY @"showWardrobeHelp"
 
 @interface WardrobeViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
 {
@@ -104,7 +104,7 @@
     {
         _helpView.hidden = NO;
         [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:SHOWHELPKEY];
-        [_collectionView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64)];
+        [_collectionView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame), ScreenWidth, ScreenHeight-CGRectGetMaxY(_helpView.frame)-64)];
     }
     
     btnAlbum = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 53, 53)];

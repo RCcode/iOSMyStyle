@@ -13,6 +13,7 @@
 #import "SelectViewController.h"
 
 #define CELL_IDENTIFIER @"MatchingCell"
+#define SHOWHELPKEY @"showMatchingHelp"
 
 @interface MatchingViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
@@ -24,6 +25,11 @@
 @property (nonatomic, strong) UICollectionView *collectionView;  // 集合视图
 @property (weak, nonatomic) IBOutlet UIButton *btnStyle;
 @property (weak, nonatomic) IBOutlet UIButton *btnOccasion;
+@property (weak, nonatomic) IBOutlet UILabel *lblStyle;
+@property (weak, nonatomic) IBOutlet UILabel *lblOccasion;
+
+@property (weak, nonatomic) IBOutlet UIView *helpView;
+
 
 @end
 
@@ -40,16 +46,33 @@
     [super viewDidLoad];
     self.showReturn = YES;
     [self setNavTitle:@"我的搭配"];
-    [self setReturnBtnTitle:@"菜单"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     
     self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
     [self createCollectionView];
+    
+    NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
+    if (showHelp) {
+        _helpView.hidden = YES;
+        [_collectionView setFrame:CGRectMake(0, CGRectGetHeight(_btnOccasion.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnOccasion.frame)-64)];
+    }
+    else
+    {
+        _helpView.hidden = NO;
+        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:SHOWHELPKEY];
+        [_collectionView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame), ScreenWidth, ScreenHeight-CGRectGetMaxY(_helpView.frame)-64)];
+    }
 }
 
 -(void)updateCollectionView
 {
     self.arrCollection = [[RC_SQLiteManager shareManager]getCollectionWithStyle:style occasion:occasion];
     [_collectionView reloadData];
+}
+
+- (IBAction)helpClose:(id)sender {
+    [_helpView removeFromSuperview];
+    [_collectionView setFrame:CGRectMake(0, CGRectGetHeight(_btnOccasion.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnOccasion.frame)-64)];
 }
 
 - (IBAction)selectStyle:(id)sender {
@@ -59,7 +82,7 @@
     __weak MatchingViewController *weakSelf = self;
     [selectStyle setSelectedBlock:^(int index) {
         style = index;
-        [weakSelf.btnStyle setTitle:getCollocationStyleName(style) forState:UIControlStateNormal] ;
+        [weakSelf.lblStyle setText:getCollocationStyleName(style)];
         [weakSelf updateCollectionView];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
@@ -74,7 +97,7 @@
     __weak MatchingViewController *weakSelf = self;
     [selectOccasion setSelectedBlock:^(int index) {
         occasion = index;
-        [weakSelf.btnOccasion setTitle:getCollocationOccasionName(occasion) forState:UIControlStateNormal];
+        [weakSelf.lblOccasion setText:getCollocationOccasionName(occasion)];
         [weakSelf updateCollectionView];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectOccasion];
