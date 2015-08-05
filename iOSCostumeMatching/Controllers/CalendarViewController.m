@@ -12,6 +12,8 @@
 #import "ActivityCell.h"
 #import "ShowActivityViewController.h"
 
+#define SHOWHELPKEY @"showCalendarViewHelp"
+
 @interface CalendarViewController ()<PWSCalendarDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     PWSCalendarView *calendarView;
@@ -19,6 +21,10 @@
 }
 
 @property (nonatomic, strong) NSMutableArray *arrActivity;
+
+@property (strong, nonatomic) IBOutlet UIView *helpView;
+@property (weak, nonatomic) IBOutlet UILabel *lblHelp1;
+@property (weak, nonatomic) IBOutlet UILabel *lblHelp2;
 
 @end
 
@@ -40,18 +46,28 @@
     [super viewDidLoad];
     self.showReturn = YES;
     [self setNavTitle:@"我的日历"];
-    [self setReturnBtnTitle:@"菜单"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     self.showDone = YES;
+    [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
     [self setDoneBtnTitle:@"今天"];
+    
+    NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
+    if (showHelp) {
+        
+    }
+    else
+    {
+        [self.view addSubview:_helpView];
+    }
     
 //    [[RC_SQLiteManager shareManager]deleteTable:TNTActivity];
     
-    calendarView = [[PWSCalendarView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 320) CalendarType:en_calendar_type_month];
+    calendarView = [[PWSCalendarView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 320) CalendarType:en_calendar_type_month];
     __weak CalendarViewController *weakSelf = self;
     [calendarView setChangeMonthBlock:^(NSDate *date) {
         [weakSelf setTitleDate:date];
     }];
-    [calendarView setBackgroundColor:[UIColor cyanColor]];
+    [calendarView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:calendarView];
     [calendarView setDelegate:self];
         
@@ -63,6 +79,12 @@
     [self.view insertSubview:activityTableView atIndex:0];
     
     [self setTitleDate:[NSDate date]];
+}
+
+- (IBAction)closeHelp:(id)sender {
+    [_helpView removeFromSuperview];
+    [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-64-CGRectGetHeight(calendarView.frame))];
+    [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:SHOWHELPKEY];
 }
 
 - (IBAction)addActivity:(id)sender {
@@ -155,7 +177,17 @@
 
 - (void) PWSCalendar:(PWSCalendarView*)_calendar didChangeViewHeight:(CGFloat)_height
 {
-    [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-64-CGRectGetHeight(calendarView.frame))];
+    NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
+    if (showHelp) {
+        _helpView.hidden = YES;
+        [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-64-CGRectGetHeight(calendarView.frame))];
+    }
+    else
+    {
+        _helpView.hidden = NO;
+        [_helpView setFrame:CGRectMake(5, CGRectGetHeight(calendarView.frame), CGRectGetWidth(_helpView.frame), CGRectGetHeight(_helpView.frame))];
+        [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, ScreenHeight-64-CGRectGetMaxY(_helpView.frame)-5)];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

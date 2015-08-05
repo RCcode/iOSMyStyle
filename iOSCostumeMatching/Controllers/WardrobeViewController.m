@@ -103,7 +103,6 @@
     else
     {
         _helpView.hidden = NO;
-        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:SHOWHELPKEY];
         [_collectionView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame), ScreenWidth, ScreenHeight-CGRectGetMaxY(_helpView.frame)-64)];
     }
     
@@ -221,6 +220,7 @@
 - (IBAction)closeHelp:(id)sender {
     [_helpView removeFromSuperview];
     [_collectionView setFrame:CGRectMake(0, CGRectGetHeight(_btnType.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64)];
+    [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:SHOWHELPKEY];
 }
 
 - (IBAction)selectSeason:(id)sender {

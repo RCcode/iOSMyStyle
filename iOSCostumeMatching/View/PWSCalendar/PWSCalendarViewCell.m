@@ -31,7 +31,7 @@ UICollectionViewDelegateFlowLayout>
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColor:[UIColor lightGrayColor]];
+        [self setBackgroundColor:[UIColor whiteColor]];
         self.type = en_calendar_type_month;
         m_calendar = [NSCalendar currentCalendar];
         m_first_date = [NSDate date];
@@ -43,15 +43,16 @@ UICollectionViewDelegateFlowLayout>
 - (void) SetInitialValue
 {
     PWSCalendarViewFlowLayout* layout = [[PWSCalendarViewFlowLayout alloc] init];
-    CGFloat itemWidth = floorf(CGRectGetWidth(self.bounds) / 7);
+//    CGFloat itemWidth = floorf((CGRectGetWidth(self.bounds)-8)/ 7);
+    CGFloat itemWidth = (CGRectGetWidth(self.bounds)-8)/ 7;
     layout.itemSize = CGSizeMake(itemWidth, itemWidth);
-    layout.minimumInteritemSpacing = 0;
+    layout.minimumInteritemSpacing = 1;
     layout.minimumLineSpacing = 1;
     
     m_collection_view = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
     [self.contentView addSubview:m_collection_view];
     
-    [m_collection_view setBackgroundColor:[UIColor clearColor]];
+    [m_collection_view setBackgroundColor:colorWithHexString(@"#eeeeee")];
     [m_collection_view setDelegate:self];
     [m_collection_view setDataSource:self];
     [m_collection_view setScrollEnabled:NO];
@@ -123,7 +124,8 @@ UICollectionViewDelegateFlowLayout>
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     int rt = 0;
-    CGFloat itemWidth = floorf(CGRectGetWidth(m_collection_view.bounds) / 7);
+    CGFloat itemWidth = (CGRectGetWidth(m_collection_view.bounds)-8) / 7;
+
     CGFloat itemHeight = itemWidth;
     if (self.type == en_calendar_type_month)
     {

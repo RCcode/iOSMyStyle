@@ -13,7 +13,7 @@
 const float PWSCalendarTimeHeadViewHeight = 60;
 //const float PWSCalendarDataHeadViewHeight = 60;
 const float PWSCalendarSegmentHeight = 25;
-const float PWSCalendarWeekDaysHeight = 25;
+const float PWSCalendarWeekDaysHeight = 31;
 
 extern NSString* PWSCalendarViewCellId;
 const int   PWSCalendarViewNumber = 1000;
@@ -66,24 +66,10 @@ UICollectionViewDelegate>
     return self;
 }
 
-- (void) AutoLayoutCustomHeadView
-{
-    float origin_y = 0;
-    
-    CGRect frame = m_data_head_view.frame;
-    frame.origin.y = origin_y;
-    [m_data_head_view setFrame:frame];
-    origin_y += frame.size.height;
-    
-    frame = m_view_calendar.frame;
-    [m_view_calendar setFrame:CGRectMake(0, origin_y, self.frame.size.width, self.frame.size.height-origin_y)];
-}
-
-
 - (void) SetInitialValue
 {
-    [self SetDataHeadView];
     [self SetCollectionView];
+    [self SetDataHeadView];
 }
 
 - (void) SetDataHeadView
@@ -98,15 +84,7 @@ UICollectionViewDelegate>
     // the view
     m_data_head_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, PWSCalendarWeekDaysHeight)];
     [self addSubview:m_data_head_view];
-
-//    // segment
-//    NSArray* items = [NSArray arrayWithObjects:[self GetSegmentItemWithTitle:@"TODAY"], [self GetSegmentItemWithTitle:@"WEEKLY"], [self GetSegmentItemWithTitle:@"MONTHLY"], nil];
-//    m_segment = [PWSCalendarSegmentView CreateWithItems:items Frame:CGRectMake(0, origin_x, width, PWSCalendarSegmentHeight)];
-//    [m_segment setP_delegate:self];
-//    [m_data_head_view addSubview:m_segment];
-//    
-//    // weekdays
-//    origin_x += PWSCalendarSegmentHeight;
+    m_data_head_view.clipsToBounds = YES;
     
     NSArray* weekdays = [NSArray arrayWithObjects:@"日", @"一", @"二", @"三", @"四", @"五", @"六", nil];
     float day_width = width/7;
@@ -115,6 +93,8 @@ UICollectionViewDelegate>
         UILabel* each_day = [[UILabel alloc] init];
         [each_day setText:[weekdays objectAtIndex:i]];
         [each_day setTextAlignment:NSTextAlignmentCenter];
+        [each_day setTextColor:colorWithHexString(@"#222222")];
+        [each_day setFont:[UIFont systemFontOfSize:12]];
         CGRect each_day_frame = CGRectMake(i*day_width, origin_x, day_width, PWSCalendarWeekDaysHeight);
         [each_day setFrame:each_day_frame];
         [m_data_head_view addSubview:each_day];
@@ -151,8 +131,14 @@ UICollectionViewDelegate>
     [m_view_calendar setShowsHorizontalScrollIndicator:NO];
     [m_view_calendar setDelegate:self];
     [m_view_calendar setDataSource:self];
-    [m_view_calendar setBackgroundColor:[UIColor clearColor]];
+    [m_view_calendar setBackgroundColor:colorWithHexString(@"#eeeeee")];
+    m_view_calendar.clipsToBounds = YES;
     [self addSubview:m_view_calendar];
+    
+    UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, PWSCalendarWeekDaysHeight, width, 3)];
+    [whiteView setBackgroundColor:[UIColor whiteColor]];
+    [self addSubview:whiteView];
+    
     m_view_calendar.pagingEnabled = YES;
 //    m_view_calendar.clipsToBounds = YES;
     [m_view_calendar registerClass:[PWSCalendarViewCell class] forCellWithReuseIdentifier:PWSCalendarViewCellId.copy];

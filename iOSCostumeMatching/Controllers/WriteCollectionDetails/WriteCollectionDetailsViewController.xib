@@ -224,7 +224,7 @@
                     <exclude reference="d3n-RF-Z3f"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="133" y="360"/>
+            <point key="canvasLocation" x="196" y="343"/>
         </view>
     </objects>
     <resources>
