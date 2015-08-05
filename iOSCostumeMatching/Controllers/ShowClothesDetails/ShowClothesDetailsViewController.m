@@ -28,19 +28,22 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)doneBtnPressed:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"分享", nil];
+    [actionSheet showInView:self.view];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"详情"];
     self.showReturn = YES;
-    [self setReturnBtnTitle:@"关闭"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
+    self.showDone = YES;
+    [self setDoneBtnNormalImage:[UIImage imageNamed:@"ic_more"] andHighlightedImage:nil];
     
     [_imageView setImage:_clothesInfo.file];
     // Do any additional setup after loading the view from its nib.
-}
-
-- (IBAction)showMore:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"分享", nil];
-    [actionSheet showInView:self.view];
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -58,6 +61,12 @@
     {
         CLog(@"分享");
     }
+}
+
+- (IBAction)addCollection:(id)sender {
+}
+
+- (IBAction)addCalendar:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning {
