@@ -16,6 +16,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.backgroundColor = colorWithHexString(@"#eeeeee");
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

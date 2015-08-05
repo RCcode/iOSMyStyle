@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblWeek;
+
 @property (weak, nonatomic) IBOutlet UIImageView *clothesOrCollectionImageView;
 
 @end

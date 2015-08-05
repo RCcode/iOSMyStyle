@@ -77,7 +77,7 @@
     activityTableView.dataSource = self;
     [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-20-CGRectGetHeight(calendarView.frame))];
     [self.view insertSubview:activityTableView atIndex:0];
-    
+    activityTableView.backgroundColor = colorWithHexString(@"#eeeeee");
     [self setTitleDate:[NSDate date]];
 }
 
