@@ -20,6 +20,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnStyle;
 @property (weak, nonatomic) IBOutlet UIButton *btnOccasion;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UILabel *lblStyle;
+@property (weak, nonatomic) IBOutlet UILabel *lblOccasion;
+
+
 @end
 
 @implementation WriteCollectionDetailsViewController
@@ -63,11 +69,15 @@
     [self setNavTitle:@"详情"];
     self.showDone = YES;
     self.showReturn = YES;
-    [self setReturnBtnTitle:@"返回"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
+    [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
     [self setDoneBtnTitle:@"完成"];
-    
     _imageView.image = _image;
     _txtDescription.delegate = self;
+    
+    [_scrollView addSubview:_contentView];
+    [_contentView setFrame:CGRectMake(0, 0, ScreenWidth, CGRectGetHeight(_contentView.frame))];
+    [_scrollView setContentSize:CGSizeMake(CGRectGetWidth(_contentView.frame), CGRectGetHeight(_contentView.frame))];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -78,7 +88,7 @@
     __weak WriteCollectionDetailsViewController *weakSelf = self;
     [selectStyle setSelectedBlock:^(int index) {
         style = index;
-        [weakSelf.btnStyle setTitle:getCollocationStyleName(style) forState:UIControlStateNormal] ;
+        [weakSelf.lblStyle setText:getCollocationStyleName(style)];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
     [self presentViewController:nav animated:YES completion:nil];
@@ -92,10 +102,13 @@
     __weak WriteCollectionDetailsViewController *weakSelf = self;
     [selectOccasion setSelectedBlock:^(int index) {
         occasion = index;
-        [weakSelf.btnOccasion setTitle:getCollocationOccasionName(occasion) forState:UIControlStateNormal] ;
+        [weakSelf.lblOccasion setText:getCollocationOccasionName(occasion)];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectOccasion];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)upLoadValueChange:(id)sender {
 }
 
 #pragma mark - UITextFieldDelegate
