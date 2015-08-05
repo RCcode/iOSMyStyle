@@ -12,12 +12,12 @@
 #import "ItemView.h"
 #import "SelectViewController.h"
 
-#define GAPWIDTH 10.0
+#define GAPWIDTH 8.0
 
 @interface CreateActivityViewController ()<UITextFieldDelegate>
 {
     UIScrollView *scrollView;
-    UIView *addImageView;
+    UIScrollView *addImageScrollView;
     BOOL isAllDay;
     NSDate *startTime;
     NSDate *endTime;
@@ -28,6 +28,9 @@
     BOOL setStartTime;
 }
 @property (strong, nonatomic) IBOutlet UIView *actionView;
+@property (strong, nonatomic) IBOutlet UIView *addClotheOrCollectionView;
+
+
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (weak, nonatomic) IBOutlet UITextField *addTitle;
@@ -90,23 +93,26 @@
     [super viewDidLoad];
     [self setNavTitle:@"新建活动"];
     self.showReturn = YES;
-    [self setReturnBtnTitle:@"取消"];
     self.showDone = YES;
-    [self setDoneBtnTitle:@"保存"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_close"] andHighlightedImage:nil];
+    [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
+    [self setDoneBtnTitle:@"完成"];
     
     isAllDay = NO;
     _dataArray = [[NSMutableArray alloc]init];
     
-    addImageView = [[UIView alloc]init];
-    [addImageView setFrame:CGRectMake(0, 0, ScreenWidth, 0)];
-    [addImageView setBackgroundColor:[UIColor yellowColor]];
-    [self.view addSubview:addImageView];
+    addImageScrollView = [[UIScrollView alloc]init];
+    [addImageScrollView setFrame:CGRectMake(0, 0, ScreenWidth, 0)];
+    [addImageScrollView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:addImageScrollView];
+    
+    [self.view addSubview:_addClotheOrCollectionView];
     
     scrollView = [[UIScrollView alloc]init];
-    [scrollView setFrame:CGRectMake(0, CGRectGetHeight(addImageView.frame), ScreenWidth, ScreenHeight-NavBarHeight-20)];
     [self.view addSubview:scrollView];
     
     scrollView.contentSize = self.actionView.frame.size;
+    scrollView.backgroundColor = colorWithHexString(@"#eeeeee");
     [scrollView addSubview:_actionView];
     
     [_dateView setFrame:CGRectMake(0, ScreenHeight-64, ScreenWidth, CGRectGetHeight(_dateView.frame))];
@@ -118,6 +124,22 @@
     _addTitle.delegate = self;
     _txtLocation.delegate = self;
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [_addClotheOrCollectionView setFrame:CGRectMake(0, CGRectGetHeight(addImageScrollView.frame), ScreenWidth, CGRectGetHeight(_addClotheOrCollectionView.frame))];
+    [scrollView setFrame:CGRectMake(0, CGRectGetMaxY(_addClotheOrCollectionView.frame), ScreenWidth, ScreenHeight-64-CGRectGetMaxY(_addClotheOrCollectionView.frame))];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -136,28 +158,28 @@
 
 -(void)updateView
 {
-    for (id view in addImageView.subviews) {
+    for (id view in addImageScrollView.subviews) {
         [view removeFromSuperview];
     }
     if (_dataArray.count>0) {
         __weak CreateActivityViewController *weakSelf = self;
-        CGFloat itemWidth = (ScreenWidth-40.0) / 3.0;
+        CGFloat itemWidth = 77;
         for (int i=0; i<_dataArray.count; i++) {
             id data = [_dataArray objectAtIndex:i];
-            ItemView *itemView = [[ItemView alloc]initWithFrame:CGRectMake(i%3*(itemWidth+GAPWIDTH)+GAPWIDTH, GAPWIDTH+(i/3)*(itemWidth+GAPWIDTH), itemWidth, itemWidth)];
+            ItemView *itemView = [[ItemView alloc]initWithFrame:CGRectMake(i*(itemWidth+GAPWIDTH)+GAPWIDTH, GAPWIDTH, itemWidth, itemWidth)];
             itemView.info = data;
             [itemView setDeleteBlock:^(id info,id item) {
                 [weakSelf removeItem:item andInfo:info];
             }];
-            [addImageView addSubview:itemView];
+            [addImageScrollView addSubview:itemView];
         }
-        [addImageView setFrame:CGRectMake(0, 0, ScreenWidth, ceilf(_dataArray.count/3.0)*(itemWidth+GAPWIDTH))];
-        [scrollView setFrame:CGRectMake(0, CGRectGetHeight(addImageView.frame), ScreenWidth, ScreenHeight-NavBarHeight-20-CGRectGetHeight(addImageView.frame))];
+        [addImageScrollView setFrame:CGRectMake(0, 0, ScreenWidth, 93)];
+        [addImageScrollView setContentSize:CGSizeMake(_dataArray.count*(itemWidth+GAPWIDTH)+GAPWIDTH, CGRectGetHeight(addImageScrollView.frame))];
     }
     else
     {
-        [addImageView setFrame:CGRectMake(0, 0, ScreenWidth, 0)];
-        [scrollView setFrame:CGRectMake(0, CGRectGetHeight(addImageView.frame), ScreenWidth, ScreenHeight-NavBarHeight-20)];
+        [addImageScrollView setFrame:CGRectMake(0, 0, ScreenWidth, 0)];
+        [addImageScrollView setContentSize:CGSizeMake(0, CGRectGetHeight(addImageScrollView.frame))];
     }
 }
 

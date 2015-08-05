@@ -45,16 +45,22 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor whiteColor];
         imageView = [[UIImageView alloc]init];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
         [imageView setFrame:self.bounds];
         [self addSubview:imageView];
+        
         deleteButton = [[UIButton alloc]init];
-        [deleteButton setBackgroundImage:[UIImage imageNamed:@"ball"] forState:UIControlStateNormal];
-        [deleteButton setFrame:CGRectMake(CGRectGetWidth(frame)-DELETEBUTTONWIDTH, 0, DELETEBUTTONWIDTH, DELETEBUTTONWIDTH)];
+        [deleteButton setBackgroundImage:[UIImage imageNamed:@"edit_delet"] forState:UIControlStateNormal];
+        [deleteButton setFrame:CGRectMake(CGRectGetWidth(self.frame)-30, 0, 30, 30)];
         [deleteButton addTarget:self action:@selector(pressDelete:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:deleteButton];
+//        deleteButton.hidden = YES;
+        
+        self.layer.borderColor = colorWithHexString(@"#e6e6e6").CGColor;
+        self.layer.borderWidth = 1;
+        self.clipsToBounds = YES;
     }
     return self;
 }
