@@ -21,8 +21,8 @@
     self.strTitle = nil;
     self.numYear = nil;
     self.dateFinishTime = nil;
-    self.dateFirstRemindTime = nil;
-    self.dateSecondRemindTime = nil;
+    self.firstRemindTime = nil;
+    self.secondRemindTime = nil;
     self.dateStartTime = nil;
     self.arrData = nil;
 }

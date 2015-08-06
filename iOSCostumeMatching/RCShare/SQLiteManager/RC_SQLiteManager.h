@@ -38,6 +38,7 @@ enum TableNameType
 -(BOOL)deleteCollection:(CollocationInfo *)collocationInfo;
 
 -(BOOL)addActivityInfo:(ActivityInfo *)activityInfo;
+-(BOOL)updateActivityInfo:(ActivityInfo *)activityInfo;
 -(NSMutableArray *)getAllActivity;
 -(NSMutableArray *)getAllActivityWithYear:(NSString *)year andMonth:(NSString *)month andDay:(NSString *)day;
 -(BOOL)deleteActivityInfo:(ActivityInfo *)activityInfo;

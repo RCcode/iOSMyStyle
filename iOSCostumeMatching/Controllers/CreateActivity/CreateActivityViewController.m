@@ -21,8 +21,8 @@
     BOOL isAllDay;
     NSDate *startTime;
     NSDate *endTime;
-    int firstRemind;
-    int secondRemind;
+    NSInteger firstRemind;
+    NSInteger secondRemind;
     ActivityColor color;
     
     BOOL setStartTime;
@@ -48,9 +48,12 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *dateAndTimePicker;
 @property (strong, nonatomic) IBOutlet UIView *dateView;
 @property (strong, nonatomic) IBOutlet UIView *dateAndTimeView;
+@property (weak, nonatomic) IBOutlet UILabel *lblFirstRemind;
+@property (weak, nonatomic) IBOutlet UILabel *lblSecondRemind;
+@property (weak, nonatomic) IBOutlet UIView *colorView;
 
 
-@property (nonatomic, copy) void(^finish)(ActivityInfo *info);
+@property (nonatomic, copy) void(^finish)(ActivityInfo *info,BOOL isNew);
 @property (nonatomic, copy) void(^delete)(ActivityInfo *info);
 
 
@@ -72,20 +75,26 @@
     activityInfo.numIsAllDay = [NSNumber numberWithBool:isAllDay];
     activityInfo.dateStartTime = startTime;
     activityInfo.dateFinishTime = endTime;
-    activityInfo.dateFirstRemindTime = [NSDate date];
-    activityInfo.dateSecondRemindTime = [NSDate date];
+    activityInfo.firstRemindTime = [NSNumber numberWithInteger:firstRemind];
+    activityInfo.secondRemindTime = [NSNumber numberWithInteger:secondRemind];
     activityInfo.numColor = [NSNumber numberWithInt:color];
     activityInfo.arrData = _dataArray;
     activityInfo.numYear = [NSNumber numberWithInt:[yearFromDate(startTime) intValue]];
     activityInfo.numMonth = [NSNumber numberWithInt:[monthFromDate(startTime) intValue]];
     activityInfo.numDay = [NSNumber numberWithInt:[dayFromDate(startTime) intValue]];
     if (_finish) {
-        _finish(activityInfo);
+        if (_type == 1) {
+            _finish(activityInfo,NO);
+        }
+        else
+        {
+            _finish(activityInfo,YES);
+        }
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)setActivityFinishBlock:(void (^)(ActivityInfo *))activityfinishBlock
+-(void)setActivityFinishBlock:(void (^)(ActivityInfo *,BOOL isNew))activityfinishBlock
 {
     _finish = activityfinishBlock;
 }
@@ -126,8 +135,52 @@
     [self.view addSubview:_dateView];
     [self.view addSubview:_dateAndTimeView];
     
+    _txtLocation.textColor = colorWithHexString(@"#c7c7c7");
+    _addTitle.textColor = colorWithHexString(@"#c7c7c7");
+    _txtLocation.font = [UIFont systemFontOfSize:13];
+    _addTitle.font = [UIFont systemFontOfSize:13];
+    
+    startTime = [NSDate date];
+    endTime = [NSDate date];
+    [_btnStartTime setTitle:stringNotAllDayFromDate(startTime) forState:UIControlStateNormal];
+    [_btnEndTime setTitle:stringNotAllDayFromDate(endTime) forState:UIControlStateNormal];
+    
+    [_lblFirstRemind setText:getNotAllDayRemindName((NotAllDayRemind)firstRemind)];
+    [_lblSecondRemind setText:getNotAllDayRemindName((NotAllDayRemind)secondRemind)];
+    
+    _colorView.layer.cornerRadius = CGRectGetWidth(_colorView.frame)/2;
+    [_colorView setBackgroundColor:getColor(color)];
+    
     if (_type == 1) {
         _btnDelete.hidden = NO;
+        [_dataArray addObjectsFromArray:_activityInfo.arrData];
+        [self updateView];
+        
+        _addTitle.text = _activityInfo.strTitle;
+        _txtLocation.text = _activityInfo.strLocation;
+        isAllDay = [_activityInfo.numIsAllDay boolValue];
+        [_switchAllDay setOn:isAllDay];
+        startTime = _activityInfo.dateStartTime;
+        endTime = _activityInfo.dateFinishTime;
+        
+        firstRemind = [_activityInfo.firstRemindTime integerValue];
+        secondRemind = [_activityInfo.secondRemindTime integerValue];
+        
+        if (isAllDay) {
+            [_btnStartTime setTitle:stringAllDayFromDate(startTime) forState:UIControlStateNormal];
+            [_btnEndTime setTitle:stringAllDayFromDate(endTime) forState:UIControlStateNormal];
+            [_lblFirstRemind setText:getAllDayRemindName((AllDayRemind)firstRemind)];
+            [_lblSecondRemind setText:getAllDayRemindName((AllDayRemind)secondRemind)];
+        }
+        else
+        {
+            [_btnStartTime setTitle:stringNotAllDayFromDate(startTime) forState:UIControlStateNormal];
+            [_btnEndTime setTitle:stringNotAllDayFromDate(endTime) forState:UIControlStateNormal];
+            [_lblFirstRemind setText:getNotAllDayRemindName((NotAllDayRemind)firstRemind)];
+            [_lblSecondRemind setText:getNotAllDayRemindName((NotAllDayRemind)secondRemind)];
+        }
+        color = (ActivityColor)[_activityInfo.numColor integerValue];
+        [_colorView setBackgroundColor:getColor(color)];
     }
     else
     {
@@ -271,7 +324,8 @@
         {
             title = getNotAllDayRemindName(index);
         }
-        [weakSelf.btnRemind setTitle:title forState:UIControlStateNormal] ;
+//        [weakSelf.btnRemind setTitle:title forState:UIControlStateNormal] ;
+        [weakSelf.lblFirstRemind setText:title];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectFirstRemind];
     [self presentViewController:nav animated:YES completion:nil];
@@ -299,7 +353,8 @@
         {
             title = getNotAllDayRemindName(index);
         }
-        [weakSelf.btnSecondRemind setTitle:title forState:UIControlStateNormal] ;
+//        [weakSelf.btnSecondRemind setTitle:title forState:UIControlStateNormal] ;
+        [weakSelf.lblSecondRemind setText:title];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectFirstRemind];
     [self presentViewController:nav animated:YES completion:nil];
@@ -314,7 +369,7 @@
     __weak CreateActivityViewController *weakSelf = self;
     [selectColor setSelectedBlock:^(int index) {
         color = index;
-        [weakSelf.btnColor setTitle:getColorName(color) forState:UIControlStateNormal] ;
+        [weakSelf.colorView setBackgroundColor:getColor(index)];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectColor];
     [self presentViewController:nav animated:YES completion:nil];

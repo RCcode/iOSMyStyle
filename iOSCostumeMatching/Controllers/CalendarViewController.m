@@ -93,8 +93,14 @@
 - (IBAction)addActivity:(id)sender {
     CreateActivityViewController *createActivity = [[CreateActivityViewController alloc]init];
     __weak CalendarViewController *weakSelf = self;
-    [createActivity setActivityFinishBlock:^(ActivityInfo *info) {
-        [weakSelf addNewActivity:info];
+    [createActivity setActivityFinishBlock:^(ActivityInfo *info,BOOL isNew) {
+        if (isNew) {
+            [weakSelf addNewActivity:info];
+        }
+        else
+        {
+            [weakSelf updateActivity:info];
+        }
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createActivity];
     [self presentViewController:nav animated:YES completion:nil];
@@ -103,6 +109,13 @@
 -(void)addNewActivity:(ActivityInfo *)info
 {
     [[RC_SQLiteManager shareManager]addActivityInfo:info];
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
+    [activityTableView reloadData];
+}
+
+-(void)updateActivity:(ActivityInfo *)info
+{
+    [[RC_SQLiteManager shareManager]updateActivityInfo:info];
     _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
     [activityTableView reloadData];
 }
@@ -137,12 +150,17 @@
     [createActivity setDeleteBlock:^(ActivityInfo *info) {
         [weakSelf deleteCollection:info];
     }];
+    [createActivity setActivityFinishBlock:^(ActivityInfo *info,BOOL isNew) {
+        if (isNew) {
+            [weakSelf addNewActivity:info];
+        }
+        else
+        {
+            [weakSelf updateActivity:info];
+        }
+    }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createActivity];
     [self presentViewController:nav animated:YES completion:nil];
-//    ShowActivityViewController *showActivity = [[ShowActivityViewController alloc]init];
-//    showActivity.activityInfo = [_arrActivity objectAtIndex:indexPath.row];
-//    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showActivity];
-//    [self presentViewController:nav animated:YES completion:nil];
 }
 
 -(void)deleteCollection:(ActivityInfo *)info
@@ -181,6 +199,7 @@
     [cell.lblTitle setBackgroundColor:[getColor([info.numColor intValue]) colorWithAlphaComponent:0.7]];
     [cell.leftView setBackgroundColor:getColor([info.numColor intValue])];
     [cell.lblTime setText:dayFromDate(info.dateStartTime)];
+    [cell.lblWeek setText:weekdayStringFromDate(info.dateStartTime)];
     
     return cell;
 }

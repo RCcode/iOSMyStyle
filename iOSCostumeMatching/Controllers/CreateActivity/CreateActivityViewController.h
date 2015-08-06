@@ -10,10 +10,10 @@
 
 @interface CreateActivityViewController : RC_BaseViewController
 
-@property (nonatomic) NSInteger type;
+@property (nonatomic) NSInteger type;//默认添加  1 编辑
 @property (nonatomic, strong) ActivityInfo *activityInfo;
 
--(void)setActivityFinishBlock:(void(^)(ActivityInfo *info))activityfinishBlock;
+-(void)setActivityFinishBlock:(void(^)(ActivityInfo *info,BOOL isNew))activityfinishBlock;
 -(void)setDeleteBlock:(void(^)(ActivityInfo *info))deleteBlock;
 
 @end

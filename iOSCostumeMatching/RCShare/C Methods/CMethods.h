@@ -34,6 +34,7 @@ NSString *dayFromDate(NSDate *date);
 NSString *stringFromDate(NSDate *date);
 NSString *stringAllDayFromDate(NSDate *date);
 NSString *stringNotAllDayFromDate(NSDate *date);
+NSString *weekdayStringFromDate(NSDate *inputDate);
 
 void showLabelHUD(NSString *content);
 

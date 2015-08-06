@@ -33,8 +33,8 @@
 @property (nonatomic, copy) NSNumber *numIsAllDay;
 @property (nonatomic, copy) NSDate *dateStartTime;
 @property (nonatomic, copy) NSDate *dateFinishTime;
-@property (nonatomic, copy) NSDate *dateFirstRemindTime;
-@property (nonatomic, copy) NSDate *dateSecondRemindTime;
+@property (nonatomic, copy) NSNumber *firstRemindTime;
+@property (nonatomic, copy) NSNumber *secondRemindTime;
 @property (nonatomic, copy) NSNumber *numColor;
 @property (nonatomic, copy) NSArray *arrData;
 @property (nonatomic, copy) NSNumber *numYear;

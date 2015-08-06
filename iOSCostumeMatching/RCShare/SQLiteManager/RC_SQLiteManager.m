@@ -178,7 +178,7 @@ static RC_SQLiteManager *sqliteManager = nil;
                 
                 NSString *tableName = @"Activity";
                 if (![_db tableExists:tableName]) {
-                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (id INTEGER PRIMARY KEY AUTOINCREMENT,title text,location text,isAllDay bool,startTime date,finishTime date,firstRemindTime date,secondRemindTime date,color INTEGER,arrData data,year INTEGER,month INTEGER,day INTEGER)",tableName];
+                    NSString *strExecute = [NSString stringWithFormat:@"CREATE TABLE %@ (id INTEGER PRIMARY KEY AUTOINCREMENT,title text,location text,isAllDay bool,startTime date,finishTime date,firstRemindTime INTEGER,secondRemindTime INTEGER,color INTEGER,arrData data,year INTEGER,month INTEGER,day INTEGER)",tableName];
                     if ([_db executeUpdate:strExecute]) {
                         CLog(@"create table Activity success");
                     }else{
@@ -428,7 +428,23 @@ static RC_SQLiteManager *sqliteManager = nil;
         [myKeyedArchiver encodeObject:activityInfo.arrData];
         [myKeyedArchiver finishEncoding];
         
-        BOOL success = [_db executeUpdate:@"insert into Activity (title ,location ,isAllDay ,startTime ,finishTime ,firstRemindTime ,secondRemindTime ,color ,arrData ,year ,month ,day) values(?,?,?,?,?,?,?,?,?,?,?,?)",activityInfo.strTitle,activityInfo.strLocation, activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.dateFirstRemindTime,activityInfo.dateSecondRemindTime,activityInfo.numColor,mData,activityInfo.numYear,activityInfo.numMonth,activityInfo.numDay,nil];
+        BOOL success = [_db executeUpdate:@"insert into Activity (title ,location ,isAllDay ,startTime ,finishTime ,firstRemindTime ,secondRemindTime ,color ,arrData ,year ,month ,day) values(?,?,?,?,?,?,?,?,?,?,?,?)",activityInfo.strTitle,activityInfo.strLocation, activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.firstRemindTime,activityInfo.secondRemindTime,activityInfo.numColor,mData,activityInfo.numYear,activityInfo.numMonth,activityInfo.numDay,nil];
+        [_db close];
+        return success;
+    }
+    return NO;
+}
+
+-(BOOL)updateActivityInfo:(ActivityInfo *)activityInfo
+{
+    [self createTable:TNTActivity];
+    if([_db open])
+    {
+        NSMutableData *mData = [[NSMutableData alloc] init];
+        NSKeyedArchiver *myKeyedArchiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:mData];
+        [myKeyedArchiver encodeObject:activityInfo.arrData];
+        [myKeyedArchiver finishEncoding];
+        BOOL success = [_db executeUpdate:@"update Activity SET title = ?,location = ?,isAllDay = ?,startTime = ?,finishTime = ?,firstRemindTime = ?,secondRemindTime = ?,color = ?,arrData = ?,year = ?,month = ?,day= ? where id = ?",activityInfo.strTitle,activityInfo.strLocation, activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.firstRemindTime,activityInfo.secondRemindTime,activityInfo.numColor,mData,activityInfo.numYear,activityInfo.numMonth,activityInfo.numDay,activityInfo.numId,nil];
         [_db close];
         return success;
     }
@@ -456,8 +472,8 @@ static RC_SQLiteManager *sqliteManager = nil;
             activityInfo.strTitle = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"title"]];
             activityInfo.numYear = [NSNumber numberWithInt:[rs intForColumn:@"year"]];
             activityInfo.dateFinishTime = [rs dateForColumn:@"finishTime"];
-            activityInfo.dateFirstRemindTime = [rs dateForColumn:@"firstRemindTime"];
-            activityInfo.dateSecondRemindTime = [rs dateForColumn:@"secondRemindTime"];
+            activityInfo.firstRemindTime = [NSNumber numberWithInt:[rs intForColumn:@"firstRemindTime"]];
+            activityInfo.secondRemindTime = [NSNumber numberWithInt:[rs intForColumn:@"secondRemindTime"]];
             activityInfo.dateStartTime = [rs dateForColumn:@"startTime"];
             
             NSKeyedUnarchiver *myKeyedUnarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:[rs dataForColumn:@"arrData"]];
@@ -500,8 +516,8 @@ static RC_SQLiteManager *sqliteManager = nil;
             activityInfo.strTitle = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"title"]];
             activityInfo.numYear = [NSNumber numberWithInt:[rs intForColumn:@"year"]];
             activityInfo.dateFinishTime = [rs dateForColumn:@"finishTime"];
-            activityInfo.dateFirstRemindTime = [rs dateForColumn:@"firstRemindTime"];
-            activityInfo.dateSecondRemindTime = [rs dateForColumn:@"secondRemindTime"];
+            activityInfo.firstRemindTime = [NSNumber numberWithInt:[rs intForColumn:@"firstRemindTime"]];
+            activityInfo.secondRemindTime = [NSNumber numberWithInt:[rs intForColumn:@"secondRemindTime"]];
             activityInfo.dateStartTime = [rs dateForColumn:@"startTime"];
             
             NSKeyedUnarchiver *myKeyedUnarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:[rs dataForColumn:@"arrData"]];
