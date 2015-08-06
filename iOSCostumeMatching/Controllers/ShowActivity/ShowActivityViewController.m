@@ -56,11 +56,14 @@
         if (weakSelf.delete) {
             weakSelf.delete(info);
         }
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
     }];
     [createActivity setActivityFinishBlock:^(ActivityInfo *info,BOOL isNew) {
         if (weakSelf.finish) {
             weakSelf.finish(info,isNew);
         }
+        weakSelf.activityInfo = info;
+        [weakSelf updateView];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createActivity];
     [self presentViewController:nav animated:YES completion:nil];
