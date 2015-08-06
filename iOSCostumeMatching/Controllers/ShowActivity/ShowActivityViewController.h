@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) ActivityInfo *activityInfo;
 
+-(void)setActivityFinishBlock:(void(^)(ActivityInfo *info,BOOL isNew))activityfinishBlock;
+-(void)setDeleteBlock:(void(^)(ActivityInfo *info))deleteBlock;
+
 @end

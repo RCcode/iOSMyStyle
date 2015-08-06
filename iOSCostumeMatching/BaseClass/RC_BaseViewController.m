@@ -68,6 +68,11 @@
     titleLabel.text = navTitle;
 }
 
+-(void)setNavTitleColor:(UIColor *)color
+{
+    [titleLabel setTextColor:color];
+}
+
 -(void)setShowDone:(BOOL)showDone
 {
     _showDone = showDone;

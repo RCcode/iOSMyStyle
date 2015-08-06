@@ -143,14 +143,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    CreateActivityViewController *createActivity = [[CreateActivityViewController alloc]init];
-    createActivity.activityInfo = [_arrActivity objectAtIndex:indexPath.row];
-    createActivity.type = 1;
+    
+    ShowActivityViewController *showActivity = [[ShowActivityViewController alloc]init];
+    showActivity.activityInfo = [_arrActivity objectAtIndex:indexPath.row];
     __weak CalendarViewController *weakSelf = self;
-    [createActivity setDeleteBlock:^(ActivityInfo *info) {
+    [showActivity setDeleteBlock:^(ActivityInfo *info) {
         [weakSelf deleteCollection:info];
     }];
-    [createActivity setActivityFinishBlock:^(ActivityInfo *info,BOOL isNew) {
+    [showActivity setActivityFinishBlock:^(ActivityInfo *info,BOOL isNew) {
         if (isNew) {
             [weakSelf addNewActivity:info];
         }
@@ -159,8 +159,28 @@
             [weakSelf updateActivity:info];
         }
     }];
-    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createActivity];
+
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showActivity];
     [self presentViewController:nav animated:YES completion:nil];
+    
+//    CreateActivityViewController *createActivity = [[CreateActivityViewController alloc]init];
+//    createActivity.activityInfo = [_arrActivity objectAtIndex:indexPath.row];
+//    createActivity.type = 1;
+//    __weak CalendarViewController *weakSelf = self;
+//    [createActivity setDeleteBlock:^(ActivityInfo *info) {
+//        [weakSelf deleteCollection:info];
+//    }];
+//    [createActivity setActivityFinishBlock:^(ActivityInfo *info,BOOL isNew) {
+//        if (isNew) {
+//            [weakSelf addNewActivity:info];
+//        }
+//        else
+//        {
+//            [weakSelf updateActivity:info];
+//        }
+//    }];
+//    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createActivity];
+//    [self presentViewController:nav animated:YES completion:nil];
 }
 
 -(void)deleteCollection:(ActivityInfo *)info

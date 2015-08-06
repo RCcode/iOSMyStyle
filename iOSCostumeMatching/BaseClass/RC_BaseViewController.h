@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL enableDone;
 
 -(void)setNavTitle:(NSString *)navTitle;
+-(void)setNavTitleColor:(UIColor *)color;
 -(void)setReturnBtnNormalImage:(UIImage *)normalImage andHighlightedImage:(UIImage *)highlightedImage;
 -(void)setDoneBtnNormalImage:(UIImage *)normalImage andHighlightedImage:(UIImage *)highlightedImage;
 -(void)setReturnBtnTitle:(NSString *)title;

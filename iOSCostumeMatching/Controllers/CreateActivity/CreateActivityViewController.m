@@ -68,6 +68,12 @@
 
 -(void)doneBtnPressed:(id)sender
 {
+    if(_dataArray.count == 0)
+    {
+        showLabelHUD(@"请选择服装或搭配");
+        return;
+    }
+    
     ActivityInfo *activityInfo = [[ActivityInfo alloc]init];
     activityInfo.numId = [NSNumber numberWithInt:1];
     activityInfo.strTitle = _addTitle.text;
