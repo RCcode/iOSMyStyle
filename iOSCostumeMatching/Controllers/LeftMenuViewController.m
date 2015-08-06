@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *actionView;
+@property (weak, nonatomic) IBOutlet UIButton *btnLogin;
 
 @end
 
@@ -42,7 +43,6 @@
         } andFailed:^(NSError *error) {
             CLog(@"%@",error);
         }];
-
     }
     _headImageView.layer.cornerRadius = CGRectGetWidth(_headImageView.frame)/2;
     _headImageView.clipsToBounds = YES;
@@ -67,6 +67,19 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+        [_btnLogin setTitle:@"退出" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [_btnLogin setTitle:@"马上登录" forState:UIControlStateNormal];
+    }
+}
+
 -(void)getTokenSuccess:(id)responseObject
 {
     NSDictionary *dic = responseObject;
@@ -75,26 +88,27 @@
     userInfo.strUid = [NSString stringWithFormat:@"%@",[[dic objectForKey:@"user"] objectForKey:@"id"]];
     userInfo.strTname = [[dic objectForKey:@"user"]objectForKey:@"username"];
     userInfo.strPicURL = [[dic objectForKey:@"user"] objectForKey:@"profile_picture"];
-    
+    userInfo.numTplat = [NSNumber numberWithShort:1];
     [self saveUserInfo:userInfo];
 }
 
 -(void)saveUserInfo:(UserInfo *)_userInfo
 {
-    _userInfo.numTplat = [NSNumber numberWithShort:1];
-    _userInfo.numPlat = [NSNumber numberWithShort:1];
+    [_btnLogin setTitle:@"退出" forState:UIControlStateNormal];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
     
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UPDATEVIEW object:nil];
+    
+    _userInfo.numPlat = [NSNumber numberWithShort:1];
     [UserInfo archiverUserInfo:_userInfo];
-    __weak LeftMenuViewController *weakSelf = self;
+//    __weak LeftMenuViewController *weakSelf = self;
     [[RC_RequestManager shareManager]loginWith:_userInfo success:^(id responseObject) {
         CLog(@"%@",responseObject);
-        //        [weakSelf loginServerSuccess:responseObject];
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             if ([[responseObject objectForKey:@"stat"]integerValue] == 10000) {
                 _userInfo.numId = [responseObject objectForKey:@"id"];
                 [UserInfo archiverUserInfo:userInfo];
                 [[RC_SQLiteManager shareManager]addUser:userInfo];
-                [weakSelf.headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
             }
         }
     } andFailed:^(NSError *error) {
@@ -134,7 +148,24 @@
 }
 
 - (IBAction)pressLogin:(id)sender {
-    loginView.hidden = NO;
+    userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+        NSInteger plat = [userInfo.numTplat integerValue];
+        [UserInfo deleteArchieveData];
+        if (plat == 1) {//in
+            
+        }
+        else
+        {
+            [[FacebookManager shareManager]logOut];
+        }
+        [_btnLogin setTitle:@"马上登录" forState:UIControlStateNormal];
+        [_headImageView setImage:nil];
+    }
+    else
+    {
+        loginView.hidden = NO;
+    }
 }
 
 - (void)loginInstagram {
@@ -165,6 +196,7 @@
         NSLog(@"userInfo:%@",_userInfo);
         userInfo.strUid = [_userInfo objectForKey:@"id"];
         userInfo.strTname = [_userInfo objectForKey:@"name"];
+        userInfo.numTplat = [NSNumber numberWithShort:2];
         [weakSelf saveUserInfo:userInfo];
     } andFailed:^(NSError *error) {
         
@@ -172,6 +204,7 @@
     [[FacebookManager shareManager] getHeadPicturePathSuccess:^(NSDictionary *dic) {
         NSLog(@"headurl:%@",dic);
         userInfo.strPicURL = [[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"];
+        userInfo.numTplat = [NSNumber numberWithShort:2];
         [weakSelf saveUserInfo:userInfo];
     } andFailed:^(NSError *error) {
         

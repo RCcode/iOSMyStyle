@@ -47,6 +47,8 @@
     [self setNavTitle:@"我喜欢的搭配"];
     [self setReturnBtnTitle:@"菜单"];
     
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCollectionView) name:NOTIFICATION_UPDATEVIEW object:nil];
+    
     [self createCollectionView];
     [self updateCollectionView];
     

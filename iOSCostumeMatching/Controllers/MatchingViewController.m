@@ -48,6 +48,8 @@
     [self setNavTitle:@"我的搭配"];
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCollectionView) name:NOTIFICATION_UPDATEVIEW object:nil];
+    
     self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
     [self createCollectionView];
     

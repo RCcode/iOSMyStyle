@@ -44,6 +44,11 @@
     [calendarView ScrollToToday];
 }
 
+-(void)updateView{
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
+    [activityTableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.showReturn = YES;
@@ -52,6 +57,8 @@
     self.showDone = YES;
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
     [self setDoneBtnTitle:@"今天"];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateView) name:NOTIFICATION_UPDATEVIEW object:nil];
     
     NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
     if (showHelp) {

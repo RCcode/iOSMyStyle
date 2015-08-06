@@ -89,6 +89,8 @@
 #define SHAREIG_KEY @"shareIg"
 #define SUCCESSLOGINSERVER_KEY @"successLoginServer"
 
+#define NOTIFICATION_UPDATEVIEW @"notificationUpdateView"
+
 static NSString *TOUCH_PHOTOMARK = @"touchPhotoMark";
 
 #define APPDELEGATE (AppDelegate *)([UIApplication sharedApplication].delegate)

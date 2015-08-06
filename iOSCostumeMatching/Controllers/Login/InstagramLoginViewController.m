@@ -37,9 +37,10 @@
     
     [self setNavTitle:@"Log in"];
     self.showReturn = YES;
-    [self setReturnBtnNormalImage:[UIImage imageNamed:@"btn_cancel"] andHighlightedImage:nil];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     
     indicatorView = [[UIActivityIndicatorView alloc]init];
+    indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     [indicatorView setFrame:CGRectMake(ScreenWidth-NavBarHeight, 0, NavBarHeight, NavBarHeight)];
     
     NSHTTPCookie *cookie;

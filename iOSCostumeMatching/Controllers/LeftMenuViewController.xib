@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeftMenuViewController">
             <connections>
                 <outlet property="actionView" destination="81V-WC-Hir" id="p9S-No-HmA"/>
+                <outlet property="btnLogin" destination="w9r-LZ-zcp" id="TOO-56-vyu"/>
                 <outlet property="headImageView" destination="IBv-mk-evd" id="ofW-VG-O0I"/>
                 <outlet property="scrollView" destination="Kmd-S3-reT" id="Z4V-7S-xg4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
