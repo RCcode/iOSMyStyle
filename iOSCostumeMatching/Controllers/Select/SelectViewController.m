@@ -7,8 +7,10 @@
 //
 
 #import "SelectViewController.h"
+#import "ColorCell.h"
 
 #define CELL_IDENTIFIER @"TableViewCell"
+#define COLOR_CELL_IDENTIFIER @"ColorCell"
 
 @interface SelectViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -36,12 +38,16 @@
     
     [self setNavTitle:_navagationTitle];
     self.showReturn = YES;
-    [self setReturnBtnTitle:@"取消"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
+    self.view.backgroundColor = colorWithHexString(@"#eeeeee");
     
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 15, ScreenWidth, ScreenHeight-64-15)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.backgroundColor = colorWithHexString(@"#eeeeee");
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER];
+    [_tableView registerNib:[UINib nibWithNibName:@"ColorCell" bundle:nil] forCellReuseIdentifier:COLOR_CELL_IDENTIFIER];
     [self.view addSubview:_tableView];
     // Do any additional setup after loading the view from its nib.
 }
@@ -55,6 +61,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (_type == 1) {
+        ColorCell *cell = [tableView dequeueReusableCellWithIdentifier:COLOR_CELL_IDENTIFIER];
+        cell.lblColor.text = [_array objectAtIndex:indexPath.row];
+        cell.colorView.backgroundColor = getColor(indexPath.row);
+        return cell;
+    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     cell.textLabel.text = [_array objectAtIndex:indexPath.row];
     return cell;

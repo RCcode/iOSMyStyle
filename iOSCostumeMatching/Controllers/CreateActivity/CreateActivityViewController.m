@@ -294,6 +294,7 @@
 
 - (IBAction)setColor:(id)sender {
     SelectViewController *selectColor = [[SelectViewController alloc]init];
+    selectColor.type = 1;
     [selectColor setNavagationTitle:@"选择颜色"];
     selectColor.array = getAllColor();
     

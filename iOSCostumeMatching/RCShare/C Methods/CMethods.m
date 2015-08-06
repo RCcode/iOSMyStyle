@@ -664,16 +664,28 @@ NSString *getColorName(ActivityColor color)
     switch (color) {
         case AC0:{str = @"默认";break;}
             
-        case AC1:{str = @"红";break;}
+        case AC1:{str = @"番茄红";break;}
             
-        case AC2:{str = @"黄";break;}
+        case AC2:{str = @"橘红";break;}
             
-        case AC3:{str = @"蓝";break;}
+        case AC3:{str = @"香蕉黄";break;}
             
-        case AC4:{str = @"绿";break;}
+        case AC4:{str = @"罗勒绿";break;}
             
-        case AC5:{str = @"紫";break;}
-                        
+        case AC5:{str = @"鼠尾草绿";break;}
+            
+        case AC6:{str = @"孔雀蓝";break;}
+            
+        case AC7:{str = @"蓝莓色";break;}
+            
+        case AC8:{str = @"薰衣草色";break;}
+            
+        case AC9:{str = @"葡萄紫";break;}
+            
+        case AC10:{str = @"红鹤色";break;}
+            
+        case AC11:{str = @"石墨黑";break;}
+            
         default:
             break;
     }
@@ -682,8 +694,18 @@ NSString *getColorName(ActivityColor color)
 
 NSArray *getAllColor()
 {
-    NSArray *arr = @[@"默认",@"红",@"黄",@"蓝",@"绿",@"紫"];
-    
+    NSArray *arr = @[@"默认",
+                     @"番茄红",
+                     @"橘红",
+                     @"香蕉黄",
+                     @"罗勒绿",
+                     @"鼠尾草绿",
+                     @"孔雀蓝",
+                     @"蓝莓色",
+                     @"薰衣草色",
+                     @"葡萄紫",
+                     @"红鹤色",
+                     @"石墨黑"];
     return arr;
 }
 
@@ -693,34 +715,64 @@ UIColor *getColor(ActivityColor activityColor)
     switch (activityColor) {
         case AC0:
         {
-            color = [UIColor grayColor];
+            color = colorWithHexString(@"#45ddcb");
             break;
         }
         case AC1:
         {
-            color = [UIColor redColor];
+            color = colorWithHexString(@"#d30100");
             break;
         }
         case AC2:
         {
-            color = [UIColor yellowColor];
+            color = colorWithHexString(@"#f3511d");
             break;
         }
         case AC3:
         {
-            color = [UIColor blueColor];
+            color = colorWithHexString(@"#f5bf24");
             break;
         }
         case AC4:
         {
-            color = [UIColor greenColor];
+            color = colorWithHexString(@"#0a7f41");
             break;
         }
         case AC5:
         {
-            color = [UIColor purpleColor];
+            color = colorWithHexString(@"#33b679");
             break;
-        }            
+        }
+        case AC6:
+        {
+            color = colorWithHexString(@"#029be4");
+            break;
+        }
+        case AC7:
+        {
+            color = colorWithHexString(@"#3b5aad");
+            break;
+        }
+        case AC8:
+        {
+            color = colorWithHexString(@"#7886ca");
+            break;
+        }
+        case AC9:
+        {
+            color = colorWithHexString(@"#8c25a8");
+            break;
+        }
+        case AC10:
+        {
+            color = colorWithHexString(@"#ec7e72");
+            break;
+        }
+        case AC11:
+        {
+            color = colorWithHexString(@"#636363");
+            break;
+        }
         default:
             break;
     }

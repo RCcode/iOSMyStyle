@@ -79,6 +79,8 @@
 		4F6FB4041B59038200C5CB0A /* WriteClothesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB4021B59038200C5CB0A /* WriteClothesDetailsViewController.xib */; };
 		4F6FB4091B5909A300C5CB0A /* ShowClothesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB4071B5909A300C5CB0A /* ShowClothesDetailsViewController.m */; };
 		4F6FB40A1B5909A300C5CB0A /* ShowClothesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */; };
+		4F78B4931B722B0100A45E42 /* ColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F78B4911B722B0100A45E42 /* ColorCell.m */; };
+		4F78B4941B722B0100A45E42 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F78B4921B722B0100A45E42 /* ColorCell.xib */; };
 		4F7B64E81B5F4D46004643D2 /* MyWardrobeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B64E61B5F4D46004643D2 /* MyWardrobeViewController.m */; };
 		4F7B64E91B5F4D46004643D2 /* MyWardrobeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7B64E71B5F4D46004643D2 /* MyWardrobeViewController.xib */; };
 		4F7B64EE1B5F5386004643D2 /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B64EC1B5F5386004643D2 /* MyCollectionViewController.m */; };
@@ -310,6 +312,9 @@
 		4F6FB4061B5909A300C5CB0A /* ShowClothesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowClothesDetailsViewController.h; sourceTree = "<group>"; };
 		4F6FB4071B5909A300C5CB0A /* ShowClothesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowClothesDetailsViewController.m; sourceTree = "<group>"; };
 		4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowClothesDetailsViewController.xib; sourceTree = "<group>"; };
+		4F78B4901B722B0100A45E42 /* ColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCell.h; sourceTree = "<group>"; };
+		4F78B4911B722B0100A45E42 /* ColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCell.m; sourceTree = "<group>"; };
+		4F78B4921B722B0100A45E42 /* ColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		4F7B64E51B5F4D46004643D2 /* MyWardrobeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWardrobeViewController.h; sourceTree = "<group>"; };
 		4F7B64E61B5F4D46004643D2 /* MyWardrobeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWardrobeViewController.m; sourceTree = "<group>"; };
 		4F7B64E71B5F4D46004643D2 /* MyWardrobeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWardrobeViewController.xib; sourceTree = "<group>"; };
@@ -800,6 +805,9 @@
 				4F5D168B1B68E46500B03650 /* InspirationCollectionViewCell.h */,
 				4F5D168C1B68E46500B03650 /* InspirationCollectionViewCell.m */,
 				4F5D168D1B68E46500B03650 /* InspirationCollectionViewCell.xib */,
+				4F78B4901B722B0100A45E42 /* ColorCell.h */,
+				4F78B4911B722B0100A45E42 /* ColorCell.m */,
+				4F78B4921B722B0100A45E42 /* ColorCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1328,6 +1336,7 @@
 				4F5F945A1B67735F00399681 /* SelectViewController.xib in Resources */,
 				4F8329ED1B5CEB63005588D7 /* ic_main_operate@2x.png in Resources */,
 				4F85BBBE1B7077DA0072AB49 /* 搭配日历.xcassets in Resources */,
+				4F78B4941B722B0100A45E42 /* ColorCell.xib in Resources */,
 				4F7D00A11B6A1D6000BE18CE /* MJRefresh.bundle in Resources */,
 				4F85BBB61B7077A30072AB49 /* 侧滑.xcassets in Resources */,
 				4F6FB3FD1B58E77500C5CB0A /* cat3.jpg in Resources */,
@@ -1500,6 +1509,7 @@
 				4F7B64EE1B5F5386004643D2 /* MyCollectionViewController.m in Sources */,
 				4F6FB4031B59038200C5CB0A /* WriteClothesDetailsViewController.m in Sources */,
 				4F417DBA1B4E6875000BD540 /* RC_BaseViewController.m in Sources */,
+				4F78B4931B722B0100A45E42 /* ColorCell.m in Sources */,
 				4F7B64E81B5F4D46004643D2 /* MyWardrobeViewController.m in Sources */,
 				4FB3741B1B66450F009ED71E /* AFURLResponseSerialization.m in Sources */,
 				4F7D00981B6A1D6000BE18CE /* MJRefreshAutoGifFooter.m in Sources */,

@@ -266,7 +266,13 @@ enum ActivityColor
     AC2,
     AC3,
     AC4,
-    AC5
+    AC5,
+    AC6,
+    AC7,
+    AC8,
+    AC9,
+    AC10,
+    AC11
 };
 
 #endif
