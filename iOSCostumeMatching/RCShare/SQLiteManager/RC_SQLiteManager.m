@@ -516,7 +516,17 @@ static RC_SQLiteManager *sqliteManager = nil;
     return nil;
 }
 
-
+-(BOOL)deleteActivityInfo:(ActivityInfo *)activityInfo
+{
+    [self createTable:TNTActivity];
+    if([_db open])
+    {
+        BOOL success = [_db executeUpdate:@"delete from Activity where id = ?",activityInfo.numId,nil];
+        [_db close];
+        return success;
+    }
+    return NO;
+}
 
 
 

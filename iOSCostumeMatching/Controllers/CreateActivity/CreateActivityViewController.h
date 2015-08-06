@@ -10,6 +10,10 @@
 
 @interface CreateActivityViewController : RC_BaseViewController
 
+@property (nonatomic) NSInteger type;
+@property (nonatomic, strong) ActivityInfo *activityInfo;
+
 -(void)setActivityFinishBlock:(void(^)(ActivityInfo *info))activityfinishBlock;
+-(void)setDeleteBlock:(void(^)(ActivityInfo *info))deleteBlock;
 
 @end

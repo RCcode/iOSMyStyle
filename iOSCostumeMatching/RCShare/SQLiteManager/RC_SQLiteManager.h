@@ -40,5 +40,6 @@ enum TableNameType
 -(BOOL)addActivityInfo:(ActivityInfo *)activityInfo;
 -(NSMutableArray *)getAllActivity;
 -(NSMutableArray *)getAllActivityWithYear:(NSString *)year andMonth:(NSString *)month andDay:(NSString *)day;
+-(BOOL)deleteActivityInfo:(ActivityInfo *)activityInfo;
 
 @end

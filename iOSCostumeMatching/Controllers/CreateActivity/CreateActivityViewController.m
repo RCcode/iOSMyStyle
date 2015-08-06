@@ -29,6 +29,7 @@
 }
 @property (strong, nonatomic) IBOutlet UIView *actionView;
 @property (strong, nonatomic) IBOutlet UIView *addClotheOrCollectionView;
+@property (weak, nonatomic) IBOutlet UIButton *btnDelete;
 
 
 
@@ -50,7 +51,7 @@
 
 
 @property (nonatomic, copy) void(^finish)(ActivityInfo *info);
-
+@property (nonatomic, copy) void(^delete)(ActivityInfo *info);
 
 
 @end
@@ -89,6 +90,11 @@
     _finish = activityfinishBlock;
 }
 
+-(void)setDeleteBlock:(void (^)(ActivityInfo *))deleteBlock
+{
+    _delete = deleteBlock;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"新建活动"];
@@ -120,6 +126,13 @@
     [self.view addSubview:_dateView];
     [self.view addSubview:_dateAndTimeView];
     
+    if (_type == 1) {
+        _btnDelete.hidden = NO;
+    }
+    else
+    {
+        _btnDelete.hidden = YES;
+    }
     
     _addTitle.delegate = self;
     _txtLocation.delegate = self;
@@ -305,6 +318,13 @@
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectColor];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)pressDelete:(id)sender {
+    if (_delete) {
+        _delete(_activityInfo);
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)pressDateDone:(id)sender {

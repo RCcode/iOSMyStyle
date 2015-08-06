@@ -75,6 +75,7 @@
         
     activityTableView = [[UITableView alloc]init];
     [activityTableView registerNib:[UINib nibWithNibName:@"ActivityCell" bundle:nil] forCellReuseIdentifier:@"ActivityCell"];
+    activityTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     activityTableView.delegate = self;
     activityTableView.dataSource = self;
     [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-20-CGRectGetHeight(calendarView.frame))];
@@ -113,8 +114,8 @@
     [ff setDateFormat:@"yyyy-MM"];
     NSString* strDate = [ff stringFromDate:date];
     [self setNavTitle:strDate];
-    NSString *year = yearFromDate(date);
-    NSString *month = monthFromDate(date);
+    year = yearFromDate(date);
+    month = monthFromDate(date);
     _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
     [activityTableView reloadData];
 }
@@ -128,10 +129,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ShowActivityViewController *showActivity = [[ShowActivityViewController alloc]init];
-    showActivity.activityInfo = [_arrActivity objectAtIndex:indexPath.row];
-    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showActivity];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    CreateActivityViewController *createActivity = [[CreateActivityViewController alloc]init];
+    createActivity.activityInfo = [_arrActivity objectAtIndex:indexPath.row];
+    createActivity.type = 1;
+    __weak CalendarViewController *weakSelf = self;
+    [createActivity setDeleteBlock:^(ActivityInfo *info) {
+        [weakSelf deleteCollection:info];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createActivity];
     [self presentViewController:nav animated:YES completion:nil];
+//    ShowActivityViewController *showActivity = [[ShowActivityViewController alloc]init];
+//    showActivity.activityInfo = [_arrActivity objectAtIndex:indexPath.row];
+//    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showActivity];
+//    [self presentViewController:nav animated:YES completion:nil];
+}
+
+-(void)deleteCollection:(ActivityInfo *)info
+{
+    [[RC_SQLiteManager shareManager]deleteActivityInfo:info];
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
+    [activityTableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -144,6 +162,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityCell"];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     ActivityInfo *info = [_arrActivity objectAtIndex:[indexPath row]];
     if(info.arrData.count>0)
     {
