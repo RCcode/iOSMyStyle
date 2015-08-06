@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,21 +14,48 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="143" height="206"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qdd-Tn-7NC">
-                        <rect key="frame" x="0.0" y="0.0" width="143" height="133"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qdd-Tn-7NC">
+                        <rect key="frame" x="0.0" y="0.0" width="143" height="143"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Qdd-Tn-7NC" secondAttribute="height" multiplier="1:1" id="vTk-GD-Cfn"/>
+                        </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNA-CC-3LO">
-                        <rect key="frame" x="8" y="147" width="38" height="35"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nNA-CC-3LO">
+                        <rect key="frame" x="7" y="150" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="nNA-CC-3LO" secondAttribute="height" multiplier="1:1" id="Wbb-U0-2Wy"/>
+                            <constraint firstAttribute="height" constant="25" id="YvI-0X-BQD"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xp1-hz-PbA">
-                        <rect key="frame" x="49" y="151" width="94" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xp1-hz-PbA">
+                        <rect key="frame" x="40" y="150" width="76" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dapei_likes" translatesAutoresizingMaskIntoConstraints="NO" id="oZj-kk-jWt">
+                        <rect key="frame" x="116" y="152" width="18" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="oZj-kk-jWt" secondAttribute="height" multiplier="1:1" id="jEH-Rg-3A4"/>
+                            <constraint firstAttribute="width" constant="18" id="jTc-R4-j7m"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <constraints>
+                <constraint firstItem="Qdd-Tn-7NC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0lg-qv-e8K"/>
+                <constraint firstItem="nNA-CC-3LO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7" id="7oo-BZ-BTc"/>
+                <constraint firstItem="oZj-kk-jWt" firstAttribute="leading" secondItem="xp1-hz-PbA" secondAttribute="trailing" id="9B8-Ob-rqi"/>
+                <constraint firstItem="oZj-kk-jWt" firstAttribute="top" secondItem="Qdd-Tn-7NC" secondAttribute="bottom" constant="9" id="Gpg-TU-YBe"/>
+                <constraint firstAttribute="trailing" secondItem="oZj-kk-jWt" secondAttribute="trailing" constant="9" id="Jdj-Be-pib"/>
+                <constraint firstItem="xp1-hz-PbA" firstAttribute="bottom" secondItem="nNA-CC-3LO" secondAttribute="bottom" id="c4r-CX-nHs"/>
+                <constraint firstItem="Qdd-Tn-7NC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="cLg-mF-zPo"/>
+                <constraint firstItem="nNA-CC-3LO" firstAttribute="top" secondItem="Qdd-Tn-7NC" secondAttribute="bottom" constant="7" id="fE9-i0-4cM"/>
+                <constraint firstItem="xp1-hz-PbA" firstAttribute="top" secondItem="nNA-CC-3LO" secondAttribute="top" id="gOi-Yq-2hw"/>
+                <constraint firstItem="xp1-hz-PbA" firstAttribute="leading" secondItem="nNA-CC-3LO" secondAttribute="trailing" constant="8" id="mvS-i9-9d2"/>
+                <constraint firstAttribute="trailing" secondItem="Qdd-Tn-7NC" secondAttribute="trailing" id="yoa-jG-jOP"/>
+            </constraints>
             <size key="customSize" width="143" height="206"/>
             <connections>
                 <outlet property="collectionImageView" destination="Qdd-Tn-7NC" id="LIg-Qi-She"/>
@@ -37,4 +65,7 @@
             <point key="canvasLocation" x="417.5" y="212"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="dapei_likes" width="19" height="19"/>
+    </resources>
 </document>

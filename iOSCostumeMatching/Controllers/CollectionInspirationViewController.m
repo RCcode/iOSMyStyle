@@ -22,10 +22,16 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnStyle;
 @property (weak, nonatomic) IBOutlet UIButton *btnOccasion;
+@property (weak, nonatomic) IBOutlet UILabel *lblStyle;
+@property (weak, nonatomic) IBOutlet UILabel *lblOccasion;
+
+
 @property (nonatomic, strong) UICollectionView *collectionView;  // 集合视图
 
 @property (nonatomic, strong) NSMutableArray *arrCollection;
 @property (nonatomic) int mId;
+
+
 
 @end
 
@@ -42,7 +48,7 @@
     [super viewDidLoad];
     self.showReturn = YES;
     [self setNavTitle:@"搭配灵感"];
-    [self setReturnBtnTitle:@"菜单"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCollectionView) name:NOTIFICATION_UPDATEVIEW object:nil];
     
@@ -70,9 +76,11 @@
 {
     // 创建布局对象，需要对显示图片的布局进行调整所有传递给布局对象
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    flowLayout.minimumLineSpacing = 5;
+    flowLayout.minimumInteritemSpacing = 5;
     
     // layout 决定来 collectionView 中所有 cell (单元格) 的布局
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavBarHeight-20) collectionViewLayout:flowLayout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_btnOccasion.frame), ScreenWidth, ScreenHeight-64-CGRectGetHeight(_btnOccasion.frame)) collectionViewLayout:flowLayout];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     
@@ -86,6 +94,13 @@
 
 -(void)updateCollectionView
 {
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (!userInfo) {
+        [self.collectionView.header endRefreshing];
+        [self.collectionView.footer endRefreshing];
+        return;
+    }
+    
     if (_mId == 0) {
         [_arrCollection removeAllObjects];
     }
@@ -120,7 +135,7 @@
     __weak CollectionInspirationViewController *weakSelf = self;
     [selectStyle setSelectedBlock:^(int index) {
         style = index;
-        [weakSelf.btnStyle setTitle:getCollocationStyleName(style) forState:UIControlStateNormal];
+        [weakSelf.lblStyle setText:getCollocationStyleName(style)];
         weakSelf.mId = 0;
         [weakSelf updateCollectionView];
     }];
@@ -136,7 +151,7 @@
     __weak CollectionInspirationViewController *weakSelf = self;
     [selectOccasion setSelectedBlock:^(int index) {
         occasion = index;
-        [weakSelf.btnOccasion setTitle:getCollocationOccasionName(occasion) forState:UIControlStateNormal];
+        [weakSelf.lblOccasion setText:getCollocationOccasionName(occasion)];
         weakSelf.mId = 0;
         [weakSelf updateCollectionView];
     }];
@@ -156,7 +171,6 @@
     InspirationCollectionViewCell *cell =
     (InspirationCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
                                                                                 forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor blueColor];
     NSDictionary *dic = [_arrCollection objectAtIndex:indexPath.row];
     NSString *url = [dic objectForKey:@"url"];
     if (url) {
@@ -183,12 +197,12 @@
 //设置整个分区相对上下左右的间距
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(10, 10, 10, 10);
+    return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake((ScreenWidth-30)/2.0, (ScreenWidth-30)/2.0+50);
+    return CGSizeMake((ScreenWidth-15)/2.0, (ScreenWidth-15)/2.0+38);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.backgroundColor = [UIColor whiteColor];
+    _headImageView.layer.cornerRadius = CGRectGetWidth(_headImageView.frame)/2;
+    _headImageView.clipsToBounds = YES;
 }
 
 @end

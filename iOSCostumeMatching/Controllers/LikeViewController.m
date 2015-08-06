@@ -45,7 +45,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.showReturn = YES;
     [self setNavTitle:@"我喜欢的搭配"];
-    [self setReturnBtnTitle:@"菜单"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCollectionView) name:NOTIFICATION_UPDATEVIEW object:nil];
     
@@ -88,6 +88,13 @@
 
 -(void)updateCollectionView
 {
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (!userInfo) {
+        [self.collectionView.header endRefreshing];
+        [self.collectionView.footer endRefreshing];
+        return;
+    }
+    
     if (_mId == 0) {
         [_arrCollection removeAllObjects];
     }
