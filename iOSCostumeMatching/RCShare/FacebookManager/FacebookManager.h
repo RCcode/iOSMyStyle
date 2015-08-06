@@ -13,7 +13,7 @@
 @property (nonatomic) BOOL isLogined;
 
 + (FacebookManager *)shareManager;
-- (void)loginSuccess:(void(^)())success andFailed:(void (^)(NSError *error))failure;
+-(void)loginSuccess:(void(^)(NSString *token))success andFailed:(void (^)(NSError *error))failure
 - (void)logOut;
 -(void)getUserInfoSuccess:(void(^)(NSDictionary *userInfo))success andFailed:(void (^)(NSError *error))failure;
 

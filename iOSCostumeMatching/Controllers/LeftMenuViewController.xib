@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeftMenuViewController">
             <connections>
                 <outlet property="actionView" destination="81V-WC-Hir" id="p9S-No-HmA"/>
-                <outlet property="btnLogin" destination="AfI-hd-BAJ" id="7gG-gf-Kc5"/>
                 <outlet property="headImageView" destination="IBv-mk-evd" id="ofW-VG-O0I"/>
                 <outlet property="scrollView" destination="Kmd-S3-reT" id="Z4V-7S-xg4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -29,29 +28,29 @@
                                 <constraint firstAttribute="width" constant="64" id="eG2-cz-78e"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfI-hd-BAJ">
-                            <rect key="frame" x="93" y="45" width="59" height="30"/>
-                            <state key="normal" title="登陆in">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-LZ-zcp">
+                            <rect key="frame" x="119" y="48" width="76" height="24"/>
+                            <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="OZD-Zg-CNX"/>
+                                <constraint firstAttribute="width" constant="76" id="dVv-tS-U5B"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="点击登录">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="login:" destination="-1" eventType="touchUpInside" id="SFn-i2-H0y"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEe-e1-pwi">
-                            <rect key="frame" x="155" y="45" width="64" height="30"/>
-                            <state key="normal" title="登陆Face">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="loginFaceBook:" destination="-1" eventType="touchUpInside" id="MW6-CH-Owe"/>
+                                <action selector="pressLogin:" destination="-1" eventType="touchUpInside" id="zac-HA-dSQ"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="w9r-LZ-zcp" firstAttribute="leading" secondItem="IBv-mk-evd" secondAttribute="trailing" constant="25" id="Ra5-O9-L6z"/>
                         <constraint firstAttribute="centerY" secondItem="IBv-mk-evd" secondAttribute="centerY" id="TCc-aK-5sP"/>
                         <constraint firstItem="IBv-mk-evd" firstAttribute="leading" secondItem="47A-Ml-jQb" secondAttribute="leading" constant="30" id="dAg-18-4bX"/>
+                        <constraint firstAttribute="centerY" secondItem="w9r-LZ-zcp" secondAttribute="centerY" id="fs4-a2-7hp"/>
                         <constraint firstAttribute="height" constant="120" id="vPw-iX-kvS"/>
                     </constraints>
                 </view>

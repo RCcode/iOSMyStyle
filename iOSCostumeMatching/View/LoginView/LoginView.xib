@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoginView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Brd-4h-WCP">
+                    <rect key="frame" x="50" y="219" width="220" height="130"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpz-bW-oR5">
+                            <rect key="frame" x="20" y="46" width="90" height="52"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="cdD-H6-wYx"/>
+                            </constraints>
+                            <state key="normal" image="ic_instagram">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="loginInstagram:" destination="iN0-l3-epB" eventType="touchUpInside" id="dHH-h1-b6W"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Myk-53-gsi">
+                            <rect key="frame" x="110" y="46" width="90" height="52"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="52" id="8fg-Kj-3Ih"/>
+                            </constraints>
+                            <state key="normal" image="ic_facebook">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="loginFacebook:" destination="iN0-l3-epB" eventType="touchUpInside" id="7Pi-Ld-Rdh"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用第三方登录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2s-pz-iFB">
+                            <rect key="frame" x="20" y="15" width="200" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="3Ef-Ov-Bpj"/>
+                                <constraint firstAttribute="height" constant="21" id="b3J-rR-YdT"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="instagram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0b-TD-TEE">
+                            <rect key="frame" x="20" y="98" width="90" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="xva-N7-GDm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVF-83-0CR">
+                            <rect key="frame" x="110" y="98" width="90" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="eh8-5g-jYX"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="q0b-TD-TEE" firstAttribute="top" secondItem="xpz-bW-oR5" secondAttribute="bottom" id="1QG-gO-zma"/>
+                        <constraint firstAttribute="trailing" secondItem="M2s-pz-iFB" secondAttribute="trailing" id="5l5-4y-Lmz"/>
+                        <constraint firstItem="q0b-TD-TEE" firstAttribute="leading" secondItem="Brd-4h-WCP" secondAttribute="leading" constant="20" id="81w-LW-fAy"/>
+                        <constraint firstItem="QVF-83-0CR" firstAttribute="leading" secondItem="q0b-TD-TEE" secondAttribute="trailing" id="KUj-PQ-kc8"/>
+                        <constraint firstItem="QVF-83-0CR" firstAttribute="leading" secondItem="q0b-TD-TEE" secondAttribute="trailing" id="LOT-rg-x4F"/>
+                        <constraint firstItem="M2s-pz-iFB" firstAttribute="leading" secondItem="Brd-4h-WCP" secondAttribute="leading" constant="20" id="Loh-7v-FVP"/>
+                        <constraint firstItem="Myk-53-gsi" firstAttribute="leading" secondItem="xpz-bW-oR5" secondAttribute="trailing" id="UHS-l5-OEA"/>
+                        <constraint firstAttribute="height" constant="130" id="WZs-p6-J4T"/>
+                        <constraint firstItem="Myk-53-gsi" firstAttribute="leading" secondItem="xpz-bW-oR5" secondAttribute="trailing" id="Yci-hq-WxE"/>
+                        <constraint firstItem="xpz-bW-oR5" firstAttribute="leading" secondItem="Brd-4h-WCP" secondAttribute="leading" constant="20" id="YdS-yJ-yqy"/>
+                        <constraint firstItem="q0b-TD-TEE" firstAttribute="width" secondItem="QVF-83-0CR" secondAttribute="width" id="c4R-td-mtN"/>
+                        <constraint firstAttribute="trailing" secondItem="QVF-83-0CR" secondAttribute="trailing" constant="20" id="c6U-gs-u9p"/>
+                        <constraint firstAttribute="width" constant="220" id="dWX-vU-rNh"/>
+                        <constraint firstItem="Myk-53-gsi" firstAttribute="width" secondItem="xpz-bW-oR5" secondAttribute="width" id="gGp-SU-rXu"/>
+                        <constraint firstAttribute="trailing" secondItem="Myk-53-gsi" secondAttribute="trailing" constant="20" id="iYE-LY-8jN"/>
+                        <constraint firstItem="xpz-bW-oR5" firstAttribute="top" secondItem="M2s-pz-iFB" secondAttribute="bottom" constant="10" id="kyD-QM-p3u"/>
+                        <constraint firstItem="QVF-83-0CR" firstAttribute="top" secondItem="Myk-53-gsi" secondAttribute="bottom" id="wV1-Ix-lPZ"/>
+                        <constraint firstItem="Myk-53-gsi" firstAttribute="top" secondItem="M2s-pz-iFB" secondAttribute="bottom" constant="10" id="zkH-Hp-2fm"/>
+                        <constraint firstItem="M2s-pz-iFB" firstAttribute="top" secondItem="Brd-4h-WCP" secondAttribute="top" constant="15" id="zkt-AP-hCG"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="Brd-4h-WCP" secondAttribute="centerY" id="LhJ-Wu-Okf"/>
+                <constraint firstAttribute="centerX" secondItem="Brd-4h-WCP" secondAttribute="centerX" id="S6n-9t-wcM"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="lblTitle" destination="M2s-pz-iFB" id="c1B-Fh-dkE"/>
+            </connections>
+            <point key="canvasLocation" x="564.5" y="265.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_facebook" width="36" height="36"/>
+        <image name="ic_instagram" width="36" height="36"/>
+    </resources>
+</document>

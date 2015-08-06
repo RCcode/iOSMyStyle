@@ -10,11 +10,14 @@
 #import "InstagramLoginViewController.h"
 #import "UIImageView+WebCache.h"
 #import "FacebookManager.h"
+#import "LoginView.h"
 
 @interface LeftMenuViewController ()
-
+{
+    LoginView *loginView;
+    UserInfo *userInfo;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
-@property (weak, nonatomic) IBOutlet UIButton *btnLogin;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *actionView;
 
@@ -24,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    userInfo = [UserInfo unarchiverUserData];
     if (userInfo) {
         [_headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
         [[RC_RequestManager shareManager]loginWith:userInfo success:^(id responseObject) {
@@ -46,29 +49,49 @@
     
     [_scrollView addSubview:_actionView];
     _scrollView.contentSize = CGSizeMake(CGRectGetWidth(_actionView.frame), CGRectGetHeight(_actionView.frame));
+    
+    loginView = [LoginView instanceLoginView];
+    [loginView addTapRemove];
+    [loginView setFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    loginView.backgroundColor = [colorWithHexString(@"#000000") colorWithAlphaComponent:0.25];
+    __weak LeftMenuViewController *weakSelf = self;
+    [loginView setLoginInstagramBlock:^{
+        [weakSelf loginInstagram];
+    }];
+    [loginView setLoginFacebookBlock:^{
+        [weakSelf loginFaceBook];
+    }];
+    AppDelegate *app = [[UIApplication sharedApplication]delegate];
+    [app.window addSubview:loginView];
+    loginView.hidden = YES;
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void)getTokenSuccess:(id)responseObject
 {
     NSDictionary *dic = responseObject;
-    UserInfo *userInfo = [[UserInfo alloc]init];
+    userInfo = [[UserInfo alloc]init];
     userInfo.strToken = [dic objectForKey:@"access_token"];
     userInfo.strUid = [NSString stringWithFormat:@"%@",[[dic objectForKey:@"user"] objectForKey:@"id"]];
     userInfo.strTname = [[dic objectForKey:@"user"]objectForKey:@"username"];
     userInfo.strPicURL = [[dic objectForKey:@"user"] objectForKey:@"profile_picture"];
     
-    userInfo.numTplat = [NSNumber numberWithShort:1];
-    userInfo.numPlat = [NSNumber numberWithShort:1];
+    [self saveUserInfo:userInfo];
+}
+
+-(void)saveUserInfo:(UserInfo *)_userInfo
+{
+    _userInfo.numTplat = [NSNumber numberWithShort:1];
+    _userInfo.numPlat = [NSNumber numberWithShort:1];
     
-    [UserInfo archiverUserInfo:userInfo];
+    [UserInfo archiverUserInfo:_userInfo];
     __weak LeftMenuViewController *weakSelf = self;
-    [[RC_RequestManager shareManager]loginWith:userInfo success:^(id responseObject) {
+    [[RC_RequestManager shareManager]loginWith:_userInfo success:^(id responseObject) {
         CLog(@"%@",responseObject);
-//        [weakSelf loginServerSuccess:responseObject];
+        //        [weakSelf loginServerSuccess:responseObject];
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             if ([[responseObject objectForKey:@"stat"]integerValue] == 10000) {
-                userInfo.numId = [responseObject objectForKey:@"id"];
+                _userInfo.numId = [responseObject objectForKey:@"id"];
                 [UserInfo archiverUserInfo:userInfo];
                 [[RC_SQLiteManager shareManager]addUser:userInfo];
                 [weakSelf.headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
@@ -78,6 +101,7 @@
         CLog(@"%@",error);
     }];
 }
+
 /**
  *  成功登陆服务器
  *
@@ -109,7 +133,11 @@
     }];
 }
 
-- (IBAction)login:(id)sender {
+- (IBAction)pressLogin:(id)sender {
+    loginView.hidden = NO;
+}
+
+- (void)loginInstagram {
     InstagramLoginViewController *instagramLoginViewController = [[InstagramLoginViewController alloc]init];
     __weak LeftMenuViewController *weakSelf = self;
     [instagramLoginViewController setSuccessLoginBlock:^(NSString *code) {
@@ -119,40 +147,32 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 
-- (IBAction)loginFaceBook:(id)sender {
+- (void)loginFaceBook {
     __weak LeftMenuViewController *weakSelf = self;
-    [[FacebookManager shareManager]loginSuccess:^{
+    [[FacebookManager shareManager]loginSuccess:^(NSString *token) {
+        userInfo = [[UserInfo alloc]init];
+        userInfo.strToken = token;
         [weakSelf getFacebookUserInfo];
     } andFailed:^(NSError *error) {
-        NSLog(@"%@",error);
+         NSLog(@"%@",error);
     }];
 }
 
 -(void)getFacebookUserInfo
 {
-    [[FacebookManager shareManager] getUserInfoSuccess:^(NSDictionary *userInfo) {
-        NSLog(@"userInfo:%@",userInfo);
-//        weakSelf.userInfo.facebookid = [userInfo objectForKey:@"id"];
-//        weakSelf.userInfo.facebookname = [userInfo objectForKey:@"name"];
-//        [[NSUserDefaults standardUserDefaults]setObject:[userInfo objectForKey:@"id"] forKey:@"facebookid"];
-//        [[NSUserDefaults standardUserDefaults]setObject:[userInfo objectForKey:@"name"] forKey:@"facebookname"];
-//        [weakSelf updateUserInfo];
-    } andFailed:^(NSError *error) {
-        
-    }];
-    [[FacebookManager shareManager] getCoverGraphPathSuccess:^(NSDictionary *dic) {
-        NSLog(@"headurl:%@",dic);
-//        weakSelf.userInfo.mainurl = [[dic objectForKey:@"cover"]objectForKey:@"source"];
-//        [[NSUserDefaults standardUserDefaults]setObject:[[dic objectForKey:@"cover"]objectForKey:@"source"] forKey:@"mainurl"];
-//        [weakSelf updateUserInfo];
+    __weak LeftMenuViewController *weakSelf = self;
+    [[FacebookManager shareManager] getUserInfoSuccess:^(NSDictionary *_userInfo) {
+        NSLog(@"userInfo:%@",_userInfo);
+        userInfo.strUid = [_userInfo objectForKey:@"id"];
+        userInfo.strTname = [_userInfo objectForKey:@"name"];
+        [weakSelf saveUserInfo:userInfo];
     } andFailed:^(NSError *error) {
         
     }];
     [[FacebookManager shareManager] getHeadPicturePathSuccess:^(NSDictionary *dic) {
         NSLog(@"headurl:%@",dic);
-//        weakSelf.userInfo.headurl = [[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"];
-//        [[NSUserDefaults standardUserDefaults]setObject:[[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"] forKey:@"headurl"];
-//        [weakSelf updateUserInfo];
+        userInfo.strPicURL = [[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"];
+        [weakSelf saveUserInfo:userInfo];
     } andFailed:^(NSError *error) {
         
     }];

@@ -42,7 +42,7 @@ static FacebookManager *facebookManager = nil;
     }
 }
 
--(void)loginSuccess:(void(^)())success andFailed:(void (^)(NSError *error))failure
+-(void)loginSuccess:(void(^)(NSString *token))success andFailed:(void (^)(NSError *error))failure
 {
     if (!FBSession.activeSession.isOpen) {
         // if the session is closed, then we open it here
@@ -60,7 +60,7 @@ static FacebookManager *facebookManager = nil;
                     break;
                 default:
                     _isLogined = YES;
-                    success();
+                    success(session.accessToken);
                     break;
             }
         }];
@@ -69,7 +69,7 @@ static FacebookManager *facebookManager = nil;
     else
     {
         _isLogined = YES;
-        success();
+//        success();
     }
 }
 

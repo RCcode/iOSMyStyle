@@ -176,6 +176,8 @@
 		4FCD2FED1B5503CD00BD6DDB /* 7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FE31B5503CD00BD6DDB /* 7.jpeg */; };
 		4FCD2FEE1B5503CD00BD6DDB /* 8.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FE41B5503CD00BD6DDB /* 8.jpeg */; };
 		4FCD2FEF1B5503CD00BD6DDB /* 9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FE51B5503CD00BD6DDB /* 9.jpeg */; };
+		4FD118641B735B5D00A98CD0 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD118631B735B5D00A98CD0 /* LoginView.m */; };
+		4FD118661B735B7700A98CD0 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD118651B735B7700A98CD0 /* LoginView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -478,6 +480,9 @@
 		4FCD2FE31B5503CD00BD6DDB /* 7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpeg; sourceTree = "<group>"; };
 		4FCD2FE41B5503CD00BD6DDB /* 8.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpeg; sourceTree = "<group>"; };
 		4FCD2FE51B5503CD00BD6DDB /* 9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpeg; sourceTree = "<group>"; };
+		4FD118621B735B5D00A98CD0 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		4FD118631B735B5D00A98CD0 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		4FD118651B735B7700A98CD0 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -746,6 +751,7 @@
 		4F63418F1B4FA3E000DFC281 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4FD118611B735B3C00A98CD0 /* LoginView */,
 				4F9BE2231B6F7E5C00339E71 /* MaskImageView */,
 				4F9BE2141B6F7B7900339E71 /* MagnifyingGlass */,
 				4F7B64F01B5F8044004643D2 /* ItemView */,
@@ -1253,6 +1259,16 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		4FD118611B735B3C00A98CD0 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				4FD118621B735B5D00A98CD0 /* LoginView.h */,
+				4FD118631B735B5D00A98CD0 /* LoginView.m */,
+				4FD118651B735B7700A98CD0 /* LoginView.xib */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1336,6 +1352,7 @@
 				4F5F945A1B67735F00399681 /* SelectViewController.xib in Resources */,
 				4F8329ED1B5CEB63005588D7 /* ic_main_operate@2x.png in Resources */,
 				4F85BBBE1B7077DA0072AB49 /* 搭配日历.xcassets in Resources */,
+				4FD118661B735B7700A98CD0 /* LoginView.xib in Resources */,
 				4F78B4941B722B0100A45E42 /* ColorCell.xib in Resources */,
 				4F7D00A11B6A1D6000BE18CE /* MJRefresh.bundle in Resources */,
 				4F85BBB61B7077A30072AB49 /* 侧滑.xcassets in Resources */,
@@ -1410,6 +1427,7 @@
 				4F63419F1B4FB97B00DFC281 /* STScratchView.m in Sources */,
 				4F7B9ABC1B6254AD003D94BF /* SDWebImagePrefetcher.m in Sources */,
 				4F62FFF81B57BC4A005E8C79 /* CollocationInfo.m in Sources */,
+				4FD118641B735B5D00A98CD0 /* LoginView.m in Sources */,
 				4F7D009F1B6A1D6000BE18CE /* MJRefreshNormalHeader.m in Sources */,
 				4F62FFE61B579755005E8C79 /* FMDatabase.m in Sources */,
 				4F7D00A01B6A1D6000BE18CE /* MJRefreshStateHeader.m in Sources */,
