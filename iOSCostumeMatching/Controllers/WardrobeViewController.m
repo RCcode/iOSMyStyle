@@ -510,25 +510,34 @@
 
 -(void)addClothesToWardrobe:(ClothesInfo *)info
 {
-    showMBProgressHUD(nil, YES);
-    __weak WardrobeViewController *weakSelf = self;
-    [[RC_RequestManager shareManager]addClothingWithColothesInfo:info success:^(id responseObject) {
-        CLog(@"%@",responseObject);
-        hideMBProgressHUD();
-        if([responseObject isKindOfClass:[NSDictionary class]])
-        {
-            if ([[responseObject objectForKey:@"stat"]integerValue] == 10000) {
-                NSDictionary *dic = responseObject;
-                info.numClId = [NSNumber numberWithInt:[[dic objectForKey:@"clId"] intValue]];
-                [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
-                weakSelf.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
-                [weakSelf.collectionView reloadData];
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+        showMBProgressHUD(nil, YES);
+        __weak WardrobeViewController *weakSelf = self;
+        [[RC_RequestManager shareManager]addClothingWithColothesInfo:info success:^(id responseObject) {
+            CLog(@"%@",responseObject);
+            hideMBProgressHUD();
+            if([responseObject isKindOfClass:[NSDictionary class]])
+            {
+                if ([[responseObject objectForKey:@"stat"]integerValue] == 10000) {
+                    NSDictionary *dic = responseObject;
+                    info.numClId = [NSNumber numberWithInt:[[dic objectForKey:@"clId"] intValue]];
+                    [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
+                    weakSelf.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+                    [weakSelf.collectionView reloadData];
+                }
             }
-        }
-    } andFailed:^(NSError *error) {
-        CLog(@"%@",error);
-        hideMBProgressHUD();
-    }];
+        } andFailed:^(NSError *error) {
+            CLog(@"%@",error);
+            hideMBProgressHUD();
+        }];
+    }
+    else
+    {
+        [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
+        self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+        [self.collectionView reloadData];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

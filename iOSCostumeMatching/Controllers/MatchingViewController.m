@@ -118,26 +118,35 @@
 
 -(void)addCollocation:(CollocationInfo *)info
 {
-    showMBProgressHUD(nil, YES);
-    __weak MatchingViewController *weakSelf = self;
-    [[RC_RequestManager shareManager]addCollocationWithCollocationInfo:info success:^(id responseObject) {
-        CLog(@"%@",responseObject);
-        hideMBProgressHUD();
-        if([responseObject isKindOfClass:[NSDictionary class]])
-        {
-            if([[responseObject objectForKey:@"stat"] integerValue] == 10000)
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+        showMBProgressHUD(nil, YES);
+        __weak MatchingViewController *weakSelf = self;
+        [[RC_RequestManager shareManager]addCollocationWithCollocationInfo:info success:^(id responseObject) {
+            CLog(@"%@",responseObject);
+            hideMBProgressHUD();
+            if([responseObject isKindOfClass:[NSDictionary class]])
             {
-                NSDictionary *dic = responseObject;
-                info.numCoId = [NSNumber numberWithInt:[[dic objectForKey:@"coId"] intValue]];
-                [[RC_SQLiteManager shareManager]addCollection:info];;
-                weakSelf.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
-                [weakSelf.collectionView reloadData];
+                if([[responseObject objectForKey:@"stat"] integerValue] == 10000)
+                {
+                    NSDictionary *dic = responseObject;
+                    info.numCoId = [NSNumber numberWithInt:[[dic objectForKey:@"coId"] intValue]];
+                    [[RC_SQLiteManager shareManager]addCollection:info];;
+                    weakSelf.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
+                    [weakSelf.collectionView reloadData];
+                }
             }
-        }
-    } andFailed:^(NSError *error) {
-        hideMBProgressHUD();
-        CLog(@"%@",error);
-    }];
+        } andFailed:^(NSError *error) {
+            hideMBProgressHUD();
+            CLog(@"%@",error);
+        }];
+    }
+    else
+    {
+        [[RC_SQLiteManager shareManager]addCollection:info];;
+        self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
+        [self.collectionView reloadData];
+    }
 }
 
 #pragma mark - View

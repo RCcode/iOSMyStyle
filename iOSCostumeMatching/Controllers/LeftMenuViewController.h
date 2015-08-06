@@ -9,5 +9,5 @@
 #import "RC_BaseViewController.h"
 
 @interface LeftMenuViewController : RC_BaseViewController
-
+- (IBAction)pressLogin:(id)sender;
 @end

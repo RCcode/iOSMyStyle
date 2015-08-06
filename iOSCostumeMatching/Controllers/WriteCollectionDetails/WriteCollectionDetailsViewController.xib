@@ -15,6 +15,7 @@
                 <outlet property="lblStyle" destination="rul-1Z-wtQ" id="qrf-RH-RJE"/>
                 <outlet property="scrollView" destination="xdY-vA-OkE" id="27f-Cc-OHw"/>
                 <outlet property="txtDescription" destination="9ol-VJ-nmr" id="egG-BL-6MX"/>
+                <outlet property="upLoadSwitch" destination="bTn-AR-3TX" id="znj-PJ-oXa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

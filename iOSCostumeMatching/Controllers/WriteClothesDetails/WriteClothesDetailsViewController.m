@@ -8,6 +8,7 @@
 
 #import "WriteClothesDetailsViewController.h"
 #import "SelectViewController.h"
+#import "LeftMenuViewController.h"
 
 @interface WriteClothesDetailsViewController ()<UITextFieldDelegate>
 {
@@ -78,6 +79,14 @@
     _imageView.image = _image;
     
     _txtBrand.delegate = self;
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+        _upLoadSwitch.on = YES;
+    }
+    else
+    {
+        _upLoadSwitch.on = NO;
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -240,6 +249,15 @@
 }
 
 - (IBAction)upLoadValueChange:(id)sender {
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+    }
+    else
+    {
+        AppDelegate *app = [[UIApplication sharedApplication]delegate];
+        [(LeftMenuViewController *)app.sideViewController.leftViewController pressLogin:nil];
+        _upLoadSwitch.on = NO;
+    }
 }
 
 #pragma mark - UITextFieldDelegate

@@ -8,6 +8,7 @@
 
 #import "WriteCollectionDetailsViewController.h"
 #import "SelectViewController.h"
+#import "LeftMenuViewController.h"
 
 @interface WriteCollectionDetailsViewController ()<UITextFieldDelegate>
 {
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStyle;
 @property (weak, nonatomic) IBOutlet UILabel *lblOccasion;
 
+@property (weak, nonatomic) IBOutlet UISwitch *upLoadSwitch;
 
 @end
 
@@ -78,6 +80,15 @@
     [_scrollView addSubview:_contentView];
     [_contentView setFrame:CGRectMake(0, 0, ScreenWidth, CGRectGetHeight(_contentView.frame))];
     [_scrollView setContentSize:CGSizeMake(CGRectGetWidth(_contentView.frame), CGRectGetHeight(_contentView.frame))];
+    
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+        _upLoadSwitch.on = YES;
+    }
+    else
+    {
+        _upLoadSwitch.on = NO;
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -109,6 +120,15 @@
 }
 
 - (IBAction)upLoadValueChange:(id)sender {
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+    }
+    else
+    {
+        AppDelegate *app = [[UIApplication sharedApplication]delegate];
+        [(LeftMenuViewController *)app.sideViewController.leftViewController pressLogin:nil];
+        _upLoadSwitch.on = NO;
+    }
 }
 
 #pragma mark - UITextFieldDelegate
