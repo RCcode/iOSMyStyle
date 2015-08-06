@@ -113,7 +113,8 @@ UICollectionViewDelegate>
     UILabel* label = [[UILabel alloc] init];
     [label setText:pTitle];
     [label setTextAlignment:NSTextAlignmentCenter];
-    PWSCalendarSegmentItem* rt = [PWSCalendarSegmentItem CreateWithImage:nil HighLightedImage:nil Label:label LabelColor:[UIColor blackColor] LabelHighlightedColor:kPWSDefaultColor];
+//    PWSCalendarSegmentItem* rt = [PWSCalendarSegmentItem CreateWithImage:nil HighLightedImage:nil Label:label LabelColor:[UIColor blackColor] LabelHighlightedColor:kPWSDefaultColor];
+    PWSCalendarSegmentItem* rt = [PWSCalendarSegmentItem CreateWithImage:nil HighLightedImage:nil Label:label LabelColor:[UIColor blackColor] LabelHighlightedColor:[UIColor redColor]];
     return rt;
 }
 

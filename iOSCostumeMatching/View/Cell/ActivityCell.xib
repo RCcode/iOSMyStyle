@@ -14,6 +14,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="poe-tX-UMc">
+                        <rect key="frame" x="60" y="0.0" width="260" height="114"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cu-2J-oEF">
                         <rect key="frame" x="60" y="0.0" width="260" height="19"/>
                         <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -24,9 +27,6 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="poe-tX-UMc">
-                        <rect key="frame" x="60" y="19" width="260" height="95"/>
-                    </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSc-9H-7Jk">
                         <rect key="frame" x="5" y="0.0" width="55" height="114"/>
                         <subviews>
@@ -62,6 +62,7 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="poe-tX-UMc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3fZ-5S-nwL"/>
                     <constraint firstAttribute="trailing" secondItem="1cu-2J-oEF" secondAttribute="trailing" id="5Hj-m8-WOD"/>
                     <constraint firstItem="poe-tX-UMc" firstAttribute="leading" secondItem="PSc-9H-7Jk" secondAttribute="trailing" id="9rE-ln-Hgc"/>
                     <constraint firstItem="1cu-2J-oEF" firstAttribute="leading" secondItem="PSc-9H-7Jk" secondAttribute="trailing" id="9rf-SM-pRQ"/>
@@ -77,6 +78,7 @@
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="LkK-mI-BSB"/>
+                        <exclude reference="QWN-ln-JRW"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -85,6 +87,7 @@
                 <outlet property="lblTime" destination="fg5-fv-JMb" id="NHB-gl-3aH"/>
                 <outlet property="lblTitle" destination="1cu-2J-oEF" id="Ifb-qh-7Gg"/>
                 <outlet property="lblWeek" destination="SIc-3B-Rmc" id="Ie9-LX-LxA"/>
+                <outlet property="leftView" destination="PSc-9H-7Jk" id="PVQ-ua-k6A"/>
             </connections>
             <point key="canvasLocation" x="127" y="286"/>
         </tableViewCell>

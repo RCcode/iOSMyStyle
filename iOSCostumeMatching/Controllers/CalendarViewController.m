@@ -18,6 +18,8 @@
 {
     PWSCalendarView *calendarView;
     UITableView *activityTableView;
+    NSString *year;
+    NSString *month;
 }
 
 @property (nonatomic, strong) NSMutableArray *arrActivity;
@@ -100,7 +102,7 @@
 -(void)addNewActivity:(ActivityInfo *)info
 {
     [[RC_SQLiteManager shareManager]addActivityInfo:info];
-    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivity];
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
     [activityTableView reloadData];
 }
 
@@ -157,7 +159,8 @@
         [cell.clothesOrCollectionImageView setImage:image];
     }
     cell.lblTitle.text = [NSString stringWithFormat:@"%@",info.strTitle];
-    [cell.lblTitle setBackgroundColor:getColor([info.numColor intValue])];
+    [cell.lblTitle setBackgroundColor:[getColor([info.numColor intValue]) colorWithAlphaComponent:0.7]];
+    [cell.leftView setBackgroundColor:getColor([info.numColor intValue])];
     [cell.lblTime setText:dayFromDate(info.dateStartTime)];
     
     return cell;
@@ -168,10 +171,10 @@
 - (void) PWSCalendar:(PWSCalendarView*)_calendar didSelecteDate:(NSDate*)_date
 {
     NSLog(@"select = %@", _date);
-    NSString *year = yearFromDate(_date);
-    NSString *month = monthFromDate(_date);
-    NSString *day = dayFromDate(_date);
-    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:day];
+    NSString *_year = yearFromDate(_date);
+    NSString *_month = monthFromDate(_date);
+    NSString *_day = dayFromDate(_date);
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:_year andMonth:_month andDay:_day];
     [activityTableView reloadData];
 }
 

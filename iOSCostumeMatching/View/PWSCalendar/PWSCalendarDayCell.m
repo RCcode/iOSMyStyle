@@ -38,8 +38,8 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
     [m_date setTextColor:colorWithHexString(@"222222")];
     [m_date setFont:[UIFont systemFontOfSize:12]];
     [m_date setTextAlignment:NSTextAlignmentCenter];
-    m_date.clipsToBounds = YES;
-    m_date.layer.cornerRadius = CGRectGetWidth(m_date.frame)/2.0;
+//    m_date.clipsToBounds = YES;
+//    m_date.layer.cornerRadius = CGRectGetWidth(m_date.frame)/2.0;
     [self addSubview:m_date];
     self.backgroundColor = [UIColor whiteColor];
 }
@@ -57,17 +57,17 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
         {
             [m_date setTextColor:[UIColor whiteColor]];
         }
-        [m_date setBackgroundColor:kPWSDefaultColor];
+        [m_date setBackgroundColor:colorWithHexString(@"#45ddcb")];
     }
     else
     {
         if ([PWSHelper CheckSameDay:self.p_date AnotherDate:[NSDate date]])
         {
-            [m_date setTextColor:kPWSDefaultColor];
+            [m_date setTextColor:colorWithHexString(@"#45ddcb")];
         }
         else
         {
-            [m_date setTextColor:[UIColor blackColor]];
+            [m_date setTextColor:colorWithHexString(@"#222222")];
         }
         [m_date setBackgroundColor:[UIColor clearColor]];
     }
@@ -85,11 +85,11 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
     
     if ([PWSHelper CheckSameDay:_date AnotherDate:[NSDate date]])
     {
-        [m_date setTextColor:kPWSDefaultColor];
+        [m_date setTextColor:colorWithHexString(@"#45ddcb")];
     }
     else
     {
-        [m_date setTextColor:[UIColor blackColor]];
+        [m_date setTextColor:colorWithHexString(@"#222222")];
     }
     
     [m_date setText:day];

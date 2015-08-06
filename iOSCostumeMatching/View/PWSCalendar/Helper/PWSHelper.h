@@ -12,8 +12,6 @@
 ////////////////////////////////////////////////////////////////////
 #define kSCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define kSCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
-//#define kPWSDefaultColor [UIColor colorWithRed:132/255.9 green:157/255.9 blue:72/255.9 alpha:1]
-#define kPWSDefaultColor [UIColor blueColor]
 ////////////////////////////////////////////////////////////////////
 typedef NS_ENUM(NSInteger, enCalendarViewType)
 {
