@@ -49,12 +49,17 @@
     if (_clothesInfo.strBrand && ![_clothesInfo.strBrand isEqualToString:@""]) {
         [arr addObject:_clothesInfo.strBrand];
     }
-    if (_clothesInfo.numCateId) {
+    if (_clothesInfo.numCateId && [_clothesInfo.numCateId integerValue] != 0) {
         NSString *s = getWardrobeTypeName((WardrobeType)([_clothesInfo.numCateId integerValue]));
-        [arr addObject:s];
+        if (s) {
+            [arr addObject:s];
+        }
     }
-    if (_clothesInfo.numScateId) {
-        [arr addObject:getWardrobeCategoryeName((WardrobeCategory)([_clothesInfo.numScateId integerValue]))];
+    if (_clothesInfo.numScateId && [_clothesInfo.numScateId integerValue] != 0) {
+        NSString *s = getWardrobeCategoryeName((WardrobeCategory)([_clothesInfo.numScateId integerValue]));
+        if (s) {
+            [arr addObject:s];
+        }
     }
     
     CGFloat originX = 0;

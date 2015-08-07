@@ -9,7 +9,11 @@
 #import "ShowCollectionDetailsViewController.h"
 
 @interface ShowCollectionDetailsViewController ()<UIActionSheetDelegate>
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) UILabel *lblDescription;
+
 @property (nonatomic, copy) void(^delete)(CollocationInfo *info);
 @end
 
@@ -25,19 +29,59 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)doneBtnPressed:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"分享", nil];
+    [actionSheet showInView:self.view];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"搭配详情"];
-    [self setReturnBtnTitle:@"关闭"];
     self.showReturn = YES;
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
+    self.showDone = YES;
+    [self setDoneBtnNormalImage:[UIImage imageNamed:@"ic_more"] andHighlightedImage:nil];
     
     [_imageView setImage:_collocationInfo.file];
+    
+    _lblDescription = [[UILabel alloc]init];
+    [_lblDescription setFont:[UIFont systemFontOfSize:13]];
+    [_lblDescription setTextColor:colorWithHexString(@"#222222")];
+    [_lblDescription setFrame:CGRectMake(20, 5, ScreenWidth-20, 20)];
+    [_scrollView addSubview:_lblDescription];
+    [_lblDescription setText:(_collocationInfo.strDescription)];
+        
+    CGFloat originX = 0;
+    CGFloat originY = 30;
+    for (NSInteger i = 0; i<_collocationInfo.arrList.count; i++) {
+        ClothesInfo *info = [_collocationInfo.arrList objectAtIndex:i];
+        
+        NSMutableString *str = [[NSMutableString alloc]init];
+        WardrobeType type = (WardrobeType)[info.numCateId integerValue];
+        [str appendString: getWardrobeTypeName(type)];
+        [str appendString:@" "];
+        [str appendString:info.strBrand];
+        
+        CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:11]);
+        UILabel *label = [[UILabel alloc]init];
+        CGFloat width = rect.size.width+20;
+        if ((originX +width) > (ScreenWidth-20)) {
+            originX = 0;
+            originY = originY+30;
+        }
+        [label setFrame:CGRectMake(originX+20, originY, width, 25)];
+        
+        originX = originX+20+width;
+        
+        [label setTextAlignment:NSTextAlignmentCenter];
+        label.backgroundColor = colorWithHexString(@"#c0e1d9");
+        [label setTextColor:colorWithHexString(@"#ffffff")];
+        [label setFont:[UIFont systemFontOfSize:11]];
+        [_scrollView addSubview:label];
+        [label setText:str];
+    }
     // Do any additional setup after loading the view from its nib.
-}
-
-- (IBAction)showMore:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"分享", nil];
-    [actionSheet showInView:self.view];
 }
 
 #pragma mark - UIActionSheetDelegate

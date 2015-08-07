@@ -118,6 +118,11 @@
 
 -(void)addCollocation:(CollocationInfo *)info
 {
+    [[RC_SQLiteManager shareManager]addCollection:info];
+    
+    self.arrCollection = [[RC_SQLiteManager shareManager]getCollectionWithStyle:style occasion:occasion];
+    [_collectionView reloadData];
+    
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     if (userInfo) {
         showMBProgressHUD(nil, YES);
@@ -132,7 +137,7 @@
                     NSDictionary *dic = responseObject;
                     info.numCoId = [NSNumber numberWithInt:[[dic objectForKey:@"coId"] intValue]];
                     [[RC_SQLiteManager shareManager]addCollection:info];;
-                    weakSelf.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
+                    weakSelf.arrCollection = [[RC_SQLiteManager shareManager]getCollectionWithStyle:style occasion:occasion];
                     [weakSelf.collectionView reloadData];
                 }
             }
@@ -140,12 +145,6 @@
             hideMBProgressHUD();
             CLog(@"%@",error);
         }];
-    }
-    else
-    {
-        [[RC_SQLiteManager shareManager]addCollection:info];;
-        self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
-        [self.collectionView reloadData];
     }
 }
 

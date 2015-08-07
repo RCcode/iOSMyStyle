@@ -329,7 +329,12 @@ static RC_SQLiteManager *sqliteManager = nil;
     [self createTable:TNTCollocation];
     if([_db open])
     {
-        BOOL success = [_db executeUpdate:@"insert into Collocation (coId ,styleId ,occId ,description ,file ,date) values(?,?,?,?,?,?)",collocationInfo.numCoId,collocationInfo.numStyleId, collocationInfo.numOccId, collocationInfo.strDescription,UIImagePNGRepresentation(collocationInfo.file),collocationInfo.date,nil];
+        NSMutableData *mData = [[NSMutableData alloc] init];
+        NSKeyedArchiver *myKeyedArchiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:mData];
+        [myKeyedArchiver encodeObject:collocationInfo.arrList];
+        [myKeyedArchiver finishEncoding];
+
+        BOOL success = [_db executeUpdate:@"insert into Collocation (coId ,styleId ,occId ,description ,file ,date,list) values(?,?,?,?,?,?,?)",collocationInfo.numCoId,collocationInfo.numStyleId, collocationInfo.numOccId, collocationInfo.strDescription,UIImagePNGRepresentation(collocationInfo.file),collocationInfo.date,mData,nil];
         [_db close];
         return success;
     }
@@ -382,6 +387,10 @@ static RC_SQLiteManager *sqliteManager = nil;
             clothesInfo.file = [UIImage imageWithData:[rs dataForColumn:@"file"]];
             clothesInfo.date = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"date"]];
             
+            NSKeyedUnarchiver *myKeyedUnarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:[rs dataForColumn:@"list"]];
+            NSMutableArray *arrList = [myKeyedUnarchiver decodeObject];
+            clothesInfo.arrList = arrList;
+            
             [arr addObject:clothesInfo];
         }
         [_db close];
@@ -407,7 +416,9 @@ static RC_SQLiteManager *sqliteManager = nil;
             clothesInfo.strDescription = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"description"]];
             clothesInfo.file = [UIImage imageWithData:[rs dataForColumn:@"file"]];
             clothesInfo.date = [NSString stringWithFormat:@"%@",[rs stringForColumn:@"date"]];
-            
+            NSKeyedUnarchiver *myKeyedUnarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:[rs dataForColumn:@"list"]];
+            NSMutableArray *arrList = [myKeyedUnarchiver decodeObject];
+            clothesInfo.arrList = arrList;
             [arr addObject:clothesInfo];
         }
         [_db close];

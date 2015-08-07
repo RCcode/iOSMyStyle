@@ -3,11 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowCollectionDetailsViewController">
             <connections>
                 <outlet property="imageView" destination="td5-4e-7su" id="sCW-m7-BvS"/>
+                <outlet property="scrollView" destination="rOV-3f-AMh" id="3Ag-Nw-yEx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,22 +18,46 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="td5-4e-7su">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="186"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="td5-4e-7su">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="td5-4e-7su" secondAttribute="height" multiplier="1:1" id="Kna-RP-9WD"/>
+                    </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsD-2C-MVG">
-                    <rect key="frame" x="186" y="426" width="68" height="30"/>
-                    <state key="normal" title="更多">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvQ-6K-Jht">
+                    <rect key="frame" x="8" y="452" width="304" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="2yc-pg-Weg"/>
+                    </constraints>
+                    <state key="normal" title="+日历" image="ic_calendar">
+                        <color key="titleColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="showMore:" destination="-1" eventType="touchUpInside" id="yf4-EC-8eR"/>
-                    </connections>
                 </button>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOV-3f-AMh">
+                    <rect key="frame" x="0.0" y="320" width="320" height="124"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </scrollView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="rOV-3f-AMh" firstAttribute="top" secondItem="td5-4e-7su" secondAttribute="bottom" id="0Kx-wX-RJZ"/>
+                <constraint firstItem="td5-4e-7su" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2bX-FO-1Pf"/>
+                <constraint firstItem="rOV-3f-AMh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6SX-H6-OKj"/>
+                <constraint firstAttribute="trailing" secondItem="rOV-3f-AMh" secondAttribute="trailing" id="7BV-Rh-wcN"/>
+                <constraint firstAttribute="trailing" secondItem="td5-4e-7su" secondAttribute="trailing" id="GcG-3C-XvA"/>
+                <constraint firstItem="cvQ-6K-Jht" firstAttribute="top" secondItem="rOV-3f-AMh" secondAttribute="bottom" constant="8" id="IHB-E9-7AQ"/>
+                <constraint firstAttribute="trailing" secondItem="cvQ-6K-Jht" secondAttribute="trailing" constant="8" id="Lsd-uS-ggn"/>
+                <constraint firstItem="td5-4e-7su" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="U5g-tS-19I"/>
+                <constraint firstItem="cvQ-6K-Jht" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="lQo-zQ-I5I"/>
+                <constraint firstAttribute="bottom" secondItem="cvQ-6K-Jht" secondAttribute="bottom" constant="8" id="vT3-kK-YeB"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_calendar" width="30" height="30"/>
+    </resources>
 </document>
