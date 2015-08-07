@@ -11,8 +11,9 @@
 #import "UIImageView+WebCache.h"
 #import "FacebookManager.h"
 #import "LoginView.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface LeftMenuViewController ()
+@interface LeftMenuViewController ()<MFMailComposeViewControllerDelegate>
 {
     LoginView *loginView;
     UserInfo *userInfo;
@@ -245,6 +246,69 @@
     sideViewController.rootViewController=delegate.navLikeController;
     [sideViewController hideSideViewController:YES];
 }
+
+- (IBAction)rate:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAppStoreScoreURL]];
+}
+
+- (IBAction)feedBack:(id)sender {
+    // app名称 版本
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    
+    //设备型号 系统版本
+    NSString *deviceName = doDevicePlatform();
+    NSString *deviceSystemName = [[UIDevice currentDevice] systemName];
+    NSString *deviceSystemVer = [[UIDevice currentDevice] systemVersion];
+    
+    //设备分辨率
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGFloat resolutionW = [UIScreen mainScreen].bounds.size.width * scale;
+    CGFloat resolutionH = [UIScreen mainScreen].bounds.size.height * scale;
+    NSString *resolution = [NSString stringWithFormat:@"%.f * %.f", resolutionW, resolutionH];
+    
+    //本地语言
+    NSString *language = [[NSLocale preferredLanguages] firstObject];
+    
+    //            NSString *diveceInfo = @"app版本号 手机型号 手机系统版本 分辨率 语言";
+    NSString *diveceInfo = [NSString stringWithFormat:@"%@ %@, %@, %@ %@, %@, %@", app_Name, app_Version, deviceName, deviceSystemName, deviceSystemVer,  resolution, language];
+    
+    //直接发邮件
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+    if(!picker) return;
+    picker.mailComposeDelegate =self;
+    NSString *subject = [NSString stringWithFormat:@"%@ %@ (iOS)",AppName, LocalizedString(@"feedback", nil)];
+    [picker setSubject:subject];
+    [picker setToRecipients:@[kFeedbackEmail]];
+    [picker setMessageBody:diveceInfo isHTML:NO];
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    [controller dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+- (IBAction)share:(id)sender {
+    //需要分享的内容
+//    NSString *shareContent = LocalizedString(@"share_msg", nil);
+    NSString *shareContent = @"aaa";
+    NSArray *activityItems = @[shareContent];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    __weak UIActivityViewController *blockActivityVC = activityVC;
+    
+    activityVC.completionHandler = ^(NSString *activityType,BOOL completed){
+        
+        //                NSLog(@"activityType - %@", activityType);
+        
+        [blockActivityVC dismissViewControllerAnimated:YES completion:nil];
+    };
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -31,6 +31,7 @@
 		4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DE31B4E9139000BD540 /* YRSideViewController.m */; };
 		4F5146CB1B7484E9001AB836 /* CustumalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5146C91B7484E9001AB836 /* CustumalCell.m */; };
 		4F5146CC1B7484E9001AB836 /* CustumalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5146CA1B7484E9001AB836 /* CustumalCell.xib */; };
+		4F5146CF1B749671001AB836 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5146CE1B749671001AB836 /* MessageUI.framework */; };
 		4F5A50661B60A3540001D5D1 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A50641B60A3540001D5D1 /* ActivityCell.m */; };
 		4F5A50671B60A3540001D5D1 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50651B60A3540001D5D1 /* ActivityCell.xib */; };
 		4F5A506D1B60E48B0001D5D1 /* ShowActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A506B1B60E48B0001D5D1 /* ShowActivityViewController.m */; };
@@ -238,6 +239,7 @@
 		4F5146C81B7484E9001AB836 /* CustumalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustumalCell.h; sourceTree = "<group>"; };
 		4F5146C91B7484E9001AB836 /* CustumalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustumalCell.m; sourceTree = "<group>"; };
 		4F5146CA1B7484E9001AB836 /* CustumalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustumalCell.xib; sourceTree = "<group>"; };
+		4F5146CE1B749671001AB836 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		4F5A50631B60A3540001D5D1 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		4F5A50641B60A3540001D5D1 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		4F5A50651B60A3540001D5D1 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F5146CF1B749671001AB836 /* MessageUI.framework in Frameworks */,
 				4F62FFEE1B57981C005E8C79 /* libz.dylib in Frameworks */,
 				4F7D00AB1B6A3F6500BE18CE /* FacebookSDK.framework in Frameworks */,
 				4F62FFEC1B579770005E8C79 /* libsqlite3.dylib in Frameworks */,
@@ -1103,6 +1106,7 @@
 		4F85A6261B46480A0077E12E = {
 			isa = PBXGroup;
 			children = (
+				4F5146CE1B749671001AB836 /* MessageUI.framework */,
 				4F7D00AA1B6A3F6500BE18CE /* FacebookSDK.framework */,
 				4F8329EA1B5CEB43005588D7 /* ic_main_del@2x.png */,
 				4F8329EC1B5CEB63005588D7 /* ic_main_operate@2x.png */,
