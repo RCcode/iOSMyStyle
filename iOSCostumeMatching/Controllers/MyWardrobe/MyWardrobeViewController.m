@@ -59,7 +59,7 @@
     
     [self setNavTitle:@"我的衣橱"];
     self.showReturn = YES;
-    [self setReturnBtnTitle:@"取消"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [self.view addSubview:self.collectionView];

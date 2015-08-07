@@ -120,7 +120,9 @@
     [self setDoneBtnTitle:@"完成"];
     
     isAllDay = NO;
-    _dataArray = [[NSMutableArray alloc]init];
+    if (!_dataArray) {
+        _dataArray = [[NSMutableArray alloc]init];
+    }
     
     addImageScrollView = [[UIScrollView alloc]init];
     [addImageScrollView setFrame:CGRectMake(0, 0, ScreenWidth, 0)];
@@ -160,7 +162,6 @@
     if (_type == 1) {
         _btnDelete.hidden = NO;
         [_dataArray addObjectsFromArray:_activityInfo.arrData];
-        [self updateView];
         
         _addTitle.text = _activityInfo.strTitle;
         _txtLocation.text = _activityInfo.strLocation;
@@ -192,6 +193,7 @@
     {
         _btnDelete.hidden = YES;
     }
+    [self updateView];
     
     _addTitle.delegate = self;
     _txtLocation.delegate = self;
@@ -277,6 +279,9 @@
 
 -(void)addClothesOrCollection:(id)object
 {
+    if (!_dataArray) {
+        _dataArray = [[NSMutableArray alloc]init];
+    }
     [_dataArray addObject:object];
     [self updateView];
 }

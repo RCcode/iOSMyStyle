@@ -91,6 +91,12 @@
     [self setTitleDate:[NSDate date]];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateView];
+}
+
 - (IBAction)closeHelp:(id)sender {
     [_helpView removeFromSuperview];
     [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-64-CGRectGetHeight(calendarView.frame))];

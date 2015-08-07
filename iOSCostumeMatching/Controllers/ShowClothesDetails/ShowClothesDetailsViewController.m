@@ -7,6 +7,7 @@
 //
 
 #import "ShowClothesDetailsViewController.h"
+#import "CreateActivityViewController.h"
 
 @interface ShowClothesDetailsViewController ()<UIActionSheetDelegate>
 
@@ -112,6 +113,13 @@
 }
 
 - (IBAction)addCalendar:(id)sender {
+    CreateActivityViewController *createActivity = [[CreateActivityViewController alloc]init];
+    [createActivity addClothesOrCollection:_clothesInfo];
+    [createActivity setActivityFinishBlock:^(ActivityInfo *info,BOOL isNew) {
+        [[RC_SQLiteManager shareManager]addActivityInfo:info];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createActivity];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

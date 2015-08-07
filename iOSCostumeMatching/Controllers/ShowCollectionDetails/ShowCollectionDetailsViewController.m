@@ -7,6 +7,7 @@
 //
 
 #import "ShowCollectionDetailsViewController.h"
+#import "CreateActivityViewController.h"
 
 @interface ShowCollectionDetailsViewController ()<UIActionSheetDelegate>
 
@@ -99,6 +100,16 @@
     {
         CLog(@"分享");
     }
+}
+
+- (IBAction)addCalendar:(id)sender {
+    CreateActivityViewController *createActivity = [[CreateActivityViewController alloc]init];
+    [createActivity addClothesOrCollection:_collocationInfo];
+    [createActivity setActivityFinishBlock:^(ActivityInfo *info,BOOL isNew) {
+        [[RC_SQLiteManager shareManager]addActivityInfo:info];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createActivity];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

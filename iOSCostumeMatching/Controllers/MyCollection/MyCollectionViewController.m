@@ -37,7 +37,7 @@
     
     self.showReturn = YES;
     [self setNavTitle:@"我的搭配"];
-    [self setReturnBtnTitle:@"返回"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     
     self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];
     [self createCollectionView];

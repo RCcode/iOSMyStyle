@@ -16,4 +16,6 @@
 -(void)setActivityFinishBlock:(void(^)(ActivityInfo *info,BOOL isNew))activityfinishBlock;
 -(void)setDeleteBlock:(void(^)(ActivityInfo *info))deleteBlock;
 
+-(void)addClothesOrCollection:(id)object;
+
 @end
