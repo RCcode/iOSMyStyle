@@ -45,6 +45,8 @@
 
 #define kShareHotTags @"A fast and free app to get 10000s of real Instagram followers.In the App Store search F4F download !#follow#followme#follow4follow#f4f#followforfollow#like4like#like#likeforlike"
 
+#define AppName @"Matching"
+
 //key
 
 
@@ -90,6 +92,9 @@
 #define SUCCESSLOGINSERVER_KEY @"successLoginServer"
 
 #define NOTIFICATION_UPDATEVIEW @"notificationUpdateView"
+
+#define kDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+#define kToMorePath [kDocumentPath stringByAppendingPathComponent:@"iOSCostumeMatching_Share_Image.jpg"]
 
 static NSString *TOUCH_PHOTOMARK = @"touchPhotoMark";
 

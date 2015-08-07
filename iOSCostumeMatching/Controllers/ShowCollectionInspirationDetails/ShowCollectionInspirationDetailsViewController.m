@@ -8,8 +8,10 @@
 
 #import "ShowCollectionInspirationDetailsViewController.h"
 
-@interface ShowCollectionInspirationDetailsViewController ()
-
+@interface ShowCollectionInspirationDetailsViewController ()<UIDocumentInteractionControllerDelegate>
+{
+    UIDocumentInteractionController *_documetnInteractionController;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
@@ -131,6 +133,29 @@
 }
 
 - (IBAction)pressShare:(id)sender {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //保存本地 如果已存在，则删除
+        if([[NSFileManager defaultManager] fileExistsAtPath:kToMorePath]){
+            [[NSFileManager defaultManager] removeItemAtPath:kToMorePath error:nil];
+        }
+        NSData *imageData;
+        if (_imageView.image) {
+            imageData = UIImageJPEGRepresentation(_imageView.image, 0.8);
+        }
+        else
+        {
+            imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[_dic objectForKey:@"url"]]];
+        }
+        [imageData writeToFile:kToMorePath atomically:YES];
+        
+        NSURL *fileURL = [NSURL fileURLWithPath:kToMorePath];
+        _documetnInteractionController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+        _documetnInteractionController.delegate = self;
+        _documetnInteractionController.UTI = @"com.instagram.photo";
+        _documetnInteractionController.annotation = @{@"InstagramCaption":AppName};
+        [_documetnInteractionController presentOpenInMenuFromRect:CGRectMake(0, 0, 0, 0) inView:self.view animated:YES];
+    });
 }
 
 - (void)didReceiveMemoryWarning {

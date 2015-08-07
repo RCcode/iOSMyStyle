@@ -9,8 +9,10 @@
 #import "ShowCollectionDetailsViewController.h"
 #import "CreateActivityViewController.h"
 
-@interface ShowCollectionDetailsViewController ()<UIActionSheetDelegate>
-
+@interface ShowCollectionDetailsViewController ()<UIActionSheetDelegate,UIDocumentInteractionControllerDelegate>
+{
+    UIDocumentInteractionController *_documetnInteractionController;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UILabel *lblDescription;
@@ -99,6 +101,20 @@
     else if(buttonIndex == 1)
     {
         CLog(@"分享");
+        //保存本地 如果已存在，则删除
+        if([[NSFileManager defaultManager] fileExistsAtPath:kToMorePath]){
+            [[NSFileManager defaultManager] removeItemAtPath:kToMorePath error:nil];
+        }
+        
+        NSData *imageData = UIImageJPEGRepresentation(_collocationInfo.file, 0.8);
+        [imageData writeToFile:kToMorePath atomically:YES];
+        
+        NSURL *fileURL = [NSURL fileURLWithPath:kToMorePath];
+        _documetnInteractionController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+        _documetnInteractionController.delegate = self;
+        _documetnInteractionController.UTI = @"com.instagram.photo";
+        _documetnInteractionController.annotation = @{@"InstagramCaption":AppName};
+        [_documetnInteractionController presentOpenInMenuFromRect:CGRectMake(0, 0, 0, 0) inView:self.view animated:YES];
     }
 }
 
