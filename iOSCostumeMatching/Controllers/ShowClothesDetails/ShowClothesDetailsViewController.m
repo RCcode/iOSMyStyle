@@ -11,6 +11,7 @@
 @interface ShowClothesDetailsViewController ()<UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, copy) void(^delete)(ClothesInfo *info);
 
@@ -43,6 +44,45 @@
     [self setDoneBtnNormalImage:[UIImage imageNamed:@"ic_more"] andHighlightedImage:nil];
     
     [_imageView setImage:_clothesInfo.file];
+    
+    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    if (_clothesInfo.strBrand && ![_clothesInfo.strBrand isEqualToString:@""]) {
+        [arr addObject:_clothesInfo.strBrand];
+    }
+    if (_clothesInfo.numCateId) {
+        NSString *s = getWardrobeTypeName((WardrobeType)([_clothesInfo.numCateId integerValue]));
+        [arr addObject:s];
+    }
+    if (_clothesInfo.numScateId) {
+        [arr addObject:getWardrobeCategoryeName((WardrobeCategory)([_clothesInfo.numScateId integerValue]))];
+    }
+    
+    CGFloat originX = 0;
+    CGFloat originY = 10;
+
+    for (NSInteger i = 0; i<arr.count; i++) {
+        
+        NSMutableString *str = [arr objectAtIndex:i];
+        
+        CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:11]);
+        UILabel *label = [[UILabel alloc]init];
+        CGFloat width = rect.size.width+20;
+        if ((originX +width) > (ScreenWidth-20)) {
+            originX = 0;
+            originY = originY+30;
+        }
+        [label setFrame:CGRectMake(originX+20, originY, width, 25)];
+        
+        originX = originX+20+width;
+        
+        [label setTextAlignment:NSTextAlignmentCenter];
+        label.backgroundColor = colorWithHexString(@"#c0e1d9");
+        [label setTextColor:colorWithHexString(@"#ffffff")];
+        [label setFont:[UIFont systemFontOfSize:11]];
+        [_scrollView addSubview:label];
+        [label setText:str];
+    }
+    
     // Do any additional setup after loading the view from its nib.
 }
 

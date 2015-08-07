@@ -297,62 +297,6 @@ CGRect getTextLabelRectWithContentAndFont(NSString *content ,UIFont *font)
     return returnRect;
 }
 
-
-NSString *getCategoryName(int index)
-{
-    switch (index) {
-        case 0:
-            return @"All Topics";
-            break;
-        case 1:
-            return @"Abstract";
-            break;
-        case 2:
-            return @"Advertising";
-            break;
-        case 3:
-            return @"Art";
-            break;
-        case 4:
-            return @"Fashion";
-            break;
-        case 5:
-            return @"Cities";
-            break;
-        case 6:
-            return @"Entertainment";
-            break;
-        case 7:
-            return @"Nature";
-            break;
-        case 8:
-            return @"Sports";
-            break;
-        case 9:
-            return @"Travel";
-            break;
-        case 10:
-            return @"Architecture";
-            break;
-        case 11:
-            return @"Cars";
-            break;
-        case 12:
-            return @"Food";
-            break;
-        case 13:
-            return @"Health&Fitnes";
-            break;
-        case 14:
-            return @"Personal Life";
-            break;
-            
-        default:
-            return nil;
-            break;
-    }
-}
-
 NSString *getWardrobeTypeName(WardrobeType type)
 {
     NSString *str;

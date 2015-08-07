@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowClothesDetailsViewController">
             <connections>
                 <outlet property="imageView" destination="2Tu-yf-upv" id="Znb-eK-E4o"/>
+                <outlet property="scrollView" destination="ALy-cU-Py9" id="PeU-7z-Ia7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -60,26 +61,25 @@
                         <constraint firstItem="S8J-Kt-3ti" firstAttribute="top" secondItem="TG5-uC-OOJ" secondAttribute="top" constant="10" id="uLD-xC-IsL"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apF-BD-gNr">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALy-cU-Py9">
                     <rect key="frame" x="0.0" y="345" width="320" height="95"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="95" id="ekK-U0-BBe"/>
+                        <constraint firstAttribute="height" constant="95" id="jdf-PD-oVb"/>
                     </constraints>
-                </view>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="TG5-uC-OOJ" secondAttribute="bottom" id="04a-wg-rhh"/>
+                <constraint firstAttribute="trailing" secondItem="ALy-cU-Py9" secondAttribute="trailing" id="82q-AP-aP7"/>
                 <constraint firstAttribute="trailing" secondItem="TG5-uC-OOJ" secondAttribute="trailing" id="JKg-ZT-spm"/>
-                <constraint firstItem="apF-BD-gNr" firstAttribute="top" secondItem="2Tu-yf-upv" secondAttribute="bottom" id="Mko-ZB-1lR"/>
                 <constraint firstItem="2Tu-yf-upv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SSl-Rq-xj3"/>
-                <constraint firstItem="TG5-uC-OOJ" firstAttribute="top" secondItem="apF-BD-gNr" secondAttribute="bottom" id="TG5-kZ-gKG"/>
                 <constraint firstAttribute="trailing" secondItem="2Tu-yf-upv" secondAttribute="trailing" id="Tq4-ev-4A8"/>
-                <constraint firstItem="apF-BD-gNr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VCK-cy-se0"/>
-                <constraint firstAttribute="trailing" secondItem="apF-BD-gNr" secondAttribute="trailing" id="dwS-9t-7ip"/>
+                <constraint firstItem="ALy-cU-Py9" firstAttribute="top" secondItem="2Tu-yf-upv" secondAttribute="bottom" id="YBo-59-22O"/>
                 <constraint firstItem="2Tu-yf-upv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jCP-UX-dj0"/>
+                <constraint firstItem="TG5-uC-OOJ" firstAttribute="top" secondItem="ALy-cU-Py9" secondAttribute="bottom" id="mnA-XC-EW0"/>
                 <constraint firstItem="TG5-uC-OOJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="o6z-g5-8Yf"/>
+                <constraint firstItem="ALy-cU-Py9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="z0u-R4-C5U"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
