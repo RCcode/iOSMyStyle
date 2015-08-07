@@ -160,7 +160,7 @@
                 }
                 else
                 {
-                    category = index+1001;
+                    category = index+1000;
                 }
                 break;
             }
@@ -170,7 +170,7 @@
                 }
                 else
                 {
-                    category = index+1101;
+                    category = index+1100;
                 }
                 break;
             }
@@ -180,7 +180,7 @@
                 }
                 else
                 {
-                    category = index+1201;
+                    category = index+1200;
                 }
                 break;
             }
@@ -190,7 +190,7 @@
                 }
                 else
                 {
-                    category = index+1301;
+                    category = index+1300;
                 }
                 break;
             }
@@ -200,7 +200,7 @@
                 }
                 else
                 {
-                    category = index+1401;
+                    category = index+1400;
                 }
                 break;
             }
@@ -210,7 +210,7 @@
                 }
                 else
                 {
-                    category = index+1501;
+                    category = index+1500;
                 }
                 break;
             }
@@ -220,7 +220,7 @@
                 }
                 else
                 {
-                    category = index+1601;
+                    category = index+1600;
                 }
                 break;
             }

@@ -98,7 +98,6 @@
             return 49;
         }
     }
-    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
