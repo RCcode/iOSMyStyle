@@ -14,6 +14,9 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
 @interface PWSCalendarDayCell()
 {
     UILabel* m_date;
+    UIView *point1View;
+    UIView *point2View;
+    UIView *point3View;
 }
 @property (nonatomic, strong) NSDate* p_date;
 @end
@@ -42,6 +45,30 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
 //    m_date.layer.cornerRadius = CGRectGetWidth(m_date.frame)/2.0;
     [self addSubview:m_date];
     self.backgroundColor = [UIColor whiteColor];
+    
+    point1View = [[UIView alloc]init];
+    point1View.backgroundColor = [UIColor redColor];
+    [point1View setFrame:CGRectMake(0, 0, 4, 4)];
+    point1View.center = CGPointMake(self.bounds.size.width/2-8, CGRectGetHeight(self.frame)-10);
+    point1View.layer.cornerRadius = 2;
+    point1View.clipsToBounds = YES;
+    [self addSubview:point1View];
+    
+    point2View = [[UIView alloc]init];
+    point2View.backgroundColor = [UIColor redColor];
+    [point2View setFrame:CGRectMake(0, 0, 4, 4)];
+    point2View.center = CGPointMake(self.bounds.size.width/2, CGRectGetHeight(self.frame)-10);
+    point2View.layer.cornerRadius = 2;
+    point2View.clipsToBounds = YES;
+    [self addSubview:point2View];
+    
+    point3View = [[UIView alloc]init];
+    point3View.backgroundColor = [UIColor redColor];
+    [point3View setFrame:CGRectMake(0, 0, 4, 4)];
+    point3View.center = CGPointMake(self.bounds.size.width/2+8, CGRectGetHeight(self.frame)-10);
+    point3View.layer.cornerRadius = 2;
+    point3View.clipsToBounds = YES;
+    [self addSubview:point3View];
 }
 
 - (void) setSelected:(BOOL)selected
@@ -93,6 +120,75 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
     }
     
     [m_date setText:day];
+    
+    if (!_date) {
+        point1View.backgroundColor = [UIColor clearColor];
+        point2View.backgroundColor = [UIColor clearColor];
+        point3View.backgroundColor = [UIColor clearColor];
+        return;
+    }
+    NSString *_year = yearFromDate(_date);
+    NSString *_month = monthFromDate(_date);
+    NSString *_day = dayFromDate(_date);
+    NSArray *arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:_year andMonth:_month andDay:_day];
+    if (arrActivity.count>=3) {
+        for (int i = 0; i<3; i++) {
+            ActivityInfo *info = [arrActivity objectAtIndex:i];
+            switch (i) {
+                case 0:
+                {
+                    point1View.backgroundColor = getColor((ActivityColor)[info.numColor integerValue]);
+                    break;
+                }
+                case 1:
+                {
+                    point2View.backgroundColor = getColor((ActivityColor)[info.numColor integerValue]);
+                    break;
+                }
+                case 2:
+                {
+                    point3View.backgroundColor = getColor((ActivityColor)[info.numColor integerValue]);
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    }
+    else if (arrActivity.count==2)
+    {
+        for (int i = 0; i<2; i++) {
+            ActivityInfo *info = [arrActivity objectAtIndex:i];
+            switch (i) {
+                case 0:
+                {
+                    point1View.backgroundColor = getColor((ActivityColor)[info.numColor integerValue]);
+                    break;
+                }
+                case 1:
+                {
+                    point2View.backgroundColor = getColor((ActivityColor)[info.numColor integerValue]);
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+        point3View.backgroundColor = [UIColor clearColor];
+    }
+    else if (arrActivity.count==1)
+    {
+        ActivityInfo *info = [arrActivity objectAtIndex:0];
+        point1View.backgroundColor = getColor((ActivityColor)[info.numColor integerValue]);
+        point2View.backgroundColor = [UIColor clearColor];
+        point3View.backgroundColor = [UIColor clearColor];
+    }
+    else
+    {
+        point1View.backgroundColor = [UIColor clearColor];
+        point2View.backgroundColor = [UIColor clearColor];
+        point3View.backgroundColor = [UIColor clearColor];
+    }
 }
 
 
