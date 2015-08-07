@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  iOSCostumeMatching
+
+  Created by TCH on 15/8/7.
+  Copyright (c) 2015年 TCH. All rights reserved.
+*/
+
+
+"Login" = "登录";
+"Closet" = "我的衣橱";
+"Lookbook" = "我的搭配";
+"Calendar" = "搭配日历";
+"Inspiration" = "搭配灵感";
+"My_Likes" = "我喜欢的搭配";
+"Follow_us" = "关注我们";
+"Rate_5_Star" = "评分";
+"Feedback" = "反馈";
+"Share this app" = "分享应用";
+"Share_app" = "我发现一个很好用的服装搭配应用，名字是MyStyle。我已经用MyStyle搭配了很多新的造型。下载链接：";
+"Logout" = "注销";

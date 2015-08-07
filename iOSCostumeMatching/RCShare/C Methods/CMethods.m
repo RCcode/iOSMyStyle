@@ -59,22 +59,25 @@ NSString *LocalizedString(NSString *translation_key, id none){
     NSString *language = @"en";
     
     //只适配这么些种语言，其余一律用en
-    if([CURR_LANG isEqualToString:@"zh-Hans"] ||
-       [CURR_LANG isEqualToString:@"zh-Hant"] ||
-       [CURR_LANG isEqualToString:@"de"] ||
-       [CURR_LANG isEqualToString:@"es"] ||
-       [CURR_LANG isEqualToString:@"fr"] ||
-       [CURR_LANG isEqualToString:@"it"] ||
-       [CURR_LANG isEqualToString:@"ko"] ||
-       [CURR_LANG isEqualToString:@"ja"] ||
-       [CURR_LANG isEqualToString:@"pt"] ||
-       [CURR_LANG isEqualToString:@"pt-PT"] ||
-       [CURR_LANG isEqualToString:@"ru"] ||
-       [CURR_LANG isEqualToString:@"ar"] ||
-       [CURR_LANG isEqualToString:@"id"] ||
-       [CURR_LANG isEqualToString:@"th"] ){
+    if([CURR_LANG isEqualToString:@"zh-Hans"] ){
         language = CURR_LANG;
     }
+//    if([CURR_LANG isEqualToString:@"zh-Hans"] ||
+//       [CURR_LANG isEqualToString:@"zh-Hant"] ||
+//       [CURR_LANG isEqualToString:@"de"] ||
+//       [CURR_LANG isEqualToString:@"es"] ||
+//       [CURR_LANG isEqualToString:@"fr"] ||
+//       [CURR_LANG isEqualToString:@"it"] ||
+//       [CURR_LANG isEqualToString:@"ko"] ||
+//       [CURR_LANG isEqualToString:@"ja"] ||
+//       [CURR_LANG isEqualToString:@"pt"] ||
+//       [CURR_LANG isEqualToString:@"pt-PT"] ||
+//       [CURR_LANG isEqualToString:@"ru"] ||
+//       [CURR_LANG isEqualToString:@"ar"] ||
+//       [CURR_LANG isEqualToString:@"id"] ||
+//       [CURR_LANG isEqualToString:@"th"] ){
+//        language = CURR_LANG;
+//    }
     NSString * path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
     NSBundle * languageBundle = [NSBundle bundleWithPath:path];
     return [languageBundle localizedStringForKey:translation_key value:@"" table:nil];

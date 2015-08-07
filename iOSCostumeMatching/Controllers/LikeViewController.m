@@ -46,7 +46,7 @@
     [super viewDidLoad];
     
     self.showReturn = YES;
-    [self setNavTitle:@"我喜欢的搭配"];
+    [self setNavTitle:LocalizedString(@"My_Likes", nil)];
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCollectionView) name:NOTIFICATION_UPDATEVIEW object:nil];

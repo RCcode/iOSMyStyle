@@ -22,13 +22,30 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *actionView;
 @property (weak, nonatomic) IBOutlet UIButton *btnLogin;
+@property (weak, nonatomic) IBOutlet UIButton *btnWardrobe;
+@property (weak, nonatomic) IBOutlet UIButton *btnMatching;
+@property (weak, nonatomic) IBOutlet UIButton *btnCalendar;
+@property (weak, nonatomic) IBOutlet UIButton *btnCollectionInspiration;
+@property (weak, nonatomic) IBOutlet UIButton *btnMyLike;
 
 @end
 
 @implementation LeftMenuViewController
 
+-(void)setLocalizableText
+{
+    [_btnWardrobe setTitle:LocalizedString(@"Closet", nil) forState:UIControlStateNormal];
+    [_btnMatching setTitle:LocalizedString(@"Lookbook", nil) forState:UIControlStateNormal];
+    [_btnCalendar setTitle:LocalizedString(@"Calendar", nil) forState:UIControlStateNormal];
+    [_btnCollectionInspiration setTitle:LocalizedString(@"Inspiration", nil) forState:UIControlStateNormal];
+    [_btnMyLike setTitle:LocalizedString(@"My_Likes", nil) forState:UIControlStateNormal];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setLocalizableText];
+    
     userInfo = [UserInfo unarchiverUserData];
     if (userInfo) {
         [_headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];

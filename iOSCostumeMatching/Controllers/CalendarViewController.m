@@ -52,7 +52,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.showReturn = YES;
-    [self setNavTitle:@"我的日历"];
+//    [self setNavTitle:LocalizedString(@"Calendar", nil)];
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     self.showDone = YES;
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
