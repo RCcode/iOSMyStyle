@@ -22,6 +22,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    //注册通知
+    [self registNotification];
+    application.applicationIconBadgeNumber = 0;    
+    
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -69,6 +74,50 @@
 {
     return [FBSession.activeSession handleOpenURL:url];
 }
+
+- (void)registNotification{
+    if([[[UIDevice currentDevice]systemVersion] floatValue] >= 8.0){
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }else{
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+}
+
+-(void)addPush
+{
+    UILocalNotification *notification=[[UILocalNotification alloc] init];
+    
+    notification.repeatInterval = kCFCalendarUnitEra;
+    
+    notification.timeZone=[NSTimeZone defaultTimeZone];
+    
+    notification.applicationIconBadgeNumber = 1;
+    
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    
+    [dateformatter setDateFormat:@"YYYY-MM-dd-HH-mm-ss"];
+    
+    NSString  * nsStringDate12 =  [NSString  stringWithFormat:@"%d-%d-%d-%d-%d-%d",
+                                   
+                                   2015, 05, 22, 15, 47, 01  ];
+    
+    NSDate  * todayTwelve=[dateformatter dateFromString: nsStringDate12];
+    
+    notification.fireDate = todayTwelve;
+    
+    notification.alertBody=@"View today's sports data";
+    
+    notification.alertAction = @"打开";
+    
+    // 通知提示音 使用默认的
+    
+    notification.soundName= UILocalNotificationDefaultSoundName;
+    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

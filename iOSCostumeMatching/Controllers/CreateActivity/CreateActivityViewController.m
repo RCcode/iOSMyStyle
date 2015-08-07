@@ -97,7 +97,215 @@
             _finish(activityInfo,YES);
         }
     }
+    [self addRemindTime:startTime andFirstRemind:firstRemind andSecondRemind:secondRemind isAllDay:isAllDay andContent:[NSString stringWithFormat:@"%@,%@",_addTitle.text,_txtLocation.text]];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)addRemindTime:(NSDate *)_startTime andFirstRemind:(NSInteger)_firstRemind andSecondRemind:(NSInteger)_secondRemind isAllDay:(BOOL)_isAllDay andContent:(NSString *)content
+{
+    if (_isAllDay) {
+        NSDate *firstReminddate;
+        switch ((AllDayRemind)_firstRemind) {
+            case ADR_none:
+            {
+                break;
+            }
+            case ADR_before1day:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60 sinceDate:_startTime];
+                break;
+            }
+            case ADR_before2day:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60*2 sinceDate:_startTime];
+                break;
+            }
+            case ADR_before3day:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60*3 sinceDate:_startTime];
+                break;
+            }
+            case ADR_before1week:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60*7 sinceDate:_startTime];
+                break;
+            }
+            default:
+                break;
+        }
+        NSDate *secondReminddate;
+        switch ((AllDayRemind)_secondRemind) {
+            case ADR_none:
+            {
+                break;
+            }
+            case ADR_before1day:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60 sinceDate:_startTime];
+                break;
+            }
+            case ADR_before2day:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60*2 sinceDate:_startTime];
+                break;
+            }
+            case ADR_before3day:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60*3 sinceDate:_startTime];
+                break;
+            }
+            case ADR_before1week:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60*7 sinceDate:_startTime];
+                break;
+            }
+            default:
+                break;
+        }
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat: @"yyyy-MM-dd"];
+        if (firstReminddate) {
+            NSString *firstDateString = [dateFormatter stringFromDate:firstReminddate];
+            NSString *finalString = [NSString stringWithFormat:@"%@-09",firstDateString];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+            [formatter setDateFormat:@"yyyy-MM-dd-HH"];
+            NSDate *date=[formatter dateFromString:finalString];
+            [self addPushWithStartTime:date andContent:content];
+        }
+        if (secondReminddate)
+        {
+            NSString *secondDateString = [dateFormatter stringFromDate:secondReminddate];
+            NSString *finalString = [NSString stringWithFormat:@"%@-09",secondDateString];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+            [formatter setDateFormat:@"yyyy-MM-dd-HH"];
+            NSDate *date=[formatter dateFromString:finalString];
+            [self addPushWithStartTime:date andContent:content];
+        }
+        
+    }
+    else
+    {
+        NSDate *firstReminddate;
+        switch ((NotAllDayRemind)_firstRemind) {
+            case NADR_none:
+            {
+                break;
+            }
+            case NADR_before1hour:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-60*60 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before2hour:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-60*60*2 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before3hour:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-60*60*3 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before5hour:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-60*60*5 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before1day:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before2day:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60*2 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before1week:
+            {
+                firstReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60*7 sinceDate:_startTime];
+                break;
+            }
+            default:
+                break;
+        }
+        NSDate *secondReminddate;
+        switch ((NotAllDayRemind)_secondRemind) {
+            case NADR_none:
+            {
+                break;
+            }
+            case NADR_before1hour:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-60*60 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before2hour:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-60*60*2 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before3hour:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-60*60*3 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before5hour:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-60*60*5 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before1day:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before2day:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60*2 sinceDate:_startTime];
+                break;
+            }
+            case NADR_before1week:
+            {
+                secondReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60*7 sinceDate:_startTime];
+                break;
+            }
+            default:
+                break;
+        }
+        
+        if (firstReminddate) {
+            [self addPushWithStartTime:firstReminddate andContent:content];
+        }
+        if (secondReminddate) {
+            [self addPushWithStartTime:secondReminddate andContent:content];
+        }
+    }
+}
+
+-(void)addPushWithStartTime:(NSDate *)date andContent:(NSString *)content
+{
+    UILocalNotification *notification=[[UILocalNotification alloc] init];
+    
+    notification.repeatInterval = kCFCalendarUnitEra;
+    
+    notification.timeZone=[NSTimeZone defaultTimeZone];
+    
+    notification.applicationIconBadgeNumber = 1;
+    
+    notification.fireDate = date;
+    
+    notification.alertBody=content;
+    
+    notification.alertAction = @"打开";
+    
+    // 通知提示音 使用默认的
+    
+    notification.soundName= UILocalNotificationDefaultSoundName;
+    
+//    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 -(void)setActivityFinishBlock:(void (^)(ActivityInfo *,BOOL isNew))activityfinishBlock
