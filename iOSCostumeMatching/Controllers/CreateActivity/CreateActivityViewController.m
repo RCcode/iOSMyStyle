@@ -97,11 +97,14 @@
             _finish(activityInfo,YES);
         }
     }
-    [self addRemindTime:startTime andFirstRemind:firstRemind andSecondRemind:secondRemind isAllDay:isAllDay andContent:[NSString stringWithFormat:@"%@,%@",_addTitle.text,_txtLocation.text]];
+    if (_type == 1) {
+        [self isAddRemind:NO andRemindTime:_activityInfo.dateStartTime andFirstRemind:[_activityInfo.firstRemindTime integerValue] andSecondRemind:[_activityInfo.secondRemindTime integerValue] isAllDay:[_activityInfo.numIsAllDay boolValue] andContent:[NSString stringWithFormat:@"%@,%@",_activityInfo.strTitle,_activityInfo.strLocation]];
+    }
+    [self isAddRemind:YES andRemindTime:startTime andFirstRemind:firstRemind andSecondRemind:secondRemind isAllDay:isAllDay andContent:[NSString stringWithFormat:@"%@,%@",_addTitle.text,_txtLocation.text]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)addRemindTime:(NSDate *)_startTime andFirstRemind:(NSInteger)_firstRemind andSecondRemind:(NSInteger)_secondRemind isAllDay:(BOOL)_isAllDay andContent:(NSString *)content
+-(void)isAddRemind:(BOOL)isAdd andRemindTime:(NSDate *)_startTime andFirstRemind:(NSInteger)_firstRemind andSecondRemind:(NSInteger)_secondRemind isAllDay:(BOOL)_isAllDay andContent:(NSString *)content
 {
     if (_isAllDay) {
         NSDate *firstReminddate;
@@ -276,10 +279,33 @@
         }
         
         if (firstReminddate) {
-            [self addPushWithStartTime:firstReminddate andContent:content];
+            if (isAdd) {
+                [self addPushWithStartTime:firstReminddate andContent:content];
+            }
+            else
+            {
+                [self removePushWithStartTime:firstReminddate andContent:content];
+            }
         }
         if (secondReminddate) {
-            [self addPushWithStartTime:secondReminddate andContent:content];
+            if (isAdd) {
+                [self addPushWithStartTime:secondReminddate andContent:content];
+            }
+            else
+            {
+                [self removePushWithStartTime:secondReminddate andContent:content];
+            }
+        }
+    }
+}
+
+-(void)removePushWithStartTime:(NSDate *)date andContent:(NSString *)content
+{
+    NSArray *arr = [[UIApplication sharedApplication]scheduledLocalNotifications];
+    for (UILocalNotification *localNotification in arr) {
+        if ([localNotification.fireDate isEqualToDate:date] && [localNotification.alertBody isEqualToString:content]) {
+            [[UIApplication sharedApplication] cancelLocalNotification:localNotification];
+            break;
         }
     }
 }
@@ -598,6 +624,7 @@
     if (_delete) {
         _delete(_activityInfo);
     }
+    [self isAddRemind:NO andRemindTime:_activityInfo.dateStartTime andFirstRemind:[_activityInfo.firstRemindTime integerValue] andSecondRemind:[_activityInfo.secondRemindTime integerValue] isAllDay:[_activityInfo.numIsAllDay boolValue] andContent:[NSString stringWithFormat:@"%@,%@",_activityInfo.strTitle,_activityInfo.strLocation]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
