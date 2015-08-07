@@ -113,6 +113,10 @@
     layout.columnCount = 2;
     
     [self addTapGestureWithView:_createImageView];
+    
+    if (_addClothesInfo) {
+        [self didSelect:_addClothesInfo];
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -175,6 +179,11 @@
 {
     ClothesInfo *info = _arrClothes[indexPath.row];
     
+    [self didSelect:info];
+}
+
+-(void)didSelect:(ClothesInfo *)info
+{
     [_arrList addObject:info];
     
     CGFloat imageWidth = info.file.size.width;
@@ -200,7 +209,7 @@
     userResizableView1.preventsPositionOutsideSuperview = NO;
     userResizableView1.translucencySticker = NO;
     [userResizableView1 showEditingHandles];
-//    userResizableView1.backgroundColor = [UIColor redColor];
+    //    userResizableView1.backgroundColor = [UIColor redColor];
     [self.createImageView addSubview:userResizableView1];
     
     //移动

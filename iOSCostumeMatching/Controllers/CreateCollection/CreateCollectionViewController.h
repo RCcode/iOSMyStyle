@@ -12,4 +12,6 @@
 
 -(void)setCollectionFinishBlock:(void(^)(CollocationInfo *info))collectionfinishBlock;
 
+@property (nonatomic,strong) ClothesInfo *addClothesInfo;
+
 @end

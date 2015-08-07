@@ -8,6 +8,7 @@
 
 #import "ShowClothesDetailsViewController.h"
 #import "CreateActivityViewController.h"
+#import "CreateCollectionViewController.h"
 
 @interface ShowClothesDetailsViewController ()<UIActionSheetDelegate>
 
@@ -110,6 +111,40 @@
 }
 
 - (IBAction)addCollection:(id)sender {
+    CreateCollectionViewController *createCollection = [[CreateCollectionViewController alloc]init];
+    createCollection.addClothesInfo = _clothesInfo;
+    __weak ShowClothesDetailsViewController *weakSelf = self;
+    [createCollection setCollectionFinishBlock:^(CollocationInfo *info) {
+        [weakSelf addCollocation:info];
+    }];
+    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:createCollection];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+-(void)addCollocation:(CollocationInfo *)info
+{
+    [[RC_SQLiteManager shareManager]addCollection:info];
+    
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+        showMBProgressHUD(nil, YES);
+        [[RC_RequestManager shareManager]addCollocationWithCollocationInfo:info success:^(id responseObject) {
+            CLog(@"%@",responseObject);
+            hideMBProgressHUD();
+            if([responseObject isKindOfClass:[NSDictionary class]])
+            {
+                if([[responseObject objectForKey:@"stat"] integerValue] == 10000)
+                {
+                    NSDictionary *dic = responseObject;
+                    info.numCoId = [NSNumber numberWithInt:[[dic objectForKey:@"coId"] intValue]];
+                    [[RC_SQLiteManager shareManager]addCollection:info];;
+                }
+            }
+        } andFailed:^(NSError *error) {
+            hideMBProgressHUD();
+            CLog(@"%@",error);
+        }];
+    }
 }
 
 - (IBAction)addCalendar:(id)sender {
