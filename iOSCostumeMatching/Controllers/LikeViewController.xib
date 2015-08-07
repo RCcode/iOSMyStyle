@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LikeViewController">
             <connections>
+                <outlet property="lblOccasion" destination="PAi-Lh-sg6" id="SPW-5s-t9Z"/>
+                <outlet property="lblStyle" destination="l1Y-hB-Owg" id="78q-a5-yoA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,24 +17,68 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-6g-b71">
-                    <rect key="frame" x="205" y="0.0" width="91" height="30"/>
-                    <color key="backgroundColor" red="0.25987644380000002" green="1" blue="0.59496190149999995" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="场合">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-6g-b71">
+                    <rect key="frame" x="161" y="0.0" width="159" height="39"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="s3a-rZ-8Sd"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                    <state key="normal" image="ic_xiala">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIN-uj-IqM">
-                    <rect key="frame" x="24" y="0.0" width="74" height="30"/>
-                    <color key="backgroundColor" red="0.25987644380000002" green="1" blue="0.59496190149999995" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="风格">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIN-uj-IqM">
+                    <rect key="frame" x="0.0" y="0.0" width="160" height="39"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="Pgv-7r-5YD"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                    <state key="normal" image="ic_xiala">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="风格" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1Y-hB-Owg">
+                    <rect key="frame" x="20" y="1" width="140" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="Ds8-8O-2vg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="场合" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAi-Lh-sg6">
+                    <rect key="frame" x="180" y="1" width="140" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="diA-ah-J7b"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="l1Y-hB-Owg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="7dU-0N-sIg"/>
+                <constraint firstItem="IYJ-6g-b71" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9eg-9M-nRA"/>
+                <constraint firstItem="PAi-Lh-sg6" firstAttribute="leading" secondItem="l1Y-hB-Owg" secondAttribute="trailing" constant="20" id="KYA-U9-Psf"/>
+                <constraint firstItem="IYJ-6g-b71" firstAttribute="width" secondItem="sIN-uj-IqM" secondAttribute="width" id="MQj-ku-aK9"/>
+                <constraint firstItem="PAi-Lh-sg6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="1" id="X8M-h0-7jE"/>
+                <constraint firstItem="sIN-uj-IqM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="abc-QF-vcE"/>
+                <constraint firstItem="l1Y-hB-Owg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="1" id="c3M-O4-pH0"/>
+                <constraint firstAttribute="trailing" secondItem="IYJ-6g-b71" secondAttribute="trailing" id="iQF-3V-Ni5"/>
+                <constraint firstItem="sIN-uj-IqM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lJh-tE-KiI"/>
+                <constraint firstItem="IYJ-6g-b71" firstAttribute="leading" secondItem="sIN-uj-IqM" secondAttribute="trailing" constant="1" id="oNT-WM-KlJ"/>
+                <constraint firstAttribute="trailing" secondItem="PAi-Lh-sg6" secondAttribute="trailing" id="pog-hu-wxS"/>
+                <constraint firstItem="IYJ-6g-b71" firstAttribute="leading" secondItem="sIN-uj-IqM" secondAttribute="trailing" constant="1" id="x9h-Db-aQR"/>
+                <constraint firstItem="IYJ-6g-b71" firstAttribute="leading" secondItem="l1Y-hB-Owg" secondAttribute="trailing" constant="1" id="zLb-ET-edV"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_xiala" width="10" height="10"/>
+    </resources>
 </document>

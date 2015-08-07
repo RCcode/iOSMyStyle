@@ -45,6 +45,8 @@ void hideMBProgressHUD();
 
 void ViewAnimation(UIView *view ,CGRect frame);
 
+CGRect getTextLabelRectWithContentAndFont(NSString *content ,UIFont *font);
+
 NSString *getCategoryName(int index);
 
 NSString *getWardrobeTypeName(WardrobeType type);

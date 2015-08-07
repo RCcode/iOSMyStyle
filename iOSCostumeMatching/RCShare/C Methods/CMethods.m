@@ -286,6 +286,18 @@ void ViewAnimation(UIView *view ,CGRect frame)
     
 }
 
+CGRect getTextLabelRectWithContentAndFont(NSString *content ,UIFont *font)
+{
+    CGSize size = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
+    
+    NSDictionary * tdic = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName,nil];
+    
+    CGRect returnRect = [content boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin |NSStringDrawingUsesFontLeading attributes:tdic context:nil];
+    
+    return returnRect;
+}
+
+
 NSString *getCategoryName(int index)
 {
     switch (index) {

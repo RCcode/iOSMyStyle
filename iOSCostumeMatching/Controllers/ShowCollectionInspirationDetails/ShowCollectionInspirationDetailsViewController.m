@@ -11,10 +11,12 @@
 @interface ShowCollectionInspirationDetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
-@property (weak, nonatomic) IBOutlet UILabel *lblColthes;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (strong, nonatomic) UILabel *lblDescription;
 
 @end
 
@@ -59,27 +61,56 @@
 
 -(void)upDateView:(NSArray *)arr
 {
-    NSMutableString *str = [[NSMutableString alloc]init];
-    for (NSDictionary *dic in arr) {
+    CGFloat originX = 0;
+    CGFloat originY = 30;
+    for (NSInteger i = 0; i<arr.count; i++) {
+        NSDictionary *dic = [arr objectAtIndex:i];
+        NSMutableString *str = [[NSMutableString alloc]init];
         WardrobeType type = [[dic objectForKey:@"cateId"]intValue];
         [str appendString: getWardrobeTypeName(type)];
-        [str appendString:@":"];
+        [str appendString:@" "];
         [str appendString:[dic objectForKey:@"brand"]];
-        [str appendString:@"\n"];
+        
+        CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:11]);
+        UILabel *label = [[UILabel alloc]init];
+        CGFloat width = rect.size.width+20;
+        if ((originX +width) > (ScreenWidth-20)) {
+            originX = 0;
+            originY = originY+30;
+        }
+        [label setFrame:CGRectMake(originX+20, originY, width, 25)];
+        
+        originX = originX+20+width;
+        
+        [label setTextAlignment:NSTextAlignmentCenter];
+        label.backgroundColor = colorWithHexString(@"#c0e1d9");
+        [label setTextColor:colorWithHexString(@"#ffffff")];
+        [label setFont:[UIFont systemFontOfSize:11]];
+        [_scrollView addSubview:label];
+        [label setText:str];
     }
-    [_lblColthes setText:str];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"灵感详情"];
     self.showReturn = YES;
-    [self setReturnBtnTitle:@"返回"];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     self.showDone = YES;
     [self setDoneBtnTitle:@"举报"];
     
+    _headImageView.layer.borderWidth = 2;
+    _headImageView.layer.borderColor = colorWithHexString(@"#eeeeee").CGColor;
+    _headImageView.clipsToBounds = YES;
     [_imageView sd_setImageWithURL:[NSURL URLWithString:[_dic objectForKey:@"url"]]];
+    
+    _lblDescription = [[UILabel alloc]init];
+    [_lblDescription setFont:[UIFont systemFontOfSize:13]];
+    [_lblDescription setTextColor:colorWithHexString(@"#222222")];
+    [_lblDescription setFrame:CGRectMake(20, 5, ScreenWidth-20, 20)];
+    [_scrollView addSubview:_lblDescription];
     [_lblDescription setText:[_dic objectForKey:@"description"]];
+    
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_dic objectForKey:@"pic"]]];
     [_lblName setText:[_dic objectForKey:@"tname"]];
     // Do any additional setup after loading the view from its nib.
