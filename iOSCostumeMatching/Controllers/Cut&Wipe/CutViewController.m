@@ -50,7 +50,7 @@
     [super viewDidLoad];
     
     
-    [self setNavTitle:@"裁剪"];
+    [self setNavTitle:LocalizedString(@"Crop", nil)];
     self.showReturn = YES;
     self.showDone = YES;
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];

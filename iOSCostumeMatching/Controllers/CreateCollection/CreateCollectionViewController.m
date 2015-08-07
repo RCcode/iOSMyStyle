@@ -307,7 +307,7 @@
 
 - (IBAction)selectSeason:(id)sender {
     SelectViewController *selectCategory = [[SelectViewController alloc]init];
-    [selectCategory setNavagationTitle:@"选择季节"];
+    [selectCategory setNavagationTitle:LocalizedString(@"Season", nil)];
     selectCategory.array = getAllWardrobeSeason();
     __weak CreateCollectionViewController *weakSelf = self;
     [selectCategory setSelectedBlock:^(int index) {
@@ -322,7 +322,7 @@
 
 - (IBAction)selectType:(id)sender {
     SelectViewController *selectStyle = [[SelectViewController alloc]init];
-    [selectStyle setNavagationTitle:@"选择类型"];
+    [selectStyle setNavagationTitle:LocalizedString(@"Category", nil)];
     selectStyle.array = getAllWardrobeType();
     __weak CreateCollectionViewController *weakSelf = self;
     [selectStyle setSelectedBlock:^(int index) {
@@ -343,7 +343,7 @@
 
 - (IBAction)selectCategory:(id)sender {
     SelectViewController *selectCategory = [[SelectViewController alloc]init];
-    [selectCategory setNavagationTitle:@"选择类别"];
+    [selectCategory setNavagationTitle:LocalizedString(@"Subcategory", nil)];
     selectCategory.array = getAllWardrobeCategorye(type);
     __weak CreateCollectionViewController *weakSelf = self;
     [selectCategory setSelectedBlock:^(int index) {

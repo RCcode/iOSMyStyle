@@ -16,6 +16,38 @@
 "Follow_us" = "Follow us";
 "Rate_5_Star" = "Rate 5 Star";
 "Feedback" = "Feedback";
-"Share this app" = "Share this app";
+"Share_this_app" = "Share this app";
 "Share_app" = "I'm using a great app for making my own outfits. It's MyStyle. I've been using it to manage my closet and make outfits. Download MyStyle: ";
 "Logout" = "Logout";
+
+
+"Season" = "Season";
+"Category" = "Category";
+"Subcategory" = "Subcategory";
+
+
+"Crop" = "Crop";
+"Erase" = "Erase";
+
+
+"Default_color" = "Default color";
+"Tomato" = "Tomato";
+"Tangerine" = "Tangerine";
+"Banana" = "Tangerine";
+"Basil" =  "Basil";
+"Sage" = "Sage";
+"Peacock" = "Peacock";
+"Blueberry" = "Blueberry";
+"Lavender" = "Lavender";
+"Grape" = "Grape";
+"Flamingo" = "Flamingo";
+"Graphite" = "Graphite";
+
+
+
+
+
+
+
+
+

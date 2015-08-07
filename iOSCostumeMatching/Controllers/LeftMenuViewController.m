@@ -27,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnCalendar;
 @property (weak, nonatomic) IBOutlet UIButton *btnCollectionInspiration;
 @property (weak, nonatomic) IBOutlet UIButton *btnMyLike;
+@property (weak, nonatomic) IBOutlet UIButton *btnRate;
+@property (weak, nonatomic) IBOutlet UIButton *btnFeedback;
+@property (weak, nonatomic) IBOutlet UIButton *btnShare;
 
 @end
 
@@ -39,6 +42,9 @@
     [_btnCalendar setTitle:LocalizedString(@"Calendar", nil) forState:UIControlStateNormal];
     [_btnCollectionInspiration setTitle:LocalizedString(@"Inspiration", nil) forState:UIControlStateNormal];
     [_btnMyLike setTitle:LocalizedString(@"My_Likes", nil) forState:UIControlStateNormal];
+    [_btnRate setTitle:LocalizedString(@"Rate_5_Star", nil) forState:UIControlStateNormal];
+    [_btnFeedback setTitle:LocalizedString(@"Feedback", nil) forState:UIControlStateNormal];
+    [_btnShare setTitle:LocalizedString(@"Share_this_app", nil) forState:UIControlStateNormal];
 }
 
 - (void)viewDidLoad {
@@ -90,11 +96,11 @@
     [super viewWillAppear:animated];
     userInfo = [UserInfo unarchiverUserData];
     if (userInfo) {
-        [_btnLogin setTitle:@"退出" forState:UIControlStateNormal];
+        [_btnLogin setTitle:LocalizedString(@"Logout", nil) forState:UIControlStateNormal];
     }
     else
     {
-        [_btnLogin setTitle:@"马上登录" forState:UIControlStateNormal];
+        [_btnLogin setTitle:LocalizedString(@"Login", nil) forState:UIControlStateNormal];
     }
 }
 
@@ -112,7 +118,7 @@
 
 -(void)saveUserInfo:(UserInfo *)_userInfo
 {
-    [_btnLogin setTitle:@"退出" forState:UIControlStateNormal];
+    [_btnLogin setTitle:LocalizedString(@"Logout", nil) forState:UIControlStateNormal];
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
     
     [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UPDATEVIEW object:nil];
@@ -177,7 +183,7 @@
         {
             [[FacebookManager shareManager]logOut];
         }
-        [_btnLogin setTitle:@"马上登录" forState:UIControlStateNormal];
+        [_btnLogin setTitle:LocalizedString(@"Login", nil) forState:UIControlStateNormal];
         [_headImageView setImage:nil];
     }
     else
@@ -310,16 +316,13 @@
 
 - (IBAction)share:(id)sender {
     //需要分享的内容
-//    NSString *shareContent = LocalizedString(@"share_msg", nil);
-    NSString *shareContent = @"aaa";
+    NSString *shareContent = LocalizedString(@"Share_app", nil);
     NSArray *activityItems = @[shareContent];
     
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     __weak UIActivityViewController *blockActivityVC = activityVC;
     
     activityVC.completionHandler = ^(NSString *activityType,BOOL completed){
-        
-        //                NSLog(@"activityType - %@", activityType);
         
         [blockActivityVC dismissViewControllerAnimated:YES completion:nil];
     };

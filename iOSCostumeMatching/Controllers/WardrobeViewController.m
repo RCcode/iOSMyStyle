@@ -93,6 +93,9 @@
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCollectionView) name:NOTIFICATION_UPDATEVIEW object:nil];
+    [_btnSeason setTitle:LocalizedString(@"Season", nil) forState:UIControlStateNormal];
+    [_btnType setTitle:LocalizedString(@"Category", nil) forState:UIControlStateNormal];
+    [_btnCategory setTitle:LocalizedString(@"Subcategory", nil) forState:UIControlStateNormal];
     
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [self.view insertSubview:self.collectionView atIndex:0];
@@ -227,7 +230,7 @@
 
 - (IBAction)selectSeason:(id)sender {
     SelectViewController *selectCategory = [[SelectViewController alloc]init];
-    [selectCategory setNavagationTitle:@"选择季节"];
+    [selectCategory setNavagationTitle:LocalizedString(@"Season", nil)];
     selectCategory.array = getAllWardrobeSeason();
     __weak WardrobeViewController *weakSelf = self;
     [selectCategory setSelectedBlock:^(int index) {
@@ -242,7 +245,7 @@
 
 - (IBAction)selectType:(id)sender {
     SelectViewController *selectStyle = [[SelectViewController alloc]init];
-    [selectStyle setNavagationTitle:@"选择类型"];
+    [selectStyle setNavagationTitle:LocalizedString(@"Category", nil)];
     selectStyle.array = getAllWardrobeType();
     __weak WardrobeViewController *weakSelf = self;
     [selectStyle setSelectedBlock:^(int index) {
@@ -263,7 +266,7 @@
 
 - (IBAction)selectCategory:(id)sender {
     SelectViewController *selectCategory = [[SelectViewController alloc]init];
-    [selectCategory setNavagationTitle:@"选择类别"];
+    [selectCategory setNavagationTitle:LocalizedString(@"Subcategory", nil)];
     selectCategory.array = getAllWardrobeCategorye(type);
     __weak WardrobeViewController *weakSelf = self;
     [selectCategory setSelectedBlock:^(int index) {

@@ -10,9 +10,12 @@
                 <outlet property="actionView" destination="81V-WC-Hir" id="p9S-No-HmA"/>
                 <outlet property="btnCalendar" destination="dzC-b8-XUJ" id="fTS-TY-kbH"/>
                 <outlet property="btnCollectionInspiration" destination="s3e-hG-vnG" id="hBZ-27-jsd"/>
+                <outlet property="btnFeedback" destination="f10-4B-4ll" id="dDs-fG-JBu"/>
                 <outlet property="btnLogin" destination="w9r-LZ-zcp" id="TOO-56-vyu"/>
                 <outlet property="btnMatching" destination="KZT-nG-P26" id="1Hu-KK-dpj"/>
                 <outlet property="btnMyLike" destination="xCK-wT-R3g" id="auF-df-Xrk"/>
+                <outlet property="btnRate" destination="Cli-9E-RMX" id="xGY-Hx-HBg"/>
+                <outlet property="btnShare" destination="eg0-Zi-iD8" id="Va0-e8-kkN"/>
                 <outlet property="btnWardrobe" destination="K16-dH-SAQ" id="2uN-rX-WRf"/>
                 <outlet property="headImageView" destination="IBv-mk-evd" id="ofW-VG-O0I"/>
                 <outlet property="scrollView" destination="Kmd-S3-reT" id="Z4V-7S-xg4"/>

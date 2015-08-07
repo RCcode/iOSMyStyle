@@ -58,7 +58,7 @@
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
     [self setDoneBtnTitle:@"下一步"];
     
-    [self setNavTitle:@"裁剪"];
+    [self setNavTitle:LocalizedString(@"Crop", nil)];
     
     [_imageView setImage:_originalImage];
     _currentImage = _originalImage;

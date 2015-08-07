@@ -639,29 +639,29 @@ NSString *getColorName(ActivityColor color)
 {
     NSString *str;
     switch (color) {
-        case AC0:{str = @"默认";break;}
+        case AC0:{str = LocalizedString(@"Default_color", nil);break;}
             
-        case AC1:{str = @"番茄红";break;}
+        case AC1:{str = LocalizedString(@"Tomato", nil);break;}
             
-        case AC2:{str = @"橘红";break;}
+        case AC2:{str = LocalizedString(@"Tangerine", nil);break;}
             
-        case AC3:{str = @"香蕉黄";break;}
+        case AC3:{str = LocalizedString(@"Banana", nil);break;}
             
-        case AC4:{str = @"罗勒绿";break;}
+        case AC4:{str = LocalizedString(@"Basil", nil);break;}
             
-        case AC5:{str = @"鼠尾草绿";break;}
+        case AC5:{str = LocalizedString(@"Sage", nil);break;}
             
-        case AC6:{str = @"孔雀蓝";break;}
+        case AC6:{str = LocalizedString(@"Peacock", nil);break;}
             
-        case AC7:{str = @"蓝莓色";break;}
+        case AC7:{str = LocalizedString(@"Blueberry", nil);break;}
             
-        case AC8:{str = @"薰衣草色";break;}
+        case AC8:{str = LocalizedString(@"Lavender", nil);break;}
             
-        case AC9:{str = @"葡萄紫";break;}
+        case AC9:{str = LocalizedString(@"Grape", nil);break;}
             
-        case AC10:{str = @"红鹤色";break;}
+        case AC10:{str = LocalizedString(@"Flamingo", nil);break;}
             
-        case AC11:{str = @"石墨黑";break;}
+        case AC11:{str = LocalizedString(@"Graphite", nil);break;}
             
         default:
             break;
@@ -671,18 +671,18 @@ NSString *getColorName(ActivityColor color)
 
 NSArray *getAllColor()
 {
-    NSArray *arr = @[@"默认",
-                     @"番茄红",
-                     @"橘红",
-                     @"香蕉黄",
-                     @"罗勒绿",
-                     @"鼠尾草绿",
-                     @"孔雀蓝",
-                     @"蓝莓色",
-                     @"薰衣草色",
-                     @"葡萄紫",
-                     @"红鹤色",
-                     @"石墨黑"];
+    NSArray *arr = @[LocalizedString(@"Default_color", nil),
+                     LocalizedString(@"Tomato", nil),
+                     LocalizedString(@"Tangerine", nil),
+                     LocalizedString(@"Banana", nil),
+                     LocalizedString(@"Basil", nil),
+                     LocalizedString(@"Sage", nil),
+                     LocalizedString(@"Peacock", nil),
+                     LocalizedString(@"Blueberry", nil),
+                     LocalizedString(@"Lavender", nil),
+                     LocalizedString(@"Grape", nil),
+                     LocalizedString(@"Flamingo", nil),
+                     LocalizedString(@"Graphite", nil)];
     return arr;
 }
 
