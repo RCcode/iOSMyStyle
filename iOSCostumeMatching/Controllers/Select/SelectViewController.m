@@ -8,6 +8,7 @@
 
 #import "SelectViewController.h"
 #import "ColorCell.h"
+#import "CustumalCell.h"
 
 #define CELL_IDENTIFIER @"TableViewCell"
 #define COLOR_CELL_IDENTIFIER @"ColorCell"
@@ -46,7 +47,7 @@
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor = colorWithHexString(@"#eeeeee");
-    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER];
+    [_tableView registerNib:[UINib nibWithNibName:@"CustumalCell" bundle:nil] forCellReuseIdentifier:CELL_IDENTIFIER];
     [_tableView registerNib:[UINib nibWithNibName:@"ColorCell" bundle:nil] forCellReuseIdentifier:COLOR_CELL_IDENTIFIER];
     [self.view addSubview:_tableView];
     // Do any additional setup after loading the view from its nib.
@@ -67,8 +68,8 @@
         cell.colorView.backgroundColor = getColor(indexPath.row);
         return cell;
     }
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
-    cell.textLabel.text = [_array objectAtIndex:indexPath.row];
+    CustumalCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+    cell.lblTitle.text = [_array objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -82,6 +83,23 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_type == 1) {
+        return 49;
+    }
+    else
+    {
+        if (indexPath.row == 0) {
+            return 59;
+        }
+        else
+        {
+            return 49;
+        }
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

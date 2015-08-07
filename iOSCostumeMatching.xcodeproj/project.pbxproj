@@ -29,6 +29,8 @@
 		4F417DDD1B4E8A78000BD540 /* MatchingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DDB1B4E8A78000BD540 /* MatchingViewController.m */; };
 		4F417DDE1B4E8A78000BD540 /* MatchingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F417DDC1B4E8A78000BD540 /* MatchingViewController.xib */; };
 		4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DE31B4E9139000BD540 /* YRSideViewController.m */; };
+		4F5146CB1B7484E9001AB836 /* CustumalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5146C91B7484E9001AB836 /* CustumalCell.m */; };
+		4F5146CC1B7484E9001AB836 /* CustumalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5146CA1B7484E9001AB836 /* CustumalCell.xib */; };
 		4F5A50661B60A3540001D5D1 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A50641B60A3540001D5D1 /* ActivityCell.m */; };
 		4F5A50671B60A3540001D5D1 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A50651B60A3540001D5D1 /* ActivityCell.xib */; };
 		4F5A506D1B60E48B0001D5D1 /* ShowActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A506B1B60E48B0001D5D1 /* ShowActivityViewController.m */; };
@@ -233,6 +235,9 @@
 		4F417DDC1B4E8A78000BD540 /* MatchingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchingViewController.xib; sourceTree = "<group>"; };
 		4F417DE21B4E9139000BD540 /* YRSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRSideViewController.h; sourceTree = "<group>"; };
 		4F417DE31B4E9139000BD540 /* YRSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRSideViewController.m; sourceTree = "<group>"; };
+		4F5146C81B7484E9001AB836 /* CustumalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustumalCell.h; sourceTree = "<group>"; };
+		4F5146C91B7484E9001AB836 /* CustumalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustumalCell.m; sourceTree = "<group>"; };
+		4F5146CA1B7484E9001AB836 /* CustumalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustumalCell.xib; sourceTree = "<group>"; };
 		4F5A50631B60A3540001D5D1 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		4F5A50641B60A3540001D5D1 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		4F5A50651B60A3540001D5D1 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCell.xib; sourceTree = "<group>"; };
@@ -814,6 +819,9 @@
 				4F78B4901B722B0100A45E42 /* ColorCell.h */,
 				4F78B4911B722B0100A45E42 /* ColorCell.m */,
 				4F78B4921B722B0100A45E42 /* ColorCell.xib */,
+				4F5146C81B7484E9001AB836 /* CustumalCell.h */,
+				4F5146C91B7484E9001AB836 /* CustumalCell.m */,
+				4F5146CA1B7484E9001AB836 /* CustumalCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1388,6 +1396,7 @@
 				4F63419B1B4FA48300DFC281 /* CutViewController.xib in Resources */,
 				4FCD2FE91B5503CD00BD6DDB /* 3.jpeg in Resources */,
 				4F63418E1B4F9FD200DFC281 /* CutAndWipeViewController.xib in Resources */,
+				4F5146CC1B7484E9001AB836 /* CustumalCell.xib in Resources */,
 				4F6FB3FB1B58E77500C5CB0A /* cat1.jpg in Resources */,
 				4F6341AA1B4FCAA100DFC281 /* ball.png in Resources */,
 				4F85BBC21B7078120072AB49 /* 活动详情.xcassets in Resources */,
@@ -1508,6 +1517,7 @@
 				4F7D009A1B6A1D6000BE18CE /* MJRefreshAutoStateFooter.m in Sources */,
 				4F6FB3F41B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				4F7D00991B6A1D6000BE18CE /* MJRefreshAutoNormalFooter.m in Sources */,
+				4F5146CB1B7484E9001AB836 /* CustumalCell.m in Sources */,
 				4FB374181B66450F009ED71E /* AFSecurityPolicy.m in Sources */,
 				4F62FFE71B579755005E8C79 /* FMDatabaseAdditions.m in Sources */,
 				4F7B64F31B5F8073004643D2 /* ItemView.m in Sources */,
