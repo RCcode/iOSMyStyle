@@ -510,6 +510,10 @@
 
 -(void)addClothesToWardrobe:(ClothesInfo *)info
 {
+    [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
+    self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
+    [self.collectionView reloadData];
+    
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     if (userInfo) {
         showMBProgressHUD(nil, YES);
@@ -531,12 +535,6 @@
             CLog(@"%@",error);
             hideMBProgressHUD();
         }];
-    }
-    else
-    {
-        [[RC_SQLiteManager shareManager]addClothesToWardrobe:info];
-        self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
-        [self.collectionView reloadData];
     }
 }
 

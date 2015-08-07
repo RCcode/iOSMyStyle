@@ -243,7 +243,21 @@ static RC_SQLiteManager *sqliteManager = nil;
     [self createTable:TNTWardrobe];
     if([_db open])
     {
-        BOOL success = [_db executeUpdate:@"insert into Wardrobe (clId,cateId,scateId,seaId,brand,file,date) values(?,?,?,?,?,?,?)",clothesInfo.numClId, clothesInfo.numCateId, clothesInfo.numScateId, clothesInfo.numSeaId, clothesInfo.strBrand,UIImagePNGRepresentation(clothesInfo.file),clothesInfo.date,nil];
+        BOOL isExit = NO;
+        NSString * sql = [NSString stringWithFormat:@"select * from Wardrobe where date = %@",clothesInfo.date];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            isExit = YES;
+        }
+        
+        BOOL success ;
+        if (isExit) {
+            success = [_db executeUpdate:@"UPDATE Wardrobe SET clId = ?,cateId = ?,scateId = ?,seaId = ?,brand = ?,file = ?,date = ? where date = ?",clothesInfo.numClId, clothesInfo.numCateId, clothesInfo.numScateId, clothesInfo.numSeaId, clothesInfo.strBrand,UIImagePNGRepresentation(clothesInfo.file),clothesInfo.date,clothesInfo.date,nil];
+        }
+        else
+        {
+            success = [_db executeUpdate:@"insert into Wardrobe (clId,cateId,scateId,seaId,brand,file,date) values(?,?,?,?,?,?,?)",clothesInfo.numClId, clothesInfo.numCateId, clothesInfo.numScateId, clothesInfo.numSeaId, clothesInfo.strBrand,UIImagePNGRepresentation(clothesInfo.file),clothesInfo.date,nil];
+        }
         [_db close];
         return success;
     }
@@ -334,7 +348,20 @@ static RC_SQLiteManager *sqliteManager = nil;
         [myKeyedArchiver encodeObject:collocationInfo.arrList];
         [myKeyedArchiver finishEncoding];
 
-        BOOL success = [_db executeUpdate:@"insert into Collocation (coId ,styleId ,occId ,description ,file ,date,list) values(?,?,?,?,?,?,?)",collocationInfo.numCoId,collocationInfo.numStyleId, collocationInfo.numOccId, collocationInfo.strDescription,UIImagePNGRepresentation(collocationInfo.file),collocationInfo.date,mData,nil];
+        BOOL isExit = NO;
+        NSString * sql = [NSString stringWithFormat:@"select * from Collocation where date = %@",collocationInfo.date];
+        FMResultSet * rs = [_db executeQuery:sql];
+        while ([rs next]) {
+            isExit = YES;
+        }
+        BOOL success;
+        if (isExit) {
+            success = [_db executeUpdate:@"UPDATE Collocation SET coId = ?,styleId = ?,occId = ?,description = ?,file = ?,date= ?,list= ? where date = ?",collocationInfo.numCoId,collocationInfo.numStyleId, collocationInfo.numOccId, collocationInfo.strDescription,UIImagePNGRepresentation(collocationInfo.file),collocationInfo.date,mData,collocationInfo.date,nil];
+        }
+        else
+        {
+            success = [_db executeUpdate:@"insert into Collocation (coId ,styleId ,occId ,description ,file ,date,list) values(?,?,?,?,?,?,?)",collocationInfo.numCoId,collocationInfo.numStyleId, collocationInfo.numOccId, collocationInfo.strDescription,UIImagePNGRepresentation(collocationInfo.file),collocationInfo.date,mData,nil];
+        }
         [_db close];
         return success;
     }
