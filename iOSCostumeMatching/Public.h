@@ -78,10 +78,10 @@
 
 #define ISFIRSTLAUNCH @"isFirstLaunch"
 
-#define INSTAGRAM_CLIENT_ID	@"814a781de7eb4d359e7f306a7b265a20"
-#define INSTAGRAM_CLIENT_SECRET	@"c2f7e6bdf9934b80bcd96b45d227cd06"
-#define INSTAGRAM_WEBSITE_URL	@"http://www.facebook.com/rcplatform2014"
-#define INSTAGRAM_REDIRECT_URI	@"http://www.facebook.com/rcplatform2014"
+#define INSTAGRAM_CLIENT_ID	@"66cad5da8ade455cb862cc9582c590d0"
+#define INSTAGRAM_CLIENT_SECRET	@"3e529647a8be4eb38d2404a81cfff79b"
+#define INSTAGRAM_WEBSITE_URL	@"https://www.facebook.com/pages/Mystyleapp/1475494706097839"
+#define INSTAGRAM_REDIRECT_URI	@"https://www.facebook.com/pages/Mystyleapp/1475494706097839"
 
 #define MY_USERINFO_KEY @"my_userInfo"
 #define HEADIMAGE @"headImage"
