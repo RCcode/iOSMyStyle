@@ -184,6 +184,8 @@
 - (void)setupDefaultAttributes
 {
     self.borderView = [[SPGripViewBorderView alloc] initWithFrame:CGRectInset(self.bounds, kSPUserResizableViewGlobalInset, kSPUserResizableViewGlobalInset)];
+    self.borderView.borderColor = colorWithHexString(@"#44dcca");
+    self.borderView.borderWidth = 2;
     [self.borderView setHidden:YES];
     [self addSubview:self.borderView];
 

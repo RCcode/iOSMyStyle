@@ -29,6 +29,7 @@
 		4F417DDD1B4E8A78000BD540 /* MatchingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DDB1B4E8A78000BD540 /* MatchingViewController.m */; };
 		4F417DDE1B4E8A78000BD540 /* MatchingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F417DDC1B4E8A78000BD540 /* MatchingViewController.xib */; };
 		4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F417DE31B4E9139000BD540 /* YRSideViewController.m */; };
+		4F47332A1B78C045001495CE /* libFlurry_5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F4733291B78C045001495CE /* libFlurry_5.0.0.a */; };
 		4F5146CB1B7484E9001AB836 /* CustumalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5146C91B7484E9001AB836 /* CustumalCell.m */; };
 		4F5146CC1B7484E9001AB836 /* CustumalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5146CA1B7484E9001AB836 /* CustumalCell.xib */; };
 		4F5146CF1B749671001AB836 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5146CE1B749671001AB836 /* MessageUI.framework */; };
@@ -238,6 +239,8 @@
 		4F417DDC1B4E8A78000BD540 /* MatchingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchingViewController.xib; sourceTree = "<group>"; };
 		4F417DE21B4E9139000BD540 /* YRSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRSideViewController.h; sourceTree = "<group>"; };
 		4F417DE31B4E9139000BD540 /* YRSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRSideViewController.m; sourceTree = "<group>"; };
+		4F4733281B78C045001495CE /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		4F4733291B78C045001495CE /* libFlurry_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.0.0.a; sourceTree = "<group>"; };
 		4F5146C81B7484E9001AB836 /* CustumalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustumalCell.h; sourceTree = "<group>"; };
 		4F5146C91B7484E9001AB836 /* CustumalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustumalCell.m; sourceTree = "<group>"; };
 		4F5146CA1B7484E9001AB836 /* CustumalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustumalCell.xib; sourceTree = "<group>"; };
@@ -508,6 +511,7 @@
 				4F7D00AB1B6A3F6500BE18CE /* FacebookSDK.framework in Frameworks */,
 				4F62FFEC1B579770005E8C79 /* libsqlite3.dylib in Frameworks */,
 				4F0771A41B53AB16005D61AB /* libMobClickLibrary.a in Frameworks */,
+				4F47332A1B78C045001495CE /* libFlurry_5.0.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +528,7 @@
 		4F07716A1B53AA83005D61AB /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				4F4733271B78C045001495CE /* flurryAnalytics */,
 				4F7D00661B6A1D6000BE18CE /* MJRefresh */,
 				4FB374001B66450F009ED71E /* AFNetworking */,
 				4F7B9A921B6254AD003D94BF /* SDWebImage */,
@@ -662,6 +667,15 @@
 				4F5A50821B60F28F0001D5D1 /* LikeViewController.xib */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4F4733271B78C045001495CE /* flurryAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				4F4733281B78C045001495CE /* Flurry.h */,
+				4F4733291B78C045001495CE /* libFlurry_5.0.0.a */,
+			);
+			path = flurryAnalytics;
 			sourceTree = "<group>";
 		};
 		4F5A50691B60E4310001D5D1 /* ShowActivity */ = {
@@ -1700,6 +1714,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSCostumeMatching/SDK/UMeng",
+					"$(PROJECT_DIR)/iOSCostumeMatching/SDK/flurryAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1721,6 +1736,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSCostumeMatching/SDK/UMeng",
+					"$(PROJECT_DIR)/iOSCostumeMatching/SDK/flurryAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

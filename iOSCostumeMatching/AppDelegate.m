@@ -14,6 +14,7 @@
 #import "CollectionInspirationViewController.h"
 #import "LikeViewController.h"
 #import "MobClick.h"
+#import "Flurry.h"
 
 @interface AppDelegate ()
 
@@ -82,6 +83,9 @@
     [MobClick startWithAppkey:UmengAPPKey reportPolicy:SEND_ON_EXIT channelId:@"App Store"];
     [MobClick setAppVersion:XcodeAppVersion];
     [MobClick updateOnlineConfig];
+    
+    [Flurry startSession:FlurryAppKey];
+    [Flurry setSessionReportsOnCloseEnabled:YES];
 }
 
 
