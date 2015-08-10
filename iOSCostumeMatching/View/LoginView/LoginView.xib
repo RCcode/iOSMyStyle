@@ -99,6 +99,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="lblLogin" destination="M2s-pz-iFB" id="o4W-br-Ii2"/>
                 <outlet property="lblTitle" destination="M2s-pz-iFB" id="c1B-Fh-dkE"/>
             </connections>
             <point key="canvasLocation" x="564.5" y="265.5"/>

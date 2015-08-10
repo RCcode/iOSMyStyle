@@ -12,6 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblLogin;
+
+
 @property (nonatomic,copy) void(^loginInstagram)();
 @property (nonatomic,copy) void(^loginFacebook)();
 
@@ -37,6 +40,7 @@
 
 -(void)addTapRemove
 {
+    [_lblLogin setText:LocalizedString(@"Log_in_with", nil)];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]init];
     self.userInteractionEnabled = YES;
     [tap addTarget:self action:@selector(close)];
