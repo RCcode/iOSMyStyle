@@ -24,6 +24,32 @@
 "Crop" = "Crop";
 "Erase" = "Erase";
 
+"NEXT" = "NEXT";
+"DONE" = "DONE";
+"Details" = "Details";
+"Brand" = "Brand";
+"UploadClothesDes" = "Upload and save your clothes forever.";
+
+"Description" = "Description";
+"Edit" = "Edit";
+
+"Make_outfit" = "Make outfit";
+"Wear_it" = "Wear it";
+
+"Delete" = "Delete";
+"Share" = "Share";
+"Cancel" = "Cancel";
+
+"Sunday" = "Sunday";
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+
+"Style" = "Style";
+"Occasion" = "Occasion";
 
 "Season" = "Season";
 "Category" = "Category";

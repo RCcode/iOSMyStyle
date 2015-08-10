@@ -93,12 +93,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"衣服搭配"];
+    [self setNavTitle:LocalizedString(@"Make_outfit", nil)];
     self.showReturn = YES;
     self.showDone = YES;
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
-    [self setDoneBtnTitle:@"下一步"];
+    [self setDoneBtnTitle:LocalizedString(@"NEXT", nil)];
+
+    [_lblSeason setText:LocalizedString(@"Season", nil)];
+    [_lblType setText:LocalizedString(@"Category", nil)];
+    [_lblCategory setText:LocalizedString(@"Subcategory", nil)];
     
     self.arrList = [[NSMutableArray alloc]init];
     

@@ -29,6 +29,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblCategory;
 @property (weak, nonatomic) IBOutlet UILabel *lblSeason;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblBrand;
+@property (weak, nonatomic) IBOutlet UILabel *lCategory;
+@property (weak, nonatomic) IBOutlet UILabel *lsubCategory;
+@property (weak, nonatomic) IBOutlet UILabel *lseason;
+@property (weak, nonatomic) IBOutlet UILabel *lDesUploadClothes;
+
+
 @property (weak, nonatomic) IBOutlet UISwitch *upLoadSwitch;
 
 @end
@@ -66,12 +73,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"详情"];
+    [self setNavTitle:LocalizedString(@"Details", nil)];
     self.showReturn = YES;
     self.showDone = YES;
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
-    [self setDoneBtnTitle:@"完成"];
+    [self setDoneBtnTitle:LocalizedString(@"DONE", nil)];
+
+    [_lblBrand setText:LocalizedString(@"Brand", nil)];
+    [_lCategory setText:LocalizedString(@"Season", nil)];
+    [_lsubCategory setText:LocalizedString(@"Category", nil)];
+    [_lseason setText:LocalizedString(@"Subcategory", nil)];
+    [_lDesUploadClothes setText:LocalizedString(@"UploadClothesDes", nil)];
     
     [_scrollView addSubview:_contentView];
     _scrollView.contentSize = CGSizeMake(CGRectGetWidth(_contentView.frame), CGRectGetHeight(_contentView.frame));

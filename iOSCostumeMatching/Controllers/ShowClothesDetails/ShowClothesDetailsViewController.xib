@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowClothesDetailsViewController">
             <connections>
+                <outlet property="btnCalendar" destination="S8J-Kt-3ti" id="Mpp-uo-hbB"/>
+                <outlet property="btnMatching" destination="OJa-Ck-obG" id="b4P-p1-sBQ"/>
                 <outlet property="imageView" destination="2Tu-yf-upv" id="Znb-eK-E4o"/>
                 <outlet property="scrollView" destination="ALy-cU-Py9" id="PeU-7z-Ia7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

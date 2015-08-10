@@ -56,7 +56,7 @@
     
     self.showDone = YES;
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
-    [self setDoneBtnTitle:@"下一步"];
+    [self setDoneBtnTitle:LocalizedString(@"NEXT", nil)];
     
     [self setNavTitle:LocalizedString(@"Crop", nil)];
     

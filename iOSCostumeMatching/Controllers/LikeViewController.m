@@ -51,6 +51,9 @@
     
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCollectionView) name:NOTIFICATION_UPDATEVIEW object:nil];
     
+    [_lblStyle setText:LocalizedString(@"Style", nil)];
+    [_lblOccasion setText:LocalizedString(@"Occasion", nil)];
+    
     [self createCollectionView];
     [_collectionView reloadData];
     [self updateCollectionView];
@@ -133,7 +136,7 @@
 
 - (IBAction)selectStyle:(id)sender {
     SelectViewController *selectStyle = [[SelectViewController alloc]init];
-    [selectStyle setNavagationTitle:@"选择风格"];
+    [selectStyle setNavagationTitle:LocalizedString(@"Style", nil)];
     selectStyle.array = getAllCollocationStyle();
     __weak LikeViewController *weakSelf = self;
     [selectStyle setSelectedBlock:^(int index) {
@@ -149,7 +152,7 @@
 
 - (IBAction)selectOccasion:(id)sender {
     SelectViewController *selectOccasion = [[SelectViewController alloc]init];
-    [selectOccasion setNavagationTitle:@"选择场合"];
+    [selectOccasion setNavagationTitle:LocalizedString(@"Occasion", nil)];
     selectOccasion.array = getAllCollocationOccasion();
     __weak LikeViewController *weakSelf = self;
     [selectOccasion setSelectedBlock:^(int index) {

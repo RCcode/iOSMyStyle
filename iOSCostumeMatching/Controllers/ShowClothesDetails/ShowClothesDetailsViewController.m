@@ -16,6 +16,8 @@
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *btnMatching;
+@property (weak, nonatomic) IBOutlet UIButton *btnCalendar;
 
 @property (nonatomic, copy) void(^delete)(ClothesInfo *info);
 
@@ -35,18 +37,20 @@
 
 -(void)doneBtnPressed:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"分享", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"Cancel", nil) destructiveButtonTitle:LocalizedString(@"Delete", nil) otherButtonTitles:LocalizedString(@"Share", nil), nil];
     [actionSheet showInView:self.view];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"详情"];
+    [self setNavTitle:LocalizedString(@"Details", nil)];
     self.showReturn = YES;
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     self.showDone = YES;
     [self setDoneBtnNormalImage:[UIImage imageNamed:@"ic_more"] andHighlightedImage:nil];
     
+    [_btnMatching setTitle:[NSString stringWithFormat:@" + %@",LocalizedString(@"Make_outfit", nil)] forState:UIControlStateNormal];
+    [_btnCalendar setTitle:[NSString stringWithFormat:@" + %@",LocalizedString(@"Wear_it", nil)] forState:UIControlStateNormal];
     [_imageView setImage:_clothesInfo.file];
     
     NSMutableArray *arr = [[NSMutableArray alloc]init];

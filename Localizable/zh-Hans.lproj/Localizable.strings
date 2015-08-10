@@ -23,6 +23,35 @@
 "Crop" = "裁剪";
 "Erase" = "擦除";
 
+"NEXT" = "下一步";
+"DONE" = "完成";
+"Details" = "详情";
+"Brand" = "品牌";
+"UploadClothesDes" = "上传并永久保存到你的电子衣橱";
+
+"Description" = "说明";
+"Edit" = "编辑";
+
+"Make_outfit" = "设计搭配";
+"Wear_it" = "加入日历";
+
+
+"Delete" = "删除";
+"Share" = "分享";
+"Cancel" = "取消";
+
+"Sunday" = "周日";
+"Monday" = "周一";
+"Tuesday" = "周二";
+"Wednesday" = "周三";
+"Thursday" = "周四";
+"Friday" = "周五";
+"Saturday" = "周六";
+
+
+"Style" = "风格";
+"Occasion" = "场合";
+
 "Season" = "季节";
 "Category" = "类型";
 "Subcategory" = "类别";

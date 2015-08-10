@@ -28,6 +28,12 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *upLoadSwitch;
 
+@property (weak, nonatomic) IBOutlet UILabel *lDes;
+@property (weak, nonatomic) IBOutlet UILabel *lStyle;
+@property (weak, nonatomic) IBOutlet UILabel *lOccation;
+@property (weak, nonatomic) IBOutlet UILabel *lUpload;
+
+
 @end
 
 @implementation WriteCollectionDetailsViewController
@@ -68,12 +74,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavTitle:@"详情"];
+    [self setNavTitle:LocalizedString(@"Details", nil)];
     self.showDone = YES;
     self.showReturn = YES;
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
-    [self setDoneBtnTitle:@"完成"];
+    [self setDoneBtnTitle:LocalizedString(@"DONE", nil)];
+    
+    [_lDes setText:LocalizedString(@"Description", nil)];
+    [_lStyle setText:LocalizedString(@"Style", nil)];
+    [_lOccation setText:LocalizedString(@"Occasion", nil)];
+    [_lUpload setText:LocalizedString(@"UploadClothesDes", nil)];
+    
     _imageView.image = _image;
     _txtDescription.delegate = self;
     

@@ -72,14 +72,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"活动详情"];
+    [self setNavTitle:LocalizedString(@"Details", nil)];
     [self setNavTitleColor:[UIColor whiteColor]];
     
     self.showReturn = YES;
     self.showDone = YES;
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_close"] andHighlightedImage:nil];
     [self setDoneBtnTitleColor:[UIColor whiteColor]];
-    [self setDoneBtnTitle:@"编辑"];
+    [self setDoneBtnTitle:LocalizedString(@"Edit", nil)];
     
     [self.collectionView setFrame:CGRectMake(0, CGRectGetMaxY(_middleView.frame), ScreenWidth, ScreenHeight-CGRectGetMaxY(_middleView.frame)-64)];
     [self.view insertSubview:self.collectionView atIndex:0];

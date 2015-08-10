@@ -69,7 +69,7 @@
         NSDictionary *dic = [arr objectAtIndex:i];
         NSMutableString *str = [[NSMutableString alloc]init];
         WardrobeType type = [[dic objectForKey:@"cateId"]intValue];
-        [str appendString: getWardrobeTypeName(type)];
+        [str appendString:[NSString stringWithFormat:@"%@",getWardrobeTypeName(type)] ];
         [str appendString:@" "];
         [str appendString:[dic objectForKey:@"brand"]];
         

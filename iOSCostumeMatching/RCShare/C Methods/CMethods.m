@@ -196,8 +196,7 @@ NSString *stringFromDate(NSDate *date)
 
 NSString *weekdayStringFromDate(NSDate *inputDate)
 {
-    
-    NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六", nil];
+    NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], LocalizedString(@"Sunday", nil), LocalizedString(@"Monday", nil), LocalizedString(@"Tuesday", nil), LocalizedString(@"Wednesday", nil), LocalizedString(@"Thursday", nil),LocalizedString(@"Friday", nil), LocalizedString(@"Saturday", nil), nil];
     
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     

@@ -12,9 +12,14 @@
                 <outlet property="btnType" destination="eyX-ue-MGS" id="XyZ-vH-csT"/>
                 <outlet property="contentView" destination="zIa-ME-4B2" id="FhH-mt-wzz"/>
                 <outlet property="imageView" destination="6Fh-4e-HnI" id="wPd-5x-sQS"/>
+                <outlet property="lCategory" destination="otB-rF-HtQ" id="tzv-xj-6HA"/>
+                <outlet property="lDesUploadClothes" destination="MzN-at-JXb" id="ZzZ-AL-AHA"/>
+                <outlet property="lblBrand" destination="E8X-Cg-RAi" id="ymr-HY-6ya"/>
                 <outlet property="lblCategory" destination="2Fp-7Q-k1S" id="27Q-T0-g4s"/>
                 <outlet property="lblSeason" destination="9uv-tq-lcB" id="OBy-pB-7Yv"/>
                 <outlet property="lblType" destination="ck6-os-0bZ" id="ah1-ZC-i3n"/>
+                <outlet property="lseason" destination="I4X-I2-3qE" id="Vsx-l5-4yc"/>
+                <outlet property="lsubCategory" destination="r5l-QG-48O" id="N4Z-X1-H4f"/>
                 <outlet property="scrollView" destination="zJ8-w6-DbM" id="6X8-Cn-1nA"/>
                 <outlet property="txtBrand" destination="x35-2w-hH7" id="vuL-SA-fhu"/>
                 <outlet property="upLoadSwitch" destination="7F6-Ij-Iqi" id="u9k-Re-QjV"/>
@@ -56,7 +61,7 @@
                     <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otB-rF-HtQ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="otB-rF-HtQ">
                     <rect key="frame" x="10" y="254" width="53" height="49"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -67,7 +72,7 @@
                     <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类别" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5l-QG-48O">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类别" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="r5l-QG-48O">
                     <rect key="frame" x="10" y="304" width="53" height="49"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -78,7 +83,7 @@
                     <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="季节" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4X-I2-3qE">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="季节" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="I4X-I2-3qE">
                     <rect key="frame" x="10" y="354" width="53" height="49"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -134,7 +139,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODP-zy-sAR">
                     <rect key="frame" x="10" y="413" width="300" height="49"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传并永久保存你的电子衣柜" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzN-at-JXb">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传并永久保存你的电子衣柜" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="MzN-at-JXb">
                             <rect key="frame" x="14" y="0.0" width="223" height="49"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
