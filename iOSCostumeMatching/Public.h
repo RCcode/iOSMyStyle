@@ -10,16 +10,8 @@
 #define InstaShot_Public_h
 
 #define kMoreAppID 22019
-#define kMoreAppBaseURL @"http://moreapp.rcplatformhk.net/pbweb/app/getIOSAppListNew.do"
-
-#define kAdColonyAppID @"app70e0943dbd23435288"
-#define kZoonId @"vza041e606e3eb4282b3"
-#define kZoonId1 @"vz7c1dd5ea679f44668f"
-
-#define kVungleAppID @"558055ffb2addf5a5a000120"
 
 #define UmengAPPKey @"5575172c67e58e2bd4001874"
-#define FlurryAppKey @"XK7DKPDSN5ZRX6FKSRMF"
 
 #define kAppID @"1002299125"
 #define kAppStoreURLPre @"itms-apps://itunes.apple.com/app/id"
@@ -28,27 +20,16 @@
 #define kAppStoreScoreURLPre @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id="
 #define kAppStoreScoreURL [NSString stringWithFormat:@"%@%@", kAppStoreScoreURLPre, kAppID]
 
-
-
-
-
-
-
-
 #define AdMobID @""
 //#define AdMobID @"ca-app-pub-3747943735238482/9860250656"
-#define AdUrl @"http://ads.rcplatformhk.com/AdlayoutBossWeb/platform/getRcAppAdmob.do"
 
 #define kFeedbackEmail @"rcplatform.help@gmail.com"
 
 #define kPushURL @"http://iospush.rcplatformhk.net/IOSPushWeb/userinfo/regiUserInfo.do"
 
-#define kShareHotTags @"A fast and free app to get 10000s of real Instagram followers.In the App Store search F4F download !#follow#followme#follow4follow#f4f#followforfollow#like4like#like#likeforlike"
-
 #define AppName @"Matching"
 
 //key
-
 
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width

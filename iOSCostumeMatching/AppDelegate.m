@@ -13,6 +13,7 @@
 #import "CalendarViewController.h"
 #import "CollectionInspirationViewController.h"
 #import "LikeViewController.h"
+#import "MobClick.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +26,10 @@
     
     //注册通知
     [self registNotification];
+    
+    //初始化统计相关（友盟、Flurry、GA）
+    [self setupAnalytics];
+    
     application.applicationIconBadgeNumber = 0;    
     
     // Override point for customization after application launch.
@@ -69,6 +74,16 @@
     
     return YES;
 }
+
+#pragma mark - 初始化统计相关
+- (void)setupAnalytics{
+    
+    //友盟
+    [MobClick startWithAppkey:UmengAPPKey reportPolicy:SEND_ON_EXIT channelId:@"App Store"];
+    [MobClick setAppVersion:XcodeAppVersion];
+    [MobClick updateOnlineConfig];
+}
+
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
