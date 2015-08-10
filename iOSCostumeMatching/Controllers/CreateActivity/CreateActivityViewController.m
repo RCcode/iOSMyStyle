@@ -113,6 +113,11 @@
             {
                 break;
             }
+            case ADR_intraday:
+            {
+                firstReminddate = _startTime;
+                break;
+            }
             case ADR_before1day:
             {
                 firstReminddate = [[NSDate alloc]initWithTimeInterval:-24*60*60 sinceDate:_startTime];
@@ -140,6 +145,11 @@
         switch ((AllDayRemind)_secondRemind) {
             case ADR_none:
             {
+                break;
+            }
+            case ADR_intraday:
+            {
+                secondReminddate = _startTime;
                 break;
             }
             case ADR_before1day:

@@ -173,7 +173,7 @@ enum WardrobeCategory
     WCEvening_bag = 1301,                      //晚装包
     WCBackpack = 1302,                         //双肩包
     WCParty_package = 1303,                    //宴会包
-    WCSide_shoulder_bag = 1304,                //侧肩包
+    WCSide_shoulder_bag = 1304,                //手提包
     WCSatchel = 1305,                          //小背包
     WCVanity = 1306,                           //手袋
     WCWallet = 1307,                           //钱包
@@ -194,9 +194,9 @@ enum WardrobeCategory
     WCBracelet = 1501,                         //手镯
     WCNecklace = 1502,                         //项链
     WCRing = 1503,                             //戒指
-    WCChain_bracelet = 1504,                   //手链
+//    WCChain_bracelet = 1504,                   //手链
     WCEarrings = 1505,                         //耳环
-    WCEar_stud = 1506,                         //耳钉
+    WCEar_Pins = 1506,                         //胸针
     
     //内衣
     
@@ -257,6 +257,7 @@ typedef enum AllDayRemind AllDayRemind;
 enum AllDayRemind
 {
     ADR_none,
+    ADR_intraday,
     ADR_before1day,
     ADR_before2day,
     ADR_before3day,

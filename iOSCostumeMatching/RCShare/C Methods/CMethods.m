@@ -306,42 +306,42 @@ NSString *getWardrobeTypeName(WardrobeType type)
     switch (type) {
         case WTAll:
         {
-            str = @"ALL";
+            str = LocalizedString(@"ALL", nil);
             break;
         }
         case WTUpper:
         {
-            str = @"上装";
+            str = LocalizedString(@"Top/Dresses", nil);
             break;
         }
         case WTBottoms:
         {
-            str = @"下装";
+            str = LocalizedString(@"Bottoms", nil);
             break;
         }
         case WTShoes:
         {
-            str = @"鞋";
+            str = LocalizedString(@"Shoes", nil);
             break;
         }
         case WTBag:
         {
-            str = @"包";
+            str = LocalizedString(@"Bags", nil);
             break;
         }
         case WTAccessory:
         {
-            str = @"配饰";
+            str = LocalizedString(@"Accessories", nil);
             break;
         }
         case WTJewelry:
         {
-            str = @"首饰";
+            str = LocalizedString(@"Jewelry", nil);
             break;
         }
         case WTUnderwear:
         {
-            str = @"内衣";
+            str = LocalizedString(@"Intimates", nil);
             break;
         }
         default:
@@ -352,7 +352,7 @@ NSString *getWardrobeTypeName(WardrobeType type)
 
 NSArray *getAllWardrobeType()
 {
-    NSArray *arr = @[@"ALL",@"上装",@"下装",@"鞋",@"包",@"配饰",@"首饰",@"内衣"];
+    NSArray *arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Top/Dresses",nil),LocalizedString(@"Bottoms", nil),LocalizedString(@"Shoes", nil),LocalizedString(@"Bags", nil),LocalizedString(@"Accessories", nil),LocalizedString(@"Jewelry", nil),LocalizedString(@"Intimates",nil)];
     
     return arr;
 }
@@ -361,71 +361,70 @@ NSString *getWardrobeCategoryeName(WardrobeCategory type)
 {
     NSString *str;
     switch (type) {
-        case WCAll:{str = @"ALL";break;}
+        case WCAll:{str = LocalizedString(@"ALL", nil);break;}
             
-        case WCJacket:{str = @"夹克";break;}
-        case WCShirt:{str = @"衬衫";break;}
-        case WCT_shirt:{str = @"T恤";break;}
-        case WCBusiness_suit:{str = @"西装";break;}
-        case WCWoollen_sweater:{str = @"羊毛衫";break;}
-        case WCKnitwear:{str = @"针织衫";break;}
-        case WCOne_piece_dress:{str = @"连衣裙";break;}
-        case WCOutdoor_clothing:{str = @"户外服装";break;}
-        case WCSport_suit:{str = @"运动服";break;}
-        case WCWind_coat:{str = @"风衣";break;}
-        case WCJeans_wear:{str = @"牛仔";break;}
-        case WCUnderwaist:{str = @"背心";break;}
+        case WCJacket:{str = LocalizedString(@"Jackets", nil);break;}
+        case WCShirt:{str = LocalizedString(@"Shirts", nil);break;}
+        case WCT_shirt:{str = LocalizedString(@"T-Shirt", nil);break;}
+        case WCBusiness_suit:{str = LocalizedString(@"Suits", nil);break;}
+        case WCWoollen_sweater:{str = LocalizedString(@"Cardigan", nil);break;}
+        case WCKnitwear:{str = LocalizedString(@"Sweaters", nil);break;}
+        case WCOne_piece_dress:{str = LocalizedString(@"Dresses", nil);break;}
+        case WCOutdoor_clothing:{str = LocalizedString(@"Outdoor", nil);break;}
+        case WCSport_suit:{str = LocalizedString(@"Sportswear", nil);break;}
+        case WCWind_coat:{str = LocalizedString(@"Windbreaker", nil);break;}
+        case WCJeans_wear:{str = LocalizedString(@"Jeans", nil);break;}
+        case WCUnderwaist:{str = LocalizedString(@"Tank_Top", nil);break;}
             //下装
-        case WCLong_dress:{str = @"长裙";break;}
-        case WCShort_skirt:{str = @"短裙";break;}
-        case WCTrousers:{str = @"长裤";break;}
-        case WCShorts:{str = @"短裤";break;}
-        case WCJean:{str = @"牛仔";break;}
-        case WCLeggings:{str = @"打底裤";break;}
+        case WCLong_dress:{str = LocalizedString(@"Long_Dress", nil);break;}
+        case WCShort_skirt:{str = LocalizedString(@"Skirts", nil);break;}
+        case WCTrousers:{str = LocalizedString(@"Trousers", nil);break;}
+        case WCShorts:{str = LocalizedString(@"Shorts", nil);break;}
+        case WCJean:{str = LocalizedString(@"Jeans", nil);break;}
+        case WCLeggings:{str = LocalizedString(@"Leggings", nil);break;}
             //鞋
-        case WCFlattie:{str = @"平底鞋";break;}
-        case WCDress_shoes:{str = @"晚装鞋";break;}
-        case WCHigh_heel_shoe:{str = @"高跟鞋";break;}
-        case WCBoots:{str = @"靴子";break;}
-        case WCPlatform_shoes:{str = @"松糕鞋";break;}
-        case WCSandal:{str = @"凉鞋";break;}
-        case WCWedge_heel:{str = @"坡跟鞋";break;}
-        case WCSneaker:{str = @"运动鞋";break;}
-        case WCSlippers:{str = @"拖鞋";break;}
+        case WCFlattie:{str = LocalizedString(@"Flats", nil);break;}
+        case WCDress_shoes:{str = LocalizedString(@"Evening", nil);break;}
+        case WCHigh_heel_shoe:{str = LocalizedString(@"High_Heels", nil);break;}
+        case WCBoots:{str = LocalizedString(@"Boots", nil);break;}
+        case WCPlatform_shoes:{str = LocalizedString(@"Platforms", nil);break;}
+        case WCSandal:{str = LocalizedString(@"Sandals", nil);break;}
+        case WCWedge_heel:{str = LocalizedString(@"Wedges", nil);break;}
+        case WCSneaker:{str = LocalizedString(@"Sneakers", nil);break;}
+        case WCSlippers:{str = LocalizedString(@"Sandals", nil);break;}
             //包
-        case WCEvening_bag:{str = @"晚装包";break;}
-        case WCBackpack:{str = @"双肩包";break;}
-        case WCParty_package:{str = @"宴会包";break;}
-        case WCSide_shoulder_bag:{str = @"侧肩包";break;}
-        case WCSatchel:{str = @"小背包";break;}
-        case WCVanity:{str = @"手袋";break;}
-        case WCWallet:{str = @"钱包";break;}
+        case WCEvening_bag:{str = LocalizedString(@"Evening", nil);break;}
+        case WCBackpack:{str = LocalizedString(@"Backpacks", nil);break;}
+        case WCParty_package:{str = LocalizedString(@"Party", nil);break;}
+        case WCSide_shoulder_bag:{str = LocalizedString(@"Handbags", nil);break;}
+        case WCSatchel:{str = LocalizedString(@"Satchels", nil);break;}
+        case WCVanity:{str = LocalizedString(@"Clutches", nil);break;}
+        case WCWallet:{str = LocalizedString(@"Wallets", nil);break;}
             //配饰
-        case WCBelt:{str = @"腰带";break;}
-        case WCHat:{str = @"帽子";break;}
-        case WCSunglass:{str = @"太阳镜";break;}
-        case WCScarf:{str = @"围巾";break;}
-        case WCGlove:{str = @"手套";break;}
-        case WCWatch:{str = @"手表";break;}
-        case WCCosmetic:{str = @"化妆品";break;}
-        case WCPerfume:{str = @"香水";break;}
+        case WCBelt:{str = LocalizedString(@"Belts", nil);break;}
+        case WCHat:{str = LocalizedString(@"Hats", nil);break;}
+        case WCSunglass:{str = LocalizedString(@"Sunglasses", nil);break;}
+        case WCScarf:{str = LocalizedString(@"Scarves", nil);break;}
+        case WCGlove:{str = LocalizedString(@"Gloves", nil);break;}
+        case WCWatch:{str = LocalizedString(@"Watches", nil);break;}
+        case WCCosmetic:{str = LocalizedString(@"Makeup", nil);break;}
+        case WCPerfume:{str = LocalizedString(@"Perfume", nil);break;}
             //首饰
-        case WCBracelet:{str = @"手镯";break;}
-        case WCNecklace:{str = @"项链";break;}
-        case WCRing:{str = @"戒指";break;}
-        case WCChain_bracelet:{str = @"手链";break;}
-        case WCEarrings:{str = @"耳环";break;}
-        case WCEar_stud:{str = @"耳钉";break;}
+        case WCBracelet:{str = LocalizedString(@"Bracelets", nil);break;}
+        case WCNecklace:{str = LocalizedString(@"Necklaces", nil);break;}
+        case WCRing:{str = LocalizedString(@"Rings", nil);break;}
+        case WCEarrings:{str = LocalizedString(@"Earrings", nil);break;}
+        case WCEar_Pins:{str = LocalizedString(@"Pins", nil);break;}
             //内衣
-        case WCBra:{str = @"胸罩";break;}
-        case WCSun_top:{str = @"吊带衫";break;}
-        case WCUnderdress:{str = @"衬裙";break;}
-        case WCNight_robe:{str = @"睡袍";break;}
-        case WCSilk_stockings:{str = @"丝袜";break;}
-        case WCNight_suit:{str = @"睡衣";break;}
-        case WCBriefs:{str = @"内裤";break;}
-        case WCSocks:{str = @"袜子";break;}
-        case WCBathrobe:{str = @"浴袍";break;}
+        case WCBra:{str = LocalizedString(@"Bras", nil);break;}
+        case WCSun_top:{str = LocalizedString(@"Vest", nil);break;}
+        case WCUnderdress:{str = LocalizedString(@"Petticoats", nil);break;}
+        case WCNight_robe:{str = LocalizedString(@"Gowns", nil);break;}
+        case WCSilk_stockings:{str = LocalizedString(@"Stockings", nil);break;}
+        case WCNight_suit:{str = LocalizedString(@"Pajamas", nil);break;}
+        case WCBriefs:{str = LocalizedString(@"Underwear", nil);break;}
+        case WCSocks:{str = LocalizedString(@"Socks", nil);break;}
+        case WCBathrobe:{str = LocalizedString(@"Bathrobes", nil);break;}
         default:
             break;
     }
@@ -438,55 +437,57 @@ NSArray *getAllWardrobeCategorye(WardrobeType type)
     switch (type) {
         case WTAll:
         {
-            arr = @[@"ALL",
-                     @"夹克",@"衬衫",@"T恤",@"西装",@"羊毛衫",@"针织衫",@"连衣裙",@"户外服装",@"运动服",@"风衣",@"牛仔",@"背心",
-                     
-                     @"长裙",@"短裙",@"长裤",@"短裤",@"牛仔",@"打底裤",
-                     
-                     @"平底鞋",@"晚装鞋",@"高跟鞋",@"靴子",@"松糕鞋",@"凉鞋",@"坡跟鞋",@"运动鞋",@"拖鞋",
-                     
-                     @"晚装包",@"双肩包",@"宴会包",@"侧肩包",@"小背包",@"手袋",@"钱包",
-                     
-                     @"腰带",@"帽子",@"太阳镜",@"围巾",@"手套",@"手表",@"化妆品",@"香水",
-                     
-                     @"手镯",@"项链",@"戒指",@"手链",@"耳环",@"耳钉",
-                     
-                     @"胸罩",@"吊带衫",@"衬裙",@"睡袍",@"丝袜",@"睡衣",@"内裤",@"袜子",@"浴袍"];
+            arr = @[LocalizedString(@"ALL", nil),
+                    
+                    LocalizedString(@"Jackets", nil),LocalizedString(@"Shirts", nil),LocalizedString(@"T-Shirt", nil),LocalizedString(@"Suits", nil),LocalizedString(@"Cardigan", nil),LocalizedString(@"Sweaters", nil),LocalizedString(@"Dresses", nil),LocalizedString(@"Outdoor", nil),LocalizedString(@"Sportswear", nil),LocalizedString(@"Windbreaker", nil),LocalizedString(@"Jeans", nil),LocalizedString(@"Tank_Top", nil),
+                    
+                    LocalizedString(@"Long_Dress", nil),LocalizedString(@"Skirts", nil),LocalizedString(@"Trousers", nil),LocalizedString(@"Shorts", nil),LocalizedString(@"Jeans", nil),LocalizedString(@"Leggings", nil),
+
+                    LocalizedString(@"Flats", nil),LocalizedString(@"Evening", nil),LocalizedString(@"High_Heels", nil),LocalizedString(@"Boots", nil),LocalizedString(@"Platforms", nil),LocalizedString(@"Sandals", nil),LocalizedString(@"Wedges", nil),LocalizedString(@"Sneakers", nil),LocalizedString(@"Sandals", nil),
+                    
+                    LocalizedString(@"Evening", nil),LocalizedString(@"Backpacks", nil),LocalizedString(@"Party", nil),LocalizedString(@"Handbags", nil),LocalizedString(@"Satchels", nil),LocalizedString(@"Clutches", nil),LocalizedString(@"Wallets", nil),
+                    
+                    LocalizedString(@"Belts", nil),LocalizedString(@"Hats", nil),LocalizedString(@"Sunglasses", nil),LocalizedString(@"Scarves", nil),LocalizedString(@"Gloves", nil),LocalizedString(@"Watches", nil),LocalizedString(@"Makeup", nil),LocalizedString(@"Perfume", nil),
+                    
+                    LocalizedString(@"Bracelets", nil),LocalizedString(@"Necklaces", nil),LocalizedString(@"Rings", nil),LocalizedString(@"Earrings", nil),LocalizedString(@"Pins", nil),
+                    
+                    LocalizedString(@"Bras", nil),LocalizedString(@"Vest", nil),LocalizedString(@"Petticoats", nil),LocalizedString(@"Gowns", nil),LocalizedString(@"Stockings", nil),LocalizedString(@"Pajamas", nil),LocalizedString(@"Underwear", nil),LocalizedString(@"Socks", nil),LocalizedString(@"Bathrobes", nil)];
             break;
         }
         case WTUpper:
         {
-            arr = @[@"ALL",@"夹克",@"衬衫",@"T恤",@"西装",@"羊毛衫",@"针织衫",@"连衣裙",@"户外服装",@"运动服",@"风衣",@"牛仔",@"背心"];
+            arr = @[LocalizedString(@"ALL", nil),
+                    LocalizedString(@"Jackets", nil),LocalizedString(@"Shirts", nil),LocalizedString(@"T-Shirt", nil),LocalizedString(@"Suits", nil),LocalizedString(@"Cardigan", nil),LocalizedString(@"Sweaters", nil),LocalizedString(@"Dresses", nil),LocalizedString(@"Outdoor", nil),LocalizedString(@"Sportswear", nil),LocalizedString(@"Windbreaker", nil),LocalizedString(@"Jeans", nil),LocalizedString(@"Tank_Top", nil)];
             break;
         }
         case WTBottoms:
         {
-            arr = @[@"ALL",@"长裙",@"短裙",@"长裤",@"短裤",@"牛仔",@"打底裤"];
+            arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Long_Dress", nil),LocalizedString(@"Skirts", nil),LocalizedString(@"Trousers", nil),LocalizedString(@"Shorts", nil),LocalizedString(@"Jeans", nil),LocalizedString(@"Leggings", nil)];
             break;
         }
         case WTShoes:
         {
-            arr = @[@"ALL",@"平底鞋",@"晚装鞋",@"高跟鞋",@"靴子",@"松糕鞋",@"凉鞋",@"坡跟鞋",@"运动鞋",@"拖鞋"];
+            arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Flats", nil),LocalizedString(@"Evening", nil),LocalizedString(@"High_Heels", nil),LocalizedString(@"Boots", nil),LocalizedString(@"Platforms", nil),LocalizedString(@"Sandals", nil),LocalizedString(@"Wedges", nil),LocalizedString(@"Sneakers", nil),LocalizedString(@"Sandals", nil)];
             break;
         }
         case WTBag:
         {
-            arr = @[@"ALL",@"晚装包",@"双肩包",@"宴会包",@"侧肩包",@"小背包",@"手袋",@"钱包"];
+            arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Evening", nil),LocalizedString(@"Backpacks", nil),LocalizedString(@"Party", nil),LocalizedString(@"Handbags", nil),LocalizedString(@"Satchels", nil),LocalizedString(@"Clutches", nil),LocalizedString(@"Wallets", nil)];
             break;
         }
         case WTAccessory:
         {
-            arr = @[@"ALL",@"腰带",@"帽子",@"太阳镜",@"围巾",@"手套",@"手表",@"化妆品",@"香水"];
+            arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Belts", nil),LocalizedString(@"Hats", nil),LocalizedString(@"Sunglasses", nil),LocalizedString(@"Scarves", nil),LocalizedString(@"Gloves", nil),LocalizedString(@"Watches", nil),LocalizedString(@"Makeup", nil),LocalizedString(@"Perfume", nil)];
             break;
         }
         case WTJewelry:
         {
-            arr = @[@"手镯",@"项链",@"戒指",@"手链",@"耳环",@"耳钉"];
+            arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Bracelets", nil),LocalizedString(@"Necklaces", nil),LocalizedString(@"Rings", nil),LocalizedString(@"Earrings", nil),LocalizedString(@"Pins", nil)];
             break;
         }
         case WTUnderwear:
         {
-            arr = @[@"ALL",@"胸罩",@"吊带衫",@"衬裙",@"睡袍",@"丝袜",@"睡衣",@"内裤",@"袜子",@"浴袍"];
+            arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Bras", nil),LocalizedString(@"Vest", nil),LocalizedString(@"Petticoats", nil),LocalizedString(@"Gowns", nil),LocalizedString(@"Stockings", nil),LocalizedString(@"Pajamas", nil),LocalizedString(@"Underwear", nil),LocalizedString(@"Socks", nil),LocalizedString(@"Bathrobes", nil)];
             break;
         }
         default:
@@ -500,11 +501,11 @@ NSString *getWardrobeSeasonName(WardrobeSeason type)
 {
     NSString *str;
     switch (type) {
-        case WSAll:{str = @"ALL";break;}
+        case WSAll:{str = LocalizedString(@"ALL", nil);break;}
             
-        case WSSpringAndSummer:{str = @"春夏";break;}
+        case WSSpringAndSummer:{str = LocalizedString(@"Spring/Summer", nil);break;}
             
-        case WSAutumnAndWinter:{str = @"秋冬";break;}
+        case WSAutumnAndWinter:{str = LocalizedString(@"Fall/Winter", nil);break;}
             
         default:
             break;
@@ -514,7 +515,7 @@ NSString *getWardrobeSeasonName(WardrobeSeason type)
 
 NSArray *getAllWardrobeSeason()
 {
-    NSArray *arr = @[@"ALL",@"春夏",@"秋冬"];
+    NSArray *arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Spring/Summer", nil),LocalizedString(@"Fall/Winter", nil)];
     
     return arr;
 }
@@ -523,13 +524,13 @@ NSString *getCollocationStyleName(CollocationStyle type)
 {
     NSString *str;
     switch (type) {
-        case CSAll:{str = @"ALL";break;}
+        case CSAll:{str = LocalizedString(@"ALL", nil);break;}
             
-        case CSFormal_wear:{str = @"正装";break;}
+        case CSFormal_wear:{str = LocalizedString(@"Dreesy", nil);break;}
             
-        case CSCasual_Wear:{str = @"休闲";break;}
+        case CSCasual_Wear:{str = LocalizedString(@"Casual", nil);break;}
             
-        case CSSportswear:{str = @"运动";break;}
+        case CSSportswear:{str = LocalizedString(@"Sport", nil);break;}
             
         default:
             break;
@@ -539,7 +540,7 @@ NSString *getCollocationStyleName(CollocationStyle type)
 
 NSArray *getAllCollocationStyle()
 {
-    NSArray *arr = @[@"ALL",@"正装",@"休闲",@"运动"];
+    NSArray *arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Dreesy", nil),LocalizedString(@"Casual", nil),LocalizedString(@"Sport", nil)];
     
     return arr;
 }
@@ -548,19 +549,19 @@ NSString *getCollocationOccasionName(CollocationOccasion type)
 {
     NSString *str;
     switch (type) {
-        case COAll:{str = @"ALL";break;}
+        case COAll:{str = LocalizedString(@"ALL", nil);break;}
             
-        case COWorking:{str = @"工作";break;}
+        case COWorking:{str = LocalizedString(@"Work", nil);break;}
             
-        case COHome:{str = @"家居";break;}
+        case COHome:{str = LocalizedString(@"Home", nil);break;}
             
-        case CODinner:{str = @"晚宴";break;}
+        case CODinner:{str = LocalizedString(@"Evening", nil);break;}
             
-        case COParty:{str = @"聚会";break;}
+        case COParty:{str = LocalizedString(@"Party", nil);break;}
             
-        case COFitness:{str = @"健身";break;}
+        case COFitness:{str = LocalizedString(@"GYM", nil);break;}
             
-        case COJourney:{str = @"出游";break;}
+        case COJourney:{str = LocalizedString(@"Outing", nil);break;}
             
         default:
             break;
@@ -570,7 +571,7 @@ NSString *getCollocationOccasionName(CollocationOccasion type)
 
 NSArray *getAllCollocationOccasion()
 {
-    NSArray *arr = @[@"ALL",@"工作",@"家居",@"晚宴",@"聚会",@"健身",@"出游"];
+    NSArray *arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Work", nil),LocalizedString(@"Home", nil),LocalizedString(@"Evening", nil),LocalizedString(@"Party", nil),LocalizedString(@"GYM", nil),LocalizedString(@"Outing", nil)];
     
     return arr;
 }
@@ -579,21 +580,21 @@ NSString *getNotAllDayRemindName(NotAllDayRemind notAllDayRemind)
 {
     NSString *str;
     switch (notAllDayRemind) {
-        case NADR_none:{str = @"无通知";break;}
+        case NADR_none:{str = LocalizedString(@"No_notification", nil);break;}
             
-        case NADR_before1hour:{str = @"提前一小时";break;}
+        case NADR_before1hour:{str = LocalizedString(@"1_hour_before", nil);break;}
             
-        case NADR_before2hour:{str = @"提前两小时";break;}
+        case NADR_before2hour:{str = LocalizedString(@"2_hour_before", nil);break;}
             
-        case NADR_before3hour:{str = @"提前三小时";break;}
+        case NADR_before3hour:{str = LocalizedString(@"3_hour_before", nil);break;}
             
-        case NADR_before5hour:{str = @"提前五小时";break;}
+        case NADR_before5hour:{str = LocalizedString(@"5_hour_before", nil);break;}
             
-        case NADR_before1day:{str = @"提前一天";break;}
+        case NADR_before1day:{str = LocalizedString(@"1_day_before", nil);break;}
             
-        case NADR_before2day:{str = @"提前两天";break;}
+        case NADR_before2day:{str = LocalizedString(@"2_day_before", nil);break;}
             
-        case NADR_before1week:{str = @"提前一周";break;}
+        case NADR_before1week:{str = LocalizedString(@"1_week_before", nil);break;}
             
         default:
             break;
@@ -603,7 +604,7 @@ NSString *getNotAllDayRemindName(NotAllDayRemind notAllDayRemind)
 
 NSArray *getNotAllDayRemind()
 {
-    NSArray *arr = @[@"无通知",@"提前一小时",@"提前两小时",@"提前三小时",@"提前五小时",@"提前一天",@"提前两天",@"提前一周"];
+    NSArray *arr = @[LocalizedString(@"No_notification", nil),LocalizedString(@"1_hour_before", nil),LocalizedString(@"2_hour_before", nil),LocalizedString(@"3_hour_before", nil),LocalizedString(@"5_hour_before", nil),LocalizedString(@"1_day_before", nil),LocalizedString(@"2_day_before", nil),LocalizedString(@"1_week_before", nil)];
     
     return arr;
 }
@@ -612,15 +613,17 @@ NSString *getAllDayRemindName(AllDayRemind allDayRemind)
 {
     NSString *str;
     switch (allDayRemind) {
-        case ADR_none:{str = @"无通知";break;}
+        case ADR_none:{str = LocalizedString(@"No_notification", nil);break;}
             
-        case ADR_before1day:{str = @"提前一天";break;}
+        case ADR_intraday:{str = LocalizedString(@"On_the_day", nil);break;}
             
-        case ADR_before2day:{str = @"提前两天";break;}
+        case ADR_before1day:{str = LocalizedString(@"1_day_before", nil);break;}
             
-        case ADR_before3day:{str = @"提前三天";break;}
+        case ADR_before2day:{str = LocalizedString(@"2_day_before", nil);break;}
             
-        case ADR_before1week:{str = @"提前一周";break;}
+        case ADR_before3day:{str = LocalizedString(@"3_day_before", nil);break;}
+            
+        case ADR_before1week:{str = LocalizedString(@"1_week_before", nil);break;}
             
         default:
             break;
@@ -630,7 +633,7 @@ NSString *getAllDayRemindName(AllDayRemind allDayRemind)
 
 NSArray *getAllDayRemind()
 {
-    NSArray *arr = @[@"无通知",@"提前一天",@"提前两天",@"提前三天",@"提前一周"];
+    NSArray *arr = @[LocalizedString(@"No_notification", nil),LocalizedString(@"On_the_day", nil),LocalizedString(@"1_day_before", nil),LocalizedString(@"2_day_before", nil),LocalizedString(@"3_day_before",nil),LocalizedString(@"1_week_before", nil)];
     
     return arr;
 }

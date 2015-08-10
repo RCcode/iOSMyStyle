@@ -20,15 +20,98 @@
 "Share_app" = "我发现一个很好用的服装搭配应用，名字是MyStyle。我已经用MyStyle搭配了很多新的造型。下载链接：";
 "Logout" = "注销";
 
+"Crop" = "裁剪";
+"Erase" = "擦除";
 
 "Season" = "季节";
 "Category" = "类型";
 "Subcategory" = "类别";
 
+"All" = "所有";
+"Spring/Summer" = "春夏";
+"Fall/Winter" = "秋冬";
 
-"Crop" = "裁剪";
-"Erase" = "擦除";
+"Top/Dresses" = "上装";
+"Bottoms" = "下装";
+"Shoes" = "鞋";
+"Bags" = "包";
+"Accessories" = "配饰";
+"Jewelry" = "首饰";
+"Intimates" = "内衣";
 
+"Jackets" = "夹克";
+"Shirts" = "衬衫";
+"T-Shirt" = "T恤";
+"Suits" = "西装";
+"Cardigan" = "羊毛衫";
+"Sweaters" = "针织衫";
+"Dresses" = "连衣裙";
+"Outdoor" = "户外服装";
+"Sportswear" = "运动服";
+"Windbreaker" = "风衣";
+"Jeans" = "牛仔";
+"Tank_Top" = "背心";
+
+"Long_Dress" = "长裙";
+"Skirts" = "短裙";
+"Trousers" = "长裤";
+"Shorts" = "短裤";
+"Jeans" = "牛仔";
+"Leggings" = "打底裤";
+
+"Flats" = "平底鞋";
+"Evening" = "晚装鞋";
+"High_Heels" = "高跟鞋";
+"Boots" = "靴子";
+"Platforms" = "松糕鞋";
+"Sandals" = "凉鞋";
+"Wedges" = "坡跟鞋";
+"Sneakers" = "运动鞋";
+"Sandals" = "拖鞋";
+
+"Evening" = "晚装包";
+"Backpacks" = "双肩包";
+"Handbags" = "手提包";
+"Party" = "宴会包";
+"Satchels" = "小背包";
+"Clutches" = "手袋";
+"Wallets" = "钱包";
+
+"Belts" = "腰带";
+"Hats" = "帽子";
+"Sunglasses" = "太阳镜";
+"Scarves" = "围巾";
+"Gloves" = "手套";
+"Watches" = "手表";
+"Makeup" = "化妆品";
+"Perfume" = "香水";
+
+"Bracelets" = "手镯";
+"Necklaces" = "项链";
+"Rings" = "戒指";
+"Earrings" = "耳环";
+"Pins" = "胸针";
+
+"Bras" = "胸罩";
+"Vest" = "吊带衫";
+"Petticoats" = "衬裙";
+"Gowns" = "睡袍";
+"Stockings" = "丝袜";
+"Pajamas" = "睡衣";
+"Underwear" = "内裤";
+"Socks" = "袜子";
+"Bathrobes" = "浴袍";
+
+"Dreesy" = "正装";
+"Casual" = "休闲";
+"Sport" = "运动";
+
+"Work" = "工作";
+"Home" = "家居";
+"Evening" = "晚宴";
+"Party" = "聚会";
+"GYM" = "健身";
+"Outing" = "出游";
 
 "Default_color" = "默认颜色";
 "Tomato" = "番茄红";
@@ -43,10 +126,20 @@
 "Flamingo" = "红鹤色";
 "Graphite" = "石墨黑";
 
+"No_notification" = "无通知";
+"1_hour_before" = "提前1小时";
+"2_hour_before" = "提前2小时";
+"3_hour_before" = "提前3小时";
+"5_hour_before" = "提前5小时";
+"1_day_before" = "提前1天";
+"2_day_before" = "提前2天";
+"1_week_before" = "提前1周";
 
-
-
-
+"On_the_day" = "当天(9:00)";
+"1_day_before" = "提前1天(9:00)";
+"2_day_before" = "提前2天(9:00)";
+"3_day_before" = "提前3天(9:00)";
+"1_week_before" = "提前1周(9:00)";
 
 
 

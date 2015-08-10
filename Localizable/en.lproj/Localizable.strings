@@ -21,14 +21,99 @@
 "Logout" = "Logout";
 
 
+"Crop" = "Crop";
+"Erase" = "Erase";
+
+
 "Season" = "Season";
 "Category" = "Category";
 "Subcategory" = "Subcategory";
 
+"All" = "All";
+"Spring/Summer" = "Spring/Summer";
+"Fall/Winter" = "Fall/Winter";
 
-"Crop" = "Crop";
-"Erase" = "Erase";
+"Top/Dresses" = "Top/Dresses";
+"Bottoms" = "Bottoms";
+"Shoes" = "Shoes";
+"Bags" = "Bags";
+"Accessories" = "Accessories";
+"Jewelry" = "Jewelry";
+"Intimates" = "Intimates";
 
+"Jackets" = "Jackets";
+"Shirts" = "Shirts";
+"T-Shirt" = "T-Shirt";
+"Suits" = "Suits";
+"Cardigan" = "Cardigan";
+"Sweaters" = "Sweaters";
+"Dresses" = "Dresses";
+"Outdoor" = "Outdoor";
+"Sportswear" = "Sportswear";
+"Windbreaker" = "Windbreaker";
+"Jeans" = "Jeans";
+"Tank_Top" = "Tank Top";
+
+"Long_Dress" = "Long Dress";
+"Skirts" = "Skirts";
+"Trousers" = "Trousers";
+"Shorts" = "Shorts";
+"Jeans" = "Jeans";
+"Leggings" = "Leggings";
+
+"Flats" = "Flats";
+"Evening" = "Evening";
+"High_Heels" = "High Heels";
+"Boots" = "Boots";
+"Platforms" = "Platforms";
+"Sandals" = "Sandals";
+"Wedges" = "Wedges";
+"Sneakers" = "Sneakers";
+"Sandals" = "Sandals";
+
+"Evening" = "Evening";
+"Backpacks" = "Backpacks";
+"Handbags" = "Handbags";
+"Party" = "Party";
+"Satchels" = "Satchels";
+"Clutches" = "Clutches";
+"Wallets" = "Wallets";
+
+"Belts" = "Belts";
+"Hats" = "Hats";
+"Sunglasses" = "Sunglasses";
+"Scarves" = "Scarves";
+"Gloves" = "Gloves";
+"Watches" = "Watches";
+"Makeup" = "Makeup";
+"Perfume" = "Perfume";
+
+"Bracelets" = "Bracelets";
+"Necklaces" = "Necklaces";
+"Rings" = "Rings";
+"Earrings" = "Earrings";
+"Pins" = "Pins";
+
+"Bras" = "Bras";
+"Vest" = "Vest";
+"Petticoats" = "Petticoats";
+"Gowns" = "Gowns";
+"Stockings" = "Stockings";
+"Pajamas" = "Pajamas";
+"Underwear" = "Underwear";
+"Socks" = "Socks";
+"Bathrobes" = "Bathrobes";
+
+"Dreesy" = "Dreesy";
+"Casual" = "Casual";
+"Sport" = "Sport";
+
+"Work" = "Work";
+"Home" = "Home";
+"Evening" = "Evening";
+"Party" = "Party";
+"GYM" = "GYM";
+"Outing" = "Outing";
 
 "Default_color" = "Default color";
 "Tomato" = "Tomato";
@@ -43,11 +128,18 @@
 "Flamingo" = "Flamingo";
 "Graphite" = "Graphite";
 
+"No_notification" = "No notification";
+"1_hour_before" = "1 hour before";
+"2_hour_before" = "2 hour before";
+"3_hour_before" = "3 hour before";
+"5_hour_before" = "5 hour before";
+"1_day_before" = "1 day before";
+"2_day_before" = "2 day before";
+"1_week_before" = "1 week before";
 
-
-
-
-
-
-
+"On_the_day" = "On the day at 9:00";
+"1_day_before" = "1 day before at 9:00";
+"2_day_before" = "2 day before at 9:00";
+"3_day_before" = "3 day before at 9:00";
+"1_week_before" = "1 week before at 9:00";
 
