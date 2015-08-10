@@ -35,6 +35,17 @@
 "Make_outfit" = "设计搭配";
 "Wear_it" = "加入日历";
 
+"Toady" = "今天";
+"New_Event" = "新建活动";
+"Outfits" = "我的搭配";
+"All_day" = "全天";
+"Location" = "添加地点";
+"Title" = "添加标题";
+"Notification" = "添加通知";
+
+"Save" = "保存";
+
+"Report" = "举报";
 
 "Delete" = "删除";
 "Share" = "分享";

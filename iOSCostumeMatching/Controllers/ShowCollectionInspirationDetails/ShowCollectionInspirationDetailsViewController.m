@@ -95,11 +95,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"灵感详情"];
+    [self setNavTitle:LocalizedString(@"Details", nil)];
     self.showReturn = YES;
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     self.showDone = YES;
-    [self setDoneBtnTitle:@"举报"];
+    [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
+    [self setDoneBtnTitle:LocalizedString(@"Report", nil)];
     
     _headImageView.layer.borderWidth = 2;
     _headImageView.layer.borderColor = colorWithHexString(@"#eeeeee").CGColor;

@@ -288,14 +288,14 @@ static RC_RequestManager *requestManager = nil;
                 [params setValue:info.numClId forKey:[NSString stringWithFormat:@"list[%d].clId",i]];
                 [params setValue:info.strBrand forKey:[NSString stringWithFormat:@"list[%d].brand",i]];
                 [params setValue:info.numScateId forKey:[NSString stringWithFormat:@"list[%d].scateId",i]];
-                [params setValue:info.numScateId forKey:[NSString stringWithFormat:@"list[%d].cateId",i]];
+                [params setValue:info.numCateId forKey:[NSString stringWithFormat:@"list[%d].cateId",i]];
                 [params setValue:info.numSeaId forKey:[NSString stringWithFormat:@"list[%d].seaId",i]];
             }
             else
             {
                 [params setValue:info.strBrand forKey:[NSString stringWithFormat:@"list[%d].brand",i]];
                 [params setValue:info.numScateId forKey:[NSString stringWithFormat:@"list[%d].scateId",i]];
-                [params setValue:info.numScateId forKey:[NSString stringWithFormat:@"list[%d].cateId",i]];
+                [params setValue:info.numCateId forKey:[NSString stringWithFormat:@"list[%d].cateId",i]];
                 [params setValue:info.numSeaId forKey:[NSString stringWithFormat:@"list[%d].seaId",i]];
             }
         }

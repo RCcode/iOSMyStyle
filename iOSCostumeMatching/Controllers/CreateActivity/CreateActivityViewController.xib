@@ -10,9 +10,12 @@
                 <outlet property="actionView" destination="su2-XQ-89a" id="wGC-ex-jU2"/>
                 <outlet property="addClotheOrCollectionView" destination="uMW-yE-ycW" id="ucj-3p-aNu"/>
                 <outlet property="addTitle" destination="acG-Bl-GTu" id="Jjd-m5-iTZ"/>
+                <outlet property="btnClothes" destination="sWF-t3-puf" id="DfB-wu-EZh"/>
                 <outlet property="btnColor" destination="CWT-2r-1Mn" id="FkF-1Y-Q6g"/>
                 <outlet property="btnDelete" destination="Lfu-Wf-HO7" id="Jy4-bF-rja"/>
+                <outlet property="btnDone" destination="byl-mA-RcE" id="4y8-6b-IXx"/>
                 <outlet property="btnEndTime" destination="wn3-IZ-4H1" id="kAT-hK-Z5M"/>
+                <outlet property="btnMacthing" destination="JdJ-Rn-EPe" id="azn-8y-Wa5"/>
                 <outlet property="btnRemind" destination="ttb-HC-TYG" id="HNC-vn-rVv"/>
                 <outlet property="btnSecondRemind" destination="DU0-TN-e69" id="3gZ-Yn-cfZ"/>
                 <outlet property="btnStartTime" destination="66i-6C-hQ2" id="0gp-bD-b1H"/>
@@ -21,8 +24,14 @@
                 <outlet property="dateAndTimeView" destination="7YD-C8-X2u" id="MRh-WE-kD6"/>
                 <outlet property="datePicker" destination="zo1-60-VPa" id="eUb-Io-89x"/>
                 <outlet property="dateView" destination="eL2-Vk-aTE" id="2NI-Ty-C3L"/>
+                <outlet property="lbl2Remind" destination="vl4-VD-mR8" id="f43-z0-EKt"/>
+                <outlet property="lblAllDay" destination="fef-yw-x9L" id="E5U-Ot-30p"/>
+                <outlet property="lblColor" destination="frJ-Nv-yiC" id="uQG-di-4In"/>
+                <outlet property="lblFinish" destination="vyB-uJ-oTB" id="MAz-1J-aEo"/>
                 <outlet property="lblFirstRemind" destination="mkX-cC-ZSy" id="08c-1H-CQW"/>
+                <outlet property="lblRemind" destination="V3N-Zb-Woc" id="6vH-Sm-PEy"/>
                 <outlet property="lblSecondRemind" destination="s6e-ud-xsN" id="OqI-32-20e"/>
+                <outlet property="lblStartTime" destination="zNg-ro-nel" id="TuL-xc-kko"/>
                 <outlet property="switchAllDay" destination="hyb-fs-mMW" id="FKq-KL-7Qh"/>
                 <outlet property="txtLocation" destination="G1T-z7-z1i" id="hCk-jm-DcL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

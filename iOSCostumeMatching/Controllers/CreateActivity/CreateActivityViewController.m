@@ -52,9 +52,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblSecondRemind;
 @property (weak, nonatomic) IBOutlet UIView *colorView;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnClothes;
+@property (weak, nonatomic) IBOutlet UIButton *btnMacthing;
 
 @property (nonatomic, copy) void(^finish)(ActivityInfo *info,BOOL isNew);
 @property (nonatomic, copy) void(^delete)(ActivityInfo *info);
+
+@property (weak, nonatomic) IBOutlet UILabel *lblAllDay;
+@property (weak, nonatomic) IBOutlet UILabel *lblStartTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblFinish;
+@property (weak, nonatomic) IBOutlet UILabel *lblRemind;
+@property (weak, nonatomic) IBOutlet UILabel *lbl2Remind;
+@property (weak, nonatomic) IBOutlet UILabel *lblColor;
+@property (weak, nonatomic) IBOutlet UIButton *btnDone;
 
 
 @end
@@ -356,12 +366,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavTitle:@"新建活动"];
+    [self setNavTitle:LocalizedString(@"New_Event", nil)];
     self.showReturn = YES;
     self.showDone = YES;
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_close"] andHighlightedImage:nil];
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
-    [self setDoneBtnTitle:@"完成"];
+    [self setDoneBtnTitle:LocalizedString(@"Save", nil)];
+    
+    [_btnClothes setTitle:[NSString stringWithFormat:@" + %@",LocalizedString(@"Closet", nil)] forState:UIControlStateNormal];
+    [_btnMacthing setTitle:[NSString stringWithFormat:@" + %@",LocalizedString(@"Outfits", nil)] forState:UIControlStateNormal];
+    
+    [_lblAllDay setText:LocalizedString(@"All_day", nil)];
+    [_txtLocation setPlaceholder:LocalizedString(@"Location", nil)];
+    [_addTitle setPlaceholder:LocalizedString(@"Title", nil)];
+    
+    [_btnDone setTitle:LocalizedString(@"DONE", nil) forState:UIControlStateNormal];
     
     isAllDay = NO;
     if (!_dataArray) {
@@ -559,7 +578,7 @@
 
 - (IBAction)setFirstRemind:(id)sender {
     SelectViewController *selectFirstRemind = [[SelectViewController alloc]init];
-    [selectFirstRemind setNavagationTitle:@"选择时间"];
+    [selectFirstRemind setNavagationTitle:LocalizedString(@"Notification", nil)];
     if (isAllDay) {
         selectFirstRemind.array = getAllDayRemind();
     }
@@ -588,7 +607,7 @@
 
 - (IBAction)setSecondRemind:(id)sender {
     SelectViewController *selectFirstRemind = [[SelectViewController alloc]init];
-    [selectFirstRemind setNavagationTitle:@"选择时间"];
+    [selectFirstRemind setNavagationTitle:LocalizedString(@"Notification", nil)];
     if (isAllDay) {
         selectFirstRemind.array = getAllDayRemind();
     }

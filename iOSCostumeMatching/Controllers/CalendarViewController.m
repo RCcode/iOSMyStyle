@@ -56,7 +56,7 @@
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     self.showDone = YES;
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
-    [self setDoneBtnTitle:@"今天"];
+    [self setDoneBtnTitle:LocalizedString(@"Toady", nil)];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateView) name:NOTIFICATION_UPDATEVIEW object:nil];
     

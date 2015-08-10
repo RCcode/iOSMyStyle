@@ -36,7 +36,7 @@
     [super viewDidLoad];
     
     self.showReturn = YES;
-    [self setNavTitle:@"我的搭配"];
+    [self setNavTitle:LocalizedString(@"Lookbook", nil)];
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     
     self.arrCollection = [[RC_SQLiteManager shareManager]getAllCollection];

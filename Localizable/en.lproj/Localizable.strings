@@ -36,6 +36,18 @@
 "Make_outfit" = "Make outfit";
 "Wear_it" = "Wear it";
 
+"Toady" = "Toady";
+"New_Event" = "New Event";
+"Outfits" = "Outfits";
+"All_day" = "All-day";
+"Location" = "Location";
+"Title" = "Title";
+"Notification" = "Notification";
+
+"Save" = "Save";
+
+"Report" = "Report";
+
 "Delete" = "Delete";
 "Share" = "Share";
 "Cancel" = "Cancel";

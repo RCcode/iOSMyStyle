@@ -57,7 +57,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavTitle:@"我的衣橱"];
+    [self setNavTitle:LocalizedString(@"Closet", nil)];
     self.showReturn = YES;
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     
