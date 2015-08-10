@@ -43,10 +43,25 @@
 "Location" = "Location";
 "Title" = "Title";
 "Notification" = "Notification";
+"Starts" = "Starts";
+"Ends" = "Ends";
+"Alert" = "Alert";
+"Second_Alert" = "Second Alert";
+"Color" = "Color";
+"SelectAlert" = "Select clothes or outfits";
 
 "Save" = "Save";
-
 "Report" = "Report";
+
+"helpCloset1" = "Welcome to your Closet";
+"helpCloset2" = "";
+"helpCloset3" = "(in order to obtain the best results, hanging the clohtes on the white wall, or laying flat on the bed or clean floor when take photo)";
+
+"helpLookbook1" = "Welcome to your lookbook,";
+"helpLookbook2" = "try to make some outfits by using the clothes in your closet.";
+
+"helpCalendar1" = "Welcome to your calendar, ";
+"helpCalendar2" = "you can plan what to wear in advance here.";
 
 "Delete" = "Delete";
 "Share" = "Share";
@@ -168,16 +183,16 @@
 
 "No_notification" = "No notification";
 "1_hour_before" = "1 hour before";
-"2_hour_before" = "2 hour before";
-"3_hour_before" = "3 hour before";
-"5_hour_before" = "5 hour before";
+"2_hour_before" = "2 hours before";
+"3_hour_before" = "3 hours before";
+"5_hour_before" = "5 hours before";
 "1_day_before" = "1 day before";
-"2_day_before" = "2 day before";
+"2_day_before" = "2 days before";
 "1_week_before" = "1 week before";
 
 "On_the_day" = "On the day at 9:00";
 "1_day_before" = "1 day before at 9:00";
-"2_day_before" = "2 day before at 9:00";
-"3_day_before" = "3 day before at 9:00";
+"2_day_before" = "2 days before at 9:00";
+"3_day_before" = "3 days before at 9:00";
 "1_week_before" = "1 week before at 9:00";
 

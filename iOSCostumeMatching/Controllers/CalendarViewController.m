@@ -58,6 +58,9 @@
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
     [self setDoneBtnTitle:LocalizedString(@"Toady", nil)];
     
+    [_lblHelp1 setText:LocalizedString(@"helpCalendar1", nil)];
+    [_lblHelp2 setText:LocalizedString(@"helpCalendar2", nil)];
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateView) name:NOTIFICATION_UPDATEVIEW object:nil];
     
     NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];

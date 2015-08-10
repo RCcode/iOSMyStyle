@@ -125,7 +125,7 @@
                             <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（拍照时，建议你将衣服悬挂于白色墙面之前，或平整铺在干净的地板上，以取得最佳效果）" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x72-gP-2iC">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（拍照时，建议你将衣服悬挂于白色墙面之前，或平整铺在干净的地板上，以取得最佳效果）" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x72-gP-2iC">
                             <rect key="frame" x="27" y="59" width="243" height="43"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="43" id="Do5-Qh-iS1"/>

@@ -42,10 +42,25 @@
 "Location" = "添加地点";
 "Title" = "添加标题";
 "Notification" = "添加通知";
+"Starts" = "开始";
+"Ends" = "结束";
+"Alert" = "提醒";
+"Second_Alert" = "第二次提醒";
+"Color" = "颜色";
+"SelectAlert" = "请选择服装或搭配";
 
 "Save" = "保存";
-
 "Report" = "举报";
+
+"helpCloset1" = "欢迎使用MyStyle";
+"helpCloset1" = "现在你可以建立自己的电子衣橱了。";
+"helpCloset3" = "(拍照时，建议将衣服悬挂在白色墙面上，或平整铺在床上或干净的地板上，以取得最佳效果)";
+
+"helpLookbook1" = "这里是你自己的搭配，";
+"helpLookbook2" = "试试将衣橱里的衣服进行搭配吧。";
+
+"helpCalendar1" = "这里是你的搭配日历，";
+"helpCalendar2" = "在这里你可以安排你的时装搭配日程。";
 
 "Delete" = "删除";
 "Share" = "分享";

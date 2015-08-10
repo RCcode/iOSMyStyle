@@ -10,6 +10,8 @@
                 <outlet property="btnOccasion" destination="S6O-5J-ibq" id="Xki-PC-Ipd"/>
                 <outlet property="btnStyle" destination="Uy5-IH-H9x" id="87R-ST-nO7"/>
                 <outlet property="helpView" destination="XCS-V3-6FA" id="2go-u9-GV8"/>
+                <outlet property="lblHelp1" destination="TGE-mz-6mq" id="qQs-IN-0tr"/>
+                <outlet property="lblHelp2" destination="1sl-fz-YkQ" id="ZX3-ed-CM4"/>
                 <outlet property="lblOccasion" destination="FOl-9E-POk" id="ndf-pZ-R1N"/>
                 <outlet property="lblStyle" destination="I9V-YX-LJa" id="5Vz-01-4pP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -106,8 +108,8 @@
                                 <action selector="helpClose:" destination="-1" eventType="touchUpInside" id="kdA-9m-djF"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="试试将衣橱里的衣服进行搭配吧" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sl-fz-YkQ">
-                            <rect key="frame" x="64" y="52" width="238" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="试试将衣橱里的衣服进行搭配吧" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sl-fz-YkQ">
+                            <rect key="frame" x="64" y="47" width="238" height="41"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>

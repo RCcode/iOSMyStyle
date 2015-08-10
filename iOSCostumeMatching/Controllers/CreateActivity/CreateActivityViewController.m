@@ -80,7 +80,7 @@
 {
     if(_dataArray.count == 0)
     {
-        showLabelHUD(@"请选择服装或搭配");
+        showLabelHUD(LocalizedString(@"SelectAlert", nil));
         return;
     }
     
@@ -379,6 +379,11 @@
     [_lblAllDay setText:LocalizedString(@"All_day", nil)];
     [_txtLocation setPlaceholder:LocalizedString(@"Location", nil)];
     [_addTitle setPlaceholder:LocalizedString(@"Title", nil)];
+    [_lblStartTime setText:LocalizedString(@"Starts", nil)];
+    [_lblFinish setText:LocalizedString(@"Ends", nil)];
+    [_lblRemind setText:LocalizedString(@"Alert", nil)];
+    [_lbl2Remind setText:LocalizedString(@"Second_Alert", nil)];
+    [_lblColor setText:LocalizedString(@"Color", nil)];
     
     [_btnDone setTitle:LocalizedString(@"DONE", nil) forState:UIControlStateNormal];
     

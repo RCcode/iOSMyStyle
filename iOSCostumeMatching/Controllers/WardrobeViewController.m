@@ -100,6 +100,9 @@
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [self.view insertSubview:self.collectionView atIndex:0];
     
+    [_lblHelp1 setText:LocalizedString(@"helpCloset1", nil)];
+    [_lblHelp2 setText:LocalizedString(@"helpCloset2", nil)];
+    [_lblHelp3 setText:LocalizedString(@"helpCloset3", nil)];
     NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
     if (showHelp) {
         _helpView.hidden = YES;
