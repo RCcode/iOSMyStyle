@@ -14,6 +14,7 @@
                 <outlet property="btnColor" destination="CWT-2r-1Mn" id="FkF-1Y-Q6g"/>
                 <outlet property="btnDelete" destination="Lfu-Wf-HO7" id="Jy4-bF-rja"/>
                 <outlet property="btnDone" destination="byl-mA-RcE" id="4y8-6b-IXx"/>
+                <outlet property="btnDone2" destination="TLG-aS-EVG" id="sPL-4s-WNU"/>
                 <outlet property="btnEndTime" destination="wn3-IZ-4H1" id="kAT-hK-Z5M"/>
                 <outlet property="btnMacthing" destination="JdJ-Rn-EPe" id="azn-8y-Wa5"/>
                 <outlet property="btnRemind" destination="ttb-HC-TYG" id="HNC-vn-rVv"/>

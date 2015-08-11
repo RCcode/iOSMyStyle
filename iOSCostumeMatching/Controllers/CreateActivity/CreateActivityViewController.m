@@ -65,6 +65,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl2Remind;
 @property (weak, nonatomic) IBOutlet UILabel *lblColor;
 @property (weak, nonatomic) IBOutlet UIButton *btnDone;
+@property (weak, nonatomic) IBOutlet UIButton *btnDone2;
 
 
 @end
@@ -386,6 +387,7 @@
     [_lblColor setText:LocalizedString(@"Color", nil)];
     
     [_btnDone setTitle:LocalizedString(@"DONE", nil) forState:UIControlStateNormal];
+    [_btnDone2 setTitle:LocalizedString(@"DONE", nil) forState:UIControlStateNormal];
     
     isAllDay = NO;
     if (!_dataArray) {
@@ -557,6 +559,15 @@
 - (IBAction)isAllDay:(id)sender {
     UISwitch *s = sender;
     isAllDay = s.on;
+    if (isAllDay) {
+        [_btnStartTime setTitle:stringAllDayFromDate(startTime) forState:UIControlStateNormal];
+        [_btnEndTime setTitle:stringAllDayFromDate(endTime) forState:UIControlStateNormal];
+    }
+    else
+    {
+        [_btnStartTime setTitle:stringNotAllDayFromDate(startTime) forState:UIControlStateNormal];
+        [_btnEndTime setTitle:stringNotAllDayFromDate(endTime) forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)setStartTime:(id)sender {
