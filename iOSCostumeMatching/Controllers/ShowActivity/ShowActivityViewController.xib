@@ -40,7 +40,7 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin_-alt" translatesAutoresizingMaskIntoConstraints="NO" id="mEG-zn-ScV">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin_alt2" translatesAutoresizingMaskIntoConstraints="NO" id="mEG-zn-ScV">
                             <rect key="frame" x="20" y="80" width="18" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="7LC-RV-93l"/>
@@ -132,6 +132,6 @@
     </objects>
     <resources>
         <image name="ic_bell" width="18" height="18"/>
-        <image name="pin_-alt" width="18" height="18"/>
+        <image name="pin_alt2" width="18" height="18"/>
     </resources>
 </document>

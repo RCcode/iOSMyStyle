@@ -77,7 +77,7 @@
     
     self.showReturn = YES;
     self.showDone = YES;
-    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_close"] andHighlightedImage:nil];
+    [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back_w"] andHighlightedImage:nil];
     [self setDoneBtnTitleColor:[UIColor whiteColor]];
     [self setDoneBtnTitle:LocalizedString(@"Edit", nil)];
     
