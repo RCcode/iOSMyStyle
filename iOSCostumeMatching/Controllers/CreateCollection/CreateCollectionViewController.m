@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblType;
 @property (weak, nonatomic) IBOutlet UILabel *lblCategory;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnUpOrDown;
 
 @property (nonatomic, copy) void(^finish)(CollocationInfo *info);
 
@@ -117,6 +118,11 @@
     layout.columnCount = 2;
     
     [self addTapGestureWithView:_createImageView];
+    
+    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc]
+                                          initWithTarget:self
+                                          action:@selector(followFinger:)];
+    [_btnUpOrDown addGestureRecognizer:panGesture];
     
     if (_addClothesInfo) {
         [self didSelect:_addClothesInfo];
@@ -282,6 +288,25 @@
 {
     self.arrClothes = [[RC_SQLiteManager shareManager]getClothesFromWardrobeWithSeason:season Type:type Category:category];
     [_collectionView reloadData];
+}
+
+-(void)followFinger:(UIPanGestureRecognizer *)recognizer
+{
+    if ([recognizer state]== UIGestureRecognizerStateBegan)
+    {
+    }
+    else if ([recognizer state] == UIGestureRecognizerStateChanged)
+    {
+        CGPoint point = [recognizer locationInView:self.view];
+        if ((0 < point.y) && (point.y < CGRectGetMaxY(_createImageView.frame))) {
+            
+            _bottomView.frame = CGRectMake(0, point.y, ScreenWidth, ScreenHeight-64-point.y);
+            _collectionView.frame = CGRectMake(0, CGRectGetMaxY(_lblCategory.frame), CGRectGetWidth(_bottomView.frame), CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_lblCategory.frame));
+        }
+    }
+    else if ([recognizer state] == UIGestureRecognizerStateEnded)
+    {
+    }
 }
 
 -(void)moveUp:(BOOL)up

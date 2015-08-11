@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateCollectionViewController">
             <connections>
                 <outlet property="bottomView" destination="DQy-BX-HSx" id="POv-rn-dC7"/>
+                <outlet property="btnUpOrDown" destination="Xyd-pJ-Kp3" id="hqD-GQ-Yno"/>
                 <outlet property="createImageView" destination="SRC-sY-grH" id="72X-gh-ppF"/>
                 <outlet property="lblCategory" destination="Oc4-Ri-K6N" id="XtY-64-g1l"/>
                 <outlet property="lblSeason" destination="FeH-zi-Umk" id="wuK-BY-VkN"/>

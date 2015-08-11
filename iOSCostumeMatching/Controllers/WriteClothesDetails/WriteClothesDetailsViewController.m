@@ -81,9 +81,9 @@
     [self setDoneBtnTitle:LocalizedString(@"DONE", nil)];
 
     [_lblBrand setText:LocalizedString(@"Brand", nil)];
-    [_lCategory setText:LocalizedString(@"Season", nil)];
-    [_lsubCategory setText:LocalizedString(@"Category", nil)];
-    [_lseason setText:LocalizedString(@"Subcategory", nil)];
+    [_lCategory setText:LocalizedString(@"Category", nil)];
+    [_lsubCategory setText:LocalizedString(@"Subcategory", nil)];
+    [_lseason setText:LocalizedString(@"Season", nil)];
     [_lDesUploadClothes setText:LocalizedString(@"UploadClothesDes", nil)];
     
     [_scrollView addSubview:_contentView];
