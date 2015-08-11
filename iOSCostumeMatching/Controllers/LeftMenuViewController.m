@@ -235,7 +235,18 @@
     }];
 }
 
+-(void)setAllBtnBackgroundColor
+{
+    _btnWardrobe.backgroundColor = [UIColor whiteColor];
+    _btnMatching.backgroundColor = [UIColor whiteColor];
+    _btnCalendar.backgroundColor = [UIColor whiteColor];
+    _btnCollectionInspiration.backgroundColor = [UIColor whiteColor];
+    _btnMyLike.backgroundColor = [UIColor whiteColor];
+}
+
 - (IBAction)pressWardrobe:(id)sender {
+    [self setAllBtnBackgroundColor];
+    _btnWardrobe.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     YRSideViewController *sideViewController=[delegate sideViewController];
     sideViewController.rootViewController=delegate.navWardrobeController;
@@ -243,6 +254,8 @@
 }
 
 - (IBAction)pressMatching:(id)sender {
+    [self setAllBtnBackgroundColor];
+    _btnMatching.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     YRSideViewController *sideViewController=[delegate sideViewController];
     sideViewController.rootViewController=delegate.navMatchingController;
@@ -250,6 +263,8 @@
 }
 
 - (IBAction)pressCalendar:(id)sender {
+    [self setAllBtnBackgroundColor];
+    _btnCalendar.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     YRSideViewController *sideViewController=[delegate sideViewController];
     sideViewController.rootViewController=delegate.navCalendarController;
@@ -257,6 +272,8 @@
 }
 
 - (IBAction)pressCollectionInspiration:(id)sender {
+    [self setAllBtnBackgroundColor];
+    _btnCollectionInspiration.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     YRSideViewController *sideViewController=[delegate sideViewController];
     sideViewController.rootViewController=delegate.navCollectionInspirationController;
@@ -264,6 +281,8 @@
 }
 
 - (IBAction)pressLike:(id)sender {
+    [self setAllBtnBackgroundColor];
+    _btnMyLike.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     YRSideViewController *sideViewController=[delegate sideViewController];
     sideViewController.rootViewController=delegate.navLikeController;
