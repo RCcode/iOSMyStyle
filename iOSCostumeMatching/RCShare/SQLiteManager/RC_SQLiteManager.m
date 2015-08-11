@@ -313,7 +313,37 @@ static RC_SQLiteManager *sqliteManager = nil;
         
         NSString *tableName = @"Wardrobe";
         NSString * sql;
-        sql = [NSString stringWithFormat:@"SELECT * FROM %@ where cateId = %d and scateId = %d and seaId = %d order by date desc",tableName,type,category,season];
+        if (season == 0 && type == 0 && category == 0) {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by date desc",tableName];
+        }
+        else if(season == 0 && type == 0)
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where scateId = %d order by date desc",tableName,category];
+        }
+        else if (type == 0 && category == 0)
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where seaId = %d order by date desc",tableName,season];
+        }
+        else if (season == 0 && category == 0)
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where cateId = %d order by date desc",tableName,type];
+        }
+        else if (season == 0)
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where cateId = %d and scateId = %d order by date desc",tableName,type,category];
+        }
+        else if (type == 0)
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where scateId = %d and seaId = %d order by date desc",tableName,category,season];
+        }
+        else if (category == 0)
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where cateId = %d and seaId = %d order by date desc",tableName,type,season];
+        }
+        else
+        {
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@ where cateId = %d and scateId = %d and seaId = %d order by date desc",tableName,type,category,season];
+        }
         
         FMResultSet * rs = [_db executeQuery:sql];
         while ([rs next]) {

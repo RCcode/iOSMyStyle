@@ -96,6 +96,7 @@
     [_btnSeason setTitle:LocalizedString(@"Season", nil) forState:UIControlStateNormal];
     [_btnType setTitle:LocalizedString(@"Category", nil) forState:UIControlStateNormal];
     [_btnCategory setTitle:LocalizedString(@"Subcategory", nil) forState:UIControlStateNormal];
+    _btnCategory.enabled = NO;
     
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [self.view insertSubview:self.collectionView atIndex:0];
@@ -259,9 +260,12 @@
         else
         {
             type = index+9;
+            category = 0;
+            [weakSelf.btnCategory setTitle:LocalizedString(@"Subcategory", nil) forState:UIControlStateNormal];
         }
         [weakSelf.btnType setTitle:getWardrobeTypeName(type) forState:UIControlStateNormal] ;
         [weakSelf updateCollectionView];
+        weakSelf.btnCategory.enabled = YES;
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
     [self presentViewController:nav animated:YES completion:nil];

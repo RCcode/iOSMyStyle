@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblSeason;
 @property (weak, nonatomic) IBOutlet UILabel *lblType;
 @property (weak, nonatomic) IBOutlet UILabel *lblCategory;
+@property (weak, nonatomic) IBOutlet UIButton *btnCategory;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnUpOrDown;
 
@@ -104,6 +105,7 @@
     [_lblSeason setText:LocalizedString(@"Season", nil)];
     [_lblType setText:LocalizedString(@"Category", nil)];
     [_lblCategory setText:LocalizedString(@"Subcategory", nil)];
+    _btnCategory.enabled = NO;
     
     self.arrList = [[NSMutableArray alloc]init];
     
@@ -365,9 +367,12 @@
         else
         {
             type = index+9;
+            category = 0;
+            [weakSelf.lblCategory setText:LocalizedString(@"Subcategory", nil)];
         }
         [weakSelf.lblType setText:getWardrobeTypeName(type)];
         [weakSelf updateCollectionView];
+        weakSelf.btnCategory.enabled = YES;
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
     [self presentViewController:nav animated:YES completion:nil];
