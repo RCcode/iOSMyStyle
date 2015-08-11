@@ -8,8 +8,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowActivityViewController">
             <connections>
+                <outlet property="lblEndTime" destination="Ar9-u5-Vjx" id="98U-kI-Acf"/>
                 <outlet property="lblLocation" destination="0UM-LV-Z2z" id="sge-QJ-5RN"/>
                 <outlet property="lblRemind" destination="wv9-Mb-ewa" id="yyA-Qn-5he"/>
+                <outlet property="lblSecondRemind" destination="hVQ-CX-dnh" id="8zN-Dg-ob9"/>
                 <outlet property="lblStartTime" destination="sgj-bJ-2sS" id="wmg-ad-ym2"/>
                 <outlet property="lblTitle" destination="D5h-xW-YVj" id="gVq-c6-LQ1"/>
                 <outlet property="middleView" destination="OeL-f0-qOK" id="ROm-Fw-aAW"/>
@@ -78,13 +80,20 @@
                     <rect key="frame" x="0.0" y="115" width="320" height="125"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgj-bJ-2sS">
-                            <rect key="frame" x="20" y="24" width="300" height="21"/>
+                            <rect key="frame" x="48" y="17" width="258" height="21"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="21" id="EDZ-F9-V3n"/>
                                 <constraint firstAttribute="height" constant="21" id="TEG-QX-9RH"/>
+                                <constraint firstAttribute="width" constant="258" id="pgg-jX-TiS"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="TEG-QX-9RH"/>
+                                </mask>
+                            </variation>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_bell" translatesAutoresizingMaskIntoConstraints="NO" id="kVk-8i-6Bb">
                             <rect key="frame" x="20" y="77" width="18" height="18"/>
@@ -102,19 +111,75 @@
                             <color key="textColor" red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVQ-CX-dnh">
+                            <rect key="frame" x="48" y="95" width="272" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="272" id="6PU-rQ-pRa"/>
+                                <constraint firstAttribute="height" constant="21" id="TRk-Jp-wAe"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="vfj-sK-ctx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="vfj-sK-ctx"/>
+                                </mask>
+                            </variation>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_time" translatesAutoresizingMaskIntoConstraints="NO" id="UFi-GB-cJw">
+                            <rect key="frame" x="20" y="19" width="18" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="K7r-84-wAs"/>
+                                <constraint firstAttribute="height" constant="18" id="MxQ-v8-iVI"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="dcf-CC-p4d"/>
+                                <constraint firstAttribute="width" constant="18" id="hCr-mn-OX7"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ar9-u5-Vjx">
+                            <rect key="frame" x="48" y="41" width="258" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="NZ2-zS-gm9"/>
+                                <constraint firstAttribute="width" constant="258" id="avr-h4-0Qz"/>
+                                <constraint firstAttribute="height" constant="21" id="heV-dZ-hPM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="heV-dZ-hPM"/>
+                                </mask>
+                            </variation>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="125" id="1Gb-fa-98C"/>
+                        <constraint firstItem="Ar9-u5-Vjx" firstAttribute="top" secondItem="sgj-bJ-2sS" secondAttribute="bottom" constant="3" id="4ps-bg-4N7"/>
                         <constraint firstItem="kVk-8i-6Bb" firstAttribute="leading" secondItem="OeL-f0-qOK" secondAttribute="leading" constant="20" id="Fnw-xm-tsW"/>
+                        <constraint firstItem="sgj-bJ-2sS" firstAttribute="top" secondItem="OeL-f0-qOK" secondAttribute="top" constant="17" id="Gaw-Vx-LMm"/>
                         <constraint firstItem="sgj-bJ-2sS" firstAttribute="leading" secondItem="OeL-f0-qOK" secondAttribute="leading" constant="20" id="IA1-9s-Mzc"/>
                         <constraint firstAttribute="trailing" secondItem="sgj-bJ-2sS" secondAttribute="trailing" id="Jr0-Zw-NE8"/>
+                        <constraint firstItem="hVQ-CX-dnh" firstAttribute="top" secondItem="wv9-Mb-ewa" secondAttribute="bottom" id="Ovg-8x-wis"/>
                         <constraint firstAttribute="trailing" secondItem="wv9-Mb-ewa" secondAttribute="trailing" id="PZc-he-OAq"/>
+                        <constraint firstAttribute="trailing" secondItem="hVQ-CX-dnh" secondAttribute="trailing" id="S9l-np-TWq"/>
+                        <constraint firstItem="UFi-GB-cJw" firstAttribute="leading" secondItem="OeL-f0-qOK" secondAttribute="leading" constant="20" id="V1J-p9-Snt"/>
                         <constraint firstAttribute="bottom" secondItem="kVk-8i-6Bb" secondAttribute="bottom" constant="30" id="VBb-eq-H2L"/>
                         <constraint firstItem="wv9-Mb-ewa" firstAttribute="leading" secondItem="kVk-8i-6Bb" secondAttribute="trailing" constant="10" id="aHB-Uy-1cH"/>
+                        <constraint firstItem="UFi-GB-cJw" firstAttribute="top" secondItem="OeL-f0-qOK" secondAttribute="top" constant="19" id="gaR-7Q-AJ7"/>
+                        <constraint firstItem="sgj-bJ-2sS" firstAttribute="leading" secondItem="UFi-GB-cJw" secondAttribute="trailing" constant="10" id="hFm-wI-t9H"/>
+                        <constraint firstItem="Ar9-u5-Vjx" firstAttribute="leading" secondItem="OeL-f0-qOK" secondAttribute="leading" constant="48" id="lix-le-0A0"/>
                         <constraint firstAttribute="bottom" secondItem="wv9-Mb-ewa" secondAttribute="bottom" constant="30" id="t2L-ub-8EC"/>
                         <constraint firstItem="sgj-bJ-2sS" firstAttribute="top" secondItem="OeL-f0-qOK" secondAttribute="top" constant="24" id="yAX-43-TjI"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="IA1-9s-Mzc"/>
+                            <exclude reference="Jr0-Zw-NE8"/>
+                            <exclude reference="yAX-43-TjI"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
@@ -132,6 +197,7 @@
     </objects>
     <resources>
         <image name="ic_bell" width="18" height="18"/>
+        <image name="ic_time" width="18" height="18"/>
         <image name="pin_alt2" width="18" height="18"/>
     </resources>
 </document>

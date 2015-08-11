@@ -23,7 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblLocation;
 @property (weak, nonatomic) IBOutlet UILabel *lblStartTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblEndTime;
 @property (weak, nonatomic) IBOutlet UILabel *lblRemind;
+@property (weak, nonatomic) IBOutlet UILabel *lblSecondRemind;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -91,14 +93,18 @@
 {
     [self.lblTitle setText:_activityInfo.strTitle];
     [self.lblLocation setText:_activityInfo.strLocation];
-    if (_activityInfo.numIsAllDay) {
+    if ([_activityInfo.numIsAllDay integerValue]) {
         [_lblStartTime setText:stringAllDayFromDate(_activityInfo.dateStartTime)];
-        [_lblRemind setText:getAllDayRemindName((AllDayRemind)_activityInfo.firstRemindTime)];
+        [_lblEndTime setText:stringAllDayFromDate(_activityInfo.dateFinishTime)];
+        [_lblRemind setText:getAllDayRemindName((AllDayRemind)[_activityInfo.firstRemindTime integerValue])];
+        [_lblSecondRemind setText:getAllDayRemindName((AllDayRemind)[_activityInfo.secondRemindTime integerValue])];
     }
     else
     {
         [_lblStartTime setText:stringNotAllDayFromDate(_activityInfo.dateStartTime)];
-        [_lblRemind setText:getNotAllDayRemindName((NotAllDayRemind)_activityInfo.firstRemindTime)];
+        [_lblEndTime setText:stringNotAllDayFromDate(_activityInfo.dateFinishTime)];
+        [_lblRemind setText:getNotAllDayRemindName((NotAllDayRemind)[_activityInfo.firstRemindTime integerValue])];
+        [_lblSecondRemind setText:getNotAllDayRemindName((NotAllDayRemind)[_activityInfo.secondRemindTime integerValue])];
     }
     [_topView setBackgroundColor:getColor((ActivityColor)[_activityInfo.numColor integerValue])];
     [self.navigationController.navigationBar setBarTintColor:getColor((ActivityColor)[_activityInfo.numColor integerValue])];
