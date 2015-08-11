@@ -9,7 +9,7 @@
 #ifndef InstaShot_Public_h
 #define InstaShot_Public_h
 
-#define kMoreAppID 22019
+#define kMoreAppID 24004
 
 #define UmengAPPKey @"55c8870267e58e8d1a0002b1"
 #define FlurryAppKey @"J463JJ72NFBPNW75DTQY"
