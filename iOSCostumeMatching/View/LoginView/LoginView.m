@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblLogin;
+@property (weak, nonatomic) IBOutlet UIView *loginCenterView;
 
 
 @property (nonatomic,copy) void(^loginInstagram)();
@@ -52,18 +53,39 @@
     self.hidden = YES;
 }
 
+-(void)show:(BOOL)show
+{
+    self.hidden = !show;
+    if (show) {
+        _loginCenterView.frame = CGRectMake((ScreenWidth-CGRectGetWidth(_loginCenterView.frame))/2.0, ScreenHeight, CGRectGetWidth(_loginCenterView.frame), CGRectGetHeight(_loginCenterView.frame));
+        [UIView animateWithDuration:0.5 animations:^{
+            _loginCenterView.frame = CGRectMake((ScreenWidth-CGRectGetWidth(_loginCenterView.frame))/2.0, (ScreenHeight-CGRectGetHeight(_loginCenterView.frame))/2, CGRectGetWidth(_loginCenterView.frame), CGRectGetHeight(_loginCenterView.frame));
+            
+        }];
+    }
+    else
+    {
+         _loginCenterView.frame = CGRectMake((ScreenWidth-CGRectGetWidth(_loginCenterView.frame))/2.0, (ScreenHeight-CGRectGetHeight(_loginCenterView.frame))/2, CGRectGetWidth(_loginCenterView.frame), CGRectGetHeight(_loginCenterView.frame));
+        [UIView animateWithDuration:0.5 animations:^{
+            _loginCenterView.frame = CGRectMake((ScreenWidth-CGRectGetWidth(_loginCenterView.frame))/2.0, ScreenHeight, CGRectGetWidth(_loginCenterView.frame), CGRectGetHeight(_loginCenterView.frame));
+        }];
+    }
+}
+
 - (IBAction)loginInstagram:(id)sender {
     if (_loginInstagram) {
         _loginInstagram();
     }
-    self.hidden = YES;
+//    self.hidden = YES;
+    [self show:NO];
 }
 
 - (IBAction)loginFacebook:(id)sender {
     if (_loginFacebook) {
         _loginFacebook();
     }
-    self.hidden = YES;
+//    self.hidden = YES;
+    [self show:NO];
 }
 
 @end

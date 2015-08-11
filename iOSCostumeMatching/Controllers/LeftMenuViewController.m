@@ -13,7 +13,7 @@
 #import "LoginView.h"
 #import <MessageUI/MFMailComposeViewController.h>
 
-@interface LeftMenuViewController ()<MFMailComposeViewControllerDelegate>
+@interface LeftMenuViewController ()<MFMailComposeViewControllerDelegate,UIAlertViewDelegate>
 {
     LoginView *loginView;
     UserInfo *userInfo;
@@ -87,7 +87,8 @@
     }];
     AppDelegate *app = [[UIApplication sharedApplication]delegate];
     [app.window addSubview:loginView];
-    loginView.hidden = YES;
+//    loginView.hidden = YES;
+    [loginView show:NO];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -171,9 +172,9 @@
     }];
 }
 
-- (IBAction)pressLogin:(id)sender {
-    userInfo = [UserInfo unarchiverUserData];
-    if (userInfo) {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
         NSInteger plat = [userInfo.numTplat integerValue];
         [UserInfo deleteArchieveData];
         if (plat == 1) {//in
@@ -186,9 +187,19 @@
         [_btnLogin setTitle:LocalizedString(@"Login", nil) forState:UIControlStateNormal];
         [_headImageView setImage:nil];
     }
+}
+
+- (IBAction)pressLogin:(id)sender {
+    userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@?",LocalizedString(@"Logout", nil)] message:nil delegate:self cancelButtonTitle:LocalizedString(@"No", nil) otherButtonTitles:LocalizedString(@"Yes", nil), nil];
+        [alertView show];
+    }
     else
     {
-        loginView.hidden = NO;
+//        loginView.hidden = NO;
+        [loginView show:YES];
     }
 }
 

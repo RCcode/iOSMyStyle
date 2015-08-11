@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoginView">
+        <view autoresizesSubviews="NO" contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoginView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -101,6 +101,7 @@
             <connections>
                 <outlet property="lblLogin" destination="M2s-pz-iFB" id="o4W-br-Ii2"/>
                 <outlet property="lblTitle" destination="M2s-pz-iFB" id="c1B-Fh-dkE"/>
+                <outlet property="loginCenterView" destination="Brd-4h-WCP" id="BYm-Ba-De2"/>
             </connections>
             <point key="canvasLocation" x="564.5" y="265.5"/>
         </view>

@@ -16,4 +16,6 @@
 -(void)setLoginInstagramBlock:(void(^)())loginInstagramBlock;
 -(void)setLoginFacebookBlock:(void(^)())loginFacebookBlock;
 
+-(void)show:(BOOL)show;
+
 @end

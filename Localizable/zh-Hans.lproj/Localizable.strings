@@ -8,6 +8,9 @@
 
 "Log_in_with" = "使用第三方登陆";
 
+"Yes" = "确定";
+"No" = "取消";
+
 "Login" = "登录";
 "Closet" = "我的衣橱";
 "Lookbook" = "我的搭配";
