@@ -444,13 +444,26 @@ static RC_RequestManager *requestManager = nil;
     if (![self checkNetWorking])
         return;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
-    NSDictionary *params = @{@"id":userInfo.numId,
-                             @"token":userInfo.strToken,
-                             @"styleId":[NSNumber numberWithInt:styleId],
-                             @"occId":[NSNumber numberWithInt:occId],
-                             @"type":[NSNumber numberWithInt:0],
-                             @"mId":[NSNumber numberWithInt:mId],
-                             @"count":[NSNumber numberWithInt:count]};
+    NSDictionary *params;
+    if (!userInfo) {
+        params = @{@"id":[NSNumber numberWithInt:0],
+                   @"token":@"",
+                   @"styleId":[NSNumber numberWithInt:styleId],
+                   @"occId":[NSNumber numberWithInt:occId],
+                   @"type":[NSNumber numberWithInt:0],
+                   @"mId":[NSNumber numberWithInt:mId],
+                   @"count":[NSNumber numberWithInt:count]};
+    }
+    else
+    {
+        params = @{@"id":userInfo.numId,
+                   @"token":userInfo.strToken,
+                   @"styleId":[NSNumber numberWithInt:styleId],
+                   @"occId":[NSNumber numberWithInt:occId],
+                   @"type":[NSNumber numberWithInt:0],
+                   @"mId":[NSNumber numberWithInt:mId],
+                   @"count":[NSNumber numberWithInt:count]};
+    }
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];
@@ -475,9 +488,19 @@ static RC_RequestManager *requestManager = nil;
     if (![self checkNetWorking])
         return;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
-    NSDictionary *params = @{@"id":userInfo.numId,
-                             @"token":userInfo.strToken,
-                             @"coId":[NSNumber numberWithInt:coId]};
+    NSDictionary *params;
+    if(!userInfo)
+    {
+        params = @{@"id":[NSNumber numberWithInt:0],
+                   @"token":@"",
+                   @"coId":[NSNumber numberWithInt:coId]};
+    }
+    else
+    {
+        params = @{@"id":userInfo.numId,
+                   @"token":userInfo.strToken,
+                   @"coId":[NSNumber numberWithInt:coId]};
+    }
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];

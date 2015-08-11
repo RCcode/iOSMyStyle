@@ -97,13 +97,12 @@
 
 -(void)updateCollectionView
 {
-    UserInfo *userInfo = [UserInfo unarchiverUserData];
-    if (!userInfo) {
-        [self.collectionView.header endRefreshing];
-        [self.collectionView.footer endRefreshing];
-        return;
-    }
-    
+//    UserInfo *userInfo = [UserInfo unarchiverUserData];
+//    if (!userInfo) {
+//        [self.collectionView.header endRefreshing];
+//        [self.collectionView.footer endRefreshing];
+//        return;
+//    }
     if (_mId == 0) {
         [_arrCollection removeAllObjects];
     }

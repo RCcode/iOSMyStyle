@@ -7,6 +7,7 @@
 //
 
 #import "ShowCollectionInspirationDetailsViewController.h"
+#import "LeftMenuViewController.h"
 
 @interface ShowCollectionInspirationDetailsViewController ()<UIDocumentInteractionControllerDelegate>
 {
@@ -31,6 +32,12 @@
 
 -(void)doneBtnPressed:(id)sender
 {
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (!userInfo) {
+        AppDelegate *app = [[UIApplication sharedApplication]delegate];
+        [(LeftMenuViewController *)app.sideViewController.leftViewController pressLogin:nil];
+        return;
+    }
     [[RC_RequestManager shareManager]ReportCollocationWithCoId:_coId success:^(id responseObject) {
         CLog(@"%@",responseObject);
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
@@ -71,7 +78,7 @@
         WardrobeType type = [[dic objectForKey:@"cateId"]intValue];
         [str appendString:[NSString stringWithFormat:@"%@",getWardrobeTypeName(type)] ];
         [str appendString:@" "];
-        [str appendString:[dic objectForKey:@"brand"]];
+        [str appendString:[NSString stringWithFormat:@"%@",[dic objectForKey:@"brand"]]];
         
         CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:11]);
         UILabel *label = [[UILabel alloc]init];
@@ -120,6 +127,12 @@
 }
 
 - (IBAction)pressLike:(id)sender {
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (!userInfo) {
+        AppDelegate *app = [[UIApplication sharedApplication]delegate];
+        [(LeftMenuViewController *)app.sideViewController.leftViewController pressLogin:nil];
+        return;
+    }
     [[RC_RequestManager shareManager]LikeCollocationWithCoId:_coId success:^(id responseObject) {
         CLog(@"%@",responseObject);
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
@@ -134,7 +147,12 @@
 }
 
 - (IBAction)pressShare:(id)sender {
-    
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (!userInfo) {
+        AppDelegate *app = [[UIApplication sharedApplication]delegate];
+        [(LeftMenuViewController *)app.sideViewController.leftViewController pressLogin:nil];
+        return;
+    }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //保存本地 如果已存在，则删除
         if([[NSFileManager defaultManager] fileExistsAtPath:kToMorePath]){

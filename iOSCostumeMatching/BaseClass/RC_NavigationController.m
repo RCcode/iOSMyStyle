@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationBar setBarTintColor:colorWithHexString(@"#ffffff")];
+    self.navigationBar.shadowImage = [[UIImage alloc]init];
     self.navigationBar.translucent = NO;
 }
 
