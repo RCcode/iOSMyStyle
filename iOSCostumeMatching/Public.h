@@ -13,14 +13,8 @@
 
 #define UmengAPPKey @"55c8870267e58e8d1a0002b1"
 #define FlurryAppKey @"J463JJ72NFBPNW75DTQY"
-/**
- *  <#Description#>
- *
- *  @param bounds].size.height <#bounds].size.height description#>
- *
- *  @return <#return value description#>
- */
-#define kAppID @"1002299125"
+
+#define kAppID @"1029295878"
 #define kAppStoreURLPre @"itms-apps://itunes.apple.com/app/id"
 #define kAppStoreURL [NSString stringWithFormat:@"%@%@", kAppStoreURLPre, kAppID]
 
