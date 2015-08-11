@@ -201,11 +201,14 @@
         height = 120;
         width = 120/imageHeight*imageWidth;
     }
-    CGRect gripFrame = CGRectMake(0, 0, width+17*2, height+17*2);
+//    CGRect gripFrame = CGRectMake(0, 0, width+17*2, height+17*2);
+    CGRect gripFrame = CGRectMake(0, 0, width, height);
     
     UIImageView *imageView1 = [[UIImageView alloc]
                                initWithImage:info.file];
     ZDStickerView *userResizableView1 = [[ZDStickerView alloc] initWithFrame:gripFrame];
+//    userResizableView1.minHeight = 60;
+//    userResizableView1.minWidth = 60;
     userResizableView1.center = _createImageView.center;
     userResizableView1.tag = [info.numLocalId integerValue];
     userResizableView1.stickerViewDelegate = self;
