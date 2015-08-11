@@ -28,7 +28,7 @@
 
 #define kPushURL @"http://iospush.rcplatformhk.net/IOSPushWeb/userinfo/regiUserInfo.do"
 
-#define AppName @"Matching"
+#define AppName @"MyStyle"
 
 //key
 
