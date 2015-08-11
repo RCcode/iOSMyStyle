@@ -57,6 +57,8 @@
         undoArr = [[NSMutableArray alloc]init];
         
         originalImage = imageView.image;
+        
+//        self.backgroundColor = [[UIColor redColor]colorWithAlphaComponent:0.2];
     }
     return self;
 }
@@ -78,9 +80,19 @@
     scaledSize.height = rect1.size.height *scaleFactor;
     scaledSize.width  = rect1.size.width  *scaleFactor;
     
+    if (scaledSize.height > rect2.size.height) {
+        scaledSize.height = rect2.size.height;
+        scaledSize.width = rect1.size.width/rect1.size.height*scaledSize.height;
+    }
+    else if(scaledSize.width > rect2.size.width)
+    {
+        scaledSize.width = rect2.size.width;
+        scaledSize.height = rect1.size.height/rect1.size.width*scaledSize.width;
+    }
     float y = (rect2.size.height - scaledSize.height)/2;
+    float x = (rect2.size.width - scaledSize.width)/2;
     
-    return CGRectMake(0, y, scaledSize.width, scaledSize.height);
+    return CGRectMake(x, y, scaledSize.width, scaledSize.height);
 }
 + (CGPoint)convertCGPoint:(CGPoint)point1 fromRect1:(CGSize)rect1 toRect2:(CGSize)rect2
 {
