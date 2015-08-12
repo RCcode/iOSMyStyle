@@ -137,6 +137,19 @@
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    
+    UIApplicationState state = application.applicationState;
+    if (state == UIApplicationStateActive) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:notification.alertBody
+                                                       delegate:self
+                                              cancelButtonTitle:LocalizedString(@"Yes", nil)
+                                              otherButtonTitles:nil];
+        [alert show];
+        application.applicationIconBadgeNumber = 0;
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

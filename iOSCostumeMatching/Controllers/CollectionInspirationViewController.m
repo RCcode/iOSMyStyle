@@ -191,6 +191,14 @@
     {
         [cell.lblName setText:name];
     }
+    NSInteger like = [[dic objectForKey:@"likes"]integerValue];
+    if (like) {
+        [cell.likeImageView setImage:[UIImage imageNamed:@"dapei_likes_h"]];
+    }
+    else
+    {
+        [cell.likeImageView setImage:[UIImage imageNamed:@"dapei_likes"]];
+    }
     return cell;
 }
 

@@ -589,11 +589,11 @@ NSString *getNotAllDayRemindName(NotAllDayRemind notAllDayRemind)
             
         case NADR_before5hour:{str = LocalizedString(@"5_hour_before", nil);break;}
             
-        case NADR_before1day:{str = LocalizedString(@"1_day_before", nil);break;}
+        case NADR_before1day:{str = LocalizedString(@"NotAllDay_1_day_before", nil);break;}
             
-        case NADR_before2day:{str = LocalizedString(@"2_day_before", nil);break;}
+        case NADR_before2day:{str = LocalizedString(@"NotAllDay_2_day_before", nil);break;}
             
-        case NADR_before1week:{str = LocalizedString(@"1_week_before", nil);break;}
+        case NADR_before1week:{str = LocalizedString(@"NotAllDay_1_week_before", nil);break;}
             
         default:
             break;
@@ -603,7 +603,7 @@ NSString *getNotAllDayRemindName(NotAllDayRemind notAllDayRemind)
 
 NSArray *getNotAllDayRemind()
 {
-    NSArray *arr = @[LocalizedString(@"No_notification", nil),LocalizedString(@"1_hour_before", nil),LocalizedString(@"2_hour_before", nil),LocalizedString(@"3_hour_before", nil),LocalizedString(@"5_hour_before", nil),LocalizedString(@"1_day_before", nil),LocalizedString(@"2_day_before", nil),LocalizedString(@"1_week_before", nil)];
+    NSArray *arr = @[LocalizedString(@"No_notification", nil),LocalizedString(@"1_hour_before", nil),LocalizedString(@"2_hour_before", nil),LocalizedString(@"3_hour_before", nil),LocalizedString(@"5_hour_before", nil),LocalizedString(@"NotAllDay_1_day_before", nil),LocalizedString(@"NotAllDay_2_day_before", nil),LocalizedString(@"NotAllDay_1_week_before", nil)];
     
     return arr;
 }

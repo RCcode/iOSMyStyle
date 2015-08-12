@@ -56,7 +56,7 @@
         redoArr = [[NSMutableArray alloc]init];
         undoArr = [[NSMutableArray alloc]init];
         
-        originalImage = imageView.image;
+        originalImage = [imageView.image copy];
         
 //        self.backgroundColor = [[UIColor redColor]colorWithAlphaComponent:0.2];
     }

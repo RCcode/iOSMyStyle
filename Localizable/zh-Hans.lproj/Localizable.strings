@@ -190,9 +190,9 @@
 "2_hour_before" = "提前2小时";
 "3_hour_before" = "提前3小时";
 "5_hour_before" = "提前5小时";
-"1_day_before" = "提前1天";
-"2_day_before" = "提前2天";
-"1_week_before" = "提前1周";
+"NotAllDay_1_day_before" = "提前1天";
+"NotAllDay_2_day_before" = "提前2天";
+"NotAllDay_1_week_before" = "提前1周";
 
 "On_the_day" = "当天(9:00)";
 "1_day_before" = "提前1天(9:00)";

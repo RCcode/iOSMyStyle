@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowCollectionInspirationDetailsViewController">
             <connections>
+                <outlet property="btnLike" destination="hyY-hi-uSD" id="gv2-m1-rlz"/>
                 <outlet property="headImageView" destination="Apz-ds-xIP" id="dx8-Mr-22o"/>
                 <outlet property="imageView" destination="7e7-rm-u2p" id="1s1-41-KUq"/>
                 <outlet property="lblName" destination="HhY-8Z-I2f" id="CzX-vi-5EG"/>

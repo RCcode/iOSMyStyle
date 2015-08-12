@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UIButton *btnLike;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -123,6 +124,15 @@
     
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_dic objectForKey:@"pic"]]];
     [_lblName setText:[_dic objectForKey:@"tname"]];
+    
+    NSInteger like = [[_dic objectForKey:@"likes"]integerValue];
+    if (like) {
+        [_btnLike setImage:[UIImage imageNamed:@"ic_likes_h"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [_btnLike setImage:[UIImage imageNamed:@"ic_likes"] forState:UIControlStateNormal];
+    }
     // Do any additional setup after loading the view from its nib.
 }
 

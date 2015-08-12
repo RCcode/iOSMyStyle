@@ -190,9 +190,9 @@
 "2_hour_before" = "2 hours before";
 "3_hour_before" = "3 hours before";
 "5_hour_before" = "5 hours before";
-"1_day_before" = "1 day before";
-"2_day_before" = "2 days before";
-"1_week_before" = "1 week before";
+"NotAllDay_1_day_before" = "1 day before";
+"NotAllDay_2_day_before" = "2 days before";
+"NotAllDay_1_week_before" = "1 week before";
 
 "On_the_day" = "On the day at 9:00";
 "1_day_before" = "1 day before at 9:00";

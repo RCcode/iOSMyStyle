@@ -61,6 +61,7 @@
                 <outlet property="collectionImageView" destination="Qdd-Tn-7NC" id="LIg-Qi-She"/>
                 <outlet property="headImageView" destination="nNA-CC-3LO" id="VYl-6e-eRX"/>
                 <outlet property="lblName" destination="xp1-hz-PbA" id="sXO-GN-9H6"/>
+                <outlet property="likeImageView" destination="oZj-kk-jWt" id="w7Q-ED-BKD"/>
             </connections>
             <point key="canvasLocation" x="417.5" y="212"/>
         </collectionViewCell>

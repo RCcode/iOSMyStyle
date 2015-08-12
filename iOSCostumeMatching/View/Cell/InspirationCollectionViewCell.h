@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *collectionImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UIImageView *likeImageView;
 
 @end
