@@ -24,6 +24,8 @@
 -(void)setReturnBtnTitleColor:(UIColor *)color;
 -(void)setDoneBtnTitleColor:(UIColor *)color;
 
+-(void)setNavBarColor:(UIColor *)color;
+
 -(void)returnBtnPressed:(id)sender;
 -(void)doneBtnPressed:(id)sender;
 

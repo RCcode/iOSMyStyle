@@ -108,6 +108,7 @@
     }
     [_topView setBackgroundColor:getColor((ActivityColor)[_activityInfo.numColor integerValue])];
     [self.navigationController.navigationBar setBarTintColor:getColor((ActivityColor)[_activityInfo.numColor integerValue])];
+    [self setNavBarColor:getColor((ActivityColor)[_activityInfo.numColor integerValue])];
 //    self.navigationController.navigationBar.clipsToBounds = YES;
     [_collectionView reloadData];
 }

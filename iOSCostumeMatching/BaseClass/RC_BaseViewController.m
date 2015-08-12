@@ -139,6 +139,11 @@
     [btnDone setTitleColor:color forState:UIControlStateNormal];
 }
 
+-(void)setNavBarColor:(UIColor *)color
+{
+    [titleLabel setBackgroundColor:color];
+}
+
 -(void)returnBtnPressed:(id)sender
 {
 }
