@@ -125,7 +125,7 @@
 - (IBAction)changeEarseSize:(id)sender {
     [self setAllViewCustomColor];
     UIButton *btn = sender;
-    CGFloat width;
+    CGFloat width = 14;
     switch (btn.tag) {
         case 0:
         {
