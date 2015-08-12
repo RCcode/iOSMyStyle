@@ -28,6 +28,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblHelp1;
 @property (weak, nonatomic) IBOutlet UILabel *lblHelp2;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnAddActivity;
+@property (nonatomic, strong) UIButton *btnUpOrDown;
+@property (nonatomic, strong) UIView *bottomView;
+
 @end
 
 @implementation CalendarViewController
@@ -63,15 +67,6 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateView) name:NOTIFICATION_UPDATEVIEW object:nil];
     
-    NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
-    if (showHelp) {
-        
-    }
-    else
-    {
-        [self.view addSubview:_helpView];
-    }
-    
 //    [[RC_SQLiteManager shareManager]deleteTable:TNTActivity];
     
     calendarView = [[PWSCalendarView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 320) CalendarType:en_calendar_type_month];
@@ -82,16 +77,51 @@
     [calendarView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:calendarView];
     [calendarView setDelegate:self];
+    
+    _bottomView = [[UIView alloc]init];
+    _bottomView.userInteractionEnabled = YES;
+    [_bottomView setBackgroundColor:colorWithHexString(@"#eeeeee")];
+    [_bottomView setFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth)];
+    [self.view addSubview:_bottomView];
+    
+    _btnUpOrDown = [[UIButton alloc]init];
+    [_btnUpOrDown setFrame:CGRectMake(0, 0, ScreenWidth, 20)];
+    [_btnUpOrDown setImage:[UIImage imageNamed:@"ic_pull"] forState:UIControlStateNormal];
+    [_btnUpOrDown setBackgroundColor:colorWithHexString(@"#f9f9f9")];
+    [_btnUpOrDown addTarget:self action:@selector(pressUpOrDown:) forControlEvents:UIControlEventTouchUpInside];
+    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc]
+                                          initWithTarget:self
+                                          action:@selector(followFinger:)];
+    [_btnUpOrDown addGestureRecognizer:panGesture];
+    //    [self.view addSubview:_btnUpOrDown];
+    [_bottomView addSubview:_btnUpOrDown];
+    
+    NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
+    if (showHelp) {
         
+    }
+    else
+    {
+        [_helpView setFrame:CGRectMake(5, CGRectGetMaxY(_btnUpOrDown.frame)+5, CGRectGetWidth(_helpView.frame), CGRectGetHeight(_helpView.frame))];
+        [_bottomView addSubview:_helpView];
+    }
+    
+    
+    
     activityTableView = [[UITableView alloc]init];
     [activityTableView registerNib:[UINib nibWithNibName:@"ActivityCell" bundle:nil] forCellReuseIdentifier:@"ActivityCell"];
     activityTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     activityTableView.delegate = self;
     activityTableView.dataSource = self;
     [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-20-CGRectGetHeight(calendarView.frame))];
-    [self.view insertSubview:activityTableView atIndex:0];
+    //    [self.view insertSubview:activityTableView atIndex:0];
+//    [self.view addSubview:activityTableView];
     activityTableView.backgroundColor = colorWithHexString(@"#eeeeee");
     [self setTitleDate:[NSDate date]];
+    [_bottomView addSubview:activityTableView];
+    
+//    [self.view bringSubviewToFront:_helpView];
+//    [self.view bringSubviewToFront:_btnAddActivity];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -102,7 +132,7 @@
 
 - (IBAction)closeHelp:(id)sender {
     [_helpView removeFromSuperview];
-    [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-64-CGRectGetHeight(calendarView.frame))];
+    [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_btnUpOrDown.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-25)];
     [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:SHOWHELPKEY];
 }
 
@@ -257,13 +287,91 @@
     NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
     if (showHelp) {
         _helpView.hidden = YES;
-        [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-64-CGRectGetHeight(calendarView.frame))];
+        [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-5, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-5)-64)];
+        [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_btnUpOrDown.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-25)];
     }
     else
     {
         _helpView.hidden = NO;
-        [_helpView setFrame:CGRectMake(5, CGRectGetHeight(calendarView.frame), CGRectGetWidth(_helpView.frame), CGRectGetHeight(_helpView.frame))];
-        [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, ScreenHeight-64-CGRectGetMaxY(_helpView.frame)-5)];
+        [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-5, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-5)-64)];
+        [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-5)];
+    }
+}
+
+-(void)followFinger:(UIPanGestureRecognizer *)recognizer
+{
+    if ([recognizer state]== UIGestureRecognizerStateBegan)
+    {
+    }
+    else if ([recognizer state] == UIGestureRecognizerStateChanged)
+    {
+        CGPoint point = [recognizer locationInView:self.view];
+        if ((0 < point.y) && (point.y < (CGRectGetMaxY(calendarView.frame)-5))) {
+            
+            NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
+            if (showHelp) {
+                _helpView.hidden = YES;
+                [_bottomView setFrame:CGRectMake(0, point.y, ScreenWidth, ScreenHeight-64-point.y)];
+                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_btnUpOrDown.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-25)];
+            }
+            else
+            {
+                _helpView.hidden = NO;
+                [_bottomView setFrame:CGRectMake(0, point.y, ScreenWidth, ScreenHeight-64-point.y)];
+                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-5)];
+            }
+        }
+    }
+    else if ([recognizer state] == UIGestureRecognizerStateEnded)
+    {
+    }
+}
+
+-(void)moveUp:(BOOL)up
+{
+    if (up)
+    {
+        [UIView animateWithDuration:0.5f animations:^{
+            NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
+            if (showHelp) {
+                _helpView.hidden = YES;
+                [_bottomView setFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
+                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_btnUpOrDown.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-25)];
+            }
+            else
+            {
+                _helpView.hidden = NO;
+                [_bottomView setFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
+                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-5)];
+            }
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.5f animations:^{
+            NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
+            if (showHelp) {
+                _helpView.hidden = YES;
+                [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-5, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-5)-64)];
+                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_btnUpOrDown.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-25)];
+            }
+            else
+            {
+                _helpView.hidden = NO;
+                [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-5, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-5)-64)];
+                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-5)];
+            }
+        }];
+    }
+}
+
+- (IBAction)pressUpOrDown:(id)sender {
+    if (_bottomView.frame.origin.y == 0) {
+        [self moveUp:NO];
+    }
+    else
+    {
+        [self moveUp:YES];
     }
 }
 
