@@ -56,6 +56,7 @@
 
 -(void)doneBtnPressed:(id)sender
 {
+    showMBProgressHUD(nil, YES);
     if (_finish) {
         ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];
         clothesInfo.numCateId = [NSNumber numberWithInt:type];

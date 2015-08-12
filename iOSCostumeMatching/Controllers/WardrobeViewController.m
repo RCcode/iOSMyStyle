@@ -526,7 +526,6 @@
     
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     if (userInfo) {
-        showMBProgressHUD(nil, YES);
         __weak WardrobeViewController *weakSelf = self;
         [[RC_RequestManager shareManager]addClothingWithColothesInfo:info success:^(id responseObject) {
             CLog(@"%@",responseObject);
@@ -545,6 +544,10 @@
             CLog(@"%@",error);
             hideMBProgressHUD();
         }];
+    }
+    else
+    {
+        hideMBProgressHUD();
     }
 }
 
