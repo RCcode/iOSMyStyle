@@ -58,7 +58,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVp-Ff-0vD">
                     <rect key="frame" x="280" y="0.0" width="30" height="30"/>
-                    <state key="normal" image="ic_close">
+                    <state key="normal" image="no_close">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -80,7 +80,7 @@
     </objects>
     <resources>
         <image name="add_collocation" width="53" height="53"/>
-        <image name="ic_close" width="22" height="22"/>
+        <image name="no_close" width="15" height="15"/>
         <image name="notice_bg3" width="310" height="96"/>
     </resources>
 </document>

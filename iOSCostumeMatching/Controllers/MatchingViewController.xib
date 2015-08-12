@@ -101,7 +101,7 @@
                                 <constraint firstAttribute="width" constant="30" id="Nlq-D0-gL2"/>
                                 <constraint firstAttribute="height" constant="30" id="XWl-r1-sql"/>
                             </constraints>
-                            <state key="normal" image="ic_close">
+                            <state key="normal" image="no_close">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -167,8 +167,8 @@
     </objects>
     <resources>
         <image name="add_collocation" width="53" height="53"/>
-        <image name="ic_close" width="22" height="22"/>
         <image name="ic_xiala" width="10" height="10"/>
+        <image name="no_close" width="15" height="15"/>
         <image name="notice_bg2" width="310" height="96"/>
     </resources>
 </document>

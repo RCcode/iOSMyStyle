@@ -109,7 +109,7 @@
                                 <constraint firstAttribute="width" constant="30" id="7QF-cY-aSZ"/>
                                 <constraint firstAttribute="height" constant="30" id="utn-aI-UPh"/>
                             </constraints>
-                            <state key="normal" image="ic_close">
+                            <state key="normal" image="no_close">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -198,9 +198,9 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_close" width="22" height="22"/>
         <image name="ic_clothes" width="53" height="53"/>
         <image name="ic_xiala" width="10" height="10"/>
+        <image name="no_close" width="15" height="15"/>
         <image name="notice_bg" width="310" height="111"/>
     </resources>
 </document>
