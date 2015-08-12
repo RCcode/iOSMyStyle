@@ -83,6 +83,12 @@
 		4F6FB4041B59038200C5CB0A /* WriteClothesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB4021B59038200C5CB0A /* WriteClothesDetailsViewController.xib */; };
 		4F6FB4091B5909A300C5CB0A /* ShowClothesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB4071B5909A300C5CB0A /* ShowClothesDetailsViewController.m */; };
 		4F6FB40A1B5909A300C5CB0A /* ShowClothesDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */; };
+		4F719DCC1B7B4DA600FFB0E5 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F719DC11B7B4DA600FFB0E5 /* NSString+Helper.m */; };
+		4F719DCD1B7B4DA600FFB0E5 /* UIButton+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F719DC31B7B4DA600FFB0E5 /* UIButton+helper.m */; };
+		4F719DCE1B7B4DA600FFB0E5 /* UIDevice+DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F719DC51B7B4DA600FFB0E5 /* UIDevice+DeviceInfo.m */; };
+		4F719DCF1B7B4DA600FFB0E5 /* UIImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F719DC71B7B4DA600FFB0E5 /* UIImage+Helper.m */; };
+		4F719DD01B7B4DA600FFB0E5 /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F719DC91B7B4DA600FFB0E5 /* UIImage+Rotate.m */; };
+		4F719DD11B7B4DA600FFB0E5 /* UIImage+SubImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F719DCB1B7B4DA600FFB0E5 /* UIImage+SubImage.m */; };
 		4F78B4931B722B0100A45E42 /* ColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F78B4911B722B0100A45E42 /* ColorCell.m */; };
 		4F78B4941B722B0100A45E42 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F78B4921B722B0100A45E42 /* ColorCell.xib */; };
 		4F7B64E81B5F4D46004643D2 /* MyWardrobeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B64E61B5F4D46004643D2 /* MyWardrobeViewController.m */; };
@@ -313,6 +319,18 @@
 		4F6FB4061B5909A300C5CB0A /* ShowClothesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowClothesDetailsViewController.h; sourceTree = "<group>"; };
 		4F6FB4071B5909A300C5CB0A /* ShowClothesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowClothesDetailsViewController.m; sourceTree = "<group>"; };
 		4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowClothesDetailsViewController.xib; sourceTree = "<group>"; };
+		4F719DC01B7B4DA600FFB0E5 /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
+		4F719DC11B7B4DA600FFB0E5 /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
+		4F719DC21B7B4DA600FFB0E5 /* UIButton+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+helper.h"; sourceTree = "<group>"; };
+		4F719DC31B7B4DA600FFB0E5 /* UIButton+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+helper.m"; sourceTree = "<group>"; };
+		4F719DC41B7B4DA600FFB0E5 /* UIDevice+DeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceInfo.h"; sourceTree = "<group>"; };
+		4F719DC51B7B4DA600FFB0E5 /* UIDevice+DeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceInfo.m"; sourceTree = "<group>"; };
+		4F719DC61B7B4DA600FFB0E5 /* UIImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helper.h"; sourceTree = "<group>"; };
+		4F719DC71B7B4DA600FFB0E5 /* UIImage+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helper.m"; sourceTree = "<group>"; };
+		4F719DC81B7B4DA600FFB0E5 /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
+		4F719DC91B7B4DA600FFB0E5 /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
+		4F719DCA1B7B4DA600FFB0E5 /* UIImage+SubImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SubImage.h"; sourceTree = "<group>"; };
+		4F719DCB1B7B4DA600FFB0E5 /* UIImage+SubImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SubImage.m"; sourceTree = "<group>"; };
 		4F78B4901B722B0100A45E42 /* ColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCell.h; sourceTree = "<group>"; };
 		4F78B4911B722B0100A45E42 /* ColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCell.m; sourceTree = "<group>"; };
 		4F78B4921B722B0100A45E42 /* ColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
@@ -582,6 +600,7 @@
 		4F417DC21B4E6DE5000BD540 /* RCShare */ = {
 			isa = PBXGroup;
 			children = (
+				4F719DBF1B7B4DA600FFB0E5 /* Categories */,
 				4F7D00A61B6A3F2700BE18CE /* FacebookManager */,
 				4F808CB01B54C962001A89AA /* SQLiteManager */,
 				4F808CAA1B54BD8B001A89AA /* MobAndAnalyticsManager */,
@@ -852,6 +871,25 @@
 				4F6FB4081B5909A300C5CB0A /* ShowClothesDetailsViewController.xib */,
 			);
 			path = ShowClothesDetails;
+			sourceTree = "<group>";
+		};
+		4F719DBF1B7B4DA600FFB0E5 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4F719DC01B7B4DA600FFB0E5 /* NSString+Helper.h */,
+				4F719DC11B7B4DA600FFB0E5 /* NSString+Helper.m */,
+				4F719DC21B7B4DA600FFB0E5 /* UIButton+helper.h */,
+				4F719DC31B7B4DA600FFB0E5 /* UIButton+helper.m */,
+				4F719DC41B7B4DA600FFB0E5 /* UIDevice+DeviceInfo.h */,
+				4F719DC51B7B4DA600FFB0E5 /* UIDevice+DeviceInfo.m */,
+				4F719DC61B7B4DA600FFB0E5 /* UIImage+Helper.h */,
+				4F719DC71B7B4DA600FFB0E5 /* UIImage+Helper.m */,
+				4F719DC81B7B4DA600FFB0E5 /* UIImage+Rotate.h */,
+				4F719DC91B7B4DA600FFB0E5 /* UIImage+Rotate.m */,
+				4F719DCA1B7B4DA600FFB0E5 /* UIImage+SubImage.h */,
+				4F719DCB1B7B4DA600FFB0E5 /* UIImage+SubImage.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		4F7B64E41B5F4D21004643D2 /* MyWardrobe */ = {
@@ -1415,10 +1453,12 @@
 				4F7B9AB81B6254AD003D94BF /* SDWebImageDecoder.m in Sources */,
 				4F85A6381B46480A0077E12E /* AppDelegate.m in Sources */,
 				4F5D168E1B68E46500B03650 /* InspirationCollectionViewCell.m in Sources */,
+				4F719DCE1B7B4DA600FFB0E5 /* UIDevice+DeviceInfo.m in Sources */,
 				4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */,
 				4F7D00A31B6A1D6000BE18CE /* UIScrollView+MJExtension.m in Sources */,
 				4F8329E61B5CE91E005588D7 /* SPGripViewBorderView.m in Sources */,
 				4F6341A71B4FBA8200DFC281 /* WipeViewController.m in Sources */,
+				4F719DCC1B7B4DA600FFB0E5 /* NSString+Helper.m in Sources */,
 				4FB374151B66450F009ED71E /* AFHTTPRequestOperationManager.m in Sources */,
 				4F5A50831B60F28F0001D5D1 /* LikeViewController.m in Sources */,
 				4FB374171B66450F009ED71E /* AFNetworkReachabilityManager.m in Sources */,
@@ -1427,6 +1467,7 @@
 				4F6341931B4FA44400DFC281 /* UIBezierPath-Points.m in Sources */,
 				4F7B9ABA1B6254AD003D94BF /* SDWebImageDownloaderOperation.m in Sources */,
 				4F9BE21E1B6F7B7900339E71 /* ACLoupe.m in Sources */,
+				4F719DCD1B7B4DA600FFB0E5 /* UIButton+helper.m in Sources */,
 				4F9BE2201B6F7B7900339E71 /* ACMagnifyingView.m in Sources */,
 				4F8329F01B5CF0FF005588D7 /* ZDStickerView.m in Sources */,
 				4F158D841B53BE6D000CA2FA /* PWSHelper.m in Sources */,
@@ -1439,6 +1480,8 @@
 				4F417DD11B4E72B8000BD540 /* LeftMenuViewController.m in Sources */,
 				4F63419A1B4FA48300DFC281 /* CutViewController.m in Sources */,
 				4F417DBC1B4E6875000BD540 /* RC_View.m in Sources */,
+				4F719DCF1B7B4DA600FFB0E5 /* UIImage+Helper.m in Sources */,
+				4F719DD11B7B4DA600FFB0E5 /* UIImage+SubImage.m in Sources */,
 				4F0771A01B53AB07005D61AB /* Reachability.m in Sources */,
 				4F7B9AC01B6254AD003D94BF /* UIImage+WebP.m in Sources */,
 				4F6FB4091B5909A300C5CB0A /* ShowClothesDetailsViewController.m in Sources */,
@@ -1449,6 +1492,7 @@
 				4F9BE21F1B6F7B7900339E71 /* ACMagnifyingGlass.m in Sources */,
 				4F9E7E3F1B5E3C13006D1E34 /* CreateActivityViewController.m in Sources */,
 				4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */,
+				4F719DD01B7B4DA600FFB0E5 /* UIImage+Rotate.m in Sources */,
 				4F0771681B538E38005D61AB /* CalendarViewController.m in Sources */,
 				4F62FFF21B57A54D005E8C79 /* UserInfo.m in Sources */,
 				4F5A507E1B60F0860001D5D1 /* ShowCollectionInspirationDetailsViewController.m in Sources */,

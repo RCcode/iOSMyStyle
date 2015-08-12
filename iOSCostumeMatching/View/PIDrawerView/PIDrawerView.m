@@ -7,6 +7,7 @@
 //
 
 #import "PIDrawerView.h"
+#import "UIImage+SubImage.h"
 
 @interface PIDrawerView ()
 {
@@ -182,17 +183,18 @@
     CGFloat x = point.x * bigImage.size.width/self.frame.size.width -35;
     CGFloat y = point.y * bigImage.size.height/self.frame.size.height -35;
     CGRect rect = CGRectMake(x, y, 70, 70);
-    CGImageRef imageRef = bigImage.CGImage;
-    CGImageRef subImageRef = CGImageCreateWithImageInRect(imageRef, rect);
-    CGSize size;
-    size.width = 70;
-    size.height = 70;
-    UIGraphicsBeginImageContext(size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextDrawImage(context, rect, subImageRef);
-    UIImage* smallImage = [UIImage imageWithCGImage:subImageRef];
-    UIGraphicsEndImageContext();
-    return smallImage;
+//    CGImageRef imageRef = bigImage.CGImage;
+//    CGImageRef subImageRef = CGImageCreateWithImageInRect(imageRef, rect);
+//    CGSize size;
+//    size.width = 70;
+//    size.height = 70;
+//    UIGraphicsBeginImageContext(size);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextDrawImage(context, rect, subImageRef);
+//    UIImage* smallImage = [UIImage imageWithCGImage:subImageRef];
+//    UIGraphicsEndImageContext();
+    UIImage *image = [bigImage subImageWithRect:rect];
+    return image;
 }
 
 -(void)redo
