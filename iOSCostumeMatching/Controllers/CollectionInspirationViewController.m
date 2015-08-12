@@ -116,11 +116,11 @@
                 NSArray *arr = [dic objectForKey:@"list"];
                 if (arr && (![arr isKindOfClass:[NSNull class]])) {
                     [weakSelf.arrCollection addObjectsFromArray:arr];
-                    [weakSelf.collectionView reloadData];
                     weakSelf.mId = [[dic objectForKey:@"mId"]intValue];
                 }
             }
         }
+        [weakSelf.collectionView reloadData];
         [weakSelf.collectionView.header endRefreshing];
         [weakSelf.collectionView.footer endRefreshing];
     } andFailed:^(NSError *error) {

@@ -12,6 +12,7 @@
 @interface ShowCollectionInspirationDetailsViewController ()<UIDocumentInteractionControllerDelegate>
 {
     UIDocumentInteractionController *_documetnInteractionController;
+    NSInteger like;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -125,7 +126,7 @@
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_dic objectForKey:@"pic"]]];
     [_lblName setText:[_dic objectForKey:@"tname"]];
     
-    NSInteger like = [[_dic objectForKey:@"likes"]integerValue];
+    like = [[_dic objectForKey:@"likes"]integerValue];
     if (like) {
         [_btnLike setImage:[UIImage imageNamed:@"ic_likes_h"] forState:UIControlStateNormal];
     }
@@ -143,17 +144,41 @@
         [(LeftMenuViewController *)app.sideViewController.leftViewController pressLogin:nil];
         return;
     }
-    [[RC_RequestManager shareManager]LikeCollocationWithCoId:_coId success:^(id responseObject) {
-        CLog(@"%@",responseObject);
+    __weak ShowCollectionInspirationDetailsViewController *weakSelf = self;
+    showMBProgressHUD(nil, YES);
+    [[RC_RequestManager shareManager]LikeCollocation:like WithCoId:_coId success:^(id responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dic = responseObject;
             if ([[dic objectForKey:@"stat"]integerValue] == 10000) {
-                showLabelHUD(@"success");
+//                showLabelHUD(@"success");
+                if (like == 0) {
+                    like = 1;
+                    [weakSelf.btnLike setImage:[UIImage imageNamed:@"ic_likes_h"] forState:UIControlStateNormal];
+                }
+                else
+                {
+                    like = 0;
+                    [weakSelf.btnLike setImage:[UIImage imageNamed:@"ic_likes"] forState:UIControlStateNormal];
+                }
             }
+            hideMBProgressHUD();
         }
     } andFailed:^(NSError *error) {
         CLog(@"%@",error);
+        hideMBProgressHUD();
     }];
+    
+//    [[RC_RequestManager shareManager]LikeCollocationWithCoId:_coId success:^(id responseObject) {
+//        CLog(@"%@",responseObject);
+//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//            NSDictionary *dic = responseObject;
+//            if ([[dic objectForKey:@"stat"]integerValue] == 10000) {
+//                showLabelHUD(@"success");
+//            }
+//        }
+//    } andFailed:^(NSError *error) {
+//        CLog(@"%@",error);
+//    }];
 }
 
 - (IBAction)pressShare:(id)sender {

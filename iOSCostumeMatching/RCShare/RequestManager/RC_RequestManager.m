@@ -521,21 +521,23 @@ static RC_RequestManager *requestManager = nil;
 }
 
 /**
- *  赞搭配
+ *  <#Description#>
  *
+ *  @param isLike  0like   1取消like
  *  @param coId    <#coId description#>
  *  @param success <#success description#>
  *  @param failure <#failure description#>
  */
 
--(void)LikeCollocationWithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
+-(void)LikeCollocation:(NSInteger)isLike WithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure
 {
     if (![self checkNetWorking])
         return;
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     NSDictionary *params = @{@"id":userInfo.numId,
                              @"token":userInfo.strToken,
-                             @"coId":[NSNumber numberWithInt:coId]};
+                             @"coId":[NSNumber numberWithInt:coId],
+                             @"type":[NSNumber numberWithInteger:isLike]};
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];

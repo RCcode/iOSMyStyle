@@ -28,7 +28,7 @@
 
 -(void)ReportCollocationWithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
 
--(void)LikeCollocationWithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
+-(void)LikeCollocation:(NSInteger)isLike WithCoId:(int)coId success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
 
 -(void)getLikedCollocationWithStyleId:(int)styleId OccId:(int)occId MinId:(int)mId Count:(int)count success:(void(^)(id responseObject))success andFailed:(void (^)(NSError *error))failure;
 
