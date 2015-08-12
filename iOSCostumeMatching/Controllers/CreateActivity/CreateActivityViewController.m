@@ -467,7 +467,23 @@
     
     _addTitle.delegate = self;
     _txtLocation.delegate = self;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideDelete)];
+    _addClotheOrCollectionView.userInteractionEnabled = YES;
+    [_addClotheOrCollectionView addGestureRecognizer:tap];
+    
+    [addImageScrollView addGestureRecognizer:tap];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)hideDelete
+{
+    for (id v in addImageScrollView.subviews) {
+        if ([v isKindOfClass:[ItemView class]]) {
+            ItemView *item = v;
+            [item setDeleteHide:YES];
+        }
+    }
 }
 
 - (void)viewDidLayoutSubviews

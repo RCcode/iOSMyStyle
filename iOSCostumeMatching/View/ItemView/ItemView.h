@@ -14,4 +14,6 @@
 
 -(void)setDeleteBlock:(void(^)(id info,id item))deleteBlock;
 
+-(void)setDeleteHide:(BOOL)hide;
+
 @end

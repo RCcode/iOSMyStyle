@@ -41,6 +41,11 @@
     _delete = deleteBlock;
 }
 
+-(void)setDeleteHide:(BOOL)hide
+{
+    deleteButton.hidden = hide;
+}
+
 -(id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -51,18 +56,29 @@
         [imageView setFrame:self.bounds];
         [self addSubview:imageView];
         
+        UILongPressGestureRecognizer * longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+        longPressGr.minimumPressDuration = 1.0;
+        [self addGestureRecognizer:longPressGr];
+        
         deleteButton = [[UIButton alloc]init];
-        [deleteButton setBackgroundImage:[UIImage imageNamed:@"edit_delet"] forState:UIControlStateNormal];
-        [deleteButton setFrame:CGRectMake(CGRectGetWidth(self.frame)-30, 0, 30, 30)];
+//        [deleteButton setBackgroundImage:[UIImage imageNamed:@"ic_delet"] forState:UIControlStateNormal];
+        [deleteButton setImage:[UIImage imageNamed:@"ic_delet"] forState:UIControlStateNormal];
+        [deleteButton setBackgroundColor:[colorWithHexString(@"#ff5252") colorWithAlphaComponent:0.8]];
+        [deleteButton setFrame:self.bounds];
         [deleteButton addTarget:self action:@selector(pressDelete:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:deleteButton];
-//        deleteButton.hidden = YES;
+        deleteButton.hidden = YES;
         
         self.layer.borderColor = colorWithHexString(@"#e6e6e6").CGColor;
         self.layer.borderWidth = 1;
         self.clipsToBounds = YES;
     }
     return self;
+}
+
+-(void)longPress:(UILongPressGestureRecognizer *)gesture
+{
+    deleteButton.hidden = NO;
 }
 
 -(void)pressDelete:(id)sender
