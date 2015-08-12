@@ -80,7 +80,7 @@
     _magnifyingGlassImageView.layer.borderWidth = 1.5;
     _magnifyingGlassImageView.clipsToBounds = YES;
     _magnifyingGlassImageView.hidden = YES;
-    
+        
     _sizeView.hidden = YES;
     
     self.drawerView1 = [[PIDrawerView alloc]init];

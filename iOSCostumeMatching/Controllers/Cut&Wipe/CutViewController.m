@@ -15,6 +15,8 @@
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) UIImageView *magnifyingGlassImageView;
+@property (nonatomic, strong) UIImageView *centerImageView;
+
 @property (nonatomic, copy) void(^croppedImageSuccess)(UIImage *image);
 
 @end
@@ -66,6 +68,15 @@
     _magnifyingGlassImageView.layer.borderWidth = 1.5;
     _magnifyingGlassImageView.clipsToBounds = YES;
     _magnifyingGlassImageView.hidden = YES;
+    
+    _centerImageView = [[UIImageView alloc]init];
+    _centerImageView.frame = CGRectMake(0, 0, 4, 4);
+    _centerImageView.layer.cornerRadius = 2;
+    _centerImageView.clipsToBounds = YES;
+    _centerImageView.backgroundColor = [UIColor redColor];
+    _centerImageView.center = _magnifyingGlassImageView.center;
+    [_magnifyingGlassImageView addSubview:_centerImageView];
+
     
     CGRect rect1 = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
     CGRect rect2 = _imageView.frame;
