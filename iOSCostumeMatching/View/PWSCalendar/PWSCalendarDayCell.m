@@ -132,6 +132,9 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
     NSString *_day = dayFromDate(_date);
     NSArray *arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:_year andMonth:_month andDay:_day];
     if (arrActivity.count>=3) {
+//        point1View.backgroundColor = colorWithHexString(@"#f3511d");
+//        point2View.backgroundColor = colorWithHexString(@"#f5bf24");
+//        point3View.backgroundColor = colorWithHexString(@"#3b5aad");
         for (int i = 0; i<3; i++) {
             ActivityInfo *info = [arrActivity objectAtIndex:i];
             switch (i) {
@@ -174,12 +177,15 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
                     break;
             }
         }
+//        point1View.backgroundColor = colorWithHexString(@"#f3511d");
+//        point2View.backgroundColor = colorWithHexString(@"#f5bf24");
         point3View.backgroundColor = [UIColor clearColor];
     }
     else if (arrActivity.count==1)
     {
         ActivityInfo *info = [arrActivity objectAtIndex:0];
         point1View.backgroundColor = getColor((ActivityColor)[info.numColor integerValue]);
+//        point1View.backgroundColor = colorWithHexString(@"#f3511d");
         point2View.backgroundColor = [UIColor clearColor];
         point3View.backgroundColor = [UIColor clearColor];
     }

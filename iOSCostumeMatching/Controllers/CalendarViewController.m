@@ -121,7 +121,7 @@
     [_bottomView addSubview:activityTableView];
     
 //    [self.view bringSubviewToFront:_helpView];
-//    [self.view bringSubviewToFront:_btnAddActivity];
+    [self.view bringSubviewToFront:_btnAddActivity];
 }
 
 -(void)viewWillAppear:(BOOL)animated
