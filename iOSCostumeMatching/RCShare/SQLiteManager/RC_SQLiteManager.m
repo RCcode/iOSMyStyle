@@ -570,7 +570,7 @@ static RC_SQLiteManager *sqliteManager = nil;
         else if (year && month) {
             sql = [NSString stringWithFormat:@"SELECT * FROM %@ where year = %d and month = %d order by day",tableName,[year intValue],[month intValue]];
         }
-//        CLog(@"%@",sql);
+        CLog(@"%@",sql);
         FMResultSet * rs = [_db executeQuery:sql];
         while ([rs next]) {
             ActivityInfo *activityInfo = [[ActivityInfo alloc]init];

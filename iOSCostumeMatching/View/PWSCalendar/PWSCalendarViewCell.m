@@ -22,6 +22,8 @@ UICollectionViewDelegateFlowLayout>
     NSCalendar*        m_calendar;
     UICollectionView*  m_collection_view;
     NSDate*            m_first_date;       // if week => select date
+    
+    NSMutableDictionary *dataSource;
 }
 @end
 ///////////////////////////////////////////////////////////////////////////
@@ -80,6 +82,35 @@ UICollectionViewDelegateFlowLayout>
 
 - (void) SetWithDate:(NSDate*)pDate ShowType:(enCalendarViewType)pCalendarType
 {
+    NSString *_year = yearFromDate(pDate);
+    NSString *_month = monthFromDate(pDate);
+    NSArray *arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:_year andMonth:_month andDay:nil];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    NSMutableArray *arr;
+    NSInteger currentDay = 0;
+    for (int i = 0; i<arrActivity.count; i++) {
+        ActivityInfo *info = [arrActivity objectAtIndex:i];
+        if ([info.numDay integerValue] == currentDay) {
+            [arr addObject:info];
+        }
+        else
+        {
+            if(arr)
+            {
+                [dic setObject:arr forKey:[NSString stringWithFormat:@"%ld",(long)currentDay]];
+            }
+            arr = [[NSMutableArray alloc]init];
+            [arr addObject:info];
+            currentDay = [info.numDay integerValue];
+        }
+        if (i == arrActivity.count-1) {
+            if(arr)
+            {
+                [dic setObject:arr forKey:[NSString stringWithFormat:@"%ld",(long)currentDay]];
+            }
+        }
+    }
+    dataSource = dic;
     if (pCalendarType == en_calendar_type_month)
     {
         m_first_date = [self GetFirstDayOfMonth:pDate];
@@ -153,22 +184,26 @@ UICollectionViewDelegateFlowLayout>
     NSDateComponents *cellDateComponents = [m_calendar components:NSDayCalendarUnit|NSMonthCalendarUnit fromDate:cell_date];
     NSDateComponents *firstOfMonthsComponents = [m_calendar components:NSMonthCalendarUnit fromDate:m_first_date];
     
+    
+    NSString *_day = dayFromDate(cell_date);
+    NSArray *arr = [dataSource objectForKey:_day];
+    
     if (self.type == en_calendar_type_month)
     {
         if (cellDateComponents.month == firstOfMonthsComponents.month)
         {
-            [cell SetDate:cell_date];
+            [cell SetDate:cell_date andData:arr];
         }
         else
         {
-            [cell SetDate:nil];
+            [cell SetDate:nil andData:nil];
         }
     }
     else if (self.type == en_calendar_type_week)
     {
         if (1)
         {
-            [cell SetDate:cell_date];
+            [cell SetDate:cell_date andData:nil];
         }
     }
     return cell;
