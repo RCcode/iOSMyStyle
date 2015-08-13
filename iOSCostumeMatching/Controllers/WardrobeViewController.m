@@ -108,7 +108,7 @@
     NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
     if (showHelp) {
         _helpView.hidden = YES;
-        [_collectionView setFrame:CGRectMake(0, CGRectGetHeight(_btnType.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64)];
+        [_collectionView setFrame:CGRectMake(0, CGRectGetMaxY(_btnType.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64)];
     }
     else
     {
@@ -229,7 +229,7 @@
 
 - (IBAction)closeHelp:(id)sender {
     [_helpView removeFromSuperview];
-    [_collectionView setFrame:CGRectMake(0, CGRectGetHeight(_btnType.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64)];
+    [_collectionView setFrame:CGRectMake(0, CGRectGetMaxY(_btnType.frame), ScreenWidth, ScreenHeight-CGRectGetHeight(_btnType.frame)-64)];
     [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:SHOWHELPKEY];
 }
 
