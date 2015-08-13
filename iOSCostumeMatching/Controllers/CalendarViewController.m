@@ -137,6 +137,7 @@
 }
 
 - (IBAction)addActivity:(id)sender {
+    [IS_MobAndAnalyticsManager event:@"Calendar" label:@"calendar_addnew"];
     CreateActivityViewController *createActivity = [[CreateActivityViewController alloc]init];
     __weak CalendarViewController *weakSelf = self;
     [createActivity setActivityFinishBlock:^(ActivityInfo *info,BOOL isNew) {

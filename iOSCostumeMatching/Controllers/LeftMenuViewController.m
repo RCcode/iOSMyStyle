@@ -256,6 +256,7 @@
 }
 
 - (IBAction)pressWardrobe:(id)sender {
+    [IS_MobAndAnalyticsManager event:@"Menu" label:@"menu_closet"];
     [self setAllBtnBackgroundColor];
     _btnWardrobe.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
@@ -265,6 +266,7 @@
 }
 
 - (IBAction)pressMatching:(id)sender {
+    [IS_MobAndAnalyticsManager event:@"Menu" label:@"menu_lookbook"];
     [self setAllBtnBackgroundColor];
     _btnMatching.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
@@ -274,6 +276,7 @@
 }
 
 - (IBAction)pressCalendar:(id)sender {
+    [IS_MobAndAnalyticsManager event:@"Menu" label:@"menu_calendar"];
     [self setAllBtnBackgroundColor];
     _btnCalendar.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
@@ -283,6 +286,7 @@
 }
 
 - (IBAction)pressCollectionInspiration:(id)sender {
+    [IS_MobAndAnalyticsManager event:@"Menu" label:@"menu_inspiration"];
     [self setAllBtnBackgroundColor];
     _btnCollectionInspiration.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
@@ -292,6 +296,7 @@
 }
 
 - (IBAction)pressLike:(id)sender {
+    [IS_MobAndAnalyticsManager event:@"Menu" label:@"menu_likes"];
     [self setAllBtnBackgroundColor];
     _btnMyLike.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];

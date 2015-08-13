@@ -79,6 +79,7 @@
 
 -(void)doneBtnPressed:(id)sender
 {
+    [IS_MobAndAnalyticsManager event:@"Calendar" label:@"calendar_addnew_save"];
     if(_dataArray.count == 0)
     {
         showLabelHUD(LocalizedString(@"SelectAlert", nil));

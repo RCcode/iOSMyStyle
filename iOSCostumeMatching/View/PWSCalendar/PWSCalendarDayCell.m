@@ -106,8 +106,9 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
     self.p_date = _date;
     if (_date)
     {
-        NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSDayCalendarUnit|NSMonthCalendarUnit fromDate:_date];
-        day = [NSString stringWithFormat:@"%@", @(dateComponents.day)];
+//        NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSDayCalendarUnit|NSMonthCalendarUnit fromDate:_date];
+//        day = [NSString stringWithFormat:@"%@", @(dateComponents.day)];
+        day = dayFromDate(_date);
     }
     
     if ([PWSHelper CheckSameDay:_date AnotherDate:[NSDate date]])

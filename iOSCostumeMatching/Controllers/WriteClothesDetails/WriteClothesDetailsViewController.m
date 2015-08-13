@@ -15,6 +15,9 @@
     WardrobeType type;
     WardrobeCategory category;
     WardrobeSeason season;
+    BOOL pressType;
+    BOOL pressCategory;
+    BOOL pressSeason;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, copy) void(^finish)(ClothesInfo *info);
@@ -57,6 +60,19 @@
 -(void)doneBtnPressed:(id)sender
 {
     showMBProgressHUD(nil, YES);
+    if (_txtBrand.text && (![_txtBrand.text isEqualToString:@""])) {
+        [IS_MobAndAnalyticsManager event:@"Closet" label:@"closet_addbrand"];
+    }
+    if (pressType) {
+        [IS_MobAndAnalyticsManager event:@"Closet" label:@"closet_addcate"];
+    }
+    if (pressCategory) {
+        [IS_MobAndAnalyticsManager event:@"Closet" label:@"closet_addsubcate"];
+    }
+    if (pressSeason) {
+        [IS_MobAndAnalyticsManager event:@"Closet" label:@"closet_addseason"];
+    }
+    
     if (_finish) {
         ClothesInfo *clothesInfo = [[ClothesInfo alloc]init];
         clothesInfo.numCateId = [NSNumber numberWithInt:type];
@@ -80,12 +96,16 @@
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
     [self setDoneBtnTitle:LocalizedString(@"DONE", nil)];
-
+    
     [_lblBrand setText:LocalizedString(@"Brand", nil)];
     [_lCategory setText:LocalizedString(@"Category", nil)];
     [_lsubCategory setText:LocalizedString(@"Subcategory", nil)];
     [_lseason setText:LocalizedString(@"Season", nil)];
     [_lDesUploadClothes setText:LocalizedString(@"UploadClothesDes", nil)];
+    
+    pressType = NO;
+    pressCategory = NO;
+    pressSeason = NO;
     
     [_scrollView addSubview:_contentView];
     _scrollView.contentSize = CGSizeMake(CGRectGetWidth(_contentView.frame), CGRectGetHeight(_contentView.frame));
@@ -105,6 +125,7 @@
 }
 
 - (IBAction)selectType:(id)sender {
+    pressType = YES;
     SelectViewController *selectStyle = [[SelectViewController alloc]init];
     [selectStyle setNavagationTitle:LocalizedString(@"Category", nil)];
     selectStyle.array = getAllWardrobeType();
@@ -126,6 +147,7 @@
 }
 
 - (IBAction)selectCategory:(id)sender {
+    pressCategory = YES;
     SelectViewController *selectCategory = [[SelectViewController alloc]init];
     [selectCategory setNavagationTitle:LocalizedString(@"Subcategory", nil)];
     selectCategory.array = getAllWardrobeCategorye(type);
@@ -249,6 +271,7 @@
 }
 
 - (IBAction)selectSeason:(id)sender {
+    pressSeason = YES;
     SelectViewController *selectSeason = [[SelectViewController alloc]init];
     [selectSeason setNavagationTitle:LocalizedString(@"Season", nil)];
     selectSeason.array = getAllWardrobeSeason();

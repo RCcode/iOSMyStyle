@@ -14,6 +14,8 @@
 {
     int style;
     int occasion;
+    BOOL pressStyle;
+    BOOL pressOccasion;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, copy) void(^finish)(CollocationInfo *info);
@@ -50,6 +52,12 @@
 
 -(void)doneBtnPressed:(id)sender
 {
+    if (pressStyle) {
+        [IS_MobAndAnalyticsManager event:@"Lookbook" label:@"lookbook_style"];
+    }
+    if (pressOccasion) {
+        [IS_MobAndAnalyticsManager event:@"Lookbook" label:@"lookbook_occasion"];
+    }
     CollocationInfo *collocationInfo = [[CollocationInfo alloc]init];
     collocationInfo.file = _image;
     collocationInfo.arrList = _arrList;
@@ -57,6 +65,7 @@
     collocationInfo.numOccId = [NSNumber numberWithInt:occasion];
     if (_txtDescription.text) {
         collocationInfo.strDescription = _txtDescription.text;
+        [IS_MobAndAnalyticsManager event:@"Lookbook" label:@"lookbook_description"];
     }
 //    collocationInfo.strDescription = @"宴会";
     collocationInfo.date = stringFromDate([NSDate date]);
@@ -86,6 +95,9 @@
     [_lOccation setText:LocalizedString(@"Occasion", nil)];
     [_lUpload setText:LocalizedString(@"UploadClothesDes", nil)];
     
+    pressStyle = NO;
+    pressOccasion = NO;
+    
     _imageView.image = _image;
     _txtDescription.delegate = self;
     
@@ -105,6 +117,7 @@
 }
 
 - (IBAction)selectStyle:(id)sender {
+    pressStyle = YES;
     SelectViewController *selectStyle = [[SelectViewController alloc]init];
     [selectStyle setNavagationTitle:@"选择风格"];
     selectStyle.array = getAllCollocationStyle();
@@ -119,6 +132,7 @@
 
 
 - (IBAction)selectOccasion:(id)sender {
+    pressOccasion = YES;
     SelectViewController *selectOccasion = [[SelectViewController alloc]init];
     [selectOccasion setNavagationTitle:@"选择场合"];
     selectOccasion.array = getAllCollocationOccasion();

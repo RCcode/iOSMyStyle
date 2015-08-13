@@ -437,7 +437,7 @@
 }
 
 - (void)cameraBtnOnClick{
-    
+    [IS_MobAndAnalyticsManager event:@"Closet" label:@"closet_camera"];
     [self close];
     
     if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
@@ -469,7 +469,7 @@
 }
 
 - (void)photoAlbumBtnOnClick{
-    
+    [IS_MobAndAnalyticsManager event:@"Closet" label:@"closet_album"];
     [self close];
 //    判断权限
     ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];

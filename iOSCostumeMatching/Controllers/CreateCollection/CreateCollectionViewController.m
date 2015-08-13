@@ -57,6 +57,10 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
+    NSString *str = [NSString stringWithFormat:@"lookbook_%lu",(unsigned long)_createImageView.subviews.count];
+    [IS_MobAndAnalyticsManager event:@"Lookbook" label:str];
+    
+    
     WriteCollectionDetailsViewController *writeCollection = [[WriteCollectionDetailsViewController alloc]init];
     __weak CreateCollectionViewController *weakSelf = self;
     [writeCollection setCollectionFinishBlock:^(CollocationInfo *info) {
