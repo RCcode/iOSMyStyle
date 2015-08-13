@@ -15,10 +15,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhc-ZC-YbW">
-                        <rect key="frame" x="8" y="0.0" width="304" height="48"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycg-us-4Xd">
-                                <rect key="frame" x="20" y="0.0" width="284" height="48"/>
+                                <rect key="frame" x="20" y="0.0" width="300" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -35,10 +35,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="yhc-ZC-YbW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="12x-LY-XLJ"/>
+                    <constraint firstItem="yhc-ZC-YbW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="12x-LY-XLJ"/>
                     <constraint firstItem="yhc-ZC-YbW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6J5-l3-AFm"/>
                     <constraint firstAttribute="bottom" secondItem="yhc-ZC-YbW" secondAttribute="bottom" constant="1" id="aCm-7P-bvx"/>
-                    <constraint firstAttribute="trailing" secondItem="yhc-ZC-YbW" secondAttribute="trailing" constant="8" id="smB-V6-ekh"/>
+                    <constraint firstAttribute="trailing" secondItem="yhc-ZC-YbW" secondAttribute="trailing" id="smB-V6-ekh"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -48,6 +48,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="cellView" destination="yhc-ZC-YbW" id="R4K-yU-SeZ"/>
                 <outlet property="lblTitle" destination="ycg-us-4Xd" id="ccx-N2-e0r"/>
             </connections>
         </tableViewCell>

@@ -12,11 +12,13 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    UIView *v = [[UIView alloc]init];
+    v.backgroundColor = colorWithHexString(@"#f4f4f4");
+    self.selectedBackgroundView = v;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 

@@ -14,6 +14,9 @@
     // Initialization code
     _colorView.layer.cornerRadius = CGRectGetWidth(_colorView.frame)/2;
     _colorView.clipsToBounds = YES;
+    UIView *v = [[UIView alloc]init];
+    v.backgroundColor = colorWithHexString(@"#f4f4f4");
+    self.selectedBackgroundView = v;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

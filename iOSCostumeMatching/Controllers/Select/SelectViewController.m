@@ -42,7 +42,7 @@
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_back"] andHighlightedImage:nil];
     self.view.backgroundColor = colorWithHexString(@"#eeeeee");
     
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 15, ScreenWidth, ScreenHeight-64-15)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 15, ScreenWidth-20, ScreenHeight-64-15)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -70,6 +70,9 @@
     }
     CustumalCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     cell.lblTitle.text = [_array objectAtIndex:indexPath.row];
+    if (indexPath.row == 0) {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     return cell;
 }
 

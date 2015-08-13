@@ -30,7 +30,6 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *upLoadSwitch;
 
-@property (weak, nonatomic) IBOutlet UILabel *lDes;
 @property (weak, nonatomic) IBOutlet UILabel *lStyle;
 @property (weak, nonatomic) IBOutlet UILabel *lOccation;
 @property (weak, nonatomic) IBOutlet UILabel *lUpload;
@@ -90,11 +89,14 @@
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
     [self setDoneBtnTitle:LocalizedString(@"DONE", nil)];
     
-    [_lDes setText:LocalizedString(@"Description", nil)];
     [_lStyle setText:LocalizedString(@"Style", nil)];
     [_lOccation setText:LocalizedString(@"Occasion", nil)];
     [_lUpload setText:LocalizedString(@"UploadClothesDes", nil)];
     
+    _txtDescription.placeholder = LocalizedString(@"Description", nil);
+    _txtDescription.textColor = colorWithHexString(@"#c7c7c7");
+    _txtDescription.font = [UIFont systemFontOfSize:13];
+
     pressStyle = NO;
     pressOccasion = NO;
     

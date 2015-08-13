@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyL-Gb-gl0">
-                        <rect key="frame" x="8" y="0.0" width="304" height="47"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWZ-jO-3bo">
                                 <rect key="frame" x="15" y="16" width="15" height="15"/>
@@ -26,7 +26,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twc-hP-LzU">
-                                <rect key="frame" x="45" y="0.0" width="259" height="47"/>
+                                <rect key="frame" x="45" y="0.0" width="275" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -45,9 +45,9 @@
                 </subviews>
                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="fyL-Gb-gl0" secondAttribute="trailing" constant="8" id="4rP-Dq-0KG"/>
+                    <constraint firstAttribute="trailing" secondItem="fyL-Gb-gl0" secondAttribute="trailing" id="4rP-Dq-0KG"/>
                     <constraint firstAttribute="bottom" secondItem="fyL-Gb-gl0" secondAttribute="bottom" constant="1" id="UAu-7Y-hw2"/>
-                    <constraint firstItem="fyL-Gb-gl0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="tfQ-8d-7mx"/>
+                    <constraint firstItem="fyL-Gb-gl0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tfQ-8d-7mx"/>
                     <constraint firstItem="fyL-Gb-gl0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="y59-Eu-jFg"/>
                 </constraints>
             </tableViewCellContentView>

@@ -11,5 +11,6 @@
 @interface CustumalCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UIView *cellView;
 
 @end
