@@ -32,7 +32,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblCategory;
 @property (weak, nonatomic) IBOutlet UILabel *lblSeason;
 
-@property (weak, nonatomic) IBOutlet UILabel *lblBrand;
 @property (weak, nonatomic) IBOutlet UILabel *lCategory;
 @property (weak, nonatomic) IBOutlet UILabel *lsubCategory;
 @property (weak, nonatomic) IBOutlet UILabel *lseason;
@@ -97,11 +96,16 @@
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
     [self setDoneBtnTitle:LocalizedString(@"DONE", nil)];
     
-    [_lblBrand setText:LocalizedString(@"Brand", nil)];
     [_lCategory setText:LocalizedString(@"Category", nil)];
     [_lsubCategory setText:LocalizedString(@"Subcategory", nil)];
     [_lseason setText:LocalizedString(@"Season", nil)];
     [_lDesUploadClothes setText:LocalizedString(@"UploadClothesDes", nil)];
+    
+    _txtBrand.placeholder = LocalizedString(@"Brand", nil);
+    _txtBrand.textColor = colorWithHexString(@"#c7c7c7");
+    _txtBrand.font = [UIFont systemFontOfSize:13];
+    
+    _upLoadSwitch.onTintColor = colorWithHexString(@"#44dcca");
     
     pressType = NO;
     pressCategory = NO;

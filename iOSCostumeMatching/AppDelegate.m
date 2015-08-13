@@ -33,6 +33,8 @@
     
     application.applicationIconBadgeNumber = 0;    
     
+    [[UITextField appearance] setTintColor:colorWithHexString(@"#44dcca")];
+    
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
