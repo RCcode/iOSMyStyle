@@ -85,9 +85,12 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K16-dH-SAQ">
-                    <rect key="frame" x="0.0" y="1" width="320" height="47"/>
+                    <rect key="frame" x="0.0" y="1" width="320" height="53"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="53" id="eSX-Dw-SQe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="我的衣橱" image="sideslip_ic1">
@@ -99,9 +102,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZT-nG-P26">
-                    <rect key="frame" x="0.0" y="49" width="320" height="48"/>
+                    <rect key="frame" x="0.0" y="55" width="320" height="53"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="53" id="wM0-pt-A1D"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="我的搭配" image="sideslip_ic2">
@@ -113,9 +119,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzC-b8-XUJ">
-                    <rect key="frame" x="0.0" y="98" width="320" height="47"/>
+                    <rect key="frame" x="0.0" y="109" width="320" height="53"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="53" id="Kv0-Ro-lig"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="搭配日历" image="sideslip_ic3">
@@ -127,9 +136,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3e-hG-vnG">
-                    <rect key="frame" x="0.0" y="146" width="320" height="48"/>
+                    <rect key="frame" x="0.0" y="163" width="320" height="53"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="53" id="ouN-BA-JgM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="搭配灵感" image="sideslip_ic4">
@@ -141,9 +153,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCK-wT-R3g">
-                    <rect key="frame" x="0.0" y="195" width="320" height="47"/>
+                    <rect key="frame" x="0.0" y="217" width="320" height="53"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="53" id="8IV-3e-8OQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="我喜欢的搭配" image="sideslip_ic5">
@@ -155,10 +170,10 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qWl-9N-YRt">
-                    <rect key="frame" x="0.0" y="388" width="320" height="40"/>
+                    <rect key="frame" x="0.0" y="394" width="320" height="34"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFj-cI-U2C">
-                            <rect key="frame" x="160" y="0.0" width="40" height="40"/>
+                            <rect key="frame" x="165" y="0.0" width="40" height="29"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="m5t-Bv-2Mr"/>
                             </constraints>
@@ -167,7 +182,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHl-kX-cJh">
-                            <rect key="frame" x="200" y="0.0" width="40" height="40"/>
+                            <rect key="frame" x="205" y="0.0" width="40" height="29"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="BIp-qO-Rey"/>
                                 <constraint firstAttribute="width" constant="40" id="Wsb-t5-GrK"/>
@@ -187,15 +202,15 @@
                         <constraint firstItem="NHl-kX-cJh" firstAttribute="leading" secondItem="OFj-cI-U2C" secondAttribute="trailing" id="57n-0p-WQz"/>
                         <constraint firstAttribute="bottom" secondItem="NHl-kX-cJh" secondAttribute="bottom" id="7Zw-zl-mU8"/>
                         <constraint firstItem="NHl-kX-cJh" firstAttribute="top" secondItem="qWl-9N-YRt" secondAttribute="top" id="Eat-tk-Ew8"/>
-                        <constraint firstAttribute="bottom" secondItem="NHl-kX-cJh" secondAttribute="bottom" id="GhD-xJ-f0e"/>
-                        <constraint firstAttribute="height" constant="40" id="PF7-rA-FRL"/>
-                        <constraint firstItem="OFj-cI-U2C" firstAttribute="leading" secondItem="qWl-9N-YRt" secondAttribute="leading" constant="160" id="Stv-EB-2dk"/>
+                        <constraint firstAttribute="bottom" secondItem="NHl-kX-cJh" secondAttribute="bottom" constant="5" id="GhD-xJ-f0e"/>
+                        <constraint firstAttribute="height" constant="34" id="PF7-rA-FRL"/>
+                        <constraint firstItem="OFj-cI-U2C" firstAttribute="leading" secondItem="qWl-9N-YRt" secondAttribute="leading" constant="165" id="Stv-EB-2dk"/>
                         <constraint firstItem="NHl-kX-cJh" firstAttribute="leading" secondItem="OFj-cI-U2C" secondAttribute="trailing" id="WpP-TO-Jiv"/>
                         <constraint firstAttribute="bottom" secondItem="NHl-kX-cJh" secondAttribute="bottom" id="Wzl-MD-sqg"/>
                         <constraint firstItem="NHl-kX-cJh" firstAttribute="top" secondItem="qWl-9N-YRt" secondAttribute="top" id="bBi-y0-79c"/>
                         <constraint firstItem="OFj-cI-U2C" firstAttribute="top" secondItem="qWl-9N-YRt" secondAttribute="top" id="l9B-1T-mhe"/>
                         <constraint firstAttribute="trailing" secondItem="NHl-kX-cJh" secondAttribute="trailing" id="ncH-ZE-H6N"/>
-                        <constraint firstAttribute="bottom" secondItem="OFj-cI-U2C" secondAttribute="bottom" id="oWg-gK-3Tq"/>
+                        <constraint firstAttribute="bottom" secondItem="OFj-cI-U2C" secondAttribute="bottom" constant="5" id="oWg-gK-3Tq"/>
                         <constraint firstItem="NHl-kX-cJh" firstAttribute="top" secondItem="qWl-9N-YRt" secondAttribute="top" id="vEK-ay-ipm"/>
                     </constraints>
                     <variation key="default">
@@ -210,7 +225,7 @@
                     </variation>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f10-4B-4ll">
-                    <rect key="frame" x="0.0" y="291" width="320" height="48"/>
+                    <rect key="frame" x="0.0" y="312" width="320" height="40"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="titleEdgeInsets" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="反馈">
@@ -222,7 +237,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg0-Zi-iD8">
-                    <rect key="frame" x="0.0" y="340" width="320" height="47"/>
+                    <rect key="frame" x="0.0" y="353" width="320" height="40"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="titleEdgeInsets" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="分享">
@@ -234,7 +249,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cli-9E-RMX">
-                    <rect key="frame" x="0.0" y="243" width="320" height="47"/>
+                    <rect key="frame" x="0.0" y="271" width="320" height="40"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="titleEdgeInsets" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="评分">
@@ -280,10 +295,12 @@
                 <constraint firstAttribute="trailing" secondItem="K16-dH-SAQ" secondAttribute="trailing" id="UNL-60-Ktp"/>
                 <constraint firstItem="K16-dH-SAQ" firstAttribute="top" secondItem="81V-WC-Hir" secondAttribute="top" constant="1" id="WwV-Du-hqR"/>
                 <constraint firstItem="xCK-wT-R3g" firstAttribute="top" secondItem="s3e-hG-vnG" secondAttribute="bottom" constant="1" id="XTu-6m-zX5"/>
+                <constraint firstItem="f10-4B-4ll" firstAttribute="height" secondItem="Cli-9E-RMX" secondAttribute="height" id="Yhw-dS-WAU"/>
                 <constraint firstItem="K16-dH-SAQ" firstAttribute="height" secondItem="KZT-nG-P26" secondAttribute="height" id="Yxu-9h-Her"/>
                 <constraint firstAttribute="trailing" secondItem="dzC-b8-XUJ" secondAttribute="trailing" id="Z44-nv-ddp"/>
                 <constraint firstItem="K16-dH-SAQ" firstAttribute="top" secondItem="81V-WC-Hir" secondAttribute="top" constant="1" id="Zys-nt-t04"/>
                 <constraint firstItem="s3e-hG-vnG" firstAttribute="top" secondItem="dzC-b8-XUJ" secondAttribute="bottom" constant="1" id="cIS-IA-ZMr"/>
+                <constraint firstItem="f10-4B-4ll" firstAttribute="height" secondItem="eg0-Zi-iD8" secondAttribute="height" id="dDx-ii-ODi"/>
                 <constraint firstItem="eg0-Zi-iD8" firstAttribute="height" secondItem="KZT-nG-P26" secondAttribute="height" id="dlM-4A-dfW"/>
                 <constraint firstItem="eg0-Zi-iD8" firstAttribute="height" secondItem="K16-dH-SAQ" secondAttribute="height" id="gt3-OA-n8y"/>
                 <constraint firstAttribute="trailing" secondItem="KZT-nG-P26" secondAttribute="trailing" id="hHm-y5-z6x"/>
@@ -326,6 +343,13 @@
                     <exclude reference="C3h-eE-cfE"/>
                     <exclude reference="HoP-e1-jPu"/>
                     <exclude reference="LT0-qd-4nH"/>
+                    <exclude reference="1np-W0-Z2H"/>
+                    <exclude reference="2Aa-ig-are"/>
+                    <exclude reference="7N4-TN-91F"/>
+                    <exclude reference="O9r-FE-cwO"/>
+                    <exclude reference="PaK-PY-JTi"/>
+                    <exclude reference="dlM-4A-dfW"/>
+                    <exclude reference="gt3-OA-n8y"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="316" y="134"/>

@@ -29,14 +29,15 @@
     self.navigationItem.hidesBackButton = YES;
     
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavBarHeight+1)];
-    titleLabel.font = [UIFont systemFontOfSize:18];
+//    titleLabel.font = [UIFont systemFontOfSize:18];
+    titleLabel.font = [UIFont boldSystemFontOfSize:17];
     titleLabel.textColor = colorWithHexString(@"#222222");
     titleLabel.backgroundColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
 //    self.navigationItem.titleView = titleLabel;
     
     btnReturn = [[UIButton alloc]init];
-    btnReturn.frame=CGRectMake(5, 0, 44, 44);
+    btnReturn.frame=CGRectMake(0, 0, 44, 44);
     [btnReturn addTarget:self action:@selector(returnBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     btnReturn.hidden = YES;
     

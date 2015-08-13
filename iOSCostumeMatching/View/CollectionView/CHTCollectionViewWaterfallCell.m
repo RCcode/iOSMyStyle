@@ -33,6 +33,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
+      self.backgroundColor = colorWithHexString(@"#ffffff");
       _imageView = [[UIImageView alloc] init];
       // Scale with fill for contents when we resize.
       _imageView.contentMode = UIViewContentModeScaleAspectFill;

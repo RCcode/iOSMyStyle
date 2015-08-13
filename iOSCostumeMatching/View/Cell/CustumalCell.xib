@@ -15,18 +15,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhc-ZC-YbW">
-                        <rect key="frame" x="8" y="0.0" width="304" height="47"/>
+                        <rect key="frame" x="8" y="0.0" width="304" height="48"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycg-us-4Xd">
-                                <rect key="frame" x="20" y="0.0" width="284" height="47"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="20" y="0.0" width="284" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="47" id="JO6-eH-3tJ"/>
+                            <constraint firstAttribute="height" constant="48" id="JO6-eH-3tJ"/>
                             <constraint firstItem="ycg-us-4Xd" firstAttribute="leading" secondItem="yhc-ZC-YbW" secondAttribute="leading" constant="20" id="NjA-z1-u1q"/>
                             <constraint firstItem="ycg-us-4Xd" firstAttribute="top" secondItem="yhc-ZC-YbW" secondAttribute="top" id="j0W-53-mBH"/>
                             <constraint firstAttribute="trailing" secondItem="ycg-us-4Xd" secondAttribute="trailing" id="pcN-lb-311"/>

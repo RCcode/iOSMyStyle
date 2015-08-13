@@ -133,7 +133,7 @@
     }
 }
 - (void)showShadow:(BOOL)show{
-    _currentView.layer.shadowOpacity    = show ? 0.8f : 0.0f;
+    _currentView.layer.shadowOpacity    = show ? 0.6f : 0.0f;
     if (show) {
         _currentView.layer.cornerRadius = 4.0f;
         _currentView.layer.shadowOffset = CGSizeZero;
