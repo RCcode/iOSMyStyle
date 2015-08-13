@@ -414,10 +414,12 @@
     [self.view addSubview:_dateView];
     [self.view addSubview:_dateAndTimeView];
     
-    _txtLocation.textColor = colorWithHexString(@"#c7c7c7");
-    _addTitle.textColor = colorWithHexString(@"#c7c7c7");
+    _txtLocation.textColor = colorWithHexString(@"#aeaeae");
+    _addTitle.textColor = colorWithHexString(@"#aeaeae");
     _txtLocation.font = [UIFont systemFontOfSize:13];
     _addTitle.font = [UIFont systemFontOfSize:13];
+    
+    _switchAllDay.onTintColor = colorWithHexString(@"#44dcca");
     
     startTime = [NSDate date];
     endTime = [NSDate date];

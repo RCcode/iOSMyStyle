@@ -38,6 +38,7 @@
 -(void)doneBtnPressed:(id)sender
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"Cancel", nil) destructiveButtonTitle:LocalizedString(@"Delete", nil) otherButtonTitles:LocalizedString(@"Share", nil), nil];
+//    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [actionSheet showInView:self.view];
 }
 
@@ -129,6 +130,16 @@
         [_documetnInteractionController presentOpenInMenuFromRect:CGRectMake(0, 0, 0, 0) inView:self.view animated:YES];
     }
 }
+
+//- (void)willPresentActionSheet:(UIActionSheet *)actionSheet
+//{
+//    for (UIView *subViwe in actionSheet.subviews) {
+//        if ([subViwe isKindOfClass:[UIButton class]]) {
+//            UIButton *button = (UIButton*)subViwe;
+//            [button setTitleColor:colorWithHexString(@"#3a62d5") forState:UIControlStateNormal];
+//        }
+//    }
+//}
 
 - (IBAction)addCollection:(id)sender {
     CreateCollectionViewController *createCollection = [[CreateCollectionViewController alloc]init];
