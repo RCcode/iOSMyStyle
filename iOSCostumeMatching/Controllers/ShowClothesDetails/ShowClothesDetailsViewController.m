@@ -71,13 +71,13 @@
     }
     
     CGFloat originX = 0;
-    CGFloat originY = 10;
+    CGFloat originY = 15;
 
     for (NSInteger i = 0; i<arr.count; i++) {
         
         NSMutableString *str = [arr objectAtIndex:i];
         
-        CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:11]);
+        CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:12]);
         UILabel *label = [[UILabel alloc]init];
         CGFloat width = rect.size.width+20;
         if ((originX +width) > (ScreenWidth-20)) {
@@ -91,7 +91,7 @@
         [label setTextAlignment:NSTextAlignmentCenter];
         label.backgroundColor = colorWithHexString(@"#c0e1d9");
         [label setTextColor:colorWithHexString(@"#ffffff")];
-        [label setFont:[UIFont systemFontOfSize:11]];
+        [label setFont:[UIFont systemFontOfSize:12]];
         [_scrollView addSubview:label];
         [label setText:str];
     }

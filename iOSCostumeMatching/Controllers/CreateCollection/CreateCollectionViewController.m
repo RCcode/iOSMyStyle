@@ -80,11 +80,11 @@
     if (!_collectionView) {
         CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
         
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
         layout.headerHeight = 0;
         layout.footerHeight = 0;
-        //        layout.minimumColumnSpacing = 20;
-        //        layout.minimumInteritemSpacing = 30;
+        layout.minimumColumnSpacing = 5;
+        layout.minimumInteritemSpacing = 5;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:_selectView.bounds collectionViewLayout:layout];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -187,8 +187,8 @@
     ClothesInfo *info = [_arrClothes objectAtIndex:indexPath.row];
     CGFloat width = info.file.size.width;
     CGFloat height = info.file.size.height;
-    CGFloat viewHeight = ((ScreenWidth-30)/(2.0*width))*height;
-    return CGSizeMake((ScreenWidth-30)/2.0, viewHeight);
+    CGFloat viewHeight = ((ScreenWidth-15)/(2.0*width))*height;
+    return CGSizeMake((ScreenWidth-15)/2.0, viewHeight);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

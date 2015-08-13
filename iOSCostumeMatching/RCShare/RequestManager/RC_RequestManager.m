@@ -156,12 +156,25 @@ static RC_RequestManager *requestManager = nil;
 {
     if (![self checkNetWorking])
         return;
-    NSDictionary *params = @{@"uid":userInfo.strUid,
-                             @"tplat":userInfo.numTplat,
-                             @"token":userInfo.strToken,
-                             @"tname":userInfo.strTname,
-                             @"plat":userInfo.numPlat,
-                             @"pic":userInfo.strPicURL};
+    NSDictionary *params;
+    if(userInfo.strPicURL)
+    {
+        params = @{@"uid":userInfo.strUid,
+                                 @"tplat":userInfo.numTplat,
+                                 @"token":userInfo.strToken,
+                                 @"tname":userInfo.strTname,
+                                 @"plat":userInfo.numPlat,
+                                 @"pic":userInfo.strPicURL};
+    }
+    else
+    {
+        params = @{@"uid":userInfo.strUid,
+                                 @"tplat":userInfo.numTplat,
+                                 @"token":userInfo.strToken,
+                                 @"tname":userInfo.strTname,
+                                 @"plat":userInfo.numPlat};
+    }
+    
     
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setTimeoutInterval:30];

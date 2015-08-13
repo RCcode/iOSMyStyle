@@ -20,6 +20,7 @@
     UITableView *activityTableView;
     NSString *year;
     NSString *month;
+    int _lastPosition;
 }
 
 @property (nonatomic, strong) NSMutableArray *arrActivity;
@@ -269,6 +270,26 @@
     [cell.lblWeek setText:weekdayStringFromDate(info.dateStartTime)];
     
     return cell;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    int currentPostion = scrollView.contentOffset.y;
+    
+    if (currentPostion - _lastPosition > 20  && currentPostion > 0) {        //这个地方加上 currentPostion > 0 即可）
+        
+        _lastPosition = currentPostion;
+        
+        NSLog(@"ScrollUp now");
+        [self moveUp:YES];
+    }
+//    else if (currentPostion == CGRectGetHeight(scrollView.frame))
+//    {
+//        [self moveUp:NO];
+//    }
+//
 }
 
 #pragma mark - PWSCalendarDelegate
