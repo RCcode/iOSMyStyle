@@ -200,6 +200,8 @@
 
 -(void)didSelect:(ClothesInfo *)info
 {
+    [self hideAllHandles];
+    
     [_arrList addObject:info];
     
     CGFloat imageWidth = info.file.size.width;
@@ -221,7 +223,21 @@
     ZDStickerView *userResizableView1 = [[ZDStickerView alloc] initWithFrame:gripFrame];
 //    userResizableView1.minHeight = 60;
 //    userResizableView1.minWidth = 60;
-    userResizableView1.center = _createImageView.center;
+    
+    int x = arc4random() % 100;
+    if(arc4random()%2)
+    {
+        x = -x;
+    }
+    
+    int y = arc4random() % 100;
+    if(arc4random()%2)
+    {
+        y = -y;
+    }
+    
+    userResizableView1.center = CGPointMake(_createImageView.center.x+x, _createImageView.center.y+y);
+//    userResizableView1.center = _createImageView.center;
     userResizableView1.tag = [info.numLocalId integerValue];
     userResizableView1.stickerViewDelegate = self;
     userResizableView1.contentView = imageView1;//contentView;
