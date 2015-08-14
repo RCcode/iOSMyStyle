@@ -82,7 +82,7 @@
     flowLayout.minimumInteritemSpacing = 5;
 
     // layout 决定来 collectionView 中所有 cell (单元格) 的布局
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_lblOccasion.frame), ScreenWidth, ScreenHeight-64-CGRectGetHeight(_btnOccasion.frame)) collectionViewLayout:flowLayout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_lblOccasion.frame), ScreenWidth, ScreenHeight-64-CGRectGetHeight(_btnOccasion.frame)) collectionViewLayout:flowLayout];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     

@@ -20,10 +20,11 @@
 - (UIImageView *)arrowView
 {
     if (!_arrowView) {
-        UIImage *image = [UIImage imageNamed:MJRefreshSrcName(@"arrow.png")];
-        if (!image) {
-            image = [UIImage imageNamed:MJRefreshFrameworkSrcName(@"arrow.png")];
-        }
+        UIImage *image = [UIImage imageNamed:@"refresh"];
+//        UIImage *image = [UIImage imageNamed:MJRefreshSrcName(@"arrow.png")];
+//        if (!image) {
+//            image = [UIImage imageNamed:MJRefreshFrameworkSrcName(@"arrow.png")];
+//        }
         UIImageView *arrowView = [[UIImageView alloc] initWithImage:image];
         [self addSubview:_arrowView = arrowView];
     }
@@ -64,9 +65,9 @@
     // 箭头
     self.arrowView.mj_size = self.arrowView.image.size;
     CGFloat arrowCenterX = self.mj_w * 0.5;
-    if (!self.stateLabel.hidden) {
-        arrowCenterX -= 100;
-    }
+//    if (!self.stateLabel.hidden) {
+//        arrowCenterX -= 100;
+//    }
     CGFloat arrowCenterY = self.mj_h * 0.5;
     self.arrowView.center = CGPointMake(arrowCenterX, arrowCenterY);
     

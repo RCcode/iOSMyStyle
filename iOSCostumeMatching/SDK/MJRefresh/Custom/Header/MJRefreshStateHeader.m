@@ -57,7 +57,7 @@
 - (void)setLastUpdatedTimeKey:(NSString *)lastUpdatedTimeKey
 {
     [super setLastUpdatedTimeKey:lastUpdatedTimeKey];
-    
+    return;
     NSDate *lastUpdatedTime = [[NSUserDefaults standardUserDefaults] objectForKey:lastUpdatedTimeKey];
     
     // 如果有block
