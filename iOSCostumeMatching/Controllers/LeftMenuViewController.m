@@ -119,21 +119,26 @@
 
 -(void)saveUserInfo:(UserInfo *)_userInfo
 {
-    [_btnLogin setTitle:LocalizedString(@"Logout", nil) forState:UIControlStateNormal];
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
-    
-    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UPDATEVIEW object:nil];
-    
+    __weak LeftMenuViewController *weakSelf = self;
     _userInfo.numPlat = [NSNumber numberWithShort:1];
-    [UserInfo archiverUserInfo:_userInfo];
-//    __weak LeftMenuViewController *weakSelf = self;
+    if (!_userInfo.strUid) {
+        return;
+    }
+    
     [[RC_RequestManager shareManager]loginWith:_userInfo success:^(id responseObject) {
         CLog(@"%@",responseObject);
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             if ([[responseObject objectForKey:@"stat"]integerValue] == 10000) {
+                
+                [weakSelf.btnLogin setTitle:LocalizedString(@"Logout", nil) forState:UIControlStateNormal];
+                [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
+                
+                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UPDATEVIEW object:nil];
+
                 _userInfo.numId = [responseObject objectForKey:@"id"];
                 [UserInfo archiverUserInfo:userInfo];
                 [[RC_SQLiteManager shareManager]addUser:userInfo];
+                
             }
         }
     } andFailed:^(NSError *error) {
@@ -177,6 +182,7 @@
     if (buttonIndex == 1) {
         NSInteger plat = [userInfo.numTplat integerValue];
         [UserInfo deleteArchieveData];
+        userInfo = nil;
         if (plat == 1) {//in
             
         }
@@ -185,7 +191,7 @@
             [[FacebookManager shareManager]logOut];
         }
         [_btnLogin setTitle:LocalizedString(@"Login", nil) forState:UIControlStateNormal];
-        [_headImageView setImage:nil];
+        [_headImageView setImage:[UIImage imageNamed:@"icon"]];
     }
 }
 
@@ -198,7 +204,6 @@
     }
     else
     {
-//        loginView.hidden = NO;
         [loginView show:YES];
     }
 }
@@ -234,7 +239,6 @@
         userInfo.numTplat = [NSNumber numberWithShort:2];
         [weakSelf saveUserInfo:userInfo];
     } andFailed:^(NSError *error) {
-        
     }];
     [[FacebookManager shareManager] getHeadPicturePathSuccess:^(NSDictionary *dic) {
         NSLog(@"headurl:%@",dic);
@@ -242,7 +246,6 @@
         userInfo.numTplat = [NSNumber numberWithShort:2];
         [weakSelf saveUserInfo:userInfo];
     } andFailed:^(NSError *error) {
-        
     }];
 }
 
@@ -297,6 +300,12 @@
 
 - (IBAction)pressLike:(id)sender {
     [IS_MobAndAnalyticsManager event:@"Menu" label:@"menu_likes"];
+    
+    if (![UserInfo unarchiverUserData]) {
+        [self pressLogin:nil];
+        return;
+    }
+    
     [self setAllBtnBackgroundColor];
     _btnMyLike.backgroundColor = colorWithHexString(@"#f4f4f4");
     AppDelegate *delegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];

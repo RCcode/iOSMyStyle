@@ -50,8 +50,11 @@
 }
 
 -(void)updateView{
-    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
-    [activityTableView reloadData];
+    if(year && month)
+    {
+        _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
+        [activityTableView reloadData];
+    }
 }
 
 - (void)viewDidLoad {
@@ -115,13 +118,22 @@
     activityTableView.delegate = self;
     activityTableView.dataSource = self;
     [activityTableView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame), ScreenWidth, ScreenHeight-20-CGRectGetHeight(calendarView.frame))];
-    //    [self.view insertSubview:activityTableView atIndex:0];
-//    [self.view addSubview:activityTableView];
     activityTableView.backgroundColor = colorWithHexString(@"#eeeeee");
-    [self setTitleDate:[NSDate date]];
+    
+//    [self setTitleDate:[NSDate date]];
+    
+    NSDate *date = [NSDate date];
+    NSDateFormatter* ff = [[NSDateFormatter alloc] init];
+    //    [ff setDateFormat:@"yyyy-MM-dd"];
+    [ff setDateFormat:@"yyyy-MM"];
+    NSString* strDate = [ff stringFromDate:date];
+    [self setNavTitle:strDate];
+    year = yearFromDate(date);
+    month = monthFromDate(date);
+
+    
     [_bottomView addSubview:activityTableView];
     
-//    [self.view bringSubviewToFront:_helpView];
     [self.view bringSubviewToFront:_btnAddActivity];
 }
 

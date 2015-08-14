@@ -44,13 +44,18 @@
     [sideViewController showLeftViewController:true];
 }
 
+-(void)updateView{
+    _mId = 0;
+    [self updateCollectionView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.showReturn = YES;
     [self setNavTitle:LocalizedString(@"Inspiration", nil)];
     [self setReturnBtnNormalImage:[UIImage imageNamed:@"ic_sideslip"] andHighlightedImage:nil];
     
-     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCollectionView) name:NOTIFICATION_UPDATEVIEW object:nil];
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateView) name:NOTIFICATION_UPDATEVIEW object:nil];
     
     [_lblStyle setText:LocalizedString(@"Style", nil)];
     [_lblOccasion setText:LocalizedString(@"Occasion", nil)];

@@ -30,7 +30,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47A-Ml-jQb">
                     <rect key="frame" x="0.0" y="20" width="320" height="120"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IBv-mk-evd">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="IBv-mk-evd">
                             <rect key="frame" x="30" y="28" width="64" height="64"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="64" id="eEX-9w-ff0"/>
@@ -356,6 +356,7 @@
         </view>
     </objects>
     <resources>
+        <image name="icon" width="80" height="80"/>
         <image name="sideslip_ic1" width="29" height="29"/>
         <image name="sideslip_ic2" width="29" height="29"/>
         <image name="sideslip_ic3" width="29" height="29"/>
