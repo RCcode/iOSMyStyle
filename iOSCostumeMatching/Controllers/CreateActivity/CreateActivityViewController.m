@@ -422,7 +422,7 @@
     _switchAllDay.onTintColor = colorWithHexString(@"#44dcca");
     
     startTime = [NSDate date];
-    endTime = [NSDate date];
+    endTime = [[NSDate alloc]initWithTimeInterval:60*60 sinceDate:startTime];
     [_btnStartTime setTitle:stringNotAllDayFromDate(startTime) forState:UIControlStateNormal];
     [_btnEndTime setTitle:stringNotAllDayFromDate(endTime) forState:UIControlStateNormal];
     
@@ -696,6 +696,9 @@
     if (setStartTime) {
         startTime = _datePicker.date;
         [_btnStartTime setTitle:stringAllDayFromDate(startTime) forState:UIControlStateNormal];
+        
+        endTime = [[NSDate alloc]initWithTimeInterval:60*60 sinceDate:startTime];
+        [_btnEndTime setTitle:stringAllDayFromDate(endTime) forState:UIControlStateNormal];
     }
     else
     {
@@ -709,6 +712,9 @@
     if (setStartTime) {
         startTime = _dateAndTimePicker.date;
         [_btnStartTime setTitle:stringNotAllDayFromDate(startTime) forState:UIControlStateNormal];
+        
+        endTime = [[NSDate alloc]initWithTimeInterval:60*60 sinceDate:startTime];
+        [_btnEndTime setTitle:stringNotAllDayFromDate(endTime) forState:UIControlStateNormal];
     }
     else
     {
