@@ -309,14 +309,14 @@
     NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
     if (showHelp) {
         _helpView.hidden = YES;
-        [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-5, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-5)-64)];
+        [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-4, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-4)-64)];
         [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_btnUpOrDown.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-25)];
     }
     else
     {
         _helpView.hidden = NO;
-        [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-5, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-5)-64)];
-        [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-5)];
+        [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-4, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-4)-64)];
+        [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-4)];
     }
 }
 
@@ -328,7 +328,7 @@
     else if ([recognizer state] == UIGestureRecognizerStateChanged)
     {
         CGPoint point = [recognizer locationInView:self.view];
-        if ((0 < point.y) && (point.y < (CGRectGetMaxY(calendarView.frame)-5))) {
+        if ((0 < point.y) && (point.y < (CGRectGetMaxY(calendarView.frame)-4))) {
             
             NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
             if (showHelp) {
@@ -340,7 +340,7 @@
             {
                 _helpView.hidden = NO;
                 [_bottomView setFrame:CGRectMake(0, point.y, ScreenWidth, ScreenHeight-64-point.y)];
-                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-5)];
+                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-4)];
             }
         }
     }
@@ -364,7 +364,7 @@
             {
                 _helpView.hidden = NO;
                 [_bottomView setFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
-                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-5)];
+                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-4)];
             }
         }];
     }
@@ -374,14 +374,14 @@
             NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
             if (showHelp) {
                 _helpView.hidden = YES;
-                [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-5, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-5)-64)];
+                [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-4, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-4)-64)];
                 [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_btnUpOrDown.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-25)];
             }
             else
             {
                 _helpView.hidden = NO;
-                [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-5, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-5)-64)];
-                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-5)];
+                [_bottomView setFrame:CGRectMake(0, CGRectGetHeight(calendarView.frame)-4, ScreenWidth, ScreenHeight-(CGRectGetHeight(calendarView.frame)-4)-64)];
+                [activityTableView setFrame:CGRectMake(0, CGRectGetMaxY(_helpView.frame)+5, ScreenWidth, CGRectGetHeight(_bottomView.frame)-CGRectGetMaxY(_helpView.frame)-4)];
             }
         }];
     }
