@@ -8,8 +8,9 @@
 
 #import "ShowCollectionDetailsViewController.h"
 #import "CreateActivityViewController.h"
+#import "IBActionSheet.h"
 
-@interface ShowCollectionDetailsViewController ()<UIActionSheetDelegate,UIDocumentInteractionControllerDelegate>
+@interface ShowCollectionDetailsViewController ()<UIActionSheetDelegate,UIDocumentInteractionControllerDelegate,IBActionSheetDelegate>
 {
     UIDocumentInteractionController *_documetnInteractionController;
 }
@@ -35,8 +36,24 @@
 
 -(void)doneBtnPressed:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"Cancel", nil) destructiveButtonTitle:LocalizedString(@"Delete", nil) otherButtonTitles:LocalizedString(@"Share", nil), nil];
-    [actionSheet showInView:self.view];
+    IBActionSheet *standardIBAS = [[IBActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"Cancel", nil) destructiveButtonTitle:LocalizedString(@"Delete", nil)  otherButtonTitlesArray:@[LocalizedString(@"Share", nil)]];
+    
+    [standardIBAS setButtonTextColor:colorWithHexString(@"#ff4b4b") forButtonAtIndex:0];
+    [standardIBAS setButtonBackgroundColor:[UIColor whiteColor] forButtonAtIndex:0];
+    [standardIBAS setFont:[UIFont systemFontOfSize:15] forButtonAtIndex:0];
+    
+    [standardIBAS setButtonTextColor:colorWithHexString(@"#222222") forButtonAtIndex:1];
+    [standardIBAS setButtonBackgroundColor:[UIColor whiteColor] forButtonAtIndex:1];
+    [standardIBAS setFont:[UIFont systemFontOfSize:15] forButtonAtIndex:1];
+    
+    [standardIBAS setButtonTextColor:colorWithHexString(@"#3a62d5") forButtonAtIndex:2];
+    [standardIBAS setButtonBackgroundColor:[UIColor whiteColor] forButtonAtIndex:2];
+    [standardIBAS setFont:[UIFont systemFontOfSize:15] forButtonAtIndex:2];
+    
+    [standardIBAS showInView:self.view];
+
+//    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:LocalizedString(@"Cancel", nil) destructiveButtonTitle:LocalizedString(@"Delete", nil) otherButtonTitles:LocalizedString(@"Share", nil), nil];
+//    [actionSheet showInView:self.view];
 }
 
 - (void)viewDidLoad {

@@ -42,7 +42,7 @@
     btnReturn.hidden = YES;
     
     btnDone = [[UIButton alloc]init];
-    btnDone.frame = CGRectMake(ScreenWidth-NavBarHeight-5, 0, NavBarHeight, NavBarHeight);
+    btnDone.frame = CGRectMake(ScreenWidth-NavBarHeight-10, 0, NavBarHeight+5, NavBarHeight);
 //    [btnDone.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [btnDone.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
     [btnDone addTarget:self action:@selector(doneBtnPressed:) forControlEvents:UIControlEventTouchUpInside];

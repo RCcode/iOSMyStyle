@@ -32,7 +32,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="mWj-sm-yEY"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -86,7 +86,7 @@
                                 <constraint firstAttribute="height" constant="21" id="TEG-QX-9RH"/>
                                 <constraint firstAttribute="width" constant="258" id="pgg-jX-TiS"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="default">
@@ -143,7 +143,7 @@
                                 <constraint firstAttribute="width" constant="258" id="avr-h4-0Qz"/>
                                 <constraint firstAttribute="height" constant="21" id="heV-dZ-hPM"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="default">

@@ -162,6 +162,7 @@
 		4F9BE2201B6F7B7900339E71 /* ACMagnifyingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9BE21A1B6F7B7900339E71 /* ACMagnifyingView.m */; };
 		4F9BE2211B6F7B7900339E71 /* kb-loupe-hi_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9BE21C1B6F7B7900339E71 /* kb-loupe-hi_6.png */; };
 		4F9BE2221B6F7B7900339E71 /* kb-loupe-hi_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9BE21D1B6F7B7900339E71 /* kb-loupe-hi_7.png */; };
+		4F9DCC6A1B7CB4BF00F4E80C /* IBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DCC691B7CB4BF00F4E80C /* IBActionSheet.m */; };
 		4F9E7E3F1B5E3C13006D1E34 /* CreateActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E7E3D1B5E3C13006D1E34 /* CreateActivityViewController.m */; };
 		4F9E7E401B5E3C13006D1E34 /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9E7E3E1B5E3C13006D1E34 /* CreateActivityViewController.xib */; };
 		4FB374141B66450F009ED71E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB374021B66450F009ED71E /* AFHTTPRequestOperation.m */; };
@@ -462,6 +463,8 @@
 		4F9BE21A1B6F7B7900339E71 /* ACMagnifyingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACMagnifyingView.m; sourceTree = "<group>"; };
 		4F9BE21C1B6F7B7900339E71 /* kb-loupe-hi_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kb-loupe-hi_6.png"; sourceTree = "<group>"; };
 		4F9BE21D1B6F7B7900339E71 /* kb-loupe-hi_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kb-loupe-hi_7.png"; sourceTree = "<group>"; };
+		4F9DCC681B7CB4BF00F4E80C /* IBActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBActionSheet.h; sourceTree = "<group>"; };
+		4F9DCC691B7CB4BF00F4E80C /* IBActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBActionSheet.m; sourceTree = "<group>"; };
 		4F9E7E3C1B5E3C13006D1E34 /* CreateActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityViewController.h; sourceTree = "<group>"; };
 		4F9E7E3D1B5E3C13006D1E34 /* CreateActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityViewController.m; sourceTree = "<group>"; };
 		4F9E7E3E1B5E3C13006D1E34 /* CreateActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateActivityViewController.xib; sourceTree = "<group>"; };
@@ -768,6 +771,7 @@
 		4F63418F1B4FA3E000DFC281 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F9DCC671B7CB4A500F4E80C /* IBActionSheet */,
 				4FD118611B735B3C00A98CD0 /* LoginView */,
 				4F9BE2231B6F7E5C00339E71 /* MaskImageView */,
 				4F9BE2141B6F7B7900339E71 /* MagnifyingGlass */,
@@ -1242,6 +1246,15 @@
 			path = MaskImageView;
 			sourceTree = "<group>";
 		};
+		4F9DCC671B7CB4A500F4E80C /* IBActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				4F9DCC681B7CB4BF00F4E80C /* IBActionSheet.h */,
+				4F9DCC691B7CB4BF00F4E80C /* IBActionSheet.m */,
+			);
+			path = IBActionSheet;
+			sourceTree = "<group>";
+		};
 		4F9E7E3B1B5E3BF2006D1E34 /* CreateActivity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1535,6 +1548,7 @@
 				4F7B9AC21B6254AD003D94BF /* UIImageView+WebCache.m in Sources */,
 				4F158D861B53BE6D000CA2FA /* PWSCalendarView.m in Sources */,
 				4F7D009E1B6A1D6000BE18CE /* MJRefreshGifHeader.m in Sources */,
+				4F9DCC6A1B7CB4BF00F4E80C /* IBActionSheet.m in Sources */,
 				4F6FB3F61B58E5D000C5CB0A /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */,
 				4F417DBB1B4E6875000BD540 /* RC_NavigationController.m in Sources */,

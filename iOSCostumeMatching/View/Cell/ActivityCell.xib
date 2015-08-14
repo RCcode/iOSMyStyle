@@ -31,18 +31,18 @@
                         <rect key="frame" x="5" y="0.0" width="55" height="114"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fg5-fv-JMb">
-                                <rect key="frame" x="0.0" y="19" width="55" height="41"/>
+                                <rect key="frame" x="0.0" y="30" width="55" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="uF3-Uy-dcq"/>
+                                    <constraint firstAttribute="height" constant="30" id="uF3-Uy-dcq"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIc-3B-Rmc">
-                                <rect key="frame" x="0.0" y="55" width="55" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="SIc-3B-Rmc">
+                                <rect key="frame" x="0.0" y="59" width="55" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="scj-Pz-TMn"/>
+                                    <constraint firstAttribute="height" constant="20" id="scj-Pz-TMn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,9 +54,9 @@
                             <constraint firstItem="SIc-3B-Rmc" firstAttribute="leading" secondItem="PSc-9H-7Jk" secondAttribute="leading" id="B6C-H7-fGa"/>
                             <constraint firstAttribute="width" constant="55" id="IhD-HZ-T8w"/>
                             <constraint firstAttribute="trailing" secondItem="fg5-fv-JMb" secondAttribute="trailing" id="Tvv-sX-0FZ"/>
-                            <constraint firstItem="fg5-fv-JMb" firstAttribute="top" secondItem="PSc-9H-7Jk" secondAttribute="top" constant="19" id="grT-6r-GQk"/>
+                            <constraint firstItem="fg5-fv-JMb" firstAttribute="top" secondItem="PSc-9H-7Jk" secondAttribute="top" constant="30" id="grT-6r-GQk"/>
                             <constraint firstItem="fg5-fv-JMb" firstAttribute="leading" secondItem="PSc-9H-7Jk" secondAttribute="leading" id="hOb-qR-Poz"/>
-                            <constraint firstAttribute="bottom" secondItem="SIc-3B-Rmc" secondAttribute="bottom" constant="19" id="i47-vL-X7P"/>
+                            <constraint firstAttribute="bottom" secondItem="SIc-3B-Rmc" secondAttribute="bottom" constant="35" id="i47-vL-X7P"/>
                             <constraint firstAttribute="trailing" secondItem="SIc-3B-Rmc" secondAttribute="trailing" id="xz5-3N-plY"/>
                         </constraints>
                     </view>

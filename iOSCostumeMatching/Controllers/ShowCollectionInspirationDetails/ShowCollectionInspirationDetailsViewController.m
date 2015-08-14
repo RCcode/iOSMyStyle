@@ -73,7 +73,7 @@
 -(void)upDateView:(NSArray *)arr
 {
     CGFloat originX = 0;
-    CGFloat originY = 30;
+    CGFloat originY = 35;
     for (NSInteger i = 0; i<arr.count; i++) {
         NSDictionary *dic = [arr objectAtIndex:i];
         NSMutableString *str = [[NSMutableString alloc]init];
@@ -82,7 +82,7 @@
         [str appendString:@" "];
         [str appendString:[NSString stringWithFormat:@"%@",[dic objectForKey:@"brand"]]];
         
-        CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:11]);
+        CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:12]);
         UILabel *label = [[UILabel alloc]init];
         CGFloat width = rect.size.width+20;
         if ((originX +width) > (ScreenWidth-20)) {
@@ -96,7 +96,8 @@
         [label setTextAlignment:NSTextAlignmentCenter];
         label.backgroundColor = colorWithHexString(@"#c0e1d9");
         [label setTextColor:colorWithHexString(@"#ffffff")];
-        [label setFont:[UIFont systemFontOfSize:11]];
+        [label setFont:[UIFont systemFontOfSize:12]];
+        label.clipsToBounds = YES;
         [_scrollView addSubview:label];
         [label setText:str];
     }
@@ -117,7 +118,7 @@
     [_imageView sd_setImageWithURL:[NSURL URLWithString:[_dic objectForKey:@"url"]]];
     
     _lblDescription = [[UILabel alloc]init];
-    [_lblDescription setFont:[UIFont systemFontOfSize:13]];
+    [_lblDescription setFont:[UIFont systemFontOfSize:14]];
     [_lblDescription setTextColor:colorWithHexString(@"#222222")];
     [_lblDescription setFrame:CGRectMake(20, 5, ScreenWidth-20, 20)];
     [_scrollView addSubview:_lblDescription];
