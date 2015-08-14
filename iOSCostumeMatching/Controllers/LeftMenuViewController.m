@@ -192,6 +192,7 @@
         }
         [_btnLogin setTitle:LocalizedString(@"Login", nil) forState:UIControlStateNormal];
         [_headImageView setImage:[UIImage imageNamed:@"icon"]];
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UPDATEVIEW object:nil];
     }
 }
 
