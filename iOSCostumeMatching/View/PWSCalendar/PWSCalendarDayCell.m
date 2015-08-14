@@ -76,14 +76,7 @@ const NSString* PWSCalendarDayCellId = @"PWSCalendarDayCellId";
     [super setSelected:selected];
     if (selected)
     {
-        if ([PWSHelper CheckSameDay:self.p_date AnotherDate:[NSDate date]])
-        {
-            [m_date setTextColor:[UIColor whiteColor]];
-        }
-        else
-        {
-            [m_date setTextColor:[UIColor whiteColor]];
-        }
+        [m_date setTextColor:[UIColor whiteColor]];
         [m_date setBackgroundColor:colorWithHexString(@"#45ddcb")];
     }
     else

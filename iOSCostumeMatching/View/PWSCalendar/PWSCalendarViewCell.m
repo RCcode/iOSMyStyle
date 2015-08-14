@@ -20,7 +20,7 @@ UICollectionViewDelegate,
 UICollectionViewDelegateFlowLayout>
 {
     NSCalendar*        m_calendar;
-    UICollectionView*  m_collection_view;
+    
     NSDate*            m_first_date;       // if week => select date
     
     NSMutableDictionary *dataSource;
@@ -51,28 +51,28 @@ UICollectionViewDelegateFlowLayout>
     layout.minimumInteritemSpacing = 1;
     layout.minimumLineSpacing = 1;
     
-    m_collection_view = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
-    [self.contentView addSubview:m_collection_view];
+    _m_collection_view = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
+    [self.contentView addSubview:_m_collection_view];
     
-    [m_collection_view setBackgroundColor:colorWithHexString(@"#eeeeee")];
-    [m_collection_view setDelegate:self];
-    [m_collection_view setDataSource:self];
-    [m_collection_view setScrollEnabled:NO];
+    [_m_collection_view setBackgroundColor:colorWithHexString(@"#eeeeee")];
+    [_m_collection_view setDelegate:self];
+    [_m_collection_view setDataSource:self];
+    [_m_collection_view setScrollEnabled:NO];
     
-    [m_collection_view registerClass:[PWSCalendarDayCell class] forCellWithReuseIdentifier:PWSCalendarDayCellId.copy];
+    [_m_collection_view registerClass:[PWSCalendarDayCell class] forCellWithReuseIdentifier:PWSCalendarDayCellId.copy];
 }
 
 - (void) setType:(enCalendarViewType)type
 {
     _type = type;
-    [m_collection_view reloadData];
+    [_m_collection_view reloadData];
 }
 
 - (void) ResetSelfFrame
 {
-    CGRect collection_view_frame = m_collection_view.frame;
+    CGRect collection_view_frame = _m_collection_view.frame;
     collection_view_frame.size.height = self.calendarHeight;
-    [m_collection_view setFrame:collection_view_frame];
+    [_m_collection_view setFrame:collection_view_frame];
     
     if ([self.delegate respondsToSelector:@selector(PWSCalendar:didChangeViewHeight:)])
     {
@@ -155,7 +155,7 @@ UICollectionViewDelegateFlowLayout>
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     int rt = 0;
-    CGFloat itemWidth = (CGRectGetWidth(m_collection_view.bounds)-8) / 7;
+    CGFloat itemWidth = (CGRectGetWidth(_m_collection_view.bounds)-8) / 7;
 
     CGFloat itemHeight = itemWidth;
     if (self.type == en_calendar_type_month)

@@ -9,6 +9,7 @@
 #import "PWSCalendarView.h"
 #import "PWSCalendarSegmentView.h"
 #import "PWSCalendarViewCell.h"
+#import "PWSCalendarDayCell.h"
 /////////////////////////////////////////////////////////////////////////////
 const float PWSCalendarTimeHeadViewHeight = 60;
 //const float PWSCalendarDataHeadViewHeight = 60;
@@ -16,7 +17,7 @@ const float PWSCalendarSegmentHeight = 25;
 const float PWSCalendarWeekDaysHeight = 31;
 
 extern NSString* PWSCalendarViewCellId;
-const int   PWSCalendarViewNumber = 1000;
+const int   PWSCalendarViewNumber = 600;
 //////////////////////////////////////////////////////////////////////////////
 @interface PWSCalendarView()
 <PWSCalendarSegmentDelegate,
@@ -35,6 +36,8 @@ UICollectionViewDelegate>
     UIView*            m_view_weekdays;
     
     UICollectionView*  m_view_calendar;
+    
+    BOOL pressToday;
 }
 
 @property (nonatomic, copy) void(^changeMonth)(NSDate *date);
@@ -225,6 +228,44 @@ UICollectionViewDelegate>
             m_current_page = index;
         }
     }
+    if (pressToday) {
+        NSIndexPath* indexpath = [NSIndexPath indexPathForRow:m_current_page inSection:0];
+        PWSCalendarViewCell *calendarViewCell = (PWSCalendarViewCell *)[m_view_calendar cellForItemAtIndexPath:indexpath];
+        
+        NSDate *date = [NSDate date];
+        NSInteger day = [dayFromDate(date) integerValue];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat: @"yyyyMM"];
+        NSMutableString *dateString = [[NSMutableString alloc]init];
+        [dateString appendString:[dateFormatter stringFromDate:date]];
+        [dateString appendString:@"01"];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+        [formatter setDateFormat:@"yyyyMMdd"];
+        NSDate *date1hao=[formatter dateFromString:dateString];
+        
+        
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSTimeZone *timeZone = [[NSTimeZone alloc] initWithName:@"Asia/Shanghai"];
+        [calendar setTimeZone: timeZone];
+        NSCalendarUnit calendarUnit = NSWeekdayCalendarUnit;
+        NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:date1hao];
+        
+        NSInteger row = theComponents.weekday-2+day;
+        
+        NSIndexPath* cellIndexPath = [NSIndexPath indexPathForRow:row inSection:0];
+        
+        [calendarViewCell.m_collection_view selectItemAtIndexPath:cellIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+        pressToday = NO;
+        
+        m_current_date = [NSDate date];
+        if ([self.delegate respondsToSelector:@selector(PWSCalendar:didSelecteDate:)])
+        {
+            [self.delegate PWSCalendar:self didSelecteDate:[NSDate date]];
+        }
+
+    }
     
     [self SetLabelDate:m_current_date];
 //    [self PWSCalendar:nil didChangeViewHeight:0];
@@ -232,6 +273,7 @@ UICollectionViewDelegate>
 
 - (void) ScrollToToday
 {
+    pressToday = YES;
     NSDate* today = [NSDate date];
     if (self.type == en_calendar_type_month)
     {
@@ -271,6 +313,45 @@ UICollectionViewDelegate>
             
             NSIndexPath* indexpath = [NSIndexPath indexPathForRow:m_current_page+scroll_pages inSection:0];
             [m_view_calendar scrollToItemAtIndexPath:indexpath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+            
+        }
+        else
+        {
+            NSIndexPath* indexpath = [NSIndexPath indexPathForRow:m_current_page inSection:0];
+            PWSCalendarViewCell *calendarViewCell = (PWSCalendarViewCell *)[m_view_calendar cellForItemAtIndexPath:indexpath];
+            
+            NSDate *date = [NSDate date];
+            NSInteger day = [dayFromDate(date) integerValue];
+            
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat: @"yyyyMM"];
+            NSMutableString *dateString = [[NSMutableString alloc]init];
+            [dateString appendString:[dateFormatter stringFromDate:date]];
+            [dateString appendString:@"01"];
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+            [formatter setDateFormat:@"yyyyMMdd"];
+            NSDate *date1hao=[formatter dateFromString:dateString];
+            
+            
+            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+            NSTimeZone *timeZone = [[NSTimeZone alloc] initWithName:@"Asia/Shanghai"];
+            [calendar setTimeZone: timeZone];
+            NSCalendarUnit calendarUnit = NSWeekdayCalendarUnit;
+            NSDateComponents *theComponents = [calendar components:calendarUnit fromDate:date1hao];
+            
+            NSInteger row = theComponents.weekday-2+day;
+            
+            NSIndexPath* cellIndexPath = [NSIndexPath indexPathForRow:row inSection:0];
+            
+            [calendarViewCell.m_collection_view selectItemAtIndexPath:cellIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+            pressToday = NO;
+            
+            m_current_date = [NSDate date];
+            if ([self.delegate respondsToSelector:@selector(PWSCalendar:didSelecteDate:)])
+            {
+                [self.delegate PWSCalendar:self didSelecteDate:[NSDate date]];
+            }
         }
     }
     else if (self.type == en_calendar_type_week)
