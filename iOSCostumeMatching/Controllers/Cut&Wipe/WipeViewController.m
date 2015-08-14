@@ -81,7 +81,7 @@
     _magnifyingGlassImageView.clipsToBounds = YES;
     _magnifyingGlassImageView.hidden = YES;
         
-    _sizeView.hidden = YES;
+    _sizeView.hidden = NO;
     
     self.drawerView1 = [[PIDrawerView alloc]init];
     self.drawerView1.backgroundColor = [UIColor clearColor];
