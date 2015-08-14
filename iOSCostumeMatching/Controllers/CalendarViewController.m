@@ -21,6 +21,9 @@
     NSString *year;
     NSString *month;
     int _lastPosition;
+    
+    CGPoint startPoint;
+    CGPoint endPoint;
 }
 
 @property (nonatomic, strong) NSMutableArray *arrActivity;
@@ -336,6 +339,7 @@
 {
     if ([recognizer state]== UIGestureRecognizerStateBegan)
     {
+        startPoint = [recognizer locationInView:self.view];
     }
     else if ([recognizer state] == UIGestureRecognizerStateChanged)
     {
@@ -358,6 +362,10 @@
     }
     else if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
+        endPoint = [recognizer locationInView:self.view];
+        if (endPoint.y>startPoint.y) {
+            [self moveUp:NO];
+        }
     }
 }
 
