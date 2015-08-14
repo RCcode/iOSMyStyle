@@ -228,14 +228,14 @@
     self.resizingControl = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width-kZDStickerViewControlSize,
                                                                         self.frame.size.height-kZDStickerViewControlSize,
                                                                         kZDStickerViewControlSize, kZDStickerViewControlSize)];
-//    self.resizingControl.backgroundColor = [UIColor clearColor];
-//    self.resizingControl.userInteractionEnabled = YES;
-//    self.resizingControl.image = [UIImage imageNamed:@"ic_main_operate"];
-//    UIPanGestureRecognizer*panResizeGesture = [[UIPanGestureRecognizer alloc]
-//                                               initWithTarget:self
-//                                                       action:@selector(resizeTranslate:)];
-//    [self.resizingControl addGestureRecognizer:panResizeGesture];
-//    [self addSubview:self.resizingControl];
+    self.resizingControl.backgroundColor = [UIColor clearColor];
+    self.resizingControl.userInteractionEnabled = YES;
+    self.resizingControl.image = [UIImage imageNamed:@"xuanzhuan"];
+    UIPanGestureRecognizer*panResizeGesture = [[UIPanGestureRecognizer alloc]
+                                               initWithTarget:self
+                                                       action:@selector(resizeTranslate:)];
+    [self.resizingControl addGestureRecognizer:panResizeGesture];
+    [self addSubview:self.resizingControl];
 
     self.customControl = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width-kZDStickerViewControlSize,
                                                                       0,
