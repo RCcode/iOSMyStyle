@@ -80,32 +80,35 @@
     for (NSInteger i = 0; i<_collocationInfo.arrList.count; i++) {
         ClothesInfo *info = [_collocationInfo.arrList objectAtIndex:i];
         
-        NSMutableString *str = [[NSMutableString alloc]init];
-//        WardrobeType type = (WardrobeType)[info.numCateId integerValue];
-//        [str appendString: getWardrobeTypeName(type)];
-        WardrobeCategory category = (WardrobeCategory)[info.numScateId integerValue];
-        [str appendString: getWardrobeCategoryeName(category)];
-        [str appendString:@" "];
-        [str appendString:info.strBrand];
-        
-        CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:11]);
-        UITextView *label = [[UITextView alloc]init];
-        label.userInteractionEnabled = NO;
-        CGFloat width = rect.size.width+20;
-        if ((originX +width) > (ScreenWidth-20)) {
-            originX = 0;
-            originY = originY+35;
+        if(info.strBrand && ![info.strBrand isEqualToString:@""])
+        {
+            NSMutableString *str = [[NSMutableString alloc]init];
+            //        WardrobeType type = (WardrobeType)[info.numCateId integerValue];
+            //        [str appendString: getWardrobeTypeName(type)];
+            WardrobeCategory category = (WardrobeCategory)[info.numScateId integerValue];
+            [str appendString: getWardrobeCategoryeName(category)];
+            [str appendString:@" "];
+            [str appendString:info.strBrand];
+            
+            CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:11]);
+            UITextView *label = [[UITextView alloc]init];
+            label.userInteractionEnabled = NO;
+            CGFloat width = rect.size.width+20;
+            if ((originX +width) > (ScreenWidth-20)) {
+                originX = 0;
+                originY = originY+35;
+            }
+            [label setFrame:CGRectMake(originX+20, originY, width, 30)];
+            
+            originX = originX+20+width;
+            
+            [label setTextAlignment:NSTextAlignmentCenter];
+            label.backgroundColor = colorWithHexString(@"#c0e1d9");
+            [label setTextColor:colorWithHexString(@"#ffffff")];
+            [label setFont:[UIFont systemFontOfSize:11]];
+            [_scrollView addSubview:label];
+            [label setText:str];
         }
-        [label setFrame:CGRectMake(originX+20, originY, width, 30)];
-        
-        originX = originX+20+width;
-        
-        [label setTextAlignment:NSTextAlignmentCenter];
-        label.backgroundColor = colorWithHexString(@"#c0e1d9");
-        [label setTextColor:colorWithHexString(@"#ffffff")];
-        [label setFont:[UIFont systemFontOfSize:11]];
-        [_scrollView addSubview:label];
-        [label setText:str];
     }
     _scrollView.contentSize = CGSizeMake(ScreenWidth, originY+35);
     // Do any additional setup after loading the view from its nib.
