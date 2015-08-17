@@ -81,8 +81,10 @@
         ClothesInfo *info = [_collocationInfo.arrList objectAtIndex:i];
         
         NSMutableString *str = [[NSMutableString alloc]init];
-        WardrobeType type = (WardrobeType)[info.numCateId integerValue];
-        [str appendString: getWardrobeTypeName(type)];
+//        WardrobeType type = (WardrobeType)[info.numCateId integerValue];
+//        [str appendString: getWardrobeTypeName(type)];
+        WardrobeCategory category = (WardrobeCategory)[info.numScateId integerValue];
+        [str appendString: getWardrobeCategoryeName(category)];
         [str appendString:@" "];
         [str appendString:info.strBrand];
         
