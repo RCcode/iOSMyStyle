@@ -101,6 +101,7 @@
         [_scrollView addSubview:label];
         [label setText:str];
     }
+    _scrollView.contentSize = CGSizeMake(ScreenWidth, originY+30);
 }
 
 - (void)viewDidLoad {

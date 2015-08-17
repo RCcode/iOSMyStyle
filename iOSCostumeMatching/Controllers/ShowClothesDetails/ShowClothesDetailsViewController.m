@@ -87,6 +87,8 @@
         }
     }
     
+//    _scrollView.backgroundColor = [UIColor redColor];
+    
     CGFloat originX = 0;
     CGFloat originY = 15;
 
@@ -106,13 +108,14 @@
         originX = originX+20+width;
         
         [label setTextAlignment:NSTextAlignmentCenter];
-        label.backgroundColor = colorWithHexString(@"#c0e1d9");
+//        label.backgroundColor = colorWithHexString(@"#c0e1d9");
+        label.backgroundColor = [UIColor yellowColor];
         [label setTextColor:colorWithHexString(@"#ffffff")];
         [label setFont:[UIFont systemFontOfSize:12]];
         [_scrollView addSubview:label];
         [label setText:str];
     }
-    
+    _scrollView.contentSize = CGSizeMake(ScreenWidth, originY+30);
     // Do any additional setup after loading the view from its nib.
 }
 

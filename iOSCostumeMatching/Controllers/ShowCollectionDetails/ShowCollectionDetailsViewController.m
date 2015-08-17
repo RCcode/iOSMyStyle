@@ -104,6 +104,7 @@
         [_scrollView addSubview:label];
         [label setText:str];
     }
+    _scrollView.contentSize = CGSizeMake(ScreenWidth, originY+30);
     // Do any additional setup after loading the view from its nib.
 }
 
