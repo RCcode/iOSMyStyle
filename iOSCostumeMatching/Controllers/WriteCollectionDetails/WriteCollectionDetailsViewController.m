@@ -9,6 +9,7 @@
 #import "WriteCollectionDetailsViewController.h"
 #import "SelectViewController.h"
 #import "LeftMenuViewController.h"
+#define finalSize 720
 
 @interface WriteCollectionDetailsViewController ()<UITextFieldDelegate>
 {
@@ -57,8 +58,25 @@
     if (pressOccasion) {
         [IS_MobAndAnalyticsManager event:@"Lookbook" label:@"lookbook_occasion"];
     }
+    
+    UIView *getImageView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, finalSize, finalSize)];
+    getImageView.backgroundColor = [UIColor whiteColor];
+    [getImageView addSubview:_createImageView];
+
+    _createImageView.center = CGPointMake(finalSize/2, finalSize/2);
+    _createImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    _createImageView.transform = CGAffineTransformScale(_createImageView.transform, finalSize/ScreenWidth, finalSize/ScreenWidth);
+    
+    CGSize contextSize = CGSizeMake(finalSize, finalSize);
+    UIGraphicsBeginImageContextWithOptions(contextSize, YES, 1.0);
+    [getImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    _createImageView.transform = CGAffineTransformIdentity;
+
     CollocationInfo *collocationInfo = [[CollocationInfo alloc]init];
-    collocationInfo.file = _image;
+    collocationInfo.file = image;
     collocationInfo.arrList = _arrList;
     collocationInfo.numStyleId = [NSNumber numberWithInt:style];
     collocationInfo.numOccId = [NSNumber numberWithInt:occasion];

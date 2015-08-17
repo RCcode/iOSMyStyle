@@ -71,6 +71,7 @@
     }];
     writeCollection.image = image;
     writeCollection.arrList = _arrList;
+    writeCollection.createImageView = _createImageView;
     [self.navigationController pushViewController:writeCollection animated:YES];
 }
 
@@ -253,7 +254,6 @@
     //移动
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handelPhotoPan:)];
     [userResizableView1 addGestureRecognizer:panRecognizer];
-
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

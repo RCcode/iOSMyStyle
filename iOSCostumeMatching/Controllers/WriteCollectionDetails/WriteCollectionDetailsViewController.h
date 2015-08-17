@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSMutableArray *arrList;
+@property (nonatomic, strong) NSMutableArray *arrSticker;
+@property (strong, nonatomic) UIView *createImageView;
 
 -(void)setCollectionFinishBlock:(void(^)(CollocationInfo *info))collectionfinishBlock;
 
