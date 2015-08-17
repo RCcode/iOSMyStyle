@@ -142,8 +142,6 @@
 		4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329D61B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m */; };
 		4F8329D91B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329D71B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib */; };
 		4F8329E61B5CE91E005588D7 /* SPGripViewBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329E51B5CE91E005588D7 /* SPGripViewBorderView.m */; };
-		4F8329EB1B5CEB43005588D7 /* ic_main_del@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329EA1B5CEB43005588D7 /* ic_main_del@2x.png */; };
-		4F8329ED1B5CEB63005588D7 /* ic_main_operate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329EC1B5CEB63005588D7 /* ic_main_operate@2x.png */; };
 		4F8329F01B5CF0FF005588D7 /* ZDStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329EF1B5CF0FF005588D7 /* ZDStickerView.m */; };
 		4F8329F61B5D0DF2005588D7 /* ShowCollectionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329F41B5D0DF2005588D7 /* ShowCollectionDetailsViewController.m */; };
 		4F8329F71B5D0DF2005588D7 /* ShowCollectionDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329F51B5D0DF2005588D7 /* ShowCollectionDetailsViewController.xib */; };
@@ -433,8 +431,6 @@
 		4F8329D71B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WriteCollectionDetailsViewController.xib; sourceTree = "<group>"; };
 		4F8329E41B5CE91E005588D7 /* SPGripViewBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGripViewBorderView.h; sourceTree = "<group>"; };
 		4F8329E51B5CE91E005588D7 /* SPGripViewBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGripViewBorderView.m; sourceTree = "<group>"; };
-		4F8329EA1B5CEB43005588D7 /* ic_main_del@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_main_del@2x.png"; sourceTree = "<group>"; };
-		4F8329EC1B5CEB63005588D7 /* ic_main_operate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_main_operate@2x.png"; sourceTree = "<group>"; };
 		4F8329EE1B5CF0FF005588D7 /* ZDStickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDStickerView.h; sourceTree = "<group>"; };
 		4F8329EF1B5CF0FF005588D7 /* ZDStickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDStickerView.m; sourceTree = "<group>"; };
 		4F8329F31B5D0DF2005588D7 /* ShowCollectionDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCollectionDetailsViewController.h; sourceTree = "<group>"; };
@@ -1140,8 +1136,6 @@
 			children = (
 				4F5146CE1B749671001AB836 /* MessageUI.framework */,
 				4F7D00AA1B6A3F6500BE18CE /* FacebookSDK.framework */,
-				4F8329EA1B5CEB43005588D7 /* ic_main_del@2x.png */,
-				4F8329EC1B5CEB63005588D7 /* ic_main_operate@2x.png */,
 				4F62FFED1B57981C005E8C79 /* libz.dylib */,
 				4F62FFEB1B579770005E8C79 /* libsqlite3.dylib */,
 				4F85A6311B46480A0077E12E /* iOSCostumeMatching */,
@@ -1383,7 +1377,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F5F945A1B67735F00399681 /* SelectViewController.xib in Resources */,
-				4F8329ED1B5CEB63005588D7 /* ic_main_operate@2x.png in Resources */,
 				4F85BBBE1B7077DA0072AB49 /* 搭配日历.xcassets in Resources */,
 				4FD118661B735B7700A98CD0 /* LoginView.xib in Resources */,
 				4F78B4941B722B0100A45E42 /* ColorCell.xib in Resources */,
@@ -1417,7 +1410,6 @@
 				4F7B64EF1B5F5386004643D2 /* MyCollectionViewController.xib in Resources */,
 				4F6FB40A1B5909A300C5CB0A /* ShowClothesDetailsViewController.xib in Resources */,
 				4F85A6401B46480A0077E12E /* Images.xcassets in Resources */,
-				4F8329EB1B5CEB43005588D7 /* ic_main_del@2x.png in Resources */,
 				4F5146E11B74BFE9001AB836 /* Localizable.strings in Resources */,
 				4F1CC5471B79F5F6009A4F17 /* 首页.xcassets in Resources */,
 				4F85BBC41B7078230072AB49 /* 查看搭配灵感.xcassets in Resources */,
