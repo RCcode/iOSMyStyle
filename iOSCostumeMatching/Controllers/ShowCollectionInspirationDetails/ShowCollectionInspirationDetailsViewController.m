@@ -129,7 +129,7 @@
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_dic objectForKey:@"pic"]]];
     [_lblName setText:[_dic objectForKey:@"tname"]];
     
-    like = [[_dic objectForKey:@"likes"]integerValue];
+    like = [[_dic objectForKey:@"liked"]integerValue];
     if (like) {
         [_btnLike setImage:[UIImage imageNamed:@"ic_likes_h"] forState:UIControlStateNormal];
     }
