@@ -84,6 +84,7 @@
         
         CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:12]);
         UITextView *label = [[UITextView alloc]init];
+        label.userInteractionEnabled = NO;
         CGFloat width = rect.size.width+20;
         if ((originX +width) > (ScreenWidth-20)) {
             originX = 0;

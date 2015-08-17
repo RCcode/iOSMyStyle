@@ -95,6 +95,7 @@
     for (NSInteger i = 0; i<arr.count; i++) {
         
         UITextView *label = [[UITextView alloc]init];
+        label.userInteractionEnabled = NO;
         NSMutableString *str = [[NSMutableString alloc]initWithString:[arr objectAtIndex:i]];
         
         CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:12]);
