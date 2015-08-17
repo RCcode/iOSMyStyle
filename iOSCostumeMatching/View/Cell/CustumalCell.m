@@ -19,6 +19,13 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    if (selected) {
+         _cellView.backgroundColor = colorWithHexString(@"#f4f4f4");
+    }
+    else
+    {
+         _cellView.backgroundColor = [UIColor whiteColor];
+    }
     // Configure the view for the selected state
 }
 

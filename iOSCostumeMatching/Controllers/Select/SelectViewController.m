@@ -73,6 +73,9 @@
     if (indexPath.row == 0) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    if ([_selectCellTitle isEqualToString:[_array objectAtIndex:indexPath.row]]) {
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }
     return cell;
 }
 

@@ -139,6 +139,7 @@
     SelectViewController *selectStyle = [[SelectViewController alloc]init];
     [selectStyle setNavagationTitle:LocalizedString(@"Style", nil)];
     selectStyle.array = getAllCollocationStyle();
+    selectStyle.selectCellTitle = _lblStyle.text;
     __weak CollectionInspirationViewController *weakSelf = self;
     [selectStyle setSelectedBlock:^(int index) {
         style = index;
@@ -155,6 +156,7 @@
     SelectViewController *selectOccasion = [[SelectViewController alloc]init];
     [selectOccasion setNavagationTitle:LocalizedString(@"Occasion", nil)];
     selectOccasion.array = getAllCollocationOccasion();
+    selectOccasion.selectCellTitle = _lblOccasion.text;
     __weak CollectionInspirationViewController *weakSelf = self;
     [selectOccasion setSelectedBlock:^(int index) {
         occasion = index;

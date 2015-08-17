@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LikeViewController">
             <connections>
+                <outlet property="btnOccasion" destination="IYJ-6g-b71" id="YlD-r3-qxi"/>
+                <outlet property="btnStyle" destination="sIN-uj-IqM" id="aOK-ju-CKd"/>
                 <outlet property="lblOccasion" destination="PAi-Lh-sg6" id="SPW-5s-t9Z"/>
                 <outlet property="lblStyle" destination="l1Y-hB-Owg" id="78q-a5-yoA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,6 +29,9 @@
                     <state key="normal" image="ic_xiala">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="selectOccasion:" destination="-1" eventType="touchUpInside" id="NMA-xC-QQt"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIN-uj-IqM">
                     <rect key="frame" x="0.0" y="2" width="160" height="39"/>
@@ -38,6 +43,9 @@
                     <state key="normal" image="ic_xiala">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="selectStyle:" destination="-1" eventType="touchUpInside" id="zc2-7d-139"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="风格" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1Y-hB-Owg">
                     <rect key="frame" x="20" y="1" width="140" height="39"/>

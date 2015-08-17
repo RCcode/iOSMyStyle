@@ -237,6 +237,7 @@
     SelectViewController *selectCategory = [[SelectViewController alloc]init];
     [selectCategory setNavagationTitle:LocalizedString(@"Season", nil)];
     selectCategory.array = getAllWardrobeSeason();
+    selectCategory.selectCellTitle = _btnSeason.titleLabel.text;
     __weak WardrobeViewController *weakSelf = self;
     [selectCategory setSelectedBlock:^(int index) {
         season = index;
@@ -252,6 +253,7 @@
     SelectViewController *selectStyle = [[SelectViewController alloc]init];
     [selectStyle setNavagationTitle:LocalizedString(@"Category", nil)];
     selectStyle.array = getAllWardrobeType();
+    selectStyle.selectCellTitle = _btnType.titleLabel.text;
     __weak WardrobeViewController *weakSelf = self;
     [selectStyle setSelectedBlock:^(int index) {
         if(index == 0)
@@ -276,6 +278,7 @@
     SelectViewController *selectCategory = [[SelectViewController alloc]init];
     [selectCategory setNavagationTitle:LocalizedString(@"Subcategory", nil)];
     selectCategory.array = getAllWardrobeCategorye(type);
+    selectCategory.selectCellTitle = _btnCategory.titleLabel.text;
     __weak WardrobeViewController *weakSelf = self;
     [selectCategory setSelectedBlock:^(int index) {
         switch (type) {

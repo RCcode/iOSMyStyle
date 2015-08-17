@@ -13,6 +13,7 @@
 @property (nonatomic) NSInteger type; //type = 1 选择颜色
 @property (nonatomic, strong) NSArray *array;
 @property (nonatomic, strong) NSString *navagationTitle;
+@property (nonatomic, strong) NSString *selectCellTitle;
 
 -(void)setSelectedBlock:(void(^)(int index))selectedBlock;
 

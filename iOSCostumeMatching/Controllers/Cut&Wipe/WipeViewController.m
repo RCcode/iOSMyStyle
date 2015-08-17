@@ -186,6 +186,7 @@
             _sizeView6.backgroundColor = colorWithHexString(@"#4de7d7");
             _paintingSizeView.frame = CGRectMake(0, 0, width, width);
             _paintingSizeView.center = _magnifyingGlassImageView.center;
+            _paintingSizeView.layer.cornerRadius = width/2;
             break;
         }
         default:
