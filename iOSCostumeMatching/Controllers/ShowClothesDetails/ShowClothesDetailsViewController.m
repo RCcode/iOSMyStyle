@@ -94,28 +94,27 @@
 
     for (NSInteger i = 0; i<arr.count; i++) {
         
-        NSMutableString *str = [arr objectAtIndex:i];
+        UITextView *label = [[UITextView alloc]init];
+        NSMutableString *str = [[NSMutableString alloc]initWithString:[arr objectAtIndex:i]];
         
         CGRect rect = getTextLabelRectWithContentAndFont(str, [UIFont systemFontOfSize:12]);
-        UILabel *label = [[UILabel alloc]init];
         CGFloat width = rect.size.width+20;
         if ((originX +width) > (ScreenWidth-20)) {
             originX = 0;
-            originY = originY+30;
+            originY = originY+35;
         }
-        [label setFrame:CGRectMake(originX+20, originY, width, 25)];
+        [label setFrame:CGRectMake(originX+20, originY, width, 30)];
         
         originX = originX+20+width;
         
         [label setTextAlignment:NSTextAlignmentCenter];
-//        label.backgroundColor = colorWithHexString(@"#c0e1d9");
-        label.backgroundColor = [UIColor yellowColor];
+        label.backgroundColor = colorWithHexString(@"#c0e1d9");
         [label setTextColor:colorWithHexString(@"#ffffff")];
         [label setFont:[UIFont systemFontOfSize:12]];
         [_scrollView addSubview:label];
         [label setText:str];
     }
-    _scrollView.contentSize = CGSizeMake(ScreenWidth, originY+30);
+    _scrollView.contentSize = CGSizeMake(ScreenWidth, originY+35);
     // Do any additional setup after loading the view from its nib.
 }
 
