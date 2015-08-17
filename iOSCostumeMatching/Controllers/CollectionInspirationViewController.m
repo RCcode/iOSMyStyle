@@ -180,31 +180,39 @@
     InspirationCollectionViewCell *cell =
     (InspirationCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
                                                                                 forIndexPath:indexPath];
-    NSDictionary *dic = [_arrCollection objectAtIndex:indexPath.row];
-    NSString *url = [dic objectForKey:@"url"];
-    if (url) {
-        [cell.collectionImageView sd_setImageWithURL:[NSURL URLWithString:url]];
-    }
-    NSString *pic = [dic objectForKey:@"pic"];
-    if (pic && (![pic isKindOfClass:[NSNull class]])) {
-        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:pic]];
+    if(_arrCollection.count>indexPath.row)
+    {
+        NSDictionary *dic = [_arrCollection objectAtIndex:indexPath.row];
+        NSString *url = [dic objectForKey:@"url"];
+        if (url) {
+            [cell.collectionImageView sd_setImageWithURL:[NSURL URLWithString:url]];
+        }
+        NSString *pic = [dic objectForKey:@"pic"];
+        if (pic && (![pic isKindOfClass:[NSNull class]])) {
+            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:pic]];
+        }
+        else
+        {
+            [cell.headImageView setImage:nil];
+        }
+        NSString *name = [dic objectForKey:@"tname"];
+        if(name)
+        {
+            [cell.lblName setText:name];
+        }
+        NSInteger like = [[dic objectForKey:@"liked"]integerValue];
+        if (like) {
+            [cell.likeImageView setImage:[UIImage imageNamed:@"dapei_likes_h"]];
+        }
+        else
+        {
+            [cell.likeImageView setImage:[UIImage imageNamed:@"dapei_likes"]];
+        }
+
     }
     else
     {
-        [cell.headImageView setImage:nil];
-    }
-    NSString *name = [dic objectForKey:@"tname"];
-    if(name)
-    {
-        [cell.lblName setText:name];
-    }
-    NSInteger like = [[dic objectForKey:@"liked"]integerValue];
-    if (like) {
-        [cell.likeImageView setImage:[UIImage imageNamed:@"dapei_likes_h"]];
-    }
-    else
-    {
-        [cell.likeImageView setImage:[UIImage imageNamed:@"dapei_likes"]];
+        CLog(@"aaa");
     }
     return cell;
 }
