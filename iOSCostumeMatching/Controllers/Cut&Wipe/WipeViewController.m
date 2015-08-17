@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) PIDrawerView *drawerView1;
 @property (nonatomic, strong) UIImageView *magnifyingGlassImageView;
+@property (nonatomic, strong) UIView *paintingSizeView;
 @property (nonatomic, copy) void(^wipeImageSuccess)(UIImage *image);
 @property (weak, nonatomic) IBOutlet UIView *sizeView1;
 @property (weak, nonatomic) IBOutlet UIView *sizeView2;
@@ -80,7 +81,14 @@
     _magnifyingGlassImageView.layer.borderWidth = 1.5;
     _magnifyingGlassImageView.clipsToBounds = YES;
     _magnifyingGlassImageView.hidden = YES;
-        
+    _paintingSizeView = [[UIView alloc]init];
+    [_magnifyingGlassImageView addSubview:_paintingSizeView];
+    _paintingSizeView.frame = CGRectMake(0, 0, 14, 14);
+    _paintingSizeView.center = _magnifyingGlassImageView.center;
+    _paintingSizeView.layer.borderColor = [UIColor redColor].CGColor;
+    _paintingSizeView.layer.borderWidth = 1;
+    _paintingSizeView.layer.cornerRadius = 7;
+    
     _sizeView.hidden = NO;
     
     self.drawerView1 = [[PIDrawerView alloc]init];
@@ -131,36 +139,53 @@
         {
             width = 4;
             _sizeView1.backgroundColor = colorWithHexString(@"#4de7d7");
+            _paintingSizeView.frame = CGRectMake(0, 0, width, width);
+            _paintingSizeView.center = _magnifyingGlassImageView.center;
+            _paintingSizeView.layer.cornerRadius = width/2;
             break;
         }
         case 1:
         {
             width = 9;
             _sizeView2.backgroundColor = colorWithHexString(@"#4de7d7");
+            _paintingSizeView.frame = CGRectMake(0, 0, width, width);
+            _paintingSizeView.center = _magnifyingGlassImageView.center;
+            _paintingSizeView.layer.cornerRadius = width/2;
             break;
         }
         case 2:
         {
             width = 14;
             _sizeView3.backgroundColor = colorWithHexString(@"#4de7d7");
+            _paintingSizeView.frame = CGRectMake(0, 0, width, width);
+            _paintingSizeView.center = _magnifyingGlassImageView.center;
+            _paintingSizeView.layer.cornerRadius = width/2;
             break;
         }
         case 3:
         {
             width = 19;
             _sizeView4.backgroundColor = colorWithHexString(@"#4de7d7");
+            _paintingSizeView.frame = CGRectMake(0, 0, width, width);
+            _paintingSizeView.center = _magnifyingGlassImageView.center;
+            _paintingSizeView.layer.cornerRadius = width/2;
             break;
         }
         case 4:
         {
             width = 24;
             _sizeView5.backgroundColor = colorWithHexString(@"#4de7d7");
+            _paintingSizeView.frame = CGRectMake(0, 0, width, width);
+            _paintingSizeView.center = _magnifyingGlassImageView.center;
+            _paintingSizeView.layer.cornerRadius = width/2;
             break;
         }
         case 5:
         {
             width = 29;
             _sizeView6.backgroundColor = colorWithHexString(@"#4de7d7");
+            _paintingSizeView.frame = CGRectMake(0, 0, width, width);
+            _paintingSizeView.center = _magnifyingGlassImageView.center;
             break;
         }
         default:
