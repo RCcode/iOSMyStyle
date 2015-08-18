@@ -47,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblHelp1;
 @property (weak, nonatomic) IBOutlet UILabel *lblHelp2;
 @property (weak, nonatomic) IBOutlet UILabel *lblHelp3;
+@property (weak, nonatomic) IBOutlet UIImageView *noticeBgImageView;
 
 @end
 
@@ -102,9 +103,16 @@
     self.arrClothes = [[RC_SQLiteManager shareManager]getAllClothesFromWardrobe];
     [self.view insertSubview:self.collectionView atIndex:0];
     
-    [_lblHelp1 setText:LocalizedString(@"helpCloset1", nil)];
-    [_lblHelp2 setText:LocalizedString(@"helpCloset2", nil)];
-    [_lblHelp3 setText:LocalizedString(@"helpCloset3", nil)];
+    if([CURR_LANG isEqualToString:@"zh-Hans"] ){
+        [_noticeBgImageView setImage:[UIImage imageNamed:@"notice_bg"]];
+    }
+    else
+    {
+        [_noticeBgImageView setImage:[UIImage imageNamed:@"notice_bg_en"]];
+    }
+//    [_lblHelp1 setText:LocalizedString(@"helpCloset1", nil)];
+//    [_lblHelp2 setText:LocalizedString(@"helpCloset2", nil)];
+//    [_lblHelp3 setText:LocalizedString(@"helpCloset3", nil)];
     NSString *showHelp = [[NSUserDefaults standardUserDefaults]objectForKey:SHOWHELPKEY];
     if (showHelp) {
         _helpView.hidden = YES;

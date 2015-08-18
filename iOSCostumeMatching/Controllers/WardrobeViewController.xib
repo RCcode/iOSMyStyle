@@ -15,6 +15,7 @@
                 <outlet property="lblHelp1" destination="Zhc-1n-FqR" id="jVV-YO-aJg"/>
                 <outlet property="lblHelp2" destination="ska-k0-hTF" id="hrc-Hh-xvQ"/>
                 <outlet property="lblHelp3" destination="x72-gP-2iC" id="wn7-45-C5e"/>
+                <outlet property="noticeBgImageView" destination="y8A-hT-dc6" id="Itg-S2-t1M"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -119,7 +120,7 @@
                                 <action selector="closeHelp:" destination="-1" eventType="touchUpInside" id="675-tk-sHp"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎来到MyStyle，这里是你的衣橱，" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhc-1n-FqR">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎来到MyStyle，这里是你的衣橱，" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhc-1n-FqR">
                             <rect key="frame" x="57" y="8" width="225" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="32" id="S3s-R6-n2X"/>
@@ -128,7 +129,7 @@
                             <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（拍照时，建议你将衣服悬挂于白色墙面之前，或平整铺在干净的地板上，以取得最佳效果）" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x72-gP-2iC">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（拍照时，建议你将衣服悬挂于白色墙面之前，或平整铺在干净的地板上，以取得最佳效果）" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x72-gP-2iC">
                             <rect key="frame" x="27" y="59" width="243" height="43"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="43" id="Do5-Qh-iS1"/>
@@ -137,7 +138,7 @@
                             <color key="textColor" red="0.61176470588235299" green="0.61176470588235299" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现在你可以建立你的电子衣橱了" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ska-k0-hTF">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="现在你可以建立你的电子衣橱了" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ska-k0-hTF">
                             <rect key="frame" x="72" y="38" width="230" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="fKx-J1-inV"/>

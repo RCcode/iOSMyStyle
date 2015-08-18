@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnAddActivity;
 @property (nonatomic, strong) UIButton *btnUpOrDown;
 @property (nonatomic, strong) UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIImageView *noticeBgImageView;
 
 @end
 
@@ -69,8 +70,16 @@
     [self setDoneBtnTitleColor:colorWithHexString(@"#44dcca")];
     [self setDoneBtnTitle:LocalizedString(@"Toady", nil)];
     
-    [_lblHelp1 setText:LocalizedString(@"helpCalendar1", nil)];
-    [_lblHelp2 setText:LocalizedString(@"helpCalendar2", nil)];
+    if([CURR_LANG isEqualToString:@"zh-Hans"] ){
+        [_noticeBgImageView setImage:[UIImage imageNamed:@"notice_bg3"]];
+    }
+    else
+    {
+        [_noticeBgImageView setImage:[UIImage imageNamed:@"notice_bg3_en"]];
+    }
+    
+//    [_lblHelp1 setText:LocalizedString(@"helpCalendar1", nil)];
+//    [_lblHelp2 setText:LocalizedString(@"helpCalendar2", nil)];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateView) name:NOTIFICATION_UPDATEVIEW object:nil];
     

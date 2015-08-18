@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIView *helpView;
 @property (weak, nonatomic) IBOutlet UILabel *lblHelp1;
 @property (weak, nonatomic) IBOutlet UILabel *lblHelp2;
+@property (weak, nonatomic) IBOutlet UIImageView *noticeBgImageView;
 
 
 @end
@@ -53,8 +54,15 @@
     [_lblStyle setText:LocalizedString(@"Style", nil)];
     [_lblOccasion setText:LocalizedString(@"Occasion", nil)];
     
-    [_lblHelp1 setText:LocalizedString(@"helpLookbook1", nil)];
-    [_lblHelp2 setText:LocalizedString(@"helpLookbook2", nil)];
+    if([CURR_LANG isEqualToString:@"zh-Hans"] ){
+        [_noticeBgImageView setImage:[UIImage imageNamed:@"notice_bg2"]];
+    }
+    else
+    {
+        [_noticeBgImageView setImage:[UIImage imageNamed:@"notice_bg2_en"]];
+    }
+//    [_lblHelp1 setText:LocalizedString(@"helpLookbook1", nil)];
+//    [_lblHelp2 setText:LocalizedString(@"helpLookbook2", nil)];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateCollectionView) name:NOTIFICATION_UPDATEVIEW object:nil];
     

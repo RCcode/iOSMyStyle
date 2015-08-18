@@ -11,6 +11,7 @@
                 <outlet property="helpView" destination="cep-tf-OMQ" id="3X0-dw-fl8"/>
                 <outlet property="lblHelp1" destination="Gvw-9p-8KE" id="UGQ-3P-3cf"/>
                 <outlet property="lblHelp2" destination="DM2-tr-gsZ" id="yz4-hl-BuC"/>
+                <outlet property="noticeBgImageView" destination="VBJ-Q3-6uq" id="bP3-xH-JFH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,7 +51,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="notice_bg3" translatesAutoresizingMaskIntoConstraints="NO" id="VBJ-Q3-6uq">
                     <rect key="frame" x="0.0" y="0.0" width="310" height="96"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="欢迎来到MyStyle，这里是你的时尚日历" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvw-9p-8KE">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="欢迎来到MyStyle，这里是你的时尚日历" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvw-9p-8KE">
                     <rect key="frame" x="38" y="25" width="266" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,7 +66,7 @@
                         <action selector="closeHelp:" destination="-1" eventType="touchUpInside" id="ifC-ll-y55"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="这里可以安排你的搭配日程" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM2-tr-gsZ">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="这里可以安排你的搭配日程" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM2-tr-gsZ">
                     <rect key="frame" x="66" y="54" width="228" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
