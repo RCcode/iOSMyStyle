@@ -20,7 +20,7 @@
 "Follow_us" = "关注我们";
 "Rate_5_Star" = "评分";
 "Feedback" = "反馈";
-"Share this app" = "分享应用";
+"Share_this_app" = "分享应用";
 "Share_app" = "我发现一个很好用的服装搭配应用，名字是MyStyle。我已经用MyStyle搭配了很多新的造型。下载链接：http://bit.ly/1Mhcpbc";
 "Logout" = "注销";
 
@@ -86,7 +86,7 @@
 "Category" = "类型";
 "Subcategory" = "类别";
 
-"All" = "所有";
+"ALL" = "所有";
 "Spring/Summer" = "春夏";
 "Fall/Winter" = "秋冬";
 
