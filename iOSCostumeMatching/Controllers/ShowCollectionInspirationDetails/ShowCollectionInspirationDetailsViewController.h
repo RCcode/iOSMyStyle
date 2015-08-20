@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) NSDictionary *dic;
 
+@property (nonatomic) BOOL isLiked;
+
 -(void)setDicChangeBlock:(void(^)())dicChangeBlock;
 
 @end

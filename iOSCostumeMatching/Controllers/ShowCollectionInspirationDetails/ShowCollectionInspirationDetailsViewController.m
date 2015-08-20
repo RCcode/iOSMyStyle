@@ -136,13 +136,20 @@
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_dic objectForKey:@"pic"]]];
     [_lblName setText:[_dic objectForKey:@"tname"]];
     
-    like = [[_dic objectForKey:@"liked"]integerValue];
-    if (like) {
+    if (_isLiked) {
         [_btnLike setImage:[UIImage imageNamed:@"ic_likes_h"] forState:UIControlStateNormal];
+        like = 1;
     }
     else
     {
-        [_btnLike setImage:[UIImage imageNamed:@"ic_likes"] forState:UIControlStateNormal];
+        like = [[_dic objectForKey:@"liked"]integerValue];
+        if (like) {
+            [_btnLike setImage:[UIImage imageNamed:@"ic_likes_h"] forState:UIControlStateNormal];
+        }
+        else
+        {
+            [_btnLike setImage:[UIImage imageNamed:@"ic_likes"] forState:UIControlStateNormal];
+        }
     }
     // Do any additional setup after loading the view from its nib.
 }

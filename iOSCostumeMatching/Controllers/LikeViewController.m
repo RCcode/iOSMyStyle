@@ -60,8 +60,6 @@
     [_lblOccasion setText:LocalizedString(@"Occasion", nil)];
     
     [self createCollectionView];
-    [_collectionView reloadData];
-    [self updateCollectionView];
     
     self.arrCollection = [[NSMutableArray alloc]init];
     
@@ -76,7 +74,16 @@
     // 上拉刷新
     weakCollectionView.footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [weakSelf updateCollectionView];
-    }];    // Do any additional setup after loading the view from its nib.
+    }];
+    
+//    [self updateCollectionView];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    _mId = 0;
+    [self updateCollectionView];
 }
 
 - (void)createCollectionView
@@ -227,11 +234,17 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+//    __weak LikeViewController *weakSelf = self;
     NSDictionary *dic = [_arrCollection objectAtIndex:indexPath.row];
     int coId = [[dic objectForKey:@"coId"] intValue];
     ShowCollectionInspirationDetailsViewController *showDetail = [[ShowCollectionInspirationDetailsViewController alloc]init];
     showDetail.coId = coId;
     showDetail.dic = dic;
+    showDetail.isLiked = YES;
+//    [showDetail setDicChangeBlock:^{
+//        CLog(@"change");
+//        [weakSelf.collectionView reloadData];
+//    }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:showDetail];
     [self presentViewController:nav animated:YES completion:nil];
 }
