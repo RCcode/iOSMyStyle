@@ -366,14 +366,15 @@
     
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     __weak UIActivityViewController *blockActivityVC = activityVC;
-    
+    if ( [activityVC respondsToSelector:@selector(popoverPresentationController)] ) {
+        // iOS8
+        activityVC.popoverPresentationController.sourceView = _btnShare;
+    }
     activityVC.completionHandler = ^(NSString *activityType,BOOL completed){
-        
         [blockActivityVC dismissViewControllerAnimated:YES completion:nil];
     };
     [self presentViewController:activityVC animated:YES completion:nil];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
