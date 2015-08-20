@@ -105,17 +105,17 @@
     _drawerView1.originalImage = _originalImage;
     
     CGRect rect1 = CGRectMake(0, 0, _originalImage.size.width, _originalImage.size.height);
-    CGRect rect2 = CGRectMake(0, 0, ScreenWidth, ScreenHeight-64-130);
+    CGRect rect2 = CGRectMake(0, 0, ScreenWidth, ScreenHeight-64-75);
     CGRect rect = [MZCroppableView scaleRespectAspectFromRect1:rect1 toRect2:rect2];
 
-    if (rect.size.width == 320) {
+    if (rect.size.width == ScreenWidth) {
         scale = _originalImage.size.width/rect.size.width;
     }
     else
     {
         scale = _originalImage.size.height/rect.size.height;
     }
-    
+
     _paintingSizeView.frame = CGRectMake(0, 0, 14*scale, 14*scale);
     _paintingSizeView.center = _magnifyingGlassImageView.center;
     _paintingSizeView.layer.cornerRadius = 14*scale/2;
