@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) NSDictionary *dic;
 
+-(void)setDicChangeBlock:(void(^)())dicChangeBlock;
+
 @end

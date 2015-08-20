@@ -23,9 +23,16 @@
 
 @property (strong, nonatomic) UILabel *lblDescription;
 
+@property (nonatomic, copy) void(^dicChange)();
+
 @end
 
 @implementation ShowCollectionInspirationDetailsViewController
+
+-(void)setDicChangeBlock:(void (^)())dicChangeBlock
+{
+    _dicChange = dicChangeBlock;
+}
 
 -(void)returnBtnPressed:(id)sender
 {
@@ -162,6 +169,10 @@
                 {
                     like = 0;
                     [weakSelf.btnLike setImage:[UIImage imageNamed:@"ic_likes"] forState:UIControlStateNormal];
+                }
+                [weakSelf.dic setValue:[NSNumber numberWithInteger:like] forKey:@"liked"];
+                if (weakSelf.dicChange) {
+                    weakSelf.dicChange();
                 }
             }
             hideMBProgressHUD();
