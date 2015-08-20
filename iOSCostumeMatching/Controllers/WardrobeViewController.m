@@ -509,14 +509,49 @@
     __weak UIImagePickerController *weekImagePickerController = picker;
     
     [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"pickerDismiss"];
-    
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
-    image = [image rescaleImageToPX:1080];
     __weak WardrobeViewController *weakSelf = self;
-    [weekImagePickerController dismissViewControllerAnimated:YES completion:^{
-        [weakSelf gotoCutAndWipe:image];
-    }];
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    if(!image)
+    {
+        [self loadImageFromAssertByUrl:[info objectForKey:@"UIImagePickerControllerReferenceURL"] completion:^(UIImage * img) {
+            //压缩处理
+            img = [img rescaleImageToPX:1080];;
+            [weekImagePickerController dismissViewControllerAnimated:YES completion:^{
+                [weakSelf gotoCutAndWipe:img];
+            }];
+        }];
+ 
+    }
+    else
+    {
+        image = [image rescaleImageToPX:1080];
+        [weekImagePickerController dismissViewControllerAnimated:YES completion:^{
+            [weakSelf gotoCutAndWipe:image];
+        }];
+    }
+        
 }
+
+- (void)loadImageFromAssertByUrl:(NSURL *)url completion:(void (^)(UIImage *))completion{
+    
+    __block UIImage* img;
+    
+    ALAssetsLibrary *assetLibrary=[[ALAssetsLibrary alloc] init];
+    
+    [assetLibrary assetForURL:url resultBlock:^(ALAsset *asset)
+     {
+         ALAssetRepresentation *rep = [asset defaultRepresentation];
+         Byte *buffer = (Byte*)malloc((unsigned long)rep.size);
+         NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:(unsigned int)rep.size error:nil];
+         NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
+         img = [UIImage imageWithData:data];
+         completion(img);
+         
+     } failureBlock:^(NSError *err) {
+         NSLog(@"Error: %@",[err localizedDescription]);
+     }];
+}
+
 
 - (UIImage *)scaleAndRotateImage:(UIImage *)image {
     //    int kMaxResolution = 640; // Or whatever

@@ -79,7 +79,8 @@
 
     
     CGRect rect1 = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
-    CGRect rect2 = _imageView.frame;
+//    CGRect rect2 = _imageView.frame;
+    CGRect rect2 = CGRectMake(0, 0, ScreenWidth, ScreenHeight-64-75);
     [_imageView setFrame:[MZCroppableView scaleRespectAspectFromRect1:rect1 toRect2:rect2]];
     
     [self setUpMZCroppableView];

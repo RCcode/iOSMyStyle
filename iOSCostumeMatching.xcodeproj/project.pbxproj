@@ -1699,6 +1699,7 @@
 					"$(PROJECT_DIR)/iOSCostumeMatching/SDK/flurryAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1721,6 +1722,7 @@
 					"$(PROJECT_DIR)/iOSCostumeMatching/SDK/flurryAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

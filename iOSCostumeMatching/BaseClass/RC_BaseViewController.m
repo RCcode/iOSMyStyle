@@ -59,9 +59,19 @@
     [self.navigationController.navigationBar addSubview:btnDone];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
     [titleLabel removeFromSuperview];
     [btnReturn removeFromSuperview];
     [btnDone removeFromSuperview];
