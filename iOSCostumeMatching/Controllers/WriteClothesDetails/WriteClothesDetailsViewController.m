@@ -128,6 +128,12 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)setImage:(UIImage *)image
+{
+    _imageView.image = image;
+    _image = image;
+}
+
 - (IBAction)selectType:(id)sender {
     pressType = YES;
     SelectViewController *selectStyle = [[SelectViewController alloc]init];
