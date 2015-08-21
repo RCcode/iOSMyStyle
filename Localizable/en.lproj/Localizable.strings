@@ -200,3 +200,9 @@
 "3_day_before" = "3 days before at 9:00";
 "1_week_before" = "1 week before at 9:00";
 
+"library_not_availabel" = "Unable to open albums";
+"user_library_step" = "Allow MyStyle to open your albums: Phone settings - Private - photos -> MyStyle (open)";
+"camena_not_availabel" = "Unable to open camera";
+"user_camera_step" = "Allow MyStyle to open your camera: Phone settings - Private - Camera -> MyStyle (open)";
+"confirm"="Confirm";
+

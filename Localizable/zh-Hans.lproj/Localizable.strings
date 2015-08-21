@@ -200,7 +200,12 @@
 "3_day_before" = "提前3天(9:00)";
 "1_week_before" = "提前1周(9:00)";
 
-
+//主页
+"library_not_availabel" = "无法启动相册";
+"user_library_step" = "请为MyStyle开启相册权限：手机设置->隐私->照片->MyStyle（打开）";
+"camena_not_availabel" = "无法启动相机";
+"user_camera_step" = "请为MyStyle开启相机权限：手机设置->隐私->相机->MyStyle（打开）";
+"confirm"="确定";
 
 
 
