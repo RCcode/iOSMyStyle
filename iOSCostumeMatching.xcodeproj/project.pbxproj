@@ -137,6 +137,8 @@
 		4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */; };
 		4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */; };
 		4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */; };
+		4F82321A1B86D5AD0052EF3B /* RC_LoginBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8232181B86D5AD0052EF3B /* RC_LoginBaseViewController.m */; };
+		4F82321B1B86D5AD0052EF3B /* RC_LoginBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8232191B86D5AD0052EF3B /* RC_LoginBaseViewController.xib */; };
 		4F8329D11B5CA1C6005588D7 /* CreateCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329CF1B5CA1C6005588D7 /* CreateCollectionViewController.m */; };
 		4F8329D21B5CA1C6005588D7 /* CreateCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8329D01B5CA1C6005588D7 /* CreateCollectionViewController.xib */; };
 		4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8329D61B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m */; };
@@ -423,6 +425,9 @@
 		4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IS_MobAndAnalyticsManager.m; sourceTree = "<group>"; };
 		4F808CB11B54C997001A89AA /* RC_SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_SQLiteManager.h; sourceTree = "<group>"; };
 		4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_SQLiteManager.m; sourceTree = "<group>"; };
+		4F8232171B86D5AD0052EF3B /* RC_LoginBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_LoginBaseViewController.h; sourceTree = "<group>"; };
+		4F8232181B86D5AD0052EF3B /* RC_LoginBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_LoginBaseViewController.m; sourceTree = "<group>"; };
+		4F8232191B86D5AD0052EF3B /* RC_LoginBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RC_LoginBaseViewController.xib; sourceTree = "<group>"; };
 		4F8329CE1B5CA1C6005588D7 /* CreateCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCollectionViewController.h; sourceTree = "<group>"; };
 		4F8329CF1B5CA1C6005588D7 /* CreateCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCollectionViewController.m; sourceTree = "<group>"; };
 		4F8329D01B5CA1C6005588D7 /* CreateCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCollectionViewController.xib; sourceTree = "<group>"; };
@@ -592,6 +597,9 @@
 				4F417DB71B4E6875000BD540 /* RC_NavigationController.m */,
 				4F417DB81B4E6875000BD540 /* RC_View.h */,
 				4F417DB91B4E6875000BD540 /* RC_View.m */,
+				4F8232171B86D5AD0052EF3B /* RC_LoginBaseViewController.h */,
+				4F8232181B86D5AD0052EF3B /* RC_LoginBaseViewController.m */,
+				4F8232191B86D5AD0052EF3B /* RC_LoginBaseViewController.xib */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -1386,6 +1394,7 @@
 				4F5146E41B74BFF7001AB836 /* InfoPlist.strings in Resources */,
 				4F5A50841B60F28F0001D5D1 /* LikeViewController.xib in Resources */,
 				4F9BE2221B6F7B7900339E71 /* kb-loupe-hi_7.png in Resources */,
+				4F82321B1B86D5AD0052EF3B /* RC_LoginBaseViewController.xib in Resources */,
 				4F417DD91B4E8960000BD540 /* WardrobeViewController.xib in Resources */,
 				4F8329D91B5CA2C3005588D7 /* WriteCollectionDetailsViewController.xib in Resources */,
 				4F7B64E91B5F4D46004643D2 /* MyWardrobeViewController.xib in Resources */,
@@ -1448,6 +1457,7 @@
 				4F158D831B53BE6D000CA2FA /* PWSCalendarViewFlowLayout.m in Sources */,
 				4F62FFE81B579755005E8C79 /* FMDatabasePool.m in Sources */,
 				4F62FFF51B57B915005E8C79 /* ClothesInfo.m in Sources */,
+				4F82321A1B86D5AD0052EF3B /* RC_LoginBaseViewController.m in Sources */,
 				4F7D00971B6A1D6000BE18CE /* MJRefreshHeader.m in Sources */,
 				4F07719C1B53AB02005D61AB /* MBProgressHUD.m in Sources */,
 				4F7B9AB71B6254AD003D94BF /* SDWebImageCompat.m in Sources */,

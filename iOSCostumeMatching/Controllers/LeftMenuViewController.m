@@ -7,17 +7,14 @@
 //
 
 #import "LeftMenuViewController.h"
-#import "InstagramLoginViewController.h"
+//#import "InstagramLoginViewController.h"
 #import "UIImageView+WebCache.h"
 #import "FacebookManager.h"
 #import "LoginView.h"
 #import <MessageUI/MFMailComposeViewController.h>
 
 @interface LeftMenuViewController ()<MFMailComposeViewControllerDelegate,UIAlertViewDelegate>
-{
-    LoginView *loginView;
-    UserInfo *userInfo;
-}
+
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *actionView;
@@ -47,12 +44,26 @@
     [_btnShare setTitle:LocalizedString(@"Share_this_app", nil) forState:UIControlStateNormal];
 }
 
+-(void)updateView{
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
+    if (userInfo) {
+        [_headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
+        [_btnLogin setTitle:LocalizedString(@"Logout", nil) forState:UIControlStateNormal];
+    }
+    else
+    {
+        [_btnLogin setTitle:LocalizedString(@"Login", nil) forState:UIControlStateNormal];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateView) name:NOTIFICATION_UPDATEVIEW object:nil];
+    
     [self setLocalizableText];
     
-    userInfo = [UserInfo unarchiverUserData];
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
     if (userInfo) {
         [_headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
         [[RC_RequestManager shareManager]loginWith:userInfo success:^(id responseObject) {
@@ -74,28 +85,12 @@
     [_scrollView addSubview:_actionView];
     _scrollView.contentSize = CGSizeMake(CGRectGetWidth(_actionView.frame), CGRectGetHeight(_actionView.frame));
     
-    loginView = [LoginView instanceLoginView];
-    [loginView addTapRemove];
-    [loginView setFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-    loginView.backgroundColor = [colorWithHexString(@"#000000") colorWithAlphaComponent:0.25];
-    __weak LeftMenuViewController *weakSelf = self;
-    [loginView setLoginInstagramBlock:^{
-        [weakSelf loginInstagram];
-    }];
-    [loginView setLoginFacebookBlock:^{
-        [weakSelf loginFaceBook];
-    }];
-    AppDelegate *app = [[UIApplication sharedApplication]delegate];
-    [app.window addSubview:loginView];
-//    loginView.hidden = YES;
-    [loginView show:NO];
-    // Do any additional setup after loading the view from its nib.
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    userInfo = [UserInfo unarchiverUserData];
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
     if (userInfo) {
         [_btnLogin setTitle:LocalizedString(@"Logout", nil) forState:UIControlStateNormal];
     }
@@ -105,81 +100,18 @@
     }
 }
 
--(void)getTokenSuccess:(id)responseObject
+-(void)updateViewLoginSuccess
 {
-    NSDictionary *dic = responseObject;
-    userInfo = [[UserInfo alloc]init];
-    userInfo.strToken = [dic objectForKey:@"access_token"];
-    userInfo.strUid = [NSString stringWithFormat:@"%@",[[dic objectForKey:@"user"] objectForKey:@"id"]];
-    userInfo.strTname = [[dic objectForKey:@"user"]objectForKey:@"username"];
-    userInfo.strPicURL = [[dic objectForKey:@"user"] objectForKey:@"profile_picture"];
-    userInfo.numTplat = [NSNumber numberWithShort:1];
-    [self saveUserInfo:userInfo];
-}
-
--(void)saveUserInfo:(UserInfo *)_userInfo
-{
-    __weak LeftMenuViewController *weakSelf = self;
-    _userInfo.numPlat = [NSNumber numberWithShort:1];
-    if (!_userInfo.strUid) {
-        return;
-    }
-    
-    [[RC_RequestManager shareManager]loginWith:_userInfo success:^(id responseObject) {
-        CLog(@"%@",responseObject);
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            if ([[responseObject objectForKey:@"stat"]integerValue] == 10000) {
-                
-                [weakSelf.btnLogin setTitle:LocalizedString(@"Logout", nil) forState:UIControlStateNormal];
-                [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.strPicURL]];
-                
-                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UPDATEVIEW object:nil];
-
-                _userInfo.numId = [responseObject objectForKey:@"id"];
-                [UserInfo archiverUserInfo:userInfo];
-                [[RC_SQLiteManager shareManager]addUser:userInfo];
-                
-            }
-        }
-    } andFailed:^(NSError *error) {
-        CLog(@"%@",error);
-    }];
-}
-
-/**
- *  成功登陆服务器
- *
- *  @param responseObject <#responseObject description#>
- */
--(void)loginServerSuccess:(id)responseObject
-{
-    if ([responseObject isKindOfClass:[NSDictionary class]]) {
-        if ([[responseObject objectForKey:@"stat"]integerValue] == 10000) {
-            
-        }
-    }
-}
-
--(void)successLogin:(NSString *)code
-{
-    NSDictionary *params = @{@"client_id":INSTAGRAM_CLIENT_ID,
-                             @"client_secret":INSTAGRAM_CLIENT_SECRET,
-                             @"grant_type":@"authorization_code",
-                             @"redirect_uri":INSTAGRAM_REDIRECT_URI,
-                             @"code":code
-                             };
-    __weak LeftMenuViewController *weakSelf = self;
-    [[RC_RequestManager shareManager]getInstagramToken:params success:^(id responseObject) {
-        CLog(@"%@",responseObject);
-        [weakSelf getTokenSuccess:responseObject];
-    } andFailed:^(NSError *error) {
-        CLog(@"%@",error);
-    }];
+    [super updateViewLoginSuccess];
+    UserInfo *userIn = [UserInfo unarchiverUserData];
+    [self.btnLogin setTitle:LocalizedString(@"Logout", nil) forState:UIControlStateNormal];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:userIn.strPicURL]];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
+        UserInfo *userInfo = [UserInfo unarchiverUserData];
         NSInteger plat = [userInfo.numTplat integerValue];
         [UserInfo deleteArchieveData];
         userInfo = nil;
@@ -197,7 +129,7 @@
 }
 
 - (IBAction)pressLogin:(id)sender {
-    userInfo = [UserInfo unarchiverUserData];
+    UserInfo *userInfo = [UserInfo unarchiverUserData];
     if (userInfo) {
         
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@?",LocalizedString(@"Logout", nil)] message:nil delegate:self cancelButtonTitle:LocalizedString(@"No", nil) otherButtonTitles:LocalizedString(@"Yes", nil), nil];
@@ -207,47 +139,6 @@
     {
         [loginView show:YES];
     }
-}
-
-- (void)loginInstagram {
-    InstagramLoginViewController *instagramLoginViewController = [[InstagramLoginViewController alloc]init];
-    __weak LeftMenuViewController *weakSelf = self;
-    [instagramLoginViewController setSuccessLoginBlock:^(NSString *code) {
-        [weakSelf successLogin:code];
-    }];
-    RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:instagramLoginViewController];
-    [self presentViewController:nav animated:YES completion:nil];
-}
-
-- (void)loginFaceBook {
-    __weak LeftMenuViewController *weakSelf = self;
-    [[FacebookManager shareManager]loginSuccess:^(NSString *token) {
-        userInfo = [[UserInfo alloc]init];
-        userInfo.strToken = token;
-        [weakSelf getFacebookUserInfo];
-    } andFailed:^(NSError *error) {
-         NSLog(@"%@",error);
-    }];
-}
-
--(void)getFacebookUserInfo
-{
-    __weak LeftMenuViewController *weakSelf = self;
-    [[FacebookManager shareManager] getUserInfoSuccess:^(NSDictionary *_userInfo) {
-        NSLog(@"userInfo:%@",_userInfo);
-        userInfo.strUid = [_userInfo objectForKey:@"id"];
-        userInfo.strTname = [_userInfo objectForKey:@"name"];
-        userInfo.numTplat = [NSNumber numberWithShort:2];
-        [weakSelf saveUserInfo:userInfo];
-    } andFailed:^(NSError *error) {
-    }];
-    [[FacebookManager shareManager] getHeadPicturePathSuccess:^(NSDictionary *dic) {
-        NSLog(@"headurl:%@",dic);
-        userInfo.strPicURL = [[[dic objectForKey:@"picture"]objectForKey:@"data"]objectForKey:@"url"];
-        userInfo.numTplat = [NSNumber numberWithShort:2];
-        [weakSelf saveUserInfo:userInfo];
-    } andFailed:^(NSError *error) {
-    }];
 }
 
 -(void)setAllBtnBackgroundColor

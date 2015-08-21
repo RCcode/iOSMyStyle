@@ -291,13 +291,9 @@
 
 - (IBAction)upLoadValueChange:(id)sender {
     UserInfo *userInfo = [UserInfo unarchiverUserData];
-    if (userInfo) {
-    }
-    else
-    {
-        AppDelegate *app = [[UIApplication sharedApplication]delegate];
-        [(LeftMenuViewController *)app.sideViewController.leftViewController pressLogin:nil];
-        _upLoadSwitch.on = NO;
+    if (!userInfo) {
+        [loginView show:YES];
+        return;
     }
 }
 

@@ -7,8 +7,9 @@
 //
 
 #import "RC_BaseViewController.h"
+#import "RC_LoginBaseViewController.h"
 
-@interface ShowCollectionInspirationDetailsViewController : RC_BaseViewController
+@interface ShowCollectionInspirationDetailsViewController : RC_LoginBaseViewController
 
 @property (nonatomic) int coId;
 

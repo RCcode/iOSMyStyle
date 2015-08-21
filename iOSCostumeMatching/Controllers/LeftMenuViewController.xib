@@ -356,7 +356,7 @@
         </view>
     </objects>
     <resources>
-        <image name="icon" width="80" height="80"/>
+        <image name="icon" width="64" height="64"/>
         <image name="sideslip_ic1" width="29" height="29"/>
         <image name="sideslip_ic2" width="29" height="29"/>
         <image name="sideslip_ic3" width="29" height="29"/>

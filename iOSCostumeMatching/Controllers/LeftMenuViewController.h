@@ -7,7 +7,8 @@
 //
 
 #import "RC_BaseViewController.h"
+#import "RC_LoginBaseViewController.h"
 
-@interface LeftMenuViewController : RC_BaseViewController
+@interface LeftMenuViewController : RC_LoginBaseViewController
 - (IBAction)pressLogin:(id)sender;
 @end

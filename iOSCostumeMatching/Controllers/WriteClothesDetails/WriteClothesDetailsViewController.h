@@ -7,8 +7,9 @@
 //
 
 #import "RC_BaseViewController.h"
+#import "RC_LoginBaseViewController.h"
 
-@interface WriteClothesDetailsViewController : RC_BaseViewController
+@interface WriteClothesDetailsViewController : RC_LoginBaseViewController
 
 @property (nonatomic, strong) UIImage *image;
 

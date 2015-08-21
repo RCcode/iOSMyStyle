@@ -43,8 +43,7 @@
 {
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     if (!userInfo) {
-        AppDelegate *app = [[UIApplication sharedApplication]delegate];
-        [(LeftMenuViewController *)app.sideViewController.leftViewController pressLogin:nil];
+        [loginView show:YES];
         return;
     }
     [[RC_RequestManager shareManager]ReportCollocationWithCoId:_coId success:^(id responseObject) {
@@ -157,8 +156,7 @@
 - (IBAction)pressLike:(id)sender {
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     if (!userInfo) {
-        AppDelegate *app = [[UIApplication sharedApplication]delegate];
-        [(LeftMenuViewController *)app.sideViewController.leftViewController pressLogin:nil];
+        [loginView show:YES];
         return;
     }
     __weak ShowCollectionInspirationDetailsViewController *weakSelf = self;
@@ -188,25 +186,12 @@
         CLog(@"%@",error);
         hideMBProgressHUD();
     }];
-    
-//    [[RC_RequestManager shareManager]LikeCollocationWithCoId:_coId success:^(id responseObject) {
-//        CLog(@"%@",responseObject);
-//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//            NSDictionary *dic = responseObject;
-//            if ([[dic objectForKey:@"stat"]integerValue] == 10000) {
-//                showLabelHUD(@"success");
-//            }
-//        }
-//    } andFailed:^(NSError *error) {
-//        CLog(@"%@",error);
-//    }];
 }
 
 - (IBAction)pressShare:(id)sender {
     UserInfo *userInfo = [UserInfo unarchiverUserData];
     if (!userInfo) {
-        AppDelegate *app = [[UIApplication sharedApplication]delegate];
-        [(LeftMenuViewController *)app.sideViewController.leftViewController pressLogin:nil];
+        [loginView show:YES];
         return;
     }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
