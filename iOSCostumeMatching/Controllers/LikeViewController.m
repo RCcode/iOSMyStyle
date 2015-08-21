@@ -158,7 +158,7 @@
         style = index;
         [weakSelf.lblStyle setText:getCollocationStyleName(style)];
         weakSelf.mId = 0;
-        [weakSelf updateCollectionView];
+//        [weakSelf updateCollectionView];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectStyle];
     [self presentViewController:nav animated:YES completion:nil];
@@ -175,7 +175,7 @@
         occasion = index;
         [weakSelf.lblOccasion setText:getCollocationOccasionName(occasion)];
         weakSelf.mId = 0;
-        [weakSelf updateCollectionView];
+//        [weakSelf updateCollectionView];
     }];
     RC_NavigationController *nav = [[RC_NavigationController alloc]initWithRootViewController:selectOccasion];
     [self presentViewController:nav animated:YES completion:nil];
