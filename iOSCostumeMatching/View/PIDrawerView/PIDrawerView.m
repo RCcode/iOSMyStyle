@@ -16,6 +16,7 @@
     NSMutableArray *undoArr;
     NSMutableArray *redoArr;
     BOOL isEnd;
+    BOOL isUndo;
 }
 @property (nonatomic, strong) UIImage * viewImage;
 
@@ -200,7 +201,12 @@
 -(void)redo
 {
     if (redoArr.count>0) {
-        if (undoArr.count == 0) {
+//        if (undoArr.count == 0) {
+//            UIImage *image = [redoArr objectAtIndex:0];
+//            [redoArr removeObject:image];
+//            [undoArr addObject:image];
+//        }
+        if (isUndo) {
             UIImage *image = [redoArr objectAtIndex:0];
             [redoArr removeObject:image];
             [undoArr addObject:image];
@@ -210,13 +216,20 @@
         [redoArr removeObject:image];
         [undoArr addObject:image];
         [self drawImage];
+        isUndo = NO;
     }
 }
 
 -(void)undo
 {
     if (undoArr.count>0) {
-        if(redoArr.count == 0)
+//        if(redoArr.count == 0)
+//        {
+//            UIImage *image = [undoArr lastObject];
+//            [undoArr removeObject:image];
+//            [redoArr insertObject:image atIndex:0];
+//        }
+        if(!isUndo)
         {
             UIImage *image = [undoArr lastObject];
             [undoArr removeObject:image];
@@ -227,6 +240,7 @@
         [undoArr removeObject:image];
         [redoArr insertObject:image atIndex:0];
         [self drawImage];
+        isUndo = YES;
     }
 }
 
