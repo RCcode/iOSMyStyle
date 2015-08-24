@@ -121,6 +121,7 @@
         weakSelf.magnifyingGlassImageView.hidden = YES;
     }];
     [self.view addSubview:rcdrawerView];
+    [self.view bringSubviewToFront:_magnifyingGlassImageView];
 }
 
 
