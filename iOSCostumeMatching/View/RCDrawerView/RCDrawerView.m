@@ -138,7 +138,7 @@
     
     CGFloat scale = rect.size.width/self.frame.size.width;
     
-    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 1.0);
     {
         [originalImage drawAtPoint:CGPointZero];
         
