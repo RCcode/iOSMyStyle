@@ -116,12 +116,14 @@
     [rcdrawerView setMagnifyingGlassImageBlock:^(UIImage *image) {
         weakSelf.magnifyingGlassImageView.hidden = NO;
         [weakSelf.magnifyingGlassImageView setImage:image];
+        weakSelf.sizeView.hidden = YES;
     }];
     [rcdrawerView setEndMagnifyingGlassImageBlock:^{
         weakSelf.magnifyingGlassImageView.hidden = YES;
     }];
     [self.view addSubview:rcdrawerView];
     [self.view bringSubviewToFront:_magnifyingGlassImageView];
+    [self.view bringSubviewToFront:_sizeView];
 }
 
 
@@ -201,7 +203,7 @@
 }
 
 - (IBAction)pressErase:(id)sender {
-    _sizeView.hidden = NO;
+    _sizeView.hidden = !_sizeView.hidden;
 }
 
 - (IBAction)pressUndo:(id)sender {
