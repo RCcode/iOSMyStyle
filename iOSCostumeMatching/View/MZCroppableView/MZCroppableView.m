@@ -115,7 +115,7 @@
 - (UIImage *)deleteBackgroundOfImage:(UIImageView *)image
 {
     NSArray *points = [self.croppingPath points];
-    if (points.count == 0) {
+    if (points.count == 0 || points.count == 1) {
         return originalImage;
     }
     CGRect rect = CGRectZero;
