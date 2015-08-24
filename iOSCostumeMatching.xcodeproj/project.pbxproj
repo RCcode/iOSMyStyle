@@ -70,11 +70,9 @@
 		4F6341931B4FA44400DFC281 /* UIBezierPath-Points.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341921B4FA44400DFC281 /* UIBezierPath-Points.m */; };
 		4F63419A1B4FA48300DFC281 /* CutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341981B4FA48300DFC281 /* CutViewController.m */; };
 		4F63419B1B4FA48300DFC281 /* CutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6341991B4FA48300DFC281 /* CutViewController.xib */; };
-		4F63419F1B4FB97B00DFC281 /* STScratchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F63419E1B4FB97B00DFC281 /* STScratchView.m */; };
 		4F6341A31B4FB9A500DFC281 /* MZCroppableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341A21B4FB9A500DFC281 /* MZCroppableView.m */; };
 		4F6341A71B4FBA8200DFC281 /* WipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341A51B4FBA8200DFC281 /* WipeViewController.m */; };
 		4F6341A81B4FBA8200DFC281 /* WipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6341A61B4FBA8200DFC281 /* WipeViewController.xib */; };
-		4F6341AE1B4FDF1100DFC281 /* PIDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6341AD1B4FDF1100DFC281 /* PIDrawerView.m */; };
 		4F6FB3F31B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB3EC1B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.m */; };
 		4F6FB3F41B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB3EE1B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.m */; };
 		4F6FB3F51B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6FB3F01B58E5D000C5CB0A /* CHTCollectionViewWaterfallHeader.m */; };
@@ -134,6 +132,7 @@
 		4F7D00A51B6A1D6000BE18CE /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D00921B6A1D6000BE18CE /* UIView+MJExtension.m */; };
 		4F7D00A91B6A3F2700BE18CE /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D00A81B6A3F2700BE18CE /* FacebookManager.m */; };
 		4F7D00AB1B6A3F6500BE18CE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7D00AA1B6A3F6500BE18CE /* FacebookSDK.framework */; };
+		4F7F25B71B8AC62A000AF2A7 /* RCDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7F25B61B8AC62A000AF2A7 /* RCDrawerView.m */; };
 		4F808CA91B54BD6E001A89AA /* RC_RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */; };
 		4F808CAD1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CAC1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.m */; };
 		4F808CB31B54C997001A89AA /* RC_SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F808CB21B54C997001A89AA /* RC_SQLiteManager.m */; };
@@ -297,15 +296,11 @@
 		4F6341971B4FA48300DFC281 /* CutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutViewController.h; sourceTree = "<group>"; };
 		4F6341981B4FA48300DFC281 /* CutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutViewController.m; sourceTree = "<group>"; };
 		4F6341991B4FA48300DFC281 /* CutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CutViewController.xib; sourceTree = "<group>"; };
-		4F63419D1B4FB97A00DFC281 /* STScratchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STScratchView.h; sourceTree = "<group>"; };
-		4F63419E1B4FB97B00DFC281 /* STScratchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STScratchView.m; sourceTree = "<group>"; };
 		4F6341A11B4FB9A500DFC281 /* MZCroppableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCroppableView.h; sourceTree = "<group>"; };
 		4F6341A21B4FB9A500DFC281 /* MZCroppableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCroppableView.m; sourceTree = "<group>"; };
 		4F6341A41B4FBA8200DFC281 /* WipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WipeViewController.h; sourceTree = "<group>"; };
 		4F6341A51B4FBA8200DFC281 /* WipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WipeViewController.m; sourceTree = "<group>"; };
 		4F6341A61B4FBA8200DFC281 /* WipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WipeViewController.xib; sourceTree = "<group>"; };
-		4F6341AC1B4FDF1100DFC281 /* PIDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDrawerView.h; sourceTree = "<group>"; };
-		4F6341AD1B4FDF1100DFC281 /* PIDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDrawerView.m; sourceTree = "<group>"; };
 		4F6FB3EB1B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallCell.h; sourceTree = "<group>"; };
 		4F6FB3EC1B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallCell.m; sourceTree = "<group>"; };
 		4F6FB3ED1B58E5D000C5CB0A /* CHTCollectionViewWaterfallFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallFooter.h; sourceTree = "<group>"; };
@@ -419,6 +414,8 @@
 		4F7D00A71B6A3F2700BE18CE /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
 		4F7D00A81B6A3F2700BE18CE /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
 		4F7D00AA1B6A3F6500BE18CE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		4F7F25B51B8AC62A000AF2A7 /* RCDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDrawerView.h; sourceTree = "<group>"; };
+		4F7F25B61B8AC62A000AF2A7 /* RCDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDrawerView.m; sourceTree = "<group>"; };
 		4F808CA71B54BD6E001A89AA /* RC_RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC_RequestManager.h; sourceTree = "<group>"; };
 		4F808CA81B54BD6E001A89AA /* RC_RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC_RequestManager.m; sourceTree = "<group>"; };
 		4F808CAB1B54BD8B001A89AA /* IS_MobAndAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IS_MobAndAnalyticsManager.h; sourceTree = "<group>"; };
@@ -775,6 +772,7 @@
 		4F63418F1B4FA3E000DFC281 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F7F25B41B8AC5FC000AF2A7 /* RCDrawerView */,
 				4F9DCC671B7CB4A500F4E80C /* IBActionSheet */,
 				4FD118611B735B3C00A98CD0 /* LoginView */,
 				4F9BE2231B6F7E5C00339E71 /* MaskImageView */,
@@ -784,9 +782,7 @@
 				4F6FB3DE1B58E52700C5CB0A /* CollectionView */,
 				4F6FB3DD1B58B7D600C5CB0A /* Cell */,
 				4F158D741B53BE6D000CA2FA /* PWSCalendar */,
-				4F6341AB1B4FDEF400DFC281 /* PIDrawerView */,
 				4F6341A01B4FB98100DFC281 /* MZCroppableView */,
-				4F63419C1B4FB97A00DFC281 /* STScratchView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -800,15 +796,6 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		4F63419C1B4FB97A00DFC281 /* STScratchView */ = {
-			isa = PBXGroup;
-			children = (
-				4F63419D1B4FB97A00DFC281 /* STScratchView.h */,
-				4F63419E1B4FB97B00DFC281 /* STScratchView.m */,
-			);
-			path = STScratchView;
-			sourceTree = "<group>";
-		};
 		4F6341A01B4FB98100DFC281 /* MZCroppableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -816,15 +803,6 @@
 				4F6341A21B4FB9A500DFC281 /* MZCroppableView.m */,
 			);
 			path = MZCroppableView;
-			sourceTree = "<group>";
-		};
-		4F6341AB1B4FDEF400DFC281 /* PIDrawerView */ = {
-			isa = PBXGroup;
-			children = (
-				4F6341AC1B4FDF1100DFC281 /* PIDrawerView.h */,
-				4F6341AD1B4FDF1100DFC281 /* PIDrawerView.m */,
-			);
-			path = PIDrawerView;
 			sourceTree = "<group>";
 		};
 		4F6FB3DD1B58B7D600C5CB0A /* Cell */ = {
@@ -1069,6 +1047,15 @@
 				4F7D00A81B6A3F2700BE18CE /* FacebookManager.m */,
 			);
 			path = FacebookManager;
+			sourceTree = "<group>";
+		};
+		4F7F25B41B8AC5FC000AF2A7 /* RCDrawerView */ = {
+			isa = PBXGroup;
+			children = (
+				4F7F25B51B8AC62A000AF2A7 /* RCDrawerView.h */,
+				4F7F25B61B8AC62A000AF2A7 /* RCDrawerView.m */,
+			);
+			path = RCDrawerView;
 			sourceTree = "<group>";
 		};
 		4F808CA61B54BD6E001A89AA /* RequestManager */ = {
@@ -1446,7 +1433,6 @@
 				4FB3741C1B66450F009ED71E /* AFURLSessionManager.m in Sources */,
 				4F417DDD1B4E8A78000BD540 /* MatchingViewController.m in Sources */,
 				4F7B9ABB1B6254AD003D94BF /* SDWebImageManager.m in Sources */,
-				4F63419F1B4FB97B00DFC281 /* STScratchView.m in Sources */,
 				4F7B9ABC1B6254AD003D94BF /* SDWebImagePrefetcher.m in Sources */,
 				4F62FFF81B57BC4A005E8C79 /* CollocationInfo.m in Sources */,
 				4FD118641B735B5D00A98CD0 /* LoginView.m in Sources */,
@@ -1470,6 +1456,7 @@
 				4F5D168E1B68E46500B03650 /* InspirationCollectionViewCell.m in Sources */,
 				4F719DCE1B7B4DA600FFB0E5 /* UIDevice+DeviceInfo.m in Sources */,
 				4F8329D81B5CA2C3005588D7 /* WriteCollectionDetailsViewController.m in Sources */,
+				4F7F25B71B8AC62A000AF2A7 /* RCDrawerView.m in Sources */,
 				4F7D00A31B6A1D6000BE18CE /* UIScrollView+MJExtension.m in Sources */,
 				4F8329E61B5CE91E005588D7 /* SPGripViewBorderView.m in Sources */,
 				4F6341A71B4FBA8200DFC281 /* WipeViewController.m in Sources */,
@@ -1520,7 +1507,6 @@
 				4F63418D1B4F9FD200DFC281 /* CutAndWipeViewController.m in Sources */,
 				4F7D00931B6A1D6000BE18CE /* MJRefreshAutoFooter.m in Sources */,
 				4F6FB3F31B58E5D000C5CB0A /* CHTCollectionViewWaterfallCell.m in Sources */,
-				4F6341AE1B4FDF1100DFC281 /* PIDrawerView.m in Sources */,
 				4F7B9ABD1B6254AD003D94BF /* UIButton+WebCache.m in Sources */,
 				4F8329D11B5CA1C6005588D7 /* CreateCollectionViewController.m in Sources */,
 				4F417DE41B4E9139000BD540 /* YRSideViewController.m in Sources */,

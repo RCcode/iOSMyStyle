@@ -7,17 +7,15 @@
 //
 
 #import "WipeViewController.h"
-#import "STScratchView.h"
 #import "MZCroppableView.h"
-#import "PIDrawerView.h"
+#import "RCDrawerView.h"
 
 @interface WipeViewController ()
 {
     CGFloat scale;
+    RCDrawerView *rcdrawerView;
 }
-@property (nonatomic, strong) STScratchView *scratchView;
-
-@property (strong, nonatomic) PIDrawerView *drawerView1;
+@property (strong, nonatomic) UIImageView *imageView;
 @property (nonatomic, strong) UIImageView *magnifyingGlassImageView;
 @property (nonatomic, strong) UIView *paintingSizeView;
 @property (nonatomic, copy) void(^wipeImageSuccess)(UIImage *image);
@@ -45,13 +43,7 @@
 
 -(void)doneBtnPressed:(id)sender
 {
-    float scale = [UIScreen mainScreen].scale;
-    
-    UIGraphicsBeginImageContextWithOptions(_drawerView1.bounds.size, NO, 0);
-    [_drawerView1.layer renderInContext:UIGraphicsGetCurrentContext()];
-    _drawerView1.layer.contentsScale = scale;
-    UIImage *finishImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+    UIImage *finishImage = [rcdrawerView finishErase];
     if (_wipeImageSuccess) {
         _wipeImageSuccess(finishImage);
     }
@@ -90,20 +82,6 @@
     
     _sizeView.hidden = NO;
     
-    self.drawerView1 = [[PIDrawerView alloc]init];
-    self.drawerView1.backgroundColor = [UIColor clearColor];
-    __weak WipeViewController *weakSelf = self;
-    [self.drawerView1 setMagnifyingGlassImageBlock:^(UIImage *image) {
-        weakSelf.magnifyingGlassImageView.hidden = NO;
-        [weakSelf.magnifyingGlassImageView setImage:image];
-        weakSelf.sizeView.hidden = YES;
-    }];
-    [self.drawerView1 setEndMagnifyingGlassImageBlock:^{
-        weakSelf.magnifyingGlassImageView.hidden = YES;
-    }];
-
-    _drawerView1.originalImage = _originalImage;
-    
     CGRect rect1 = CGRectMake(0, 0, _originalImage.size.width, _originalImage.size.height);
     CGRect rect2 = CGRectMake(0, 0, ScreenWidth, ScreenHeight-64-75);
     CGRect rect = [MZCroppableView scaleRespectAspectFromRect1:rect1 toRect2:rect2];
@@ -120,17 +98,31 @@
     _paintingSizeView.center = _magnifyingGlassImageView.center;
     _paintingSizeView.layer.cornerRadius = 14*scale/2;
 
-    
-    [self.drawerView1 setFrame:CGRectMake((int)rect.origin.x, (int)rect.origin.y, (int)rect.size.width, (int)rect.size.height)];
-//    [self.view addSubview:self.drawerView1];
-    [self.view insertSubview:self.drawerView1 atIndex:0];
-    
-    [self.drawerView1 setDrawingMode:DrawingModeErase];
-    
-    self.drawerView1.eraseWidth = 14;
+    _imageView = [[UIImageView alloc]initWithFrame:rect];
+    [_imageView setImage:_originalImage];
+    [self.view addSubview:_imageView];
+    [self setUpMZCroppableView];
+
     _sizeView3.backgroundColor = colorWithHexString(@"#4de7d7");
     
 }
+
+- (void)setUpMZCroppableView
+{
+    [rcdrawerView removeFromSuperview];
+    rcdrawerView = [[RCDrawerView alloc] initWithImageView:_imageView];
+    rcdrawerView.lineWidth = 14;
+    __weak WipeViewController *weakSelf = self;
+    [rcdrawerView setMagnifyingGlassImageBlock:^(UIImage *image) {
+        weakSelf.magnifyingGlassImageView.hidden = NO;
+        [weakSelf.magnifyingGlassImageView setImage:image];
+    }];
+    [rcdrawerView setEndMagnifyingGlassImageBlock:^{
+        weakSelf.magnifyingGlassImageView.hidden = YES;
+    }];
+    [self.view addSubview:rcdrawerView];
+}
+
 
 -(void)setAllViewCustomColor
 {
@@ -204,7 +196,7 @@
         default:
             break;
     }
-    self.drawerView1.eraseWidth = width;
+    rcdrawerView.lineWidth = width;
 }
 
 - (IBAction)pressErase:(id)sender {
@@ -212,16 +204,15 @@
 }
 
 - (IBAction)pressUndo:(id)sender {
-    [self.drawerView1 undo];
+    [rcdrawerView unDo];
 }
 
 - (IBAction)pressRedo:(id)sender {
-    [self.drawerView1 redo];
+    [rcdrawerView reDo];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
