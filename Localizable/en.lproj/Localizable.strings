@@ -119,19 +119,19 @@
 "Leggings" = "Leggings";
 
 "Flats" = "Flats";
-"Evening" = "Evening";
+"EveningBoot" = "Evening";
 "High_Heels" = "High Heels";
 "Boots" = "Boots";
 "Platforms" = "Platforms";
 "Sandals" = "Sandals";
 "Wedges" = "Wedges";
 "Sneakers" = "Sneakers";
-"Sandals" = "Sandals";
+"Slippers" = "Sandals";
 
-"Evening" = "Evening";
+"EveningBag" = "Evening";
 "Backpacks" = "Backpacks";
 "Handbags" = "Handbags";
-"Party" = "Party";
+"PartyBag" = "Party";
 "Satchels" = "Satchels";
 "Clutches" = "Clutches";
 "Wallets" = "Wallets";

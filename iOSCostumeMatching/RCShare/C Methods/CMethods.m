@@ -383,18 +383,18 @@ NSString *getWardrobeCategoryeName(WardrobeCategory type)
         case WCLeggings:{str = LocalizedString(@"Leggings", nil);break;}
             //鞋
         case WCFlattie:{str = LocalizedString(@"Flats", nil);break;}
-        case WCDress_shoes:{str = LocalizedString(@"Evening", nil);break;}
+        case WCDress_shoes:{str = LocalizedString(@"EveningBoot", nil);break;}
         case WCHigh_heel_shoe:{str = LocalizedString(@"High_Heels", nil);break;}
         case WCBoots:{str = LocalizedString(@"Boots", nil);break;}
         case WCPlatform_shoes:{str = LocalizedString(@"Platforms", nil);break;}
         case WCSandal:{str = LocalizedString(@"Sandals", nil);break;}
         case WCWedge_heel:{str = LocalizedString(@"Wedges", nil);break;}
         case WCSneaker:{str = LocalizedString(@"Sneakers", nil);break;}
-        case WCSlippers:{str = LocalizedString(@"Sandals", nil);break;}
+        case WCSlippers:{str = LocalizedString(@"Slippers", nil);break;}
             //包
-        case WCEvening_bag:{str = LocalizedString(@"Evening", nil);break;}
+        case WCEvening_bag:{str = LocalizedString(@"EveningBag", nil);break;}
         case WCBackpack:{str = LocalizedString(@"Backpacks", nil);break;}
-        case WCParty_package:{str = LocalizedString(@"Party", nil);break;}
+        case WCParty_package:{str = LocalizedString(@"PartyBag", nil);break;}
         case WCSide_shoulder_bag:{str = LocalizedString(@"Handbags", nil);break;}
         case WCSatchel:{str = LocalizedString(@"Satchels", nil);break;}
         case WCVanity:{str = LocalizedString(@"Clutches", nil);break;}
@@ -442,9 +442,9 @@ NSArray *getAllWardrobeCategorye(WardrobeType type)
                     
                     LocalizedString(@"Long_Dress", nil),LocalizedString(@"Skirts", nil),LocalizedString(@"Trousers", nil),LocalizedString(@"Shorts", nil),LocalizedString(@"Jeans", nil),LocalizedString(@"Leggings", nil),
 
-                    LocalizedString(@"Flats", nil),LocalizedString(@"Evening", nil),LocalizedString(@"High_Heels", nil),LocalizedString(@"Boots", nil),LocalizedString(@"Platforms", nil),LocalizedString(@"Sandals", nil),LocalizedString(@"Wedges", nil),LocalizedString(@"Sneakers", nil),LocalizedString(@"Sandals", nil),
+                    LocalizedString(@"Flats", nil),LocalizedString(@"EveningBoot", nil),LocalizedString(@"High_Heels", nil),LocalizedString(@"Boots", nil),LocalizedString(@"Platforms", nil),LocalizedString(@"Sandals", nil),LocalizedString(@"Wedges", nil),LocalizedString(@"Sneakers", nil),LocalizedString(@"Slippers", nil),
                     
-                    LocalizedString(@"Evening", nil),LocalizedString(@"Backpacks", nil),LocalizedString(@"Party", nil),LocalizedString(@"Handbags", nil),LocalizedString(@"Satchels", nil),LocalizedString(@"Clutches", nil),LocalizedString(@"Wallets", nil),
+                    LocalizedString(@"EveningBag", nil),LocalizedString(@"Backpacks", nil),LocalizedString(@"PartyBag", nil),LocalizedString(@"Handbags", nil),LocalizedString(@"Satchels", nil),LocalizedString(@"Clutches", nil),LocalizedString(@"Wallets", nil),
                     
                     LocalizedString(@"Belts", nil),LocalizedString(@"Hats", nil),LocalizedString(@"Sunglasses", nil),LocalizedString(@"Scarves", nil),LocalizedString(@"Gloves", nil),LocalizedString(@"Watches", nil),LocalizedString(@"Makeup", nil),LocalizedString(@"Perfume", nil),
                     
@@ -466,12 +466,12 @@ NSArray *getAllWardrobeCategorye(WardrobeType type)
         }
         case WTShoes:
         {
-            arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Flats", nil),LocalizedString(@"Evening", nil),LocalizedString(@"High_Heels", nil),LocalizedString(@"Boots", nil),LocalizedString(@"Platforms", nil),LocalizedString(@"Sandals", nil),LocalizedString(@"Wedges", nil),LocalizedString(@"Sneakers", nil),LocalizedString(@"Sandals", nil)];
+            arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Flats", nil),LocalizedString(@"EveningBoot", nil),LocalizedString(@"High_Heels", nil),LocalizedString(@"Boots", nil),LocalizedString(@"Platforms", nil),LocalizedString(@"Sandals", nil),LocalizedString(@"Wedges", nil),LocalizedString(@"Sneakers", nil),LocalizedString(@"Slippers", nil)];
             break;
         }
         case WTBag:
         {
-            arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"Evening", nil),LocalizedString(@"Backpacks", nil),LocalizedString(@"Party", nil),LocalizedString(@"Handbags", nil),LocalizedString(@"Satchels", nil),LocalizedString(@"Clutches", nil),LocalizedString(@"Wallets", nil)];
+            arr = @[LocalizedString(@"ALL", nil),LocalizedString(@"EveningBag", nil),LocalizedString(@"Backpacks", nil),LocalizedString(@"PartyBag", nil),LocalizedString(@"Handbags", nil),LocalizedString(@"Satchels", nil),LocalizedString(@"Clutches", nil),LocalizedString(@"Wallets", nil)];
             break;
         }
         case WTAccessory:

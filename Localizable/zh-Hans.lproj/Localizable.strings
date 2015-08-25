@@ -119,19 +119,19 @@
 "Leggings" = "打底裤";
 
 "Flats" = "平底鞋";
-"Evening" = "晚装鞋";
+"EveningBoot" = "晚装鞋";
 "High_Heels" = "高跟鞋";
 "Boots" = "靴子";
 "Platforms" = "松糕鞋";
 "Sandals" = "凉鞋";
 "Wedges" = "坡跟鞋";
 "Sneakers" = "运动鞋";
-"Sandals" = "拖鞋";
+"Slippers" = "拖鞋";
 
-"Evening" = "晚装包";
+"EveningBag" = "晚装包";
 "Backpacks" = "双肩包";
 "Handbags" = "手提包";
-"Party" = "宴会包";
+"PartyBag" = "宴会包";
 "Satchels" = "小背包";
 "Clutches" = "手袋";
 "Wallets" = "钱包";
