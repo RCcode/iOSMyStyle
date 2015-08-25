@@ -512,7 +512,23 @@ static RC_SQLiteManager *sqliteManager = nil;
         NSKeyedArchiver *myKeyedArchiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:mData];
         [myKeyedArchiver encodeObject:activityInfo.arrData];
         [myKeyedArchiver finishEncoding];
-        BOOL success = [_db executeUpdate:@"update Activity SET title = ?,location = ?,isAllDay = ?,startTime = ?,finishTime = ?,firstRemindTime = ?,secondRemindTime = ?,color = ?,arrData = ?,year = ?,month = ?,day= ? where id = ?",activityInfo.strTitle,activityInfo.strLocation, activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.firstRemindTime,activityInfo.secondRemindTime,activityInfo.numColor,mData,activityInfo.numYear,activityInfo.numMonth,activityInfo.numDay,activityInfo.numId,nil];
+        BOOL success;
+        if(activityInfo.strTitle && (![activityInfo.strTitle isEqualToString:@""]) && activityInfo.strLocation && (![activityInfo.strLocation isEqualToString:@""]))
+        {
+            success = [_db executeUpdate:@"update Activity SET title = ?,location = ?,isAllDay = ?,startTime = ?,finishTime = ?,firstRemindTime = ?,secondRemindTime = ?,color = ?,arrData = ?,year = ?,month = ?,day= ? where id = ?",activityInfo.strTitle,activityInfo.strLocation, activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.firstRemindTime,activityInfo.secondRemindTime,activityInfo.numColor,mData,activityInfo.numYear,activityInfo.numMonth,activityInfo.numDay,activityInfo.numId,nil];
+        }
+        else if (activityInfo.strTitle && (![activityInfo.strTitle isEqualToString:@""]))
+        {
+            success = [_db executeUpdate:@"update Activity SET title = ?,isAllDay = ?,startTime = ?,finishTime = ?,firstRemindTime = ?,secondRemindTime = ?,color = ?,arrData = ?,year = ?,month = ?,day= ? where id = ?",activityInfo.strTitle, activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.firstRemindTime,activityInfo.secondRemindTime,activityInfo.numColor,mData,activityInfo.numYear,activityInfo.numMonth,activityInfo.numDay,activityInfo.numId,nil];
+        }
+        else if(activityInfo.strLocation && (![activityInfo.strLocation isEqualToString:@""]))
+        {
+            success = [_db executeUpdate:@"update Activity SET location = ?,isAllDay = ?,startTime = ?,finishTime = ?,firstRemindTime = ?,secondRemindTime = ?,color = ?,arrData = ?,year = ?,month = ?,day= ? where id = ?",activityInfo.strLocation, activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.firstRemindTime,activityInfo.secondRemindTime,activityInfo.numColor,mData,activityInfo.numYear,activityInfo.numMonth,activityInfo.numDay,activityInfo.numId,nil];
+        }
+        else
+        {
+            success = [_db executeUpdate:@"update Activity SET isAllDay = ?,startTime = ?,finishTime = ?,firstRemindTime = ?,secondRemindTime = ?,color = ?,arrData = ?,year = ?,month = ?,day= ? where id = ?",activityInfo.numIsAllDay, activityInfo.dateStartTime,activityInfo.dateFinishTime,activityInfo.firstRemindTime,activityInfo.secondRemindTime,activityInfo.numColor,mData,activityInfo.numYear,activityInfo.numMonth,activityInfo.numDay,activityInfo.numId,nil];
+        }
         [_db close];
         return success;
     }
