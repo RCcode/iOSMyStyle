@@ -112,18 +112,18 @@
     [self.lineColor setStroke];
     [self.croppingPath strokeWithBlendMode:kCGBlendModeNormal alpha:1.0f];
 }
-- (UIImage *)deleteBackgroundOfImage:(UIImageView *)image
+- (UIImage *)deleteBackgroundOfImage
 {
     NSArray *points = [self.croppingPath points];
     if (points.count == 0 || points.count == 1) {
         return originalImage;
     }
     CGRect rect = CGRectZero;
-    rect.size = image.image.size;
+    rect.size = originalImage.size;
     
     
     UIBezierPath *aPath;
-    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0.0);
+    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 1.0);
     {
         [[UIColor blackColor] setFill];
         UIRectFill(rect);
@@ -132,12 +132,12 @@
         aPath = [UIBezierPath bezierPath];
         
         // Set the starting point of the shape.
-        CGPoint p1 = [MZCroppableView convertCGPoint:[[points objectAtIndex:0] CGPointValue] fromRect1:image.frame.size toRect2:image.image.size];
+        CGPoint p1 = [MZCroppableView convertCGPoint:[[points objectAtIndex:0] CGPointValue] fromRect1:self.frame.size toRect2:originalImage.size];
         [aPath moveToPoint:CGPointMake(p1.x, p1.y)];
         
         for (uint i=1; i<points.count; i++)
         {
-            CGPoint p = [MZCroppableView convertCGPoint:[[points objectAtIndex:i] CGPointValue] fromRect1:image.frame.size toRect2:image.image.size];
+            CGPoint p = [MZCroppableView convertCGPoint:[[points objectAtIndex:i] CGPointValue] fromRect1:self.frame.size toRect2:originalImage.size];
             [aPath addLineToPoint:CGPointMake(p.x, p.y)];
         }
         [aPath closePath];
@@ -147,28 +147,29 @@
     UIImage *mask = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
-    
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 1.0);
+//    CGContextClearRect(UIGraphicsGetCurrentContext(), rect);
     {
         CGContextClipToMask(UIGraphicsGetCurrentContext(), rect, mask.CGImage);
-        [image.image drawAtPoint:CGPointZero];
+        [originalImage drawAtPoint:CGPointZero];
     }
     
     UIImage *maskedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    CGRect croppedRect = aPath.bounds;
-    croppedRect.origin.y = rect.size.height - CGRectGetMaxY(aPath.bounds);//This because mask become inverse of the actual image;
-    
-    croppedRect.origin.x = croppedRect.origin.x*2;
-    croppedRect.origin.y = croppedRect.origin.y*2;
-    croppedRect.size.width = croppedRect.size.width*2;
-    croppedRect.size.height = croppedRect.size.height*2;
-    
-    CGImageRef imageRef = CGImageCreateWithImageInRect(maskedImage.CGImage, croppedRect);
-    
-    maskedImage = [UIImage imageWithCGImage:imageRef];
-    
+//    CGRect croppedRect = aPath.bounds;
+//    croppedRect.origin.y = rect.size.height - CGRectGetMaxY(aPath.bounds);//This because mask become inverse of the actual image;
+//    
+////    croppedRect.origin.x = croppedRect.origin.x*2;
+////    croppedRect.origin.y = croppedRect.origin.y*2;
+////    croppedRect.size.width = croppedRect.size.width*2;
+////    croppedRect.size.height = croppedRect.size.height*2;
+//    
+//    CGImageRef imageRef = CGImageCreateWithImageInRect(maskedImage.CGImage, croppedRect);
+//    
+//    maskedImage = [UIImage imageWithCGImage:imageRef];
+//    
+//    CGImageRelease(imageRef);
     return maskedImage;
 }
 #pragma mark - Touch Methods -
@@ -247,24 +248,25 @@
 }
 
 -(UIImage *)getImageInPoint:(CGPoint)point{
-    UIImage* bigImage= originalImage;
-//    UIImage* bigImage= [self getCurrentImage];
-    CGFloat x = point.x * bigImage.size.width/self.frame.size.width -35;
-    CGFloat y = point.y * bigImage.size.height/self.frame.size.height -35;
-    CGRect rect = CGRectMake(x, y, 70, 70);
-//    CGImageRef imageRef = bigImage.CGImage;
-//    CGImageRef subImageRef = CGImageCreateWithImageInRect(imageRef, rect);
-//    CGSize size;
-//    size.width = 70;
-//    size.height = 70;
-//    UIGraphicsBeginImageContext(size);
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextDrawImage(context, rect, subImageRef);
-//    UIImage* smallImage = [UIImage imageWithCGImage:subImageRef];
-//    UIGraphicsEndImageContext();
-//    return smallImage;
-    UIImage *image = [bigImage subImageWithRect:rect];
-    return image;
+//    UIImage* bigImage= originalImage;
+////    UIImage* bigImage= [self getCurrentImage];
+//    CGFloat x = point.x * bigImage.size.width/self.frame.size.width -35;
+//    CGFloat y = point.y * bigImage.size.height/self.frame.size.height -35;
+//    CGRect rect = CGRectMake(x, y, 70, 70);
+////    CGImageRef imageRef = bigImage.CGImage;
+////    CGImageRef subImageRef = CGImageCreateWithImageInRect(imageRef, rect);
+////    CGSize size;
+////    size.width = 70;
+////    size.height = 70;
+////    UIGraphicsBeginImageContext(size);
+////    CGContextRef context = UIGraphicsGetCurrentContext();
+////    CGContextDrawImage(context, rect, subImageRef);
+////    UIImage* smallImage = [UIImage imageWithCGImage:subImageRef];
+////    UIGraphicsEndImageContext();
+////    return smallImage;
+//    UIImage *image = [bigImage subImageWithRect:rect];
+//    return image;
+    return nil;
 }
 
 -(void)unDo

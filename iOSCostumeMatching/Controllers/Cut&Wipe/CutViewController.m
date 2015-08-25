@@ -35,7 +35,7 @@
 
 -(void)doneBtnPressed:(id)sender
 {
-    UIImage *croppedImage = [mzCroppableView deleteBackgroundOfImage:_imageView];
+    UIImage *croppedImage = [mzCroppableView deleteBackgroundOfImage];
     
 //    NSString *path = [NSHomeDirectory() stringByAppendingString:@"/Documents/final.png"];
 //    [UIImagePNGRepresentation(croppedImage) writeToFile:path atomically:YES];

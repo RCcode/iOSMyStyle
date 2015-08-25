@@ -67,7 +67,6 @@
     _sizeView5.layer.cornerRadius = CGRectGetWidth(_sizeView5.frame)/2;
     _sizeView6.layer.cornerRadius = CGRectGetWidth(_sizeView6.frame)/2;
     
-    
     _magnifyingGlassImageView  = [[UIImageView alloc]init];
     [_magnifyingGlassImageView setFrame:CGRectMake(0, 0, 95, 95)];
     [self.view addSubview:_magnifyingGlassImageView];
@@ -125,7 +124,6 @@
     [self.view bringSubviewToFront:_magnifyingGlassImageView];
     [self.view bringSubviewToFront:_sizeView];
 }
-
 
 -(void)setAllViewCustomColor
 {

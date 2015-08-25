@@ -21,7 +21,7 @@
 + (CGPoint)convertPoint:(CGPoint)point1 fromRect1:(CGSize)rect1 toRect2:(CGSize)rect2;
 + (CGRect)scaleRespectAspectFromRect1:(CGRect)rect1 toRect2:(CGRect)rect2;
 
-- (UIImage *)deleteBackgroundOfImage:(UIImageView *)image;
+- (UIImage *)deleteBackgroundOfImage;
 
 -(void)setMagnifyingGlassImageBlock:(void(^)(UIImage *image))magnifyingGlassImageBlock;
 -(void)setEndMagnifyingGlassImageBlock:(void (^)())endMagnifyingGlassImageBlock;
