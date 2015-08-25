@@ -189,13 +189,17 @@
                     {
                         category = index+1400-34;
                     }
-                    else if(index>42 && index<=48)
+                    else if(index>42 && index<=47)
                     {
                         category = index+1500-42;
+                        if(category >=1504)
+                        {
+                            category = category+1;
+                        }
                     }
-                    else if(index>48)
+                    else if(index>47)
                     {
-                        category = index+1600-48;
+                        category = index+1600-47;
                     }
                 }
                 break;
@@ -257,6 +261,10 @@
                 else
                 {
                     category = index+1500;
+                    if(category >=1504)
+                    {
+                        category = category+1;
+                    }
                 }
                 break;
             }
