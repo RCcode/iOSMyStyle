@@ -119,7 +119,7 @@
 "Leggings" = "Leggings";
 
 "Flats" = "Flats";
-"EveningBoot" = "Evening";
+"EveningBoot" = "Evening(Shoes)";
 "High_Heels" = "High Heels";
 "Boots" = "Boots";
 "Platforms" = "Platforms";
@@ -128,10 +128,10 @@
 "Sneakers" = "Sneakers";
 "Slippers" = "Sandals";
 
-"EveningBag" = "Evening";
+"EveningBag" = "Evening(Bags)";
 "Backpacks" = "Backpacks";
 "Handbags" = "Handbags";
-"PartyBag" = "Party";
+"PartyBag" = "Party(Bags)";
 "Satchels" = "Satchels";
 "Clutches" = "Clutches";
 "Wallets" = "Wallets";
