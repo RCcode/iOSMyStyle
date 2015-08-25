@@ -157,19 +157,19 @@
     UIImage *maskedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-//    CGRect croppedRect = aPath.bounds;
-//    croppedRect.origin.y = rect.size.height - CGRectGetMaxY(aPath.bounds);//This because mask become inverse of the actual image;
-//    
-////    croppedRect.origin.x = croppedRect.origin.x*2;
-////    croppedRect.origin.y = croppedRect.origin.y*2;
-////    croppedRect.size.width = croppedRect.size.width*2;
-////    croppedRect.size.height = croppedRect.size.height*2;
-//    
-//    CGImageRef imageRef = CGImageCreateWithImageInRect(maskedImage.CGImage, croppedRect);
-//    
-//    maskedImage = [UIImage imageWithCGImage:imageRef];
-//    
-//    CGImageRelease(imageRef);
+    CGRect croppedRect = aPath.bounds;
+    croppedRect.origin.y = rect.size.height - CGRectGetMaxY(aPath.bounds);//This because mask become inverse of the actual image;
+    
+//    croppedRect.origin.x = croppedRect.origin.x*2;
+//    croppedRect.origin.y = croppedRect.origin.y*2;
+//    croppedRect.size.width = croppedRect.size.width*2;
+//    croppedRect.size.height = croppedRect.size.height*2;
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect(maskedImage.CGImage, croppedRect);
+    
+    maskedImage = [UIImage imageWithCGImage:imageRef];
+    
+    CGImageRelease(imageRef);
     return maskedImage;
 }
 #pragma mark - Touch Methods -
