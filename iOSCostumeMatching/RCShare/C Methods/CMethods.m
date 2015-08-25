@@ -56,7 +56,7 @@ NSString *appVersion(){
 
 NSString *LocalizedString(NSString *translation_key, id none){
 
-    return NSLocalizedString(translation_key, none);
+//    return NSLocalizedString(translation_key, none);
     NSString *language = @"en";
     
     //只适配这么些种语言，其余一律用en
@@ -79,6 +79,9 @@ NSString *LocalizedString(NSString *translation_key, id none){
 //       [CURR_LANG isEqualToString:@"th"] ){
 //        language = CURR_LANG;
 //    }
+    if (IS_IOS_9) {
+        return NSLocalizedString(translation_key, nil);
+    }
     NSString * path = [[NSBundle mainBundle] pathForResource:language ofType:@"lproj"];
     NSBundle * languageBundle = [NSBundle bundleWithPath:path];
     return [languageBundle localizedStringForKey:translation_key value:@"" table:nil];
