@@ -20,6 +20,7 @@
     UITableView *activityTableView;
     NSString *year;
     NSString *month;
+    NSString *day;
     int _lastPosition;
     
     CGPoint startPoint;
@@ -54,11 +55,11 @@
 }
 
 -(void)updateView{
-    if(year && month)
-    {
-        _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
-        [activityTableView reloadData];
-    }
+//    if(year && month)
+//    {
+//        _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
+//        [activityTableView reloadData];
+//    }
 }
 
 - (void)viewDidLoad {
@@ -142,7 +143,7 @@
     [self setNavTitle:strDate];
     year = yearFromDate(date);
     month = monthFromDate(date);
-
+    day = nil;
     
     [_bottomView addSubview:activityTableView];
     
@@ -152,7 +153,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self updateView];
 }
 
 - (IBAction)closeHelp:(id)sender {
@@ -181,14 +181,14 @@
 -(void)addNewActivity:(ActivityInfo *)info
 {
     [[RC_SQLiteManager shareManager]addActivityInfo:info];
-    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:day];
     [activityTableView reloadData];
 }
 
 -(void)updateActivity:(ActivityInfo *)info
 {
     [[RC_SQLiteManager shareManager]updateActivityInfo:info];
-    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:day];
     [activityTableView reloadData];
 }
 
@@ -201,7 +201,8 @@
     [self setNavTitle:strDate];
     year = yearFromDate(date);
     month = monthFromDate(date);
-    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
+    day = nil;
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:day];
     [activityTableView reloadData];
 }
 
@@ -258,7 +259,7 @@
 -(void)deleteCollection:(ActivityInfo *)info
 {
     [[RC_SQLiteManager shareManager]deleteActivityInfo:info];
-    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:nil];
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:day];
     [activityTableView reloadData];
 }
 
@@ -321,10 +322,10 @@
 - (void) PWSCalendar:(PWSCalendarView*)_calendar didSelecteDate:(NSDate*)_date
 {
     NSLog(@"select = %@", _date);
-    NSString *_year = yearFromDate(_date);
-    NSString *_month = monthFromDate(_date);
-    NSString *_day = dayFromDate(_date);
-    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:_year andMonth:_month andDay:_day];
+    year = yearFromDate(_date);
+    month = monthFromDate(_date);
+    day = dayFromDate(_date);
+    _arrActivity = [[RC_SQLiteManager shareManager]getAllActivityWithYear:year andMonth:month andDay:day];
     [activityTableView reloadData];
 }
 
