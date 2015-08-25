@@ -52,6 +52,7 @@
 "Second_Alert" = "第二次提醒";
 "Color" = "颜色";
 "SelectAlert" = "请选择服装或搭配";
+"SelectClothesAlert" = "请选择服装";
 
 "Save" = "保存";
 "Report" = "举报";

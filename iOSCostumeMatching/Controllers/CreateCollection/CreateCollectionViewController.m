@@ -56,6 +56,11 @@
 
 -(void)doneBtnPressed:(id)sender
 {
+    if(_createImageView.subviews.count == 0)
+    {
+        showLabelHUD(LocalizedString(@"SelectClothesAlert", nil));
+        return;
+    }
     [self hideAllHandles];
     CGSize contextSize = CGSizeMake(ScreenWidth, ScreenWidth);
     UIGraphicsBeginImageContextWithOptions(contextSize, YES, 1.0);
