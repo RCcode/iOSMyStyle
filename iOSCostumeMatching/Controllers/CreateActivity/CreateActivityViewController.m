@@ -87,7 +87,6 @@
     }
     
     ActivityInfo *activityInfo = [[ActivityInfo alloc]init];
-    activityInfo.numId = [NSNumber numberWithInt:1];
     activityInfo.strTitle = _addTitle.text;
     activityInfo.strLocation = _txtLocation.text;
     activityInfo.numIsAllDay = [NSNumber numberWithBool:isAllDay];
@@ -102,10 +101,12 @@
     activityInfo.numDay = [NSNumber numberWithInt:[dayFromDate(startTime) intValue]];
     if (_finish) {
         if (_type == 1) {
+            activityInfo.numId = _activityInfo.numId;
             _finish(activityInfo,NO);
         }
         else
         {
+            activityInfo.numId = [NSNumber numberWithInt:1];
             _finish(activityInfo,YES);
         }
     }
@@ -685,11 +686,14 @@
 }
 
 - (IBAction)pressDelete:(id)sender {
-    if (_delete) {
-        _delete(_activityInfo);
-    }
     [self isAddRemind:NO andRemindTime:_activityInfo.dateStartTime andFirstRemind:[_activityInfo.firstRemindTime integerValue] andSecondRemind:[_activityInfo.secondRemindTime integerValue] isAllDay:[_activityInfo.numIsAllDay boolValue] andContent:[NSString stringWithFormat:@"%@,%@",_activityInfo.strTitle,_activityInfo.strLocation]];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    __weak CreateActivityViewController *weakSelf = self;
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (weakSelf.delete) {
+            weakSelf.delete(_activityInfo);
+        }
+    }];
 }
 
 - (IBAction)pressDateDone:(id)sender {
