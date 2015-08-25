@@ -207,6 +207,6 @@
 "user_camera_step" = "请为MyStyle开启相机权限：手机设置->隐私->相机->MyStyle（打开）";
 "confirm"="确定";
 
-
+"stickers_limit" = "最多只能添加xx个贴纸";
 
 

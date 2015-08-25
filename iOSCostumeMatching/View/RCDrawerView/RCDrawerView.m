@@ -208,13 +208,12 @@
 }
 
 -(UIImage *)getImageInPoint:(CGPoint)point{
-//    UIImage* bigImage= originalImage;
-//    CGFloat x = point.x * bigImage.size.width/self.frame.size.width -35;
-//    CGFloat y = point.y * bigImage.size.height/self.frame.size.height -35;
-//    CGRect rect = CGRectMake(x, y, 70, 70);
-//    UIImage *image = [bigImage subImageWithRect:rect];
-//    return image;
-    return nil;
+    UIImage* bigImage= originalImage;
+    CGFloat x = point.x * bigImage.size.width/self.frame.size.width -35;
+    CGFloat y = point.y * bigImage.size.height/self.frame.size.height -35;
+    CGRect rect = CGRectMake(x, y, 70, 70);
+    UIImage *image = [bigImage subImageWithRect:rect];
+    return image;
 }
 
 -(void)unDo

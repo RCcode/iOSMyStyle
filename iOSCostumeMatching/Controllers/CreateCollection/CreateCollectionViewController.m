@@ -14,6 +14,7 @@
 #import "SelectViewController.h"
 
 #define CELL_IDENTIFIER @"WaterfallCell1"
+#define StickerLimit 9
 
 @interface CreateCollectionViewController ()<UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout,ZDStickerViewDelegate,UIGestureRecognizerDelegate>
 {
@@ -25,6 +26,8 @@
     
     CGPoint startPoint;
     CGPoint endPoint;
+    
+    int numberOfStickers;
 }
 @property (weak, nonatomic) IBOutlet UIView *createImageView;
 @property (weak, nonatomic) IBOutlet UIView *selectView;
@@ -204,6 +207,26 @@
 
 -(void)didSelect:(ClothesInfo *)info
 {
+    if(numberOfStickers >= StickerLimit)
+    {
+        NSMutableString *strStickersLimit = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@" %@",LocalizedString(@"stickers_limit", nil)]];
+        NSRange range = [strStickersLimit rangeOfString:@"xx"];
+        if(range.location != NSNotFound) {
+            [strStickersLimit replaceCharactersInRange:[strStickersLimit rangeOfString:@"xx"] withString:[NSString stringWithFormat:@"%d",StickerLimit]];
+        }
+        else
+        {
+            NSRange range1 = [strStickersLimit rangeOfString:@"##"];
+            if(range1.location != NSNotFound) {
+                [strStickersLimit replaceCharactersInRange:range1 withString:[NSString stringWithFormat:@"%d",StickerLimit]];
+            }
+        }
+        
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:strStickersLimit delegate:nil cancelButtonTitle:LocalizedString(@"confirm", nil) otherButtonTitles: nil];
+        [alertView show];
+        return;
+    }
+    
     [self hideAllHandles];
     
     [_arrList addObject:info];
@@ -254,6 +277,7 @@
     //移动
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handelPhotoPan:)];
     [userResizableView1 addGestureRecognizer:panRecognizer];
+    numberOfStickers++;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -299,6 +323,7 @@
         ClothesInfo *info = object;
         if ([info.numLocalId integerValue]==sticker.tag) {
             [_arrList removeObject:info];
+            numberOfStickers --;
             break;
         }
     }
