@@ -56,6 +56,7 @@ NSString *appVersion(){
 
 NSString *LocalizedString(NSString *translation_key, id none){
 
+    return NSLocalizedString(translation_key, none);
     NSString *language = @"en";
     
     //只适配这么些种语言，其余一律用en
