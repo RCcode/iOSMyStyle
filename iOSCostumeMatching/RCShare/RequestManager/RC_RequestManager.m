@@ -12,7 +12,11 @@
 
 #define InstagramGetAccess_tokenURL  @"https://api.instagram.com/oauth/access_token?scope=likes+relationships"
 
-#define ServerRootURL                @"http://192.168.0.89:8083/MyStyleWeb%@"
+//#define ServerRootURL                @"http://192.168.0.89:8083/MyStyleWeb%@"
+//#define ServerRootURL                @"http://mystyle.rcplatformhk.net%@"
+
+#define ServerRootURL                @"http://66.228.32.55:8082/MyStyleWeb%@"
+
 //#define ServerRootURL                @"http://192.168.0.194:8080/MyStyleWeb%@"
 
 #define LoginURL                     @"/user/login.do"
